@@ -1,0 +1,46 @@
+@mixin pencil {
+    content: "&#128393;";
+}
+
+@mixin arrow-left-solid {
+    content: "&#9664;";
+}
+@mixin arrow-left-stroke {
+    content: "&#9665;";
+}
+
+@mixin arrow-right-solid {
+    content: "&#9654;";
+}
+@mixin arrow-right-stroke {
+    content: "&#9655;";
+}
+
+@mixin arrow-up-solid {
+    content: "&#9650;";
+}
+@mixin arrow-up-stroke {
+    content: "&#9651;";
+}
+
+@mixin arrow-down-solid {
+    content: "&#9660;";
+}
+@mixin arrow-down-stroke {
+    content: "&#9661;";
+}
+
+@mixin phone-solid {
+    content: "&#128383;";
+}
+@mixin phone-stroke {
+    content: "&#128382;";
+}
+
+@mixin menu-hamburger {
+    content: "&#9776;";
+}
+
+@mixin menu-vertical {
+    content: "&#5010;";
+}

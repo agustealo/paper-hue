@@ -1,0 +1,42 @@
+.sticky {
+  display: block;
+}
+
+.site-content {
+  @extend %row;
+  padding: 0;
+  position: relative;
+}
+.post,
+.page {
+  margin: 0;
+}
+
+.updated:not(.published) {
+  display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+  margin: 1.5em 0 0;
+}
+
+.page-links {
+  clear: both;
+  margin: 0 0 1.5em;
+}
+article.page,
+article.type-post {
+  @extend %col-9;
+  margin: 0 auto;
+}
+footer.entry-footer {
+  display: inline-block;
+  padding: 1em;
+  line-height: 2;
+}
+.comments-area {
+  @extend %col-9;
+  margin: 0 auto;
+}

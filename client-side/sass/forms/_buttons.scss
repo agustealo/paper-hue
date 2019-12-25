@@ -1,0 +1,51 @@
+button,
+.wp-block-button .wp-block-button__link,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border: none;
+  background: $color__background-button;
+  color: $color__text-button;
+  @include font-size(0.75);
+  line-height: 1;
+  margin: 0.25rem 0 0;
+  margin: 0.25rem 0.5rem; /////
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 16px 40px;
+  text-align: center;
+  vertical-align: middle;
+  width: auto;
+  margin-top: 30px;
+  -webkit-transition: background 0.1s linear 0s, color 0.1s linear 0s;
+  -moz-transition: background 0.1s linear 0s, color 0.1s linear 0s;
+  -o-transition: background 0.1s linear 0s, color 0.1s linear 0s;
+  transition: background 0.1s linear 0s, color 0.1s linear 0s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $color__background-button-hover;
+    cursor: pointer;
+  }
+}
+.is-style-outline {
+  a {
+    background: none !important;
+    border: $color__border-main 3px solid !important;
+  }
+  .wp-block-button__link {
+    color: $color__primary !important;
+  }
+}
+
+a .hue-button {
+  border: none;
+}
+input.hue-sticky-btn {
+  float: right;
+  padding: .5em 1em;
+  margin-top: 0.5em;
+}

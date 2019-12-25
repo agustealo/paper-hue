@@ -1,0 +1,19 @@
+/*-----------------*/
+/*** Widget Area ***/
+/*-----------------*/
+.widget-wrapper {
+  margin-top: 15em;
+  @extend %row;
+  clear: both;
+  aside#secondary {
+    column-count: 4;
+    column-rule: solid 1px;
+    column-span: all;
+    flex-flow: column;
+    column-rule-style: dotted;
+    @extend %col-12;
+    padding: 5em 0;
+    margin: 0 auto;
+  } // End #secondary
+  background-color: $color__background-widget;
+} // End .widget-wrapper

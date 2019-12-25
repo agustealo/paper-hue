@@ -1,0 +1,41 @@
+// Theme color pallete
+$color__base: #2F3238;
+$color__base-secondary: lighten($color__base, 40);
+$color__primary: #7BB0AA;
+$color__secondary: #F7EFCF;
+$color__complementry: #FFB5F9;
+$color__accent-one: #B5FFF7;
+$color__accent-two: #678499;
+$color__accent-three: #26292e;
+
+// Background settings
+$color__background-body: $color__base;
+$color__background-menu-bar: $color__accent-three;
+$color__background-widget: $color__accent-three;
+$color__background-footer: $color__base;
+$color__background-slider-dots: $color__accent-three;
+$color__background-screen: $color__secondary;
+$color__background-hr: $color__base-secondary;
+$color__background-button: $color__accent-two;
+$color__background-button-hover: $color__accent-one;
+$color__background-pre: darken($color__accent-two, 40);
+$color__background-ins: $color__primary;
+
+// Text settings
+$color__text-pre: $color__accent-one;
+$color__text-heading: $color__primary;
+$color__text-button: $color__base;
+$color__text-screen: $color__accent-two;
+$color__text-input: $color__primary;
+$color__text-input-focus: $color__base-secondary;
+$color__text-ins: $color__base;
+$color__link: $color__accent-two;
+$color__link-visited: $color__primary;
+$color__link-hover: $color__accent-one;
+$color__link-site-footer: $color__base;
+$color__text-main:  $color__base-secondary ;
+
+// Border settings
+$color__border-main: $color__primary;
+$color__border-input: $color__accent-two;
+$color__border-abbr: $color__complementry;

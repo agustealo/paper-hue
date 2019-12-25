@@ -1,0 +1,8 @@
+.site-branding {
+    .site-title a {
+        color: $color__text-heading;
+        &visited {
+            color: $color__text-heading;
+        }
+    }
+}

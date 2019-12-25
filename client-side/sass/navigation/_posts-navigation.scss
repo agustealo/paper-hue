@@ -1,0 +1,26 @@
+.post-navigation, .posts-navigation {
+  @extend %col-9;
+  clear: both;
+  margin: 0 auto;
+  padding: 2em 0;
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+  .site-main & {
+    margin-bottom: 1.5em;
+    overflow: hidden;
+  }
+
+  .nav-previous {
+    float: left;
+    width: 50%;
+  }
+
+  .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%;
+  }
+}

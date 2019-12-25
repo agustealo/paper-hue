@@ -1,0 +1,40 @@
+.category main header.page-header {
+  @extend %col-9;
+  margin: 0 auto;
+}
+
+.header-content {
+  height: 300px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  header.page-header {
+    top: 45%;
+    margin: 0 auto;
+    position: relative;
+
+    h1 {
+      font-size: 3em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+  &:before {
+    content: "";
+    background: $color__accent-three;
+    opacity: 0.9 !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    box-sizing: inherit;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+  }
+}

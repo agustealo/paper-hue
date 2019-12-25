@@ -1,0 +1,32 @@
+.content-area {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.site-main {
+	margin-top: 7em;
+}
+
+/* ==================================================
+   Footer
+================================================== */
+
+footer {
+	position: relative;
+	width: 100%;
+	height: auto;
+	text-align: center;
+	z-index: 99;
+}
+
+footer .site-info {
+    color: #FFFFFF;
+    font-size: 13px;
+    margin-top: 1.5em;
+    text-transform: uppercase;	
+}
+.site-footer{
+	background: $color__accent-two;
+    height: 3em;
+}
