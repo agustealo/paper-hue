@@ -17,7 +17,8 @@ function hue_if_is_sticky($arg){
 		return $arg;
 	}
   }
-
+ //$i=0;
+ $count=0;
 while ( have_posts() ) : the_post();
 if(!is_sticky()) : $count++; endif;
 $i++;

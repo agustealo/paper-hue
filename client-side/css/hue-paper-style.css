@@ -186,9 +186,6 @@ textarea {
   margin-left: auto;
   margin-right: auto; }
 
-.site-main {
-  margin-top: 7em; }
-
 /* ==================================================
    Footer
 ================================================== */
@@ -215,9 +212,6 @@ footer .site-info {
 /*-----------------*/
 /*** Home Stying ***/
 /*-----------------*/
-.home-posts-wrapper {
-  margin-top: -7em; }
-
 /*-----------------------*/
 /*** None sticky posts ***/
 /*-----------------------*/
@@ -226,7 +220,7 @@ footer .site-info {
   clear: both; }
   .not-sticky .fp-heading h1 {
     font-size: 3em;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     text-align: center;
     margin: 3em 0 1.5em; }
@@ -274,14 +268,11 @@ footer .site-info {
   margin: 0 auto;
   position: relative; }
   .hue-sticky-wrapper .entry-header {
-    margin-top: -20.69em;
-    margin-left: 15.08em;
-    position: absolute; }
+    margin-top: -71.35%; }
     .hue-sticky-wrapper .entry-header h1 {
       color: #F7EFCF;
       border-radius: 0 0 0 0.5em;
       background-color: #26292e;
-      margin-bottom: -5em;
       padding: 0.5em 1em;
       float: right;
       position: relative;
@@ -307,7 +298,8 @@ footer .site-info {
 .hue-sticky-image-wrapper {
   margin: 0;
   width: 50%;
-  position: relative; }
+  position: relative;
+  display: grid; }
   .hue-sticky-image-wrapper .posts_image.featured_image a {
     display: flex; }
   .hue-sticky-image-wrapper a:before {
@@ -328,12 +320,12 @@ footer .site-info {
     opacity: 0.2 !important; }
 
 .hue-sticky-article {
+  width: 50% !important;
   margin-left: 0;
-  border-radius: 0 2em 0 0;
-  background: linear-gradient(to bottom, #26292e, 50%, rgba(38, 41, 46, 0.25));
   display: unset;
+  border-radius: 0 2em 0 0;
   padding: 2em 1.5em 0.5em 0.5em;
-  width: 50%; }
+  background: linear-gradient(to bottom, #26292e, 50%, rgba(38, 41, 46, 0.25)); }
   .hue-sticky-article p {
     margin-left: 1em;
     text-align: justify;
@@ -755,11 +747,13 @@ li a {
     margin: 0 1em 0;
     height: 80px; }
     .hue-nav-wraper .site-branding .site-title {
-      float: left; }
+      float: left;
+      margin: 0;
+      line-height: 3.5; }
     .hue-nav-wraper .site-branding .site-description {
       display: inline-flex;
       margin-left: 1em;
-      line-height: 4.5em;
+      line-height: 5.6;
       text-transform: lowercase;
       letter-spacing: 0.1em; }
     .hue-nav-wraper .site-branding a {
@@ -1197,7 +1191,8 @@ object {
           left: 50%;
           top: 50%;
           margin-top: -7px;
-          line-height: 1em; }
+          line-height: 1em;
+          font-style: unset; }
       .hue-slider .slideshow-container .control .hue-counter {
         cursor: text;
         width: 50px;

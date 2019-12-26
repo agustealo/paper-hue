@@ -20,12 +20,14 @@
 
     .site-title {
       float: left;
+      margin: 0;
+      line-height: 3.5;
     }
 
     .site-description {
       display: inline-flex;
       margin-left: 1em;
-      line-height: 4.5em;
+      line-height: 5.6;
       text-transform: lowercase;
       letter-spacing: 0.1em;
     }
@@ -48,6 +50,7 @@
   }
 
   //* Main navigation
+  
   .main-navigation {
     display: block;
     float: right;

@@ -1,9 +1,8 @@
-
 /*-----------------*/
 /*** Home Stying ***/
 /*-----------------*/
 .home-posts-wrapper {
-  margin-top: -7em;
+  //margin-top: -7em;
 }
 /*-----------------------*/
 /*** None sticky posts ***/
@@ -15,7 +14,7 @@
     clear: both;
     h1 {
       font-size: 3em;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       text-align: center;
       margin: 3em 0 1.5em;
@@ -79,14 +78,11 @@
   position: relative;
 
   .entry-header {
-    margin-top: -20.69em;
-    margin-left: 15.08em;
-    position: absolute;
+    margin-top: -71.35%;
     h1 {
       color: $color__secondary;
       border-radius: 0 0 0 0.5em;
       background-color: $color__accent-three;
-      margin-bottom: -5em;
       padding: 0.5em 1em;
       float: right;
       position: relative;
@@ -121,6 +117,7 @@
   margin: 0;
   width: 50%;
   position: relative;
+  display: grid;
   .posts_image.featured_image a {
     display: flex;
   }
@@ -144,17 +141,17 @@
 }
 
 .hue-sticky-article {
+  width: 50% !important;
   margin-left: 0;
+  display: unset;
   border-radius: 0 2em 0 0;
+  padding: 2em 1.5em 0.5em 0.5em;
   background: linear-gradient(
     to bottom,
     $color__accent-three,
     50%,
     rgba(38, 41, 46, 0.25)
   );
-  display: unset;
-  padding: 2em 1.5em 0.5em 0.5em;
-  width: 50%;
   p {
     margin-left: 1em;
     text-align: justify;
