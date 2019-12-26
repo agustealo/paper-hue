@@ -19,7 +19,7 @@
     margin: auto;
 
     /* Images hidden by default */
-    .mySlides {
+    .hueDisplay {
       display: none;
 
       /* Images */
@@ -29,15 +29,26 @@
 
       /* Caption text */
       .text {
+        top: 25vh;
+        right: 25%;
+        width: 50%;
+        height: 50%;
         padding: 8px 12px;
         position: absolute;
-        left: 50%;
-        top: 50%;
-        margin: -150px 0 0 -585px;
-        width: 1170px;
-        height: 250px;
-        text-align: center;
-        z-index: 2;
+        p {
+        text-align: justify;
+        text-overflow: clip;
+        letter-spacing: 0.2em;
+        text-overflow: ellipsis;}
+        h1 {
+          text-align: center;
+          font-size: 2.5em;
+          letter-spacing: 0.07em;
+        }
+        .hue-button {
+          margin: -1.5em auto;
+          display: table;
+        }
       }
     }
     .control {
@@ -74,13 +85,11 @@
         transition: background 0.1s linear 0s;
 
         i {
-          font-size: 16px;
-          color: $color__link-hover;
+          color: #b5fff7;
           position: absolute;
           left: 50%;
           top: 50%;
           margin-top: -7px;
-          line-height: 1em;
           font-style: unset;
         }
       }
@@ -148,10 +157,6 @@
         float: right;
         width: 50px;
         height: 50px;
-        -webkit-transition: background 0.1s linear 0s;
-        -moz-transition: background 0.1s linear 0s;
-        -o-transition: background 0.1s linear 0s;
-        transition: background 0.1s linear 0s;
       }
       /* The dots/bullets/indicators */
 
@@ -161,7 +166,7 @@
         left: 50%;
         top: 50%;
         padding: 0;
-        margin: -6px 0 0 -42px;
+        margin: -0.79em 0 0 -2.05em;
       }
 
       .dot {
@@ -180,37 +185,6 @@
         }
         &:last-child {
           margin-right: 0;
-        }
-      }
-
-      /* Skip to content link */
-      .skip-link {
-        background-color: #26292e;
-        margin: 0;
-        position: relative;
-        float: right;
-        width: 50px;
-        height: 50px;
-        z-index: 999;
-        clip-path: unset;
-        clip: unset;
-        -webkit-transition: background 0.1s linear 0s;
-        -moz-transition: background 0.1s linear 0s;
-        -o-transition: background 0.1s linear 0s;
-        transition: background 0.1s linear 0s;
-        i {
-          font-size: 16px;
-          color: #ffffff;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          margin-top: -7px;
-          line-height: 1em;
-          margin-left: -7px;
-        }
-
-        &:hover {
-          background-color: #de5e60;
         }
       }
     } //End .control

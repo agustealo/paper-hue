@@ -9,22 +9,29 @@
 
 ?>
 <div class="slideshow-container">
+<div class="overlay"></div>
 <?php
    // the query
    $slider_posts_query = new WP_Query( array(
-     'category_name' => 'classic',
-      'posts_per_page' => 3,
-   ));
+    'orderby'          => 'comment_count',
+    //'order'            => 'ASC',
+     //'category_name' => 'my_category',
+    'post_status'      => array( 'publish' ),
+    //'post_type'        => array( 'post', 'page' ),
+    'posts_per_page'   => 3,
+    'ignore_sticky_posts' => true
+   )
+  );
 ?>
 <?php if ( $slider_posts_query->have_posts() ) : ?>
   <?php while ( $slider_posts_query->have_posts() ) : $slider_posts_query->the_post(); ?>  
-  <div class="mySlides fade">
+  <div class="hueDisplay fade">
         <?php echo get_hue_image("featured") ?>
         <div class="text">
         <h1><?php the_title(); ?></h1>
         <p><?php the_excerpt(); ?></p>        
-				<a class="hue-button"><input type="button" value="Read More"></a>
         </div>
+				<a class="hue-button"><input type="button" value="Read More"></a>
   </div>
 
   <?php endwhile; ?>
