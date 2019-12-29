@@ -1,0 +1,96 @@
+// Fading animation
+@mixin fade(
+  $start-val: 0,
+  $end-val: 1,
+  $run-time: 1.5s,
+  $transition-type: ease-in-out
+) {
+  @include animation(fade, 1.5s, $transition-type);
+
+  @-moz-keyframes fade {
+    0% {
+      opacity: $start-val;
+    }
+
+    100% {
+      opacity: $end-val;
+    }
+  }
+
+  @-webkit-keyframes fade {
+    0% {
+      opacity: $start-val;
+    }
+
+    100% {
+      opacity: $end-val;
+    }
+  }
+
+  @-ms-keyframes fade {
+    0% {
+      opacity: $start-val;
+    }
+
+    100% {
+      opacity: $end-val;
+    }
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: $start-val;
+    }
+
+    100% {
+      opacity: $end-val;
+    }
+  }
+}
+
+
+// Animation Types
+@mixin transition($value) {
+  -webkit-transition: $value;
+  transition: $value;
+}
+@mixin transform($value) {
+  -o-transform: $value;
+  -ms-transform: $value;
+  -webkit-transform: $value;
+  transform: $value;
+}
+@mixin transform-origin($value) {
+  -o-transform-origin: $value;
+  -ms-transform-origin: $value;
+  -webkit-transform-origin: $value;
+  transform-origin: $value;
+}
+@mixin animation($name, $run-time, $transition-type, $type: null) {
+  -o-animation: $name $run-time $transition-type $type;
+  -moz-animation: $name $run-time $transition-type $type;
+  -webkit-animation: $name $run-time $transition-type $type;
+  animation: $name $run-time $transition-type $type;
+}
+
+@mixin fill($mode:forwards) {  
+  -moz-animation-fill-mode: $mode;
+  -webkit-animation-fill-mode: $mode;
+  -ms-animation-fill-mode: $mode;
+  animation-fill-mode: $mode;
+}
+// Keyframes
+@mixin keyframes($value) {
+  @-webkit-keyframes #{$value} {
+    @content;
+  }
+  @-moz-keyframes #{$value} {
+    @content;
+  }
+  @-o-keyframes #{$value} {
+    @content;
+  }
+  @keyframes #{$value} {
+    @content;
+  }
+}

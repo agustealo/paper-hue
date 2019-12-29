@@ -26,10 +26,13 @@
   clear: both;
   margin: 0 0 1.5em;
 }
-article.page,
-article.type-post {
+.site-main > article.page,
+.site-main > article.type-post {
   @extend %col-9;
   margin: 0 auto;
+  header.entry-header {
+  padding-top: 15em;
+  }
 }
 footer.entry-footer {
   display: inline-block;

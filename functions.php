@@ -42,9 +42,10 @@ if ( ! function_exists( 'paper_hue_setup' ) ) :
 		 */
 		
 		add_theme_support( 'post-thumbnails' );
-		set_post_thumbnail_size( 350, 250, true ); // default Featured Image dimensions (cropped)
-		add_image_size( 'header-image', 9999, 400, true );
+		set_post_thumbnail_size( 600, 600 ); // default Featured Image dimensions (cropped)
+		add_image_size( 'header-image', 9999, 600, true );
 		add_image_size( 'full-size', 9999, 9999 );
+		add_image_size( 600, 250, true );
 
 
 		// This theme uses wp_nav_menu() in one location.
@@ -135,7 +136,7 @@ function paper_hue_scripts() {
 
 	//wp_enqueue_script( 'paper-hue-navigation', get_template_directory_uri() . '/client-side/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'paper-hue-skip-link-focus-fix', get_template_directory_uri() . '/client-side/js/skip-link-focus-fix.js', array(), '20151215', true );
+	//wp_enqueue_script( 'paper-hue-skip-link-focus-fix', get_template_directory_uri() . '/client-side/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_home() && is_front_page() ) {
 		wp_enqueue_script( 'paper-hue-slider', get_template_directory_uri() . '/client-side/js/hue-slider.js', array(), '20151215', true );

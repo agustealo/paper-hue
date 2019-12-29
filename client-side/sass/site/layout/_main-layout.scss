@@ -19,13 +19,17 @@ footer {
 	z-index: 99;
 }
 
-footer .site-info {
-    color: #FFFFFF;
-    font-size: 13px;
-    margin-top: 1.5em;
-    text-transform: uppercase;	
-}
 .site-footer{
-	background: $color__accent-two;
-    height: 3em;
+	background: darken( $color__accent-three, 5% );
+	height: 3em;
+	.site-info {
+		color: $color__text-main;
+		font-size: 13px;
+		margin-top: 1.5em;
+		text-transform: uppercase;
+
+		a {
+			color: $color__primary;
+		}
+	}
 }

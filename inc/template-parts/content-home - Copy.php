@@ -24,7 +24,7 @@ if(!is_sticky()) : $count++; endif;
 $i++;
 
 ?>
-<?php if($i==1): echo "<div class=\"container article-padding-top\" >"; endif ?>
+<?php if($i==1): echo "<div class=\"container\" >"; endif ?>
 <?php if(!is_sticky() && $count==1): echo "<div class=\"not-sticky\" >"; endif; // Separate the sticky posts from other posts ?>
 <?php if(!is_sticky() && $count==1): echo "<div class=\"fp-heading\" /><h1>Recent Articles</h1></div>"; endif; // Add intro title to page after sticky ?>
 <?php if(!is_sticky() && $count==1): echo "<div class=\"article-container\" >"; endif; // Add container for all none sticky posts ?>
