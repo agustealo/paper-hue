@@ -191,3 +191,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/functions/woocommerce.php';
 }
+
+/**
+ * Load Breadcrumb function.
+ */
+	require get_template_directory() . '/inc/functions/breadcrumbs-functions.php';

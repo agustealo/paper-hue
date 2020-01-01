@@ -3,12 +3,21 @@
   font-size: ($sizeValue * 16) * 1px;
   font-size: $sizeValue * 1rem;
 }
-@mixin max-font-length($length:null, $white-space:nowrap) {
+
+// String truncate, 
+@mixin max-string-length($length: null, $white-space: nowrap) {
   width: $length;
   white-space: $white-space;
   overflow: hidden;
   text-overflow: ellipsis;
-  
+}
+// Text Align with browser prefix
+@mixin text-align($direction:right) {
+  text-align: -webkit-#{$direction};
+  text-align: -moz-#{$direction};
+  text-align: -o-#{$direction};
+  text-align: -ms-#{$direction};
+  text-align: $direction;
 }
 // Fluid Type
 @mixin fluid-type(

@@ -12,22 +12,22 @@
 /**
 * Add function for if(is_sticky()) contidtional arguments for sticky posts
  */
+
 function hue_if_is_sticky($arg){
 	if(is_sticky()){
 		return $arg;
 	}
   }
- //$i=0;
- $count=0;
+$count=0;
 while ( have_posts() ) : the_post();
 if(!is_sticky()) : $count++; endif;
 $i++;
 
 ?>
-<?php if($i==1): echo "<div class=\"container article-padding-top\" >"; endif ?>
-<?php if(!is_sticky() && $count==1): echo "<div class=\"not-sticky\" >"; endif; // Separate the sticky posts from other posts ?>
-<?php if(!is_sticky() && $count==1): echo "<div class=\"fp-heading\" /><h1>Recent Articles</h1></div>"; endif; // Add intro title to page after sticky ?>
-<?php if(!is_sticky() && $count==1): echo "<div class=\"article-container\" >"; endif; // Add container for all none sticky posts ?>
+<?php if($i==1): echo '<div class="container" >'; endif ?>
+<?php if(!is_sticky() && $count==1): echo '<div class="not-sticky" >'; endif; // Separate the sticky posts from other posts ?>
+<?php if(!is_sticky() && $count==1): echo '<div class="fp-heading"> <h1>Recent Articles</h1></div>'; endif; // Add intro title to page after sticky ?>
+<?php if(!is_sticky() && $count==1): echo '<div class="article-container" >'; endif; // Add container for all none sticky posts ?>
 <?php if(is_sticky()): echo('<div class="hue-sticky-row" style="background: url('); get_hue_image("url"); echo(')">'); endif // Add class and background image to sticky posts ?>
     <div class="<?php if(!is_sticky()) : echo 'posts-card'; else: echo 'hue-sticky-wrapper'; endif ?>">
     <?php if(!is_sticky()) : // Display featured images except for sticky posts ?>

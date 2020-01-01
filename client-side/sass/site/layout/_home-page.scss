@@ -2,16 +2,22 @@
 /*** Home Stying ***/
 /*-----------------*/
 .home-posts-wrapper {
-  //margin-top: -7em;
+  .container{
+    padding-bottom: 15em;    
+    @include background-two($color__accent-three);
+  }
 }
+
 /*-----------------------*/
 /*** None sticky posts ***/
 /*-----------------------*/
 .not-sticky {
+
   .fp-heading {
     //margin: 7em 0 5em;
     width: 100%;
     clear: both;
+
     h1 {
       font-size: 2.5em;
       letter-spacing: 0.07em;
@@ -20,6 +26,7 @@
       margin: 3em 0 1.5em;
     }
   }
+
   .article-container {
     display: grid;
     grid-gap: 1em; /* [1] Add some gap between rows and columns */
@@ -30,23 +37,29 @@
     grid-auto-rows: 620px; /* [3] Set the height for implicitly-created row track */
     @extend %col-9;
     margin: 0 auto;
+
     .posts-card {
       background-color: $color__accent-three;
+
       figure.post-figure {
         margin: 0;
+
         .hue_img_wrapper {
           img {
             width: 100%;
           }
         }
+
         figcaption {
           padding-left: 1.5em;
+
           h1 {
             padding-right: 1em;
-            @include max-font-length;
+            @include max-string-length;
           }
         }
       }
+
       article.type-post {
         width: fit-content;
         padding: 0 2em 2em 2em;
@@ -61,7 +74,7 @@
 /*** Sticky Post ***/
 /*-----------------*/
 .hue-sticky-row {
-  height: 750px;
+  height: 700px;
   position: relative;
   background-attachment: fixed !important;
   background-position: center !important;
@@ -81,41 +94,42 @@
 }
 
 .hue-sticky-wrapper {
+  top: 15vh;
   padding: 1em;
   margin: 0 auto;
-  top: 15vh;
   position: relative;
+  background-color: $color__secondary;
   @extend %col-6;
 }
 
 .hue-sticky-article {
-  width: unset !important;
-  @include fade;
-  @include fill;
-  color: #fff;
-  display: inline-block;
   opacity: 0;
   padding: 3em;
   text-align: center;
+  display: inline-block;
+  width: unset !important;
+  color: $color__accent-three;
+  @include fade;
+  @include fill;
+
   .home-sticky-header {
-    //margin-top: -71.35%;
     display: inline-block;
-    margin: 0 0 2em 0;
-    padding: 3px 0 3px 0;
+
     h1 {
-      font-size: 2.5em;
-      letter-spacing: 0.2em;
       margin: 0;
-      padding-left: 0.05em;
+      font-size: 2.5em;
       position: relative;
+      color: $color__accent-two;
       text-transform: uppercase;
     }
   }
+
   p {
     text-align: justify;
     letter-spacing: 0.05em;
     @include fluid-type(1, 1.3em);
   }
+
   input[type="button"] {
     color: #fff;
     &:hover{

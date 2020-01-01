@@ -1,7 +1,6 @@
 .sticky {
   display: block;
 }
-
 .site-content {
   @extend %row;
   padding: 0;
@@ -26,12 +25,14 @@
   clear: both;
   margin: 0 0 1.5em;
 }
+
 .site-main > article.page,
 .site-main > article.type-post {
   @extend %col-9;
+  padding: 10em 0 5em;
   margin: 0 auto;
-  header.entry-header {
-  padding-top: 15em;
+  & > header.entry-header {
+    margin: 2em 0;
   }
 }
 footer.entry-footer {
@@ -41,5 +42,6 @@ footer.entry-footer {
 }
 .comments-area {
   @extend %col-9;
+  padding-bottom: 15em;
   margin: 0 auto;
 }

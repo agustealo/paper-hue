@@ -32,7 +32,7 @@
         require get_template_directory() . '/inc/modules/hue-slider.php';
                     else : 
                         /* get static header content */
-        require get_template_directory() . '/inc/template-parts/content-header.php';
+        require get_template_directory() . '/inc/template-parts/content-header-entry.php';
                     endif;
 	?>
             </div><!-- .hue-paper-slider -->

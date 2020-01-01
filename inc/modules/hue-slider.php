@@ -22,7 +22,6 @@
   );
   ?>
   <div class="slideshow-container" >
-<div class="overlay"></div>
   <?php
 
     if ( $slider_posts_query->have_posts() ) :    

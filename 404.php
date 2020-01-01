@@ -19,7 +19,7 @@ get_header();
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'paper-hue' ); ?></p>
+					<p><?php esc_html_e( 'Maybe it was removed, renamed, or never existed. Try a search or one of the links below.', 'paper-hue' ); ?></p>
 
 					<?php
 					get_search_form();

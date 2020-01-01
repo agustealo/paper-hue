@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area article-padding-top">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 		<?php if ( have_posts() ) : ?>
@@ -18,9 +18,10 @@ get_header();
 			<header class="page-header">
 				<?php
 				the_archive_title( '<h1 class="page-title archive-header category-header">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
+				get_breadcrumb();
 				?>
 			</header><!-- .page-header -->
+			<div class="category-container">
 
 			<?php
 			/* Start the Loop */
@@ -44,7 +45,7 @@ get_header();
 
 		endif;
 		?>
-
+			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

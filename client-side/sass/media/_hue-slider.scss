@@ -6,7 +6,8 @@
 .hue-hide {
   display: none;
 }
-.slideshow-container{
+
+.slideshow-container {
   overflow: hidden;
   max-height: 100vh;
 }
@@ -32,17 +33,18 @@
       background-attachment: fixed !important;
       background-repeat: no-repeat !important;
       background-color: $color__accent-two;
-      @include background-two($color__accent-three, 25em);
+      @include background-two($color__accent-three);
     }
 
     .hue-slide {
+      top: 20vh;
       padding: 1em;
       margin: 0 auto;
-      top: 20vh;
+      width: min-content;
       position: relative;
       border: solid 1px;
       border-radius: 1em;
-      border-color:rgba(123, 176, 170, 0.4);
+      border-color: rgba(123, 176, 170, 0.4);
       @extend %col-5;
 
       .text {
@@ -68,7 +70,7 @@
           border-top: solid 2px;
           margin: 0 0 2em 0;
           padding: 3px 0 3px 0;
-          
+
           h1 {
             border-bottom: solid 2px;
             border-top: solid 2px;
@@ -78,7 +80,7 @@
             padding-left: 0.05em;
             position: relative;
             text-transform: uppercase;
-            @include max-font-length(25ch);
+            @include max-string-length(25ch);
           }
         }
 

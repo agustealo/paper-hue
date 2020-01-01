@@ -2,7 +2,7 @@
 $color__base: #2F3238;
 $color__base-secondary: lighten($color__base, 40);
 $color__primary: #7BB0AA;
-$color__secondary: #F7EFCF;
+$color__secondary: #FFFFFF;
 $color__complementry: #FFB5F9;
 $color__accent-one: #B5FFF7;
 $color__accent-two: #678499;
@@ -23,7 +23,7 @@ $color__background-ins: $color__primary;
 
 // Text settings
 $color__text-pre: $color__accent-one;
-$color__text-heading: $color__primary;
+$color__text-heading: $color__secondary;
 $color__text-button: $color__base;
 $color__text-screen: $color__accent-two;
 $color__text-input: $color__primary;
