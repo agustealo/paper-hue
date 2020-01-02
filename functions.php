@@ -174,11 +174,6 @@ require get_template_directory() . '/inc/functions/default-image-fallback.php';
 require get_template_directory() . '/inc/functions/customizer.php';
 
 /**
- * Theme Settings.
- */
-require get_template_directory() . '/inc/functions/template-settings.php';
-
-/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
@@ -188,9 +183,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 /**
  * Load WooCommerce compatibility file.
  */
+
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/functions/woocommerce.php';
 }
+
 
 /**
  * Load Breadcrumb function.

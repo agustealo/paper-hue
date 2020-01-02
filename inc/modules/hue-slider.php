@@ -35,7 +35,7 @@
         <div class="text">
             <?php the_title( '<header class="entry-header"><h1 class="entry-title">', '</h1></header>' ); ?>
         <p><?php the_excerpt(); ?></p>
-				<a class="hue-button"><input type="button" class="btn-line" value="Read More"></a>        
+        <input class="btn-line" onclick="window.location.href = '<?php echo get_permalink() ?>'" type="button" class="hue-sticky-btn" value="Read More">       
         </div>
   </div>
 </div>

@@ -1,12 +1,11 @@
 .header-content {
   height: 300px;
   margin: 0 auto;
-  position: relative;
   display: flex;
-  @include background-cover;
-  
+  @include background-cover(relative);
+
   header.page-header {
-    top: 45%;
+    top: 25%;
     margin: 0 auto;
     position: relative;
 
@@ -16,10 +15,13 @@
       text-transform: uppercase;
       text-align: center;
     }
+    .archive-description p {
+      color: #b5fff7;      
+      font-family: 'Courier New', Courier, monospace;
+    }
   }
   &:before {
     content: "";
-    background: $color__accent-three;
     opacity: 0.9 !important;
     top: 0 !important;
     left: 0 !important;

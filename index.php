@@ -25,20 +25,21 @@ get_header();
 				?>
         <header>
             <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-        </header>
+		</header>
         <?php
 			endif;
-			
-			if(is_sticky()) : echo "<div class=\"home-posts-wrapper\" >"; endif;
 
 				/*
 				 * Include the Post-Type-specific template for the content.
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				if ( is_front_page() && is_home() ) {
-					// Default homepage
-					get_template_part( 'inc/template-parts/content', 'home' );
+				if ( is_front_page() && is_home() ) { 
+				?>
+					<div class="home-posts-wrapper" >
+				<?php get_template_part( 'inc/template-parts/content', 'home' ); ?>
+					</div><!-- home-posts-wrapper -->
+				<?php
 				  } else {
 					/* Start the Loop */
 					while ( have_posts() ) : the_post();
@@ -62,10 +63,6 @@ get_header();
 			get_template_part( 'inc/template-parts/content', 'none' );
 
 		endif;
-		
-			
-		if(!is_sticky()) : echo "</div>"; endif;
-
 		?>
 
     </main><!-- #main -->

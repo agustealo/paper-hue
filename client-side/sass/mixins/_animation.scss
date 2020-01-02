@@ -48,7 +48,61 @@
   }
 }
 
+// Gradient animation
+@mixin gradient-animation() {
+  background: linear-gradient(266deg, #26292e, #7bb0aa, #000000);
+  background-size: 600% 600%;
 
+  -webkit-animation: gradient 35s ease infinite;
+  -moz-animation: gradient 35s ease infinite;
+  -o-animation: gradient 35s ease infinite;
+  animation: gradient 35s ease infinite;
+}
+
+  @-webkit-keyframes gradient {
+    0% {
+      background-position: 0% 48%;
+    }
+    50% {
+      background-position: 100% 53%;
+    }
+    100% {
+      background-position: 0% 48%;
+    }
+  }
+  @-moz-keyframes gradient {
+    0% {
+      background-position: 0% 48%;
+    }
+    50% {
+      background-position: 100% 53%;
+    }
+    100% {
+      background-position: 0% 48%;
+    }
+  }
+  @-o-keyframes gradient {
+    0% {
+      background-position: 0% 48%;
+    }
+    50% {
+      background-position: 100% 53%;
+    }
+    100% {
+      background-position: 0% 48%;
+    }
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 48%;
+    }
+    50% {
+      background-position: 100% 53%;
+    }
+    100% {
+      background-position: 0% 48%;
+    }
+  }
 // Animation Types
 @mixin transition($value) {
   -webkit-transition: $value;
@@ -73,7 +127,7 @@
   animation: $name $run-time $transition-type $type;
 }
 
-@mixin fill($mode:forwards) {  
+@mixin fill($mode: forwards) {
   -moz-animation-fill-mode: $mode;
   -webkit-animation-fill-mode: $mode;
   -ms-animation-fill-mode: $mode;

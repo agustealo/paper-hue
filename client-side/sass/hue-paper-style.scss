@@ -42,13 +42,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	## Captions
 	## Galleries
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "settings/settings";
 @import "mixins/mixins";
+@import "settings/settings";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Normalize
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "reset";
+@import "normalize";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Layout

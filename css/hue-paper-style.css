@@ -69,6 +69,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     background-position: 100% 53%; }
   100% {
     background-position: 0% 48%; } }
+/* line 255, ../client-side/sass/mixins/_flex.scss */
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -87,6 +88,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+/* line 11, ../client-side/sass/_normalize.scss */
 html {
   line-height: 1.15;
   /* 1 */
@@ -98,6 +100,7 @@ html {
 /**
  * Remove the margin in all browsers.
  */
+/* line 23, ../client-side/sass/_normalize.scss */
 body {
   margin: 0; }
 
@@ -105,6 +108,7 @@ body {
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
+/* line 32, ../client-side/sass/_normalize.scss */
 h1 {
   font-size: 2em;
   margin: 0.67em 0; }
@@ -115,6 +119,7 @@ h1 {
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
+/* line 45, ../client-side/sass/_normalize.scss */
 hr {
   box-sizing: content-box;
   /* 1 */
@@ -127,6 +132,7 @@ hr {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+/* line 56, ../client-side/sass/_normalize.scss */
 pre {
   font-family: monospace, monospace;
   /* 1 */
@@ -138,6 +144,7 @@ pre {
 /**
  * Remove the gray background on active links in IE 10.
  */
+/* line 68, ../client-side/sass/_normalize.scss */
 a {
   background-color: transparent; }
 
@@ -145,6 +152,7 @@ a {
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
+/* line 77, ../client-side/sass/_normalize.scss */
 abbr[title] {
   border-bottom: none;
   /* 1 */
@@ -156,6 +164,7 @@ abbr[title] {
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
+/* line 87, ../client-side/sass/_normalize.scss */
 b,
 strong {
   font-weight: bolder; }
@@ -164,6 +173,7 @@ strong {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+/* line 97, ../client-side/sass/_normalize.scss */
 code,
 kbd,
 samp {
@@ -175,6 +185,7 @@ samp {
 /**
  * Add the correct font size in all browsers.
  */
+/* line 108, ../client-side/sass/_normalize.scss */
 small {
   font-size: 80%; }
 
@@ -182,6 +193,7 @@ small {
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
+/* line 117, ../client-side/sass/_normalize.scss */
 sub,
 sup {
   font-size: 75%;
@@ -189,9 +201,11 @@ sup {
   position: relative;
   vertical-align: baseline; }
 
+/* line 125, ../client-side/sass/_normalize.scss */
 sub {
   bottom: -0.25em; }
 
+/* line 129, ../client-side/sass/_normalize.scss */
 sup {
   top: -0.5em; }
 
@@ -200,6 +214,7 @@ sup {
 /**
  * Remove the border on images inside links in IE 10.
  */
+/* line 140, ../client-side/sass/_normalize.scss */
 img {
   border-style: none; }
 
@@ -209,6 +224,7 @@ img {
  * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
  */
+/* line 152, ../client-side/sass/_normalize.scss */
 button,
 input,
 optgroup,
@@ -227,6 +243,7 @@ textarea {
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
+/* line 168, ../client-side/sass/_normalize.scss */
 button,
 input {
   /* 1 */
@@ -236,6 +253,7 @@ input {
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
+/* line 178, ../client-side/sass/_normalize.scss */
 button,
 select {
   /* 1 */
@@ -244,6 +262,7 @@ select {
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
+/* line 187, ../client-side/sass/_normalize.scss */
 button,
 [type="button"],
 [type="reset"],
@@ -253,6 +272,7 @@ button,
 /**
  * Remove the inner border and padding in Firefox.
  */
+/* line 198, ../client-side/sass/_normalize.scss */
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -263,6 +283,7 @@ button::-moz-focus-inner,
 /**
  * Restore the focus styles unset by the previous rule.
  */
+/* line 210, ../client-side/sass/_normalize.scss */
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
@@ -272,6 +293,7 @@ button:-moz-focusring,
 /**
  * Correct the padding in Firefox.
  */
+/* line 221, ../client-side/sass/_normalize.scss */
 fieldset {
   padding: 0.35em 0.75em 0.625em; }
 
@@ -281,6 +303,7 @@ fieldset {
  * 3. Remove the padding so developers are not caught out when they zero out
  *		`fieldset` elements in all browsers.
  */
+/* line 232, ../client-side/sass/_normalize.scss */
 legend {
   box-sizing: border-box;
   /* 1 */
@@ -298,12 +321,14 @@ legend {
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
+/* line 245, ../client-side/sass/_normalize.scss */
 progress {
   vertical-align: baseline; }
 
 /**
  * Remove the default vertical scrollbar in IE 10+.
  */
+/* line 253, ../client-side/sass/_normalize.scss */
 textarea {
   overflow: auto; }
 
@@ -311,6 +336,7 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
+/* line 262, ../client-side/sass/_normalize.scss */
 [type="checkbox"],
 [type="radio"] {
   box-sizing: border-box;
@@ -321,6 +347,7 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
+/* line 272, ../client-side/sass/_normalize.scss */
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto; }
@@ -329,6 +356,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
+/* line 282, ../client-side/sass/_normalize.scss */
 [type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -338,6 +366,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
+/* line 291, ../client-side/sass/_normalize.scss */
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
 
@@ -345,6 +374,7 @@ textarea {
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
+/* line 300, ../client-side/sass/_normalize.scss */
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   /* 1 */
@@ -356,12 +386,14 @@ textarea {
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
+/* line 312, ../client-side/sass/_normalize.scss */
 details {
   display: block; }
 
 /*
  * Add the correct display in all browsers.
  */
+/* line 320, ../client-side/sass/_normalize.scss */
 summary {
   display: list-item; }
 
@@ -370,12 +402,14 @@ summary {
 /**
  * Add the correct display in IE 10+.
  */
+/* line 331, ../client-side/sass/_normalize.scss */
 template {
   display: none; }
 
 /**
  * Add the correct display in IE 10.
  */
+/* line 339, ../client-side/sass/_normalize.scss */
 [hidden] {
   display: none; }
 
@@ -385,20 +419,24 @@ template {
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Grid
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 48, ../client-side/sass/site/layout/_hue-grid.scss */
 .widget-wrapper, .hue-nav-wraper, .site-content {
   position: relative;
   width: 100%; }
 
+/* line 53, ../client-side/sass/site/layout/_hue-grid.scss */
 .widget-wrapper [class^="col"], .hue-nav-wraper [class^="col"], .site-content [class^="col"] {
   float: left;
   margin: 0.5rem 2%;
   min-height: 0.125rem; }
 
+/* line 59, ../client-side/sass/site/layout/_hue-grid.scss */
 .widget-wrapper::after, .hue-nav-wraper::after, .site-content::after {
   content: "";
   display: table;
   clear: both; }
 
+/* line 65, ../client-side/sass/site/layout/_hue-grid.scss */
 .hue-slider .hue-slide-item .hue-slide,
 .hue-sticky-wrapper,
 .archive.category main header.page-header,
@@ -430,16 +468,20 @@ textarea {
   width: 96%; }
 
 @media only screen and (min-width: 45em) {
+  /* line 98, ../client-side/sass/site/layout/_hue-grid.scss */
   .hue-slider .hue-slide-item .hue-slide {
     width: 37.6666666667%; }
 
+  /* line 99, ../client-side/sass/site/layout/_hue-grid.scss */
   .hue-sticky-wrapper, .archive.category main header.page-header, .archive.category main nav.navigation.posts-navigation {
     width: 46%; }
 
+  /* line 102, ../client-side/sass/site/layout/_hue-grid.scss */
   .not-sticky .article-container, .archive.category main .category-container, .post-navigation, .posts-navigation, .site-main > article.page,
   .site-main > article.type-post, .comments-area {
     width: 71%; }
 
+  /* line 105, ../client-side/sass/site/layout/_hue-grid.scss */
   .widget-wrapper aside#secondary, input[type="text"],
   input[type="email"],
   input[type="url"],
@@ -460,6 +502,7 @@ textarea {
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Main layout
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/site/layout/_main-layout.scss */
 .content-area {
   float: none;
   margin-left: auto;
@@ -468,6 +511,7 @@ textarea {
 /* ==================================================
    Footer
 ================================================== */
+/* line 14, ../client-side/sass/site/layout/_main-layout.scss */
 footer {
   position: relative;
   width: 100%;
@@ -475,14 +519,17 @@ footer {
   text-align: center;
   z-index: 99; }
 
+/* line 22, ../client-side/sass/site/layout/_main-layout.scss */
 .site-footer {
   background: #1a1d20;
   height: 3em; }
+  /* line 25, ../client-side/sass/site/layout/_main-layout.scss */
   .site-footer .site-info {
     color: #9197a2;
     font-size: 13px;
     margin-top: 1.5em;
     text-transform: uppercase; }
+    /* line 31, ../client-side/sass/site/layout/_main-layout.scss */
     .site-footer .site-info a {
       color: #7BB0AA; }
 
@@ -492,85 +539,69 @@ footer {
 /*-----------------*/
 /*** Home Stying ***/
 /*-----------------*/
+/* line 5, ../client-side/sass/site/layout/_home-page.scss */
 .home-posts-wrapper .container {
   padding-bottom: 15em;
-  background-size: 25em, 25em, auto, cover;
-  background-attachment: scroll, scroll, scroll, fixed;
-  background-repeat: no-repeat, no-repeat, repeat, no-repeat;
-  background-position: top left, top right, top left, bottom center;
-  background-image: url(../img/light-tl.svg), url(../img/light-tr.svg), url(../img/overlay.png), url(../img/banner.jpg); }
-  .home-posts-wrapper .container:before {
-    background-color: #26292e;
-    content: "";
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    position: absolute;
-    opacity: 0.7; }
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-image: url(../img/overlay.svg); }
 
 /*-----------------------*/
 /*** None sticky posts ***/
 /*-----------------------*/
-.not-sticky {
-  position: relative;
-  padding-top: 3em; }
-  .not-sticky .fp-heading {
-    width: 100%;
-    clear: both;
-    /* margin: 3em 0 6em; */
-    margin: 10em auto 5em auto;
-    border-bottom: 1px solid;
-    border-top: 1px solid;
-    border-color: #FFFFFF;
-    max-width: fit-content;
-    padding: 4em 1em;
-    position: relative; }
-    .not-sticky .fp-heading:before, .not-sticky .fp-heading:after {
-      background: #FFFFFF;
-      content: "";
-      display: block;
-      height: 1px;
-      left: 0;
-      position: absolute;
-      width: 100%; }
-    .not-sticky .fp-heading:before {
-      top: 10px; }
-    .not-sticky .fp-heading:after {
-      bottom: 10px; }
-    .not-sticky .fp-heading h1 {
-      font-size: 2.5em;
-      text-align: center;
-      text-transform: uppercase; }
-  .not-sticky .article-container {
-    display: grid;
-    grid-gap: 1em;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    grid-auto-rows: 620px;
-    margin: 0 auto; }
-    .not-sticky .article-container .posts-card {
-      overflow: hidden;
-      background-color: #26292e; }
-      .not-sticky .article-container .posts-card figure.post-figure {
-        margin: 0; }
-        .not-sticky .article-container .posts-card figure.post-figure .hue_img_wrapper img {
-          width: 100%; }
-        .not-sticky .article-container .posts-card figure.post-figure figcaption {
-          padding-left: 1.5em; }
-          .not-sticky .article-container .posts-card figure.post-figure figcaption h1 {
-            padding-right: 1em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis; }
-      .not-sticky .article-container .posts-card article.type-post {
-        width: fit-content;
-        padding: 0 2em 2em 2em;
-        text-align: justify;
-        line-height: 1.7; }
+/* line 16, ../client-side/sass/site/layout/_home-page.scss */
+.not-sticky .fp-heading {
+  width: 100%;
+  clear: both; }
+  /* line 21, ../client-side/sass/site/layout/_home-page.scss */
+  .not-sticky .fp-heading h1 {
+    font-size: 2.5em;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 3em 0 1.5em; }
+/* line 30, ../client-side/sass/site/layout/_home-page.scss */
+.not-sticky .article-container {
+  display: grid;
+  grid-gap: 1em;
+  /* [1] Add some gap between rows and columns */
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  /* [2] Make columns adjust according to the available viewport */
+  grid-auto-rows: 620px;
+  /* [3] Set the height for implicitly-created row track */
+  margin: 0 auto; }
+  /* line 41, ../client-side/sass/site/layout/_home-page.scss */
+  .not-sticky .article-container .posts-card {
+    overflow: hidden;
+    background-color: #26292e; }
+    /* line 45, ../client-side/sass/site/layout/_home-page.scss */
+    .not-sticky .article-container .posts-card figure.post-figure {
+      margin: 0; }
+      /* line 49, ../client-side/sass/site/layout/_home-page.scss */
+      .not-sticky .article-container .posts-card figure.post-figure .hue_img_wrapper img {
+        width: 100%; }
+      /* line 54, ../client-side/sass/site/layout/_home-page.scss */
+      .not-sticky .article-container .posts-card figure.post-figure figcaption {
+        padding-left: 1.5em; }
+        /* line 57, ../client-side/sass/site/layout/_home-page.scss */
+        .not-sticky .article-container .posts-card figure.post-figure figcaption h1 {
+          padding-right: 1em;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+    /* line 64, ../client-side/sass/site/layout/_home-page.scss */
+    .not-sticky .article-container .posts-card article.type-post {
+      width: fit-content;
+      padding: 0 2em 2em 2em;
+      text-align: justify;
+      line-height: 1.7; }
 
 /*-----------------*/
 /*** Sticky Post ***/
 /*-----------------*/
+/* line 77, ../client-side/sass/site/layout/_home-page.scss */
 .hue-sticky-row {
   height: 700px;
   position: relative;
@@ -578,6 +609,7 @@ footer {
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important; }
+  /* line 85, ../client-side/sass/site/layout/_home-page.scss */
   .hue-sticky-row:before {
     content: "";
     top: 0 !important;
@@ -586,12 +618,14 @@ footer {
     bottom: 0 !important;
     opacity: 0.9 !important;
     position: absolute !important;
+    background-color: #26292e;
     background-size: 25em, 25em, auto, cover;
     background-attachment: scroll, scroll, scroll, fixed;
     background-repeat: no-repeat, no-repeat, repeat, no-repeat;
     background-position: top left, top right, top left, bottom center;
     background-image: url(../img/light-tl.svg), url(../img/light-tr.svg), url(../img/overlay.png), url(../img/banner.jpg); }
 
+/* line 97, ../client-side/sass/site/layout/_home-page.scss */
 .hue-sticky-wrapper {
   top: 15vh;
   padding: 1em;
@@ -599,6 +633,7 @@ footer {
   position: relative;
   background-color: #FFFFFF; }
 
+/* line 106, ../client-side/sass/site/layout/_home-page.scss */
 .hue-sticky-article {
   opacity: 0;
   padding: 3em;
@@ -634,25 +669,31 @@ footer {
     opacity: 0; }
   100% {
     opacity: 1; } }
+  /* line 116, ../client-side/sass/site/layout/_home-page.scss */
   .hue-sticky-article .home-sticky-header {
     display: inline-block; }
+    /* line 119, ../client-side/sass/site/layout/_home-page.scss */
     .hue-sticky-article .home-sticky-header h1 {
       margin: 0;
       font-size: 2.5em;
       position: relative;
       color: #678499;
       text-transform: uppercase; }
+  /* line 128, ../client-side/sass/site/layout/_home-page.scss */
   .hue-sticky-article p {
     text-align: justify;
     letter-spacing: 0.05em; }
+  /* line 133, ../client-side/sass/site/layout/_home-page.scss */
   .hue-sticky-article input[type="button"] {
     color: #fff; }
+    /* line 135, ../client-side/sass/site/layout/_home-page.scss */
     .hue-sticky-article input[type="button"]:hover {
       color: #26292e; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Archive page layout
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 2, ../client-side/sass/site/layout/_archive-page.scss */
 .archive.category main header.page-header {
   margin: 10em auto 0 auto;
   border-bottom: 1px solid;
@@ -661,12 +702,15 @@ footer {
   max-width: 100%;
   padding: 4em 1em 1em;
   position: relative; }
+  /* line 11, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main header.page-header h1 {
     font-size: 2.5em;
     text-align: center;
     text-transform: uppercase; }
+  /* line 16, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main header.page-header .hue-breadcrumb {
     font-family: 'Courier New', Courier, monospace; }
+  /* line 19, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main header.page-header:before, .archive.category main header.page-header:after {
     background: #FFFFFF;
     content: "";
@@ -675,10 +719,13 @@ footer {
     left: 0;
     position: absolute;
     width: 100%; }
+  /* line 29, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main header.page-header:before {
     top: 10px; }
+  /* line 32, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main header.page-header:after {
     bottom: 10px; }
+/* line 37, ../client-side/sass/site/layout/_archive-page.scss */
 .archive.category main .category-container {
   background: none;
   border: none;
@@ -686,6 +733,7 @@ footer {
   margin: auto auto 0;
   padding: 6em 0 5em 0;
   position: relative; }
+  /* line 46, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main .category-container:before {
     box-sizing: inherit;
     background: #FFFFFF;
@@ -696,44 +744,57 @@ footer {
     top: 0;
     z-index: 1;
     position: absolute; }
+  /* line 58, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main .category-container .archive-post-container {
     position: relative;
     height: 20em; }
+    /* line 62, ../client-side/sass/site/layout/_archive-page.scss */
     .archive.category main .category-container .archive-post-container:nth-child(odd) {
       text-align: left; }
+      /* line 64, ../client-side/sass/site/layout/_archive-page.scss */
       .archive.category main .category-container .archive-post-container:nth-child(odd) article.type-post {
         padding-right: 0; }
+      /* line 68, ../client-side/sass/site/layout/_archive-page.scss */
       .archive.category main .category-container .archive-post-container:nth-child(odd) .hue_img_wrapper {
         float: left; }
+        /* line 70, ../client-side/sass/site/layout/_archive-page.scss */
         .archive.category main .category-container .archive-post-container:nth-child(odd) .hue_img_wrapper img {
           right: 0;
           top: 0; }
+    /* line 77, ../client-side/sass/site/layout/_archive-page.scss */
     .archive.category main .category-container .archive-post-container:nth-child(even) {
       text-align: right; }
+      /* line 79, ../client-side/sass/site/layout/_archive-page.scss */
       .archive.category main .category-container .archive-post-container:nth-child(even) article.type-post {
         padding-left: 0; }
+      /* line 83, ../client-side/sass/site/layout/_archive-page.scss */
       .archive.category main .category-container .archive-post-container:nth-child(even) .hue_img_wrapper {
         float: right; }
+        /* line 85, ../client-side/sass/site/layout/_archive-page.scss */
         .archive.category main .category-container .archive-post-container:nth-child(even) .hue_img_wrapper img {
           left: 0;
           top: 0; }
+    /* line 92, ../client-side/sass/site/layout/_archive-page.scss */
     .archive.category main .category-container .archive-post-container:before {
       background: blue;
       content: "";
       display: inline-block;
       height: 100%;
       vertical-align: middle; }
+    /* line 100, ../client-side/sass/site/layout/_archive-page.scss */
     .archive.category main .category-container .archive-post-container .hue_img_wrapper {
       display: inline-block;
       height: 100%;
       overflow: hidden;
       position: relative;
       width: 50%; }
+      /* line 107, ../client-side/sass/site/layout/_archive-page.scss */
       .archive.category main .category-container .archive-post-container .hue_img_wrapper img {
         display: block;
         min-height: 100%;
         min-width: 100%;
         position: absolute; }
+      /* line 114, ../client-side/sass/site/layout/_archive-page.scss */
       .archive.category main .category-container .archive-post-container .hue_img_wrapper:after {
         -moz-transition: opacity 0.25s ease-in-out;
         -webkit-transition: opacity 0.25s ease-in-out;
@@ -748,18 +809,22 @@ footer {
         position: absolute;
         top: 0;
         width: 100%; }
+    /* line 131, ../client-side/sass/site/layout/_archive-page.scss */
     .archive.category main .category-container .archive-post-container article.type-post {
       display: inline-block;
       padding: 2em;
       vertical-align: middle;
       width: 48%; }
+      /* line 137, ../client-side/sass/site/layout/_archive-page.scss */
       .archive.category main .category-container .archive-post-container article.type-post h2 {
         font-weight: 600;
         letter-spacing: 0.05em;
         margin-bottom: 0.5em;
         font-size: 1.25em; }
+      /* line 144, ../client-side/sass/site/layout/_archive-page.scss */
       .archive.category main .category-container .archive-post-container article.type-post:last-child {
         margin: 0; }
+/* line 150, ../client-side/sass/site/layout/_archive-page.scss */
 .archive.category main nav.navigation.posts-navigation {
   border-bottom: 1px solid;
   border-top: 1px solid;
@@ -768,6 +833,7 @@ footer {
   margin-bottom: 15em;
   padding: 4em 1em;
   position: relative; }
+  /* line 160, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main nav.navigation.posts-navigation:before, .archive.category main nav.navigation.posts-navigation:after {
     background: #FFFFFF;
     content: "";
@@ -776,8 +842,10 @@ footer {
     left: 0;
     position: absolute;
     width: 100%; }
+  /* line 171, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main nav.navigation.posts-navigation:before {
     top: 10px; }
+  /* line 175, ../client-side/sass/site/layout/_archive-page.scss */
   .archive.category main nav.navigation.posts-navigation:after {
     bottom: 10px; }
 
@@ -787,21 +855,25 @@ footer {
 /*-----------------*/
 /*** Widget Area ***/
 /*-----------------*/
+/* line 4, ../client-side/sass/site/layout/_widget-area.scss */
 .widget-wrapper {
   clear: both;
   background-color: #26292e; }
+  /* line 7, ../client-side/sass/site/layout/_widget-area.scss */
   .widget-wrapper aside#secondary {
     column-count: 4;
     column-rule: solid 1px;
     column-rule-style: dotted;
     padding: 5em 0;
     margin: 0 auto; }
-    .widget-wrapper aside#secondary .widget {
-      display: grid; }
+    /* line 14, ../client-side/sass/site/layout/_widget-area.scss */
+    .widget-wrapper aside#secondary section {
+      float: left; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Typography
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/typography/_typography.scss */
 body,
 button,
 input,
@@ -818,6 +890,7 @@ textarea {
   -ms-word-wrap: break-word;
   -ms-word-break: break-word; }
 
+/* line 1, ../client-side/sass/typography/_headings.scss */
 h1,
 h2,
 h3,
@@ -831,51 +904,64 @@ h6 {
   font-family: "Titillium Web", sans-serif;
   line-height: 1.5em; }
 
+/* line 15, ../client-side/sass/typography/_headings.scss */
 h1 {
   font-size: 24px;
   font-size: 1.5rem; }
 
+/* line 18, ../client-side/sass/typography/_headings.scss */
 .posts-card-wrapper h1.entry-title {
   margin: 20px 0; }
 
+/* line 22, ../client-side/sass/typography/_headings.scss */
 h2 {
   font-size: 22.4px;
   font-size: 1.4rem; }
 
+/* line 26, ../client-side/sass/typography/_headings.scss */
 h3 {
   font-size: 20.8px;
   font-size: 1.3rem; }
 
+/* line 30, ../client-side/sass/typography/_headings.scss */
 h4 {
   font-size: 19.2px;
   font-size: 1.2rem; }
 
+/* line 34, ../client-side/sass/typography/_headings.scss */
 h5 {
   font-size: 17.6px;
   font-size: 1.1rem; }
 
+/* line 38, ../client-side/sass/typography/_headings.scss */
 h6 {
   font-size: 16px;
   font-size: 1rem; }
 
+/* line 42, ../client-side/sass/typography/_headings.scss */
 h2.widget-title {
   font-size: 22.4px;
   font-size: 1.4rem;
   font-weight: 300;
   margin-bottom: 30px; }
 
+/* line 1, ../client-side/sass/typography/_copy.scss */
 p {
   margin-bottom: 1.5em; }
 
+/* line 5, ../client-side/sass/typography/_copy.scss */
 dfn, cite, em, i {
   font-style: italic; }
 
+/* line 9, ../client-side/sass/typography/_copy.scss */
 blockquote {
   margin: 0 1.5em; }
 
+/* line 13, ../client-side/sass/typography/_copy.scss */
 address {
   margin: 0 0 1.5em; }
 
+/* line 17, ../client-side/sass/typography/_copy.scss */
 pre {
   background: #151b1f;
   font-family: "Courier 10 Pitch", Courier, monospace;
@@ -888,96 +974,119 @@ pre {
   overflow: auto;
   padding: 1.6em; }
 
+/* line 29, ../client-side/sass/typography/_copy.scss */
 code, kbd, tt, var {
   font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
   font-size: 15px;
   font-size: 0.9375rem; }
 
+/* line 34, ../client-side/sass/typography/_copy.scss */
 abbr, acronym {
   border-bottom: 1px dotted #FFB5F9;
   cursor: help; }
 
+/* line 39, ../client-side/sass/typography/_copy.scss */
 mark, ins {
   background: #7BB0AA;
   color: #2F3238;
   padding: 0 0.2em;
   text-decoration: none; }
 
+/* line 46, ../client-side/sass/typography/_copy.scss */
 big {
   font-size: 125%; }
 
+/* line 2, ../client-side/sass/typography/_branding.scss */
 .site-branding .site-title a {
   color: #FFFFFF; }
+  /* line 4, ../client-side/sass/typography/_branding.scss */
   .site-branding .site-title avisited {
     color: #FFFFFF; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Elements
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/elements/_elements.scss */
 html {
   box-sizing: border-box; }
 
+/* line 5, ../client-side/sass/elements/_elements.scss */
 *,
 *:before,
 *:after {
   /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
   box-sizing: inherit; }
 
+/* line 11, ../client-side/sass/elements/_elements.scss */
 body {
   background: #2F3238;
   /* Fallback for when there is no custom background color defined. */ }
 
+/* line 15, ../client-side/sass/elements/_elements.scss */
 hr {
   background-color: #9197a2;
   border: 0;
   height: 1px;
   margin-bottom: 1.5em; }
 
+/* line 1, ../client-side/sass/elements/_lists.scss */
 ul, ol {
   margin: 0 0 1.5em 3em; }
 
+/* line 5, ../client-side/sass/elements/_lists.scss */
 ul {
   list-style: disc; }
 
+/* line 9, ../client-side/sass/elements/_lists.scss */
 ol {
   list-style: decimal; }
 
+/* line 13, ../client-side/sass/elements/_lists.scss */
 li > ul,
 li > ol {
   margin-bottom: 0;
   margin-left: 1.5em; }
 
+/* line 19, ../client-side/sass/elements/_lists.scss */
 dt {
   font-weight: bold; }
 
+/* line 23, ../client-side/sass/elements/_lists.scss */
 dd {
   margin: 0 1.5em 1.5em; }
 
+/* line 27, ../client-side/sass/elements/_lists.scss */
 .widget-area .widget-title {
   padding: 0 1em; }
+/* line 30, ../client-side/sass/elements/_lists.scss */
 .widget-area ul {
   list-style: none;
   padding: 0; }
 
+/* line 24, ../client-side/sass/elements/_elements.scss */
 img {
   height: auto;
   /* Make sure images are scaled correctly. */
   max-width: 100%;
   /* Adhere to container width. */ }
 
+/* line 29, ../client-side/sass/elements/_elements.scss */
 figure {
   margin: 1em 0;
   /* Extra wide images within figure tags don't overflow the content area. */ }
 
+/* line 1, ../client-side/sass/elements/_tables.scss */
 table {
   margin: 0 0 1.5em;
   width: 100%; }
 
 /* width */
+/* line 3, ../client-side/sass/elements/_scrollbar.scss */
 ::-webkit-scrollbar {
   width: 10px; }
 
 /* Track */
+/* line 8, ../client-side/sass/elements/_scrollbar.scss */
 ::-webkit-scrollbar-track {
   background: #9197a2;
   border: solid #678499;
@@ -985,28 +1094,34 @@ table {
   border-radius: 0; }
 
 /* Handle */
+/* line 16, ../client-side/sass/elements/_scrollbar.scss */
 ::-webkit-scrollbar-thumb {
   background: #26292e;
   border-radius: 0; }
 
 /* Handle on hover */
+/* line 22, ../client-side/sass/elements/_scrollbar.scss */
 ::-webkit-scrollbar-thumb:hover {
   background: #678499; }
+  /* line 24, ../client-side/sass/elements/_scrollbar.scss */
   ::-webkit-scrollbar-thumb:hover:-webkit-scrollbar-track {
     background: #26292e; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Forms
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 3, ../client-side/sass/forms/_buttons.scss */
 .btn-line {
   border: #7BB0AA solid 1px !important;
   background: none !important;
   color: #fff !important; }
+  /* line 8, ../client-side/sass/forms/_buttons.scss */
   .btn-line:hover, .btn-line:active, .btn-line:focus {
     background: #fff !important;
     color: #26292e !important;
     cursor: pointer; }
 
+/* line 17, ../client-side/sass/forms/_buttons.scss */
 button,
 .wp-block-button .wp-block-button__link,
 input[type="button"],
@@ -1032,6 +1147,7 @@ input[type="submit"] {
   -moz-transition: background 0.1s linear 0s, color 0.1s linear 0s;
   -o-transition: background 0.1s linear 0s, color 0.1s linear 0s;
   transition: background 0.1s linear 0s, color 0.1s linear 0s; }
+  /* line 42, ../client-side/sass/forms/_buttons.scss */
   button:hover, button:active, button:focus,
   .wp-block-button .wp-block-button__link:hover,
   .wp-block-button .wp-block-button__link:active,
@@ -1048,19 +1164,24 @@ input[type="submit"] {
     background: #B5FFF7;
     cursor: pointer; }
 
+/* line 50, ../client-side/sass/forms/_buttons.scss */
 .is-style-outline a {
   background: none !important;
   border: #7BB0AA 3px solid !important; }
+/* line 54, ../client-side/sass/forms/_buttons.scss */
 .is-style-outline .wp-block-button__link {
   color: #7BB0AA !important; }
 
+/* line 59, ../client-side/sass/forms/_buttons.scss */
 a .hue-button {
   border: none; }
 
+/* line 62, ../client-side/sass/forms/_buttons.scss */
 input.hue-sticky-btn {
   padding: .5em 1em;
   margin-top: 0.5em; }
 
+/* line 1, ../client-side/sass/forms/_fields.scss */
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -1092,6 +1213,7 @@ textarea {
   padding: 15px;
   margin: 0;
   resize: none; }
+  /* line 35, ../client-side/sass/forms/_fields.scss */
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="url"]:focus,
@@ -1110,9 +1232,11 @@ textarea {
   textarea:focus {
     color: #9197a2; }
 
+/* line 40, ../client-side/sass/forms/_fields.scss */
 select {
   border: 1px solid #678499; }
 
+/* line 44, ../client-side/sass/forms/_fields.scss */
 input:-moz-placeholder,
 input:-ms-input-placeholder,
 input::-webkit-input-placeholder,
@@ -1121,11 +1245,14 @@ textarea:-ms-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: #7BB0AA; }
 
+/* line 54, ../client-side/sass/forms/_fields.scss */
 .search-form {
   padding: 1em;
   margin: 0; }
+  /* line 57, ../client-side/sass/forms/_fields.scss */
   .search-form .search-field {
     width: 60%; }
+  /* line 61, ../client-side/sass/forms/_fields.scss */
   .search-form .search-submit {
     height: 3.1em;
     margin-top: 0.1em;
@@ -1139,28 +1266,36 @@ textarea::-webkit-input-placeholder {
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Links
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/navigation/_links.scss */
 a {
   color: #678499;
   text-decoration: none;
   cursor: pointer; }
+  /* line 6, ../client-side/sass/navigation/_links.scss */
   a:visited {
     color: #7BB0AA; }
+  /* line 9, ../client-side/sass/navigation/_links.scss */
   a:hover, a:focus, a:active {
     color: #B5FFF7; }
+  /* line 14, ../client-side/sass/navigation/_links.scss */
   a:focus {
     outline: thin dotted; }
+  /* line 17, ../client-side/sass/navigation/_links.scss */
   a:hover, a:active {
     outline: 0; }
 
+/* line 25, ../client-side/sass/navigation/_links.scss */
 li a {
   position: relative;
   text-decoration: none;
   line-height: 24px;
   padding-top: 10px; }
+  /* line 30, ../client-side/sass/navigation/_links.scss */
   li a:before, li a:after {
     content: '';
     position: absolute;
     transition: transform .5s ease; }
+  /* line 35, ../client-side/sass/navigation/_links.scss */
   li a:before {
     left: 0;
     bottom: 0;
@@ -1168,9 +1303,11 @@ li a {
     height: 2px;
     background: #678499;
     transform: scaleX(0); }
+  /* line 43, ../client-side/sass/navigation/_links.scss */
   li a:hover:before {
     transform: scaleX(1); }
 
+/* line 47, ../client-side/sass/navigation/_links.scss */
 .site-footer a {
   color: #2F3238;
   font-weight: bold;
@@ -1182,6 +1319,7 @@ li a {
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Hue Navigation Bar
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/navigation/_hue-navigation-bar.scss */
 .hue-nav-wraper {
   position: sticky;
   top: 0;
@@ -1194,23 +1332,28 @@ li a {
   transition: background-color 250ms linear;
   box-sizing: border-box;
   /* Small menu. */ }
+  /* line 12, ../client-side/sass/navigation/_hue-navigation-bar.scss */
   .hue-nav-wraper .site-branding {
     float: left;
     padding: 0;
     margin: 0 1em 0;
     height: 80px; }
+    /* line 18, ../client-side/sass/navigation/_hue-navigation-bar.scss */
     .hue-nav-wraper .site-branding .site-title {
       float: left;
       margin: 0;
       line-height: 3.5; }
+      /* line 22, ../client-side/sass/navigation/_hue-navigation-bar.scss */
       .hue-nav-wraper .site-branding .site-title a {
         color: #FFFFFF; }
+    /* line 27, ../client-side/sass/navigation/_hue-navigation-bar.scss */
     .hue-nav-wraper .site-branding .site-description {
       display: inline-flex;
       margin-left: 1em;
       line-height: 3.6;
       text-transform: lowercase;
       letter-spacing: 0.1em; }
+    /* line 35, ../client-side/sass/navigation/_hue-navigation-bar.scss */
     .hue-nav-wraper .site-branding a {
       height: 30px;
       display: block;
@@ -1221,21 +1364,26 @@ li a {
       -ms-transition: opacity 0.25s ease-in-out 0s;
       -o-transition: opacity 0.25s ease-in-out 0s;
       transition: opacity 0.25s ease-in-out 0s; }
+    /* line 43, ../client-side/sass/navigation/_hue-navigation-bar.scss */
     .hue-nav-wraper .site-branding a:hover {
       opacity: 0.65;
       filter: alpha(opacity=65); }
+  /* line 51, ../client-side/sass/navigation/_hue-navigation-bar.scss */
   .hue-nav-wraper .main-navigation {
     display: block;
     float: right;
     margin-right: 20px; }
+    /* line 56, ../client-side/sass/navigation/_hue-navigation-bar.scss */
     .hue-nav-wraper .main-navigation ul {
       display: none;
       list-style: none;
       margin: 0;
       padding-left: 0;
       background-color: #26292e; }
+      /* line 62, ../client-side/sass/navigation/_hue-navigation-bar.scss */
       .hue-nav-wraper .main-navigation ul > li a {
         margin-left: 50px; }
+      /* line 66, ../client-side/sass/navigation/_hue-navigation-bar.scss */
       .hue-nav-wraper .main-navigation ul ul {
         float: left;
         padding: 1em;
@@ -1244,9 +1392,11 @@ li a {
         z-index: 99999;
         position: absolute;
         box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); }
+        /* line 75, ../client-side/sass/navigation/_hue-navigation-bar.scss */
         .hue-nav-wraper .main-navigation ul ul ul {
           left: -999em;
           top: 0; }
+        /* line 80, ../client-side/sass/navigation/_hue-navigation-bar.scss */
         .hue-nav-wraper .main-navigation ul ul li {
           width: 100%;
           text-align: -webkit-right;
@@ -1254,26 +1404,33 @@ li a {
           text-align: -o-right;
           text-align: -ms-right;
           text-align: right; }
+          /* line 83, ../client-side/sass/navigation/_hue-navigation-bar.scss */
           .hue-nav-wraper .main-navigation ul ul li:hover > ul, .hue-nav-wraper .main-navigation ul ul li.focus > ul {
             left: auto;
             right: 100%; }
+        /* line 90, ../client-side/sass/navigation/_hue-navigation-bar.scss */
         .hue-nav-wraper .main-navigation ul ul a {
           white-space: nowrap;
           line-height: 2em;
           margin: 0; }
+          /* line 94, ../client-side/sass/navigation/_hue-navigation-bar.scss */
           .hue-nav-wraper .main-navigation ul ul a:before {
             left: 0;
             bottom: 0;
             width: 0;
             height: 0; }
+      /* line 103, ../client-side/sass/navigation/_hue-navigation-bar.scss */
       .hue-nav-wraper .main-navigation ul li:hover > ul,
       .hue-nav-wraper .main-navigation ul li.focus > ul {
         left: auto; }
+      /* line 108, ../client-side/sass/navigation/_hue-navigation-bar.scss */
       .hue-nav-wraper .main-navigation ul li {
         float: left;
         position: relative; }
+        /* line 111, ../client-side/sass/navigation/_hue-navigation-bar.scss */
         .hue-nav-wraper .main-navigation ul li:hover > a {
           color: #B5FFF7; }
+      /* line 116, ../client-side/sass/navigation/_hue-navigation-bar.scss */
       .hue-nav-wraper .main-navigation ul a {
         display: block !important;
         text-decoration: none;
@@ -1282,61 +1439,76 @@ li a {
         display: block;
         line-height: 4.4em;
         text-transform: uppercase; }
+        /* line 124, ../client-side/sass/navigation/_hue-navigation-bar.scss */
         .hue-nav-wraper .main-navigation ul a:visited {
           color: #678499; }
+    /* line 130, ../client-side/sass/navigation/_hue-navigation-bar.scss */
     .hue-nav-wraper .main-navigation .current_page_item > a,
     .hue-nav-wraper .main-navigation .current-menu-item > a,
     .hue-nav-wraper .main-navigation .current_page_ancestor > a,
     .hue-nav-wraper .main-navigation .current-menu-ancestor > a {
       color: #B5FFF7 !important; }
+  /* line 139, ../client-side/sass/navigation/_hue-navigation-bar.scss */
   .hue-nav-wraper .menu-toggle,
   .hue-nav-wraper .main-navigation.toggled ul {
     display: block; }
   @media screen and (min-width: 37.5em) {
+    /* line 145, ../client-side/sass/navigation/_hue-navigation-bar.scss */
     .hue-nav-wraper .menu-toggle {
       display: none; }
+    /* line 148, ../client-side/sass/navigation/_hue-navigation-bar.scss */
     .hue-nav-wraper .main-navigation ul {
       display: block; } }
+  /* line 156, ../client-side/sass/navigation/_hue-navigation-bar.scss */
   .site-main .hue-nav-wraper .comment-navigation,
   .site-main .hue-nav-wraper .posts-navigation,
   .site-main .hue-nav-wraper .post-navigation {
     margin: 0 0 1.5em;
     overflow: hidden; }
+  /* line 161, ../client-side/sass/navigation/_hue-navigation-bar.scss */
   .hue-nav-wraper .comment-navigation .nav-previous, .hue-nav-wraper .posts-navigation .nav-previous, .hue-nav-wraper .post-navigation .nav-previous {
     float: left;
     width: 50%; }
+  /* line 166, ../client-side/sass/navigation/_hue-navigation-bar.scss */
   .hue-nav-wraper .comment-navigation .nav-next, .hue-nav-wraper .posts-navigation .nav-next, .hue-nav-wraper .post-navigation .nav-next {
     float: right;
     text-align: right;
     width: 50%; }
 
 /* Fixed nav position */
+/* line 175, ../client-side/sass/navigation/_hue-navigation-bar.scss */
 .is-fixed {
   position: fixed;
   top: 0; }
 
+/* line 179, ../client-side/sass/navigation/_hue-navigation-bar.scss */
 .is-fixed > h1 {
   -webkit-transform: translate(0); }
 
+/* line 184, ../client-side/sass/navigation/_hue-navigation-bar.scss */
 .site-content-padding-top {
   padding-top: 80px !important; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Hue Posts Navigation
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/navigation/_posts-navigation.scss */
 .post-navigation, .posts-navigation {
   clear: both;
   margin: 0 auto;
   padding: 2em 0; }
 
+/* line 11, ../client-side/sass/navigation/_posts-navigation.scss */
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation {
   margin-bottom: 1.5em;
   overflow: hidden; }
+/* line 16, ../client-side/sass/navigation/_posts-navigation.scss */
 .comment-navigation .nav-previous, .posts-navigation .nav-previous, .post-navigation .nav-previous {
   float: left;
   width: 50%; }
+/* line 21, ../client-side/sass/navigation/_posts-navigation.scss */
 .comment-navigation .nav-next, .posts-navigation .nav-next, .post-navigation .nav-next {
   float: right;
   text-align: right;
@@ -1346,6 +1518,7 @@ li a {
 # Accessibility
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
 /* Text meant only for screen readers. */
+/* line 2, ../client-side/sass/modules/_accessibility.scss */
 .screen-reader-text {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -1358,6 +1531,7 @@ li a {
   width: 1px;
   word-wrap: normal !important;
   /* Many screen reader and browser combinations announce broken words as they would appear visually. */ }
+  /* line 14, ../client-side/sass/modules/_accessibility.scss */
   .screen-reader-text:focus {
     background-color: #FFFFFF;
     border-radius: 3px;
@@ -1380,22 +1554,26 @@ li a {
     /* Above WP toolbar. */ }
 
 /* Do not show the outline on the skip link target. */
+/* line 36, ../client-side/sass/modules/_accessibility.scss */
 #content[tabindex="-1"]:focus {
   outline: 0; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Alignments
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/modules/_alignments.scss */
 .alignleft {
   display: inline;
   float: left;
   margin-right: 1.5em; }
 
+/* line 7, ../client-side/sass/modules/_alignments.scss */
 .alignright {
   display: inline;
   float: right;
   margin-left: 1.5em; }
 
+/* line 13, ../client-side/sass/modules/_alignments.scss */
 .aligncenter {
   clear: both;
   display: block;
@@ -1405,6 +1583,7 @@ li a {
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Clearings
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/modules/_clearings.scss */
 .clear:before,
 .clear:after,
 .entry-content:before,
@@ -1421,6 +1600,7 @@ li a {
   display: table;
   table-layout: fixed; }
 
+/* line 16, ../client-side/sass/modules/_clearings.scss */
 .clear:after,
 .entry-content:after,
 .comment-content:after,
@@ -1432,10 +1612,12 @@ li a {
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Widgets
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/site/secondary/_widgets.scss */
 .widget {
   margin: 0 0 1.5em;
   padding: 0 1em;
   /* Make sure select elements fit in widgets. */ }
+  /* line 6, ../client-side/sass/site/secondary/_widgets.scss */
   .widget select {
     max-width: 100%; }
 
@@ -1445,42 +1627,52 @@ li a {
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Posts and pages
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/site/primary/_posts-and-pages.scss */
 .sticky {
   display: block; }
 
+/* line 4, ../client-side/sass/site/primary/_posts-and-pages.scss */
 .site-content {
   padding: 0;
   position: relative; }
 
+/* line 9, ../client-side/sass/site/primary/_posts-and-pages.scss */
 .post,
 .page {
   margin: 0; }
 
+/* line 14, ../client-side/sass/site/primary/_posts-and-pages.scss */
 .updated:not(.published) {
   display: none; }
 
+/* line 18, ../client-side/sass/site/primary/_posts-and-pages.scss */
 .page-content,
 .entry-content,
 .entry-summary {
   margin: 1.5em 0 0; }
 
+/* line 24, ../client-side/sass/site/primary/_posts-and-pages.scss */
 .page-links {
   clear: both;
   margin: 0 0 1.5em; }
 
+/* line 29, ../client-side/sass/site/primary/_posts-and-pages.scss */
 .site-main > article.page,
 .site-main > article.type-post {
   padding: 10em 0 5em;
   margin: 0 auto; }
+  /* line 34, ../client-side/sass/site/primary/_posts-and-pages.scss */
   .site-main > article.page > header.entry-header,
   .site-main > article.type-post > header.entry-header {
     margin: 2em 0; }
 
+/* line 38, ../client-side/sass/site/primary/_posts-and-pages.scss */
 footer.entry-footer {
   display: inline-block;
   padding: 1em;
   line-height: 2; }
 
+/* line 43, ../client-side/sass/site/primary/_posts-and-pages.scss */
 .comments-area {
   padding-bottom: 15em;
   margin: 0 auto; }
@@ -1488,15 +1680,18 @@ footer.entry-footer {
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Comments
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/site/primary/_comments.scss */
 .comment-content a {
   word-wrap: break-word; }
 
+/* line 4, ../client-side/sass/site/primary/_comments.scss */
 .bypostauthor {
   display: block; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Main
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/site/_main.scss */
 html {
   scroll-behavior: smooth; }
 
@@ -1504,18 +1699,21 @@ html {
 # Infinite scroll
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
+/* line 2, ../client-side/sass/modules/_infinite-scroll.scss */
 .infinite-scroll .posts-navigation,
 .infinite-scroll.neverending .site-footer {
   /* Theme Footer (when set to scrolling) */
   display: none; }
 
 /* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+/* line 8, ../client-side/sass/modules/_infinite-scroll.scss */
 .infinity-end.neverending .site-footer {
   display: block; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Media
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/media/_media.scss */
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {
@@ -1525,77 +1723,99 @@ html {
   padding: 0; }
 
 /* Make sure embeds and iframes fit their containers. */
+/* line 11, ../client-side/sass/media/_media.scss */
 embed,
 iframe,
 object {
   max-width: 100%; }
 
 /* Make sure logo link wraps around logo image. */
+/* line 18, ../client-side/sass/media/_media.scss */
 .custom-logo-link {
   display: inline-block; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Captions
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/media/_captions.scss */
 .wp-caption {
   margin-bottom: 1.5em;
   max-width: 100%; }
+  /* line 5, ../client-side/sass/media/_captions.scss */
   .wp-caption img[class*="wp-image-"] {
     display: block;
     margin-left: auto;
     margin-right: auto; }
+  /* line 9, ../client-side/sass/media/_captions.scss */
   .wp-caption .wp-caption-text {
     margin: 0.8075em 0; }
 
+/* line 14, ../client-side/sass/media/_captions.scss */
 .wp-caption-text {
   text-align: center; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Galleries
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/media/_galleries.scss */
 .gallery {
   margin-bottom: 1.5em; }
 
+/* line 5, ../client-side/sass/media/_galleries.scss */
 .gallery-item {
   display: inline-block;
   text-align: center;
   vertical-align: top;
   width: 100%; }
+  /* line 13, ../client-side/sass/media/_galleries.scss */
   .gallery-columns-2 .gallery-item {
     max-width: 50%; }
+  /* line 13, ../client-side/sass/media/_galleries.scss */
   .gallery-columns-3 .gallery-item {
     max-width: 33.33%; }
+  /* line 13, ../client-side/sass/media/_galleries.scss */
   .gallery-columns-4 .gallery-item {
     max-width: 25%; }
+  /* line 13, ../client-side/sass/media/_galleries.scss */
   .gallery-columns-5 .gallery-item {
     max-width: 20%; }
+  /* line 13, ../client-side/sass/media/_galleries.scss */
   .gallery-columns-6 .gallery-item {
     max-width: 16.66%; }
+  /* line 13, ../client-side/sass/media/_galleries.scss */
   .gallery-columns-7 .gallery-item {
     max-width: 14.28%; }
+  /* line 13, ../client-side/sass/media/_galleries.scss */
   .gallery-columns-8 .gallery-item {
     max-width: 12.5%; }
+  /* line 13, ../client-side/sass/media/_galleries.scss */
   .gallery-columns-9 .gallery-item {
     max-width: 11.11%; }
 
+/* line 19, ../client-side/sass/media/_galleries.scss */
 .gallery-caption {
   display: block; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Hue Slider
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 2, ../client-side/sass/media/_hue-slider.scss */
 .hue-show {
   display: block; }
 
+/* line 6, ../client-side/sass/media/_hue-slider.scss */
 .hue-hide {
   display: none; }
 
+/* line 10, ../client-side/sass/media/_hue-slider.scss */
 .slideshow-container {
   overflow: hidden;
   max-height: 100vh; }
 
+/* line 14, ../client-side/sass/media/_hue-slider.scss */
 .hue-slider {
   /* Slide controls */ }
+  /* line 15, ../client-side/sass/media/_hue-slider.scss */
   .hue-slider .hue-slide-item {
     height: 100vh;
     position: relative;
@@ -1603,24 +1823,26 @@ object {
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important; }
+    /* line 23, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .hue-slide-item:before {
-      opacity: 0.9 !important;
       content: "";
       top: 0 !important;
       left: 0 !important;
       right: 0 !important;
       bottom: 0 !important;
-      position: absolute;
-      background-attachment: fixed !important;
-      background-position: center !important;
-      background-repeat: no-repeat !important;
+      opacity: 0.9 !important;
+      position: absolute !important;
       background-size: cover !important;
+      background-position: center !important;
       background-attachment: fixed !important;
+      background-repeat: no-repeat !important;
       background-color: #26292e;
+      background-attachment: fixed !important;
       background-position: center !important;
       background-repeat: no-repeat !important;
       background-size: cover !important;
       background-image: url(../img/overlay.svg); }
+    /* line 39, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .hue-slide-item .hue-slide {
       top: 20vh;
       padding: 1em;
@@ -1630,6 +1852,7 @@ object {
       border: solid 1px;
       border-radius: 1em;
       border-color: rgba(123, 176, 170, 0.4); }
+      /* line 50, ../client-side/sass/media/_hue-slider.scss */
       .hue-slider .hue-slide-item .hue-slide .text {
         opacity: 0;
         padding: 3em;
@@ -1666,12 +1889,14 @@ object {
     opacity: 0; }
   100% {
     opacity: 1; } }
+        /* line 66, ../client-side/sass/media/_hue-slider.scss */
         .hue-slider .hue-slide-item .hue-slide .text .entry-header {
           display: inline-block;
           border-bottom: solid 2px;
           border-top: solid 2px;
           margin: 0 0 2em 0;
           padding: 3px 0 3px 0; }
+          /* line 74, ../client-side/sass/media/_hue-slider.scss */
           .hue-slider .hue-slide-item .hue-slide .text .entry-header h1 {
             border-bottom: solid 2px;
             border-top: solid 2px;
@@ -1685,14 +1910,17 @@ object {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis; }
+        /* line 87, ../client-side/sass/media/_hue-slider.scss */
         .hue-slider .hue-slide-item .hue-slide .text p {
           text-align: justify;
           font-size: 1em;
           letter-spacing: 0.1em; }
+        /* line 93, ../client-side/sass/media/_hue-slider.scss */
         .hue-slider .hue-slide-item .hue-slide .text .hue-sticky-btn {
           float: unset;
           padding: unset;
           margin-top: unset; }
+  /* line 103, ../client-side/sass/media/_hue-slider.scss */
   .hue-slider .control {
     position: sticky;
     width: 100%;
@@ -1707,6 +1935,7 @@ object {
     /* On hover, add a black background color with a little bit see-through */
     /* Skip to content */
     /* The dots/bullets/indicators */ }
+    /* line 112, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .control .prev,
     .hue-slider .control .next,
     .hue-slider .control .hue-nextsection {
@@ -1730,6 +1959,7 @@ object {
       -moz-transition: background 0.1s linear 0s;
       -o-transition: background 0.1s linear 0s;
       transition: background 0.1s linear 0s; }
+      /* line 136, ../client-side/sass/media/_hue-slider.scss */
       .hue-slider .control .prev i,
       .hue-slider .control .next i,
       .hue-slider .control .hue-nextsection i {
@@ -1739,6 +1969,7 @@ object {
         top: 50%;
         margin-top: -7px;
         font-style: unset; }
+    /* line 147, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .control .hue-counter {
       cursor: text;
       width: 50px;
@@ -1752,6 +1983,7 @@ object {
       display: inline-block;
       background: #9197a2;
       opacity: 0.4; }
+      /* line 161, ../client-side/sass/media/_hue-slider.scss */
       .hue-slider .control .hue-counter i {
         margin-left: -8px;
         font-size: 0.9em;
@@ -1762,20 +1994,27 @@ object {
         top: 50%;
         margin-top: -7px;
         line-height: 1em; }
+        /* line 171, ../client-side/sass/media/_hue-slider.scss */
         .hue-slider .control .hue-counter i::first-letter {
           font-size: 1.5em; }
+    /* line 180, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .control .prev i {
       margin-left: -9px; }
+    /* line 186, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .control .next {
       margin-left: -3px; }
+      /* line 188, ../client-side/sass/media/_hue-slider.scss */
       .hue-slider .control .next i {
         margin-left: -8px; }
+    /* line 194, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .control .prev:hover,
     .hue-slider .control .next:hover {
       background-color: #B5FFF7; }
+      /* line 198, ../client-side/sass/media/_hue-slider.scss */
       .hue-slider .control .prev:hover i,
       .hue-slider .control .next:hover i {
         color: #2F3238; }
+    /* line 204, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .control .hue-nextsection {
       background-color: #26292e;
       margin: 0;
@@ -1783,6 +2022,7 @@ object {
       float: right;
       width: 50px;
       height: 50px; }
+    /* line 214, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .control .dots-wrapper {
       float: left;
       position: absolute;
@@ -1790,6 +2030,7 @@ object {
       top: 50%;
       padding: 0;
       margin: -0.79em 0 0 -2.05em; }
+    /* line 223, ../client-side/sass/media/_hue-slider.scss */
     .hue-slider .control .dot {
       cursor: pointer;
       margin-right: 12px;
@@ -1799,8 +2040,10 @@ object {
       -moz-transition: color 250ms linear 0s;
       -o-transition: color 250ms linear 0s;
       transition: color 250ms linear 0s; }
+      /* line 233, ../client-side/sass/media/_hue-slider.scss */
       .hue-slider .control .dot.active, .hue-slider .control .dot:hover {
         color: #B5FFF7; }
+      /* line 238, ../client-side/sass/media/_hue-slider.scss */
       .hue-slider .control .dot:last-child {
         margin-right: 0; }
 
@@ -1813,6 +2056,7 @@ object {
 /*------------------------------------*/
 /*** Add wave effect to sticky post ***/
 /*------------------------------------*/
+/* line 10, ../client-side/sass/media/_hue-images.scss */
 .flex {
   /*Flexbox for containers*/
   display: flex;
@@ -1820,6 +2064,7 @@ object {
   align-items: center;
   text-align: center; }
 
+/* line 18, ../client-side/sass/media/_hue-images.scss */
 .waves {
   width: 100%;
   height: 15vh;
@@ -1829,21 +2074,26 @@ object {
   position: absolute; }
 
 /* Animate waves */
+/* line 29, ../client-side/sass/media/_hue-images.scss */
 .parallax > use {
   animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite; }
 
+/* line 32, ../client-side/sass/media/_hue-images.scss */
 .parallax > use:nth-child(1) {
   animation-delay: -2s;
   animation-duration: 7s; }
 
+/* line 36, ../client-side/sass/media/_hue-images.scss */
 .parallax > use:nth-child(2) {
   animation-delay: -3s;
   animation-duration: 10s; }
 
+/* line 40, ../client-side/sass/media/_hue-images.scss */
 .parallax > use:nth-child(3) {
   animation-delay: -4s;
   animation-duration: 13s; }
 
+/* line 44, ../client-side/sass/media/_hue-images.scss */
 .parallax > use:nth-child(4) {
   animation-delay: -5s;
   animation-duration: 20s; }
@@ -1855,36 +2105,42 @@ object {
     transform: translate3d(85px, 0, 0); } }
 /*Shrinking for mobile*/
 @media (max-width: 768px) {
+  /* line 58, ../client-side/sass/media/_hue-images.scss */
   .waves {
     height: 40px;
     min-height: 40px; }
 
+  /* line 62, ../client-side/sass/media/_hue-images.scss */
   .content {
     height: 30vh; } }
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Header single post image
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+/* line 1, ../client-side/sass/media/_single-post-header.scss */
 .header-content {
   height: 300px;
   margin: 0 auto;
-  display: flex;
   position: relative;
+  display: flex;
   background-attachment: fixed !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important; }
+  /* line 8, ../client-side/sass/media/_single-post-header.scss */
   .header-content header.page-header {
-    top: 25%;
+    top: 45%;
     margin: 0 auto;
     position: relative; }
+    /* line 13, ../client-side/sass/media/_single-post-header.scss */
     .header-content header.page-header h1 {
       font-size: 3em;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       text-align: center; }
+    /* line 19, ../client-side/sass/media/_single-post-header.scss */
     .header-content header.page-header .archive-description p {
-      color: #b5fff7;
-      font-family: 'Courier New', Courier, monospace; }
+      color: #b5fff7; }
+  /* line 23, ../client-side/sass/media/_single-post-header.scss */
   .header-content:before {
     content: "";
     opacity: 0.9 !important;

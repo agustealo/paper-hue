@@ -14,25 +14,12 @@
 .hue-slider {
   .hue-slide-item {
     height: 100vh;
-    position: relative;
-    background-attachment: fixed !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
+    @include background-cover(relative);
 
     &:before {
-      content: "";
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
       opacity: 0.9 !important;
-      position: absolute !important;
-      background-size: cover !important;
-      background-position: center !important;
-      background-attachment: fixed !important;
-      background-repeat: no-repeat !important;
-      background-color: $color__accent-two;
+      @include content-fit;
+      @include background-cover;
       @include background-two($color__accent-three);
     }
 
@@ -101,7 +88,7 @@
 
   /* Slide controls */
   .control {
-    position: absolute;
+    position: sticky;
     width: 100%;
     background: #2f3238;
     height: 50px;

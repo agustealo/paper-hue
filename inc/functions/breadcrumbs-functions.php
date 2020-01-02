@@ -6,7 +6,7 @@ function get_breadcrumb() {
     
     /* Category or Post*/    
     echo "  »  ";
-    the_category(' || ');
+    the_category(' » ');
     if (is_single()) {
         /* Archive */
         echo "  »  ";

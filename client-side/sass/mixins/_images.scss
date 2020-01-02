@@ -1,5 +1,4 @@
-@mixin background-one($color: $color__accent-three, $size: 25em) {
-  background-color: $color;
+@mixin background-one($size: 25em) {
   background-size: $size, $size, auto, cover;
   background-attachment: scroll, scroll, scroll, fixed;
   background-repeat: no-repeat, no-repeat, repeat, no-repeat;
@@ -7,16 +6,19 @@
   background-image: url(../img/light-tl.svg), url(../img/light-tr.svg),
     url(../img/overlay.png), url(../img/banner.jpg);
 }
+
 @mixin background-two(
-  $color: $color__accent-one,
+  $background-color: null,
   $img-url: url(../img/overlay.svg)
 ) {
   background-attachment: fixed !important;
+  background-color: $background-color;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-image: $img-url;
 }
+
 @mixin background-three($color: $color__accent-two, $size: 25em) {
   background-color: $color;
   background-image: url(../img/light-bl.svg), url(../img/light-br.svg);
@@ -24,18 +26,22 @@
   background-repeat: no-repeat, no-repeat;
   background-size: $size, 25em;
 }
+
 @mixin background-size($value) {
   -o-background-size: $value;
   -webkit-background-size: $value;
   -moz-background-size: $value;
   background-size: $value;
 }
-@mixin background-cover($attchment:fixed) {
+
+@mixin background-cover($position: null, $attchment: fixed) {
+  position: $position;
   background-attachment: fixed !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  background-size: cover !important;  
+  background-size: cover !important;
 }
+
 @mixin linear-gradient($angle, $gradient1, $gradient2) {
   background-color: $gradient2; /* Fallback Color */
   background-image: -webkit-gradient(

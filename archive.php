@@ -18,7 +18,9 @@ get_header();
 			<header class="page-header">
 				<?php
 				the_archive_title( '<h1 class="page-title archive-header category-header">', '</h1>' );
+				echo '<span class="hue-breadcrumb">';
 				get_breadcrumb();
+				echo '</span>';
 				?>
 			</header><!-- .page-header -->
 			<div class="category-container">
@@ -36,6 +38,7 @@ get_header();
 				get_template_part( 'inc/template-parts/content', get_post_type() );
 
 			endwhile;
+			echo '</div><!-- category-container -->';
 
 			the_posts_navigation();
 
@@ -45,7 +48,6 @@ get_header();
 
 		endif;
 		?>
-			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
