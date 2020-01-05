@@ -889,7 +889,7 @@ pre {
   padding: 1.6em; }
 
 code, kbd, tt, var {
-  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+  font-family: monospace, Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", "courier new", serif;
   font-size: 15px;
   font-size: 0.9375rem; }
 
@@ -1245,8 +1245,7 @@ li a {
         position: absolute;
         box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); }
         .hue-nav-wraper .main-navigation ul ul ul {
-          left: -999em;
-          top: 0; }
+          top: -1em; }
         .hue-nav-wraper .main-navigation ul ul li {
           width: 100%;
           text-align: -webkit-right;
@@ -1443,6 +1442,12 @@ li a {
 # Content
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+## Main
+=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+html {
+  scroll-behavior: smooth; }
+
+/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Posts and pages
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
 .sticky {
@@ -1493,12 +1498,6 @@ footer.entry-footer {
 
 .bypostauthor {
   display: block; }
-
-/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-## Main
-=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-html {
-  scroll-behavior: smooth; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Infinite scroll
@@ -1590,7 +1589,7 @@ object {
 .hue-hide {
   display: none; }
 
-.slideshow-container {
+.hue-slider-container {
   overflow: hidden;
   max-height: 100vh; }
 

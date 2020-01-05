@@ -21,7 +21,7 @@
    )
   );
   ?>
-  <div class="slideshow-container" >
+  <div class="hue-slider-container" >
   <?php
 
     if ( $slider_posts_query->have_posts() ) :    
@@ -71,4 +71,4 @@
                 class="<?php esc_html_e( 'font-icon-arrow-simple', 'paper-hue' ); ?>"></i></a>
     </div>
 
-</div><!-- .slideshow-container -->
+</div><!-- .hue-slider-container -->

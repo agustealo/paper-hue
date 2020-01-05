@@ -32,7 +32,7 @@ $i++;
     <div class="<?php if(!is_sticky()) : echo 'posts-card'; else: echo 'hue-sticky-wrapper'; endif ?>">
     <?php if(!is_sticky()) : // Display featured images except for sticky posts ?>
     <figure class="header-container post-figure">
-        <?php get_hue_image("featured") ?>
+        <?php get_hue_image( 'wrapped','thumbnail-large'); ?>
         <?php the_title( '<figcaption class="entry-header"><h1 class="entry-title">', '</h1></figcaption>' ); ?>
         <!-- .entry-header -->
     </figure><!-- .hue-sticky-image-wrapper -->

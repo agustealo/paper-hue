@@ -34,18 +34,10 @@ if ( ! function_exists( 'paper_hue_setup' ) ) :
 		 * provide it for us.
 		 */
 		add_theme_support( 'title-tag' );
-
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		/**
+		 * Implement the Custom Header feature.
 		 */
-		
-		add_theme_support( 'post-thumbnails' );
-		set_post_thumbnail_size( 600, 600 ); // default Featured Image dimensions (cropped)
-		add_image_size( 'header-image', 9999, 600, true );
-		add_image_size( 'full-size', 9999, 9999 );
-		add_image_size( 600, 250, true );
+		require get_template_directory() . '/inc/functions/featured-image.php';
 
 
 		// This theme uses wp_nav_menu() in one location.
@@ -162,11 +154,6 @@ require get_template_directory() . '/inc/functions/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/functions/template-functions.php';
-
-/**
- * Image fallback functions.
- */
-require get_template_directory() . '/inc/functions/default-image-fallback.php';
 
 /**
  * Customizer additions.

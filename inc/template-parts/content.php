@@ -10,7 +10,7 @@
 ?>
 <?php if ( is_archive(  ) ) : echo '<div class="archive-post-container">';endif; ?>
 <?php // Get theme's featured images with div and hyperlink to full posts page
-		get_hue_image("featured");
+		get_hue_image( 'wrapped','thumbnail-large');
 		?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header">

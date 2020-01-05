@@ -31,7 +31,8 @@ function plusSlides(position) {
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
-    slides[slideIndex-1].style.display = "block";  
+    slides[slideIndex-1].style.display = "block"; 
+    document.getElementsByClassName("counter")[0].innerText = slideIndex + ' / ' + slides.length;  
     dots[slideIndex-1].className += " active";
 }
 
