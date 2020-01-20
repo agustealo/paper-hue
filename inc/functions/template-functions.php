@@ -41,6 +41,6 @@ add_action( 'wp_head', 'paper_hue_pingback_header' );
  * Set the excerpt limit
  */
 function custom_excerpt_length( $length ) {
-	return 40;
+	return 30;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );

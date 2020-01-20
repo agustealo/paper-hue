@@ -8,10 +8,6 @@
   display: -ms-flexbox;
   display: flex;
 }
-// Example of flexbox use
-%flexbox {
-  @include flexbox;
-}
 
 // Flexbox Inline
 @mixin inline-flex {
@@ -20,10 +16,6 @@
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-// Example of inline-flex use
-%inline-flex {
-  @include inline-flex;
 }
 
 // Flex direction with prefix
@@ -52,10 +44,6 @@
   -webkit-flex-direction: $value;
   -ms-flex-direction: $value;
   flex-direction: $value;
-}
-// Example of flex-direction use
-%flex-direction {
-  @include flex-direction(row);
 }
 
 // Flex-wrap

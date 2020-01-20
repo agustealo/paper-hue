@@ -11,7 +11,7 @@
 
 <div class="header-content" style="background: url( <?php echo esc_url( get_hue_image("url") ) ?> )" >
 
-<header class="page-header">
+<header class="hue-page-header">
 
 <?php
     /**

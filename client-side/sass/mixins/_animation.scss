@@ -5,7 +5,7 @@
   $run-time: 1.5s,
   $transition-type: ease-in-out
 ) {
-  @include animation(fade, 1.5s, $transition-type);
+  @include animation(fade 1.5s $transition-type);
 
   @-moz-keyframes fade {
     0% {
@@ -27,16 +27,6 @@
     }
   }
 
-  @-ms-keyframes fade {
-    0% {
-      opacity: $start-val;
-    }
-
-    100% {
-      opacity: $end-val;
-    }
-  }
-
   @keyframes fade {
     0% {
       opacity: $start-val;
@@ -49,15 +39,6 @@
 }
 
 // Gradient animation
-@mixin gradient-animation() {
-  background: linear-gradient(266deg, #26292e, #7bb0aa, #000000);
-  background-size: 600% 600%;
-
-  -webkit-animation: gradient 35s ease infinite;
-  -moz-animation: gradient 35s ease infinite;
-  -o-animation: gradient 35s ease infinite;
-  animation: gradient 35s ease infinite;
-}
 
   @-webkit-keyframes gradient {
     0% {
@@ -120,11 +101,11 @@
   -webkit-transform-origin: $value;
   transform-origin: $value;
 }
-@mixin animation($name, $run-time, $transition-type, $type: null) {
-  -o-animation: $name $run-time $transition-type $type;
-  -moz-animation: $name $run-time $transition-type $type;
-  -webkit-animation: $name $run-time $transition-type $type;
-  animation: $name $run-time $transition-type $type;
+@mixin animation($value) {
+  -o-animation: $value;
+  -moz-animation: $value;
+  -webkit-animation: $value;
+  animation: $value;
 }
 
 @mixin fill($mode: forwards) {

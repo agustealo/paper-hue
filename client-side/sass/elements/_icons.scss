@@ -1,0 +1,284 @@
+.icon-container {
+  margin: 0 auto;
+  @extend %col-9;
+}
+
+.hue-icons {
+  font-size: 3em;
+
+  a {
+    display: inline-block;
+  }
+
+  .hue-icon {
+    text-align: center;
+    position: relative;
+    display: inline-block;
+  }
+}
+
+.unicode-icons {
+  .hue-icon {
+    &::before {
+      transition: all 0.5s;
+      @include content-center;
+    }
+    // arrow-left-solid
+    &.unicode-arrow-left-solid {
+      &::before {
+        @include hue-icon-arrow-left-solid;
+      }
+    }
+    // arrow-left-stroke
+    &.unicode-arrow-left-stroke {
+      &::before {
+        @include hue-icon-arrow-left-stroke;
+      }
+    }
+    // arrow-right-solid
+    &.unicode-arrow-right-solid {
+      &::before {
+        @include hue-icon-arrow-right-solid;
+      }
+    }
+    // arrow-right-stroke
+    &.unicode-arrow-right-stroke {
+      &::before {
+        @include hue-icon-arrow-right-stroke;
+      }
+    }
+    // arrow-up-solid
+    &.unicode-arrow-up-solid {
+      &::before {
+        @include hue-icon-arrow-up-solid;
+      }
+    }
+    // arrow-up-stroke
+    &.unicode-arrow-up-stroke {
+      &::before {
+        @include hue-icon-arrow-up-stroke;
+      }
+    }
+    // arrow-down-solid
+    &.unicode-arrow-down-solid {
+      &::before {
+        @include hue-icon-arrow-down-solid;
+      }
+    }
+    // arrow-down-stroke
+    &.unicode-arrow-down-stroke {
+      &::before {
+        @include hue-icon-arrow-down-stroke;
+      }
+    }
+    // menu-hamburger
+    &.unicode-menu-hamburger {
+      &::before {
+        @include hue-icon-menu-hamburger;
+      }
+    }
+    // menu-vertical
+    &.unicode-menu-vertical {
+      &::before {
+        @include hue-icon-menu-vertical;
+      }
+    }
+    // tools
+    &.unicode-tools {
+      &::before {
+        @include hue-icon-tools;
+      }
+    }
+    // qoute-single-top
+    &.unicode-qoute-single-top {
+      &::before {
+        @include hue-icon-qoute-single-top;
+      }
+    }
+    // qoute-single-bottom
+    &.unicode-qoute-single-bttm {
+      &::before {
+        @include hue-icon-qoute-single-bttm;
+      }
+    }
+    // pencil
+    &.unicode-pencil {
+      &::before {
+        @include hue-icon-pencil;
+      }
+    }
+    // heart-solid
+    &.unicode-heart-solid {
+      &::before {
+        @include hue-icon-heart-solid;
+      }
+    }
+    // phone-solid
+    &.unicode-phone-solid {
+      &::before {
+        @include hue-icon-phone-solid;
+      }
+    }
+    // phone-stroke
+    &.unicode-phone-stroke {
+      &::before {
+        @include hue-icon-phone-stroke;
+      }
+    }
+    // danger
+    &.unicode-danger {
+      &::before {
+        @include hue-icon-danger;
+      }
+    }
+    // warning
+    &.unicode-warning {
+      &::before {
+        @include hue-icon-warning;
+      }
+    }
+    // prohibited
+    &.unicode-prohibited {
+      &::before {
+        @include hue-icon-prohibited;
+      }
+    }
+    // information
+    &.unicode-information {
+      &::before {
+        @include hue-icon-information;
+      }
+    }
+    // null
+    &.unicode-null {
+      &::before {
+        @include hue-icon-null;
+      }
+    }
+    // refresh
+    &.unicode-refresh {
+      &::before {
+        @include hue-icon-refresh;
+      }
+    }
+    // success
+    &.unicode-success {
+      &::before {
+        @include hue-icon-success;
+      }
+    }
+    // close
+    &.unicode-close {
+      &::before {
+        @include hue-icon-close;
+      }
+    }
+    // close-tab
+    &.unicode-close-tab {
+      &::before {
+        @include hue-icon-close-tab;
+      }
+    }
+    // indent-quote
+    &.unicode-indent-quote {
+      &::before {
+        @include hue-icon-indent-quote;
+      }
+    }
+    // speech-bubble-right
+    &.unicode-speech-bubble-right {
+      &::before {
+        @include hue-icon-speech-bubble-right;
+      }
+    }
+    // speech-bubble-left
+    &.unicode-speech-bubble-left {
+      &::before {
+        @include hue-icon-speech-bubble-left;
+      }
+    }
+    // speech-bubble-two
+    &.unicode-speech-bubble-two {
+      &::before {
+        @include hue-icon-speech-bubble-two;
+      }
+    }
+    // speech-bubble-group
+    &.unicode-speech-bubble-group {
+      &::before {
+        @include hue-icon-speech-bubble-group;
+      }
+    }
+    // qoute-single-top
+    &.unicode-phone-solid {
+      &::before {
+        @include hue-icon-phone-solid;
+      }
+    }
+  }
+  // No style
+  .hue-ns {
+    font-size: 2em;
+    margin-right: .5em;
+    margin-bottom: .5em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &::before {
+    position: relative;
+      color: $color__accent-two;
+    }
+  }
+  // Hover effect on icons
+  .hue-hover-fx-1 {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: $color__accent-three;
+    overflow: hidden;
+    @include box-shadow;
+
+    &::before {
+      color: $color__base;
+      @include content-center;
+    }
+    /* Effect on hover */
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      opacity: 0.5;
+      background: linear-gradient(60deg,rgba(255, 255, 255, .25), #7bb0aa, #fff);
+      -webkit-transform: skewX(30deg);
+      transform: skewX(30deg);
+    }
+
+    &:hover::before {
+      margin: auto;
+      background-color: $color__primary;
+    }
+
+    &:hover::after {
+      -webkit-animation: shine 0.5s;
+      animation: shine 0.5s;
+    }
+    @-webkit-keyframes shine {
+      0% {
+        left: 150%;
+      }
+
+      0% {
+        left: 150%;
+      }
+    }
+    @keyframes shine {
+      100% {
+        left: 150%;
+      }
+    }
+  }
+}

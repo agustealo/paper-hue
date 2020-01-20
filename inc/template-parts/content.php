@@ -8,10 +8,16 @@
  */
 
 ?>
-<?php if ( is_archive(  ) ) : echo '<div class="archive-post-container">';endif; ?>
-<?php // Get theme's featured images with div and hyperlink to full posts page
-		get_hue_image( 'wrapped','thumbnail-large');
-		?>
+<?php if ( is_archive() ) : echo '<div class="archive-post-container">';endif; ?>
+
+<?php if(is_archive()): ?>
+<figure class="header-container archive-figure">
+	<?php get_hue_image( 'wrapped','thumbnail-large'); ?>
+    <footer class="entry-footer">
+        <?php paper_hue_entry_footer(); ?>
+	</footer><!-- .entry-footer -->
+</figure>
+<?php  endif; ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header">
         <?php
@@ -54,9 +60,10 @@
 		) );
 		?>
     </div><!-- .entry-content -->
-
+<?php if(is_singular()): ?>
     <footer class="entry-footer">
         <?php paper_hue_entry_footer(); ?>
-    </footer><!-- .entry-footer -->
+	</footer><!-- .entry-footer -->
+<?php  endif; ?>
 </article><!-- #post-<?php the_ID(); ?> -->
 <?php if ( is_archive(  ) ) : echo '</div><!-- archive-post-container -->'; endif;

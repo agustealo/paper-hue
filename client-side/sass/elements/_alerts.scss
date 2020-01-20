@@ -1,0 +1,83 @@
+.hue-alert {
+  position: relative;
+  display: inline-block;
+  padding: 0.5em 2em 0.5em 0.5em;
+  margin: 0.5em;
+  @include box-shadow;
+
+  &::before {
+    font-size: 2em;
+    padding: 0 0.5em;
+  }
+
+  &::after {
+    @include hue-icon-close;
+    cursor: pointer;
+    font-size: 1em;
+    position: absolute;
+    right: 0.25em;
+    top: 0.025em;
+  }
+
+  &.alert-success {
+    background-color: $color__primary;
+    color: darken($color__accent-two, 35);
+
+    &::before {
+      color: $color__primary;
+      background-color: darken($color__primary, 35);
+      @include hue-icon-success;
+    }
+  }
+
+  &.alert-atention {
+    $bg-color: mix(#ffff71, $color__complementry, 55%);
+    background-color: $bg-color;
+    color: darken($bg-color, 50);
+
+    &::before {
+      background-color: darken($bg-color, 50);
+      color: $bg-color;
+      padding: 0 0.35em;
+      @include hue-icon-information;
+    }
+  }
+
+  &.alert-error {
+    $bg-color: $color__complementry;
+    background-color: $bg-color;
+    color: darken($bg-color, 50);
+
+    &::before {
+      padding: 0 0.35em !important;
+      background-color: darken($bg-color, 50);
+      color: $bg-color;
+      @include hue-icon-warning;
+    }
+  }
+
+  &.alert-danger {
+    $bg-color: mix(red, $color__complementry, 40%);
+    background-color: $bg-color;
+    color: darken($bg-color, 60);
+
+    &::before {
+      padding: 0 0.35em !important;
+      background-color: darken($bg-color, 40);
+      color: $bg-color;
+      @include hue-icon-danger;
+    }
+  }
+
+  &.alert-null {
+  background-color: darken($color__accent-three, 10);
+  color: $color__accent-three;
+
+    &::before {
+      background-color: $color__accent-three;
+        color: darken($color__accent-three, 10);
+      padding: 0 0.65em !important;
+      @include hue-icon-null;
+    }
+  }
+}

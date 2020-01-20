@@ -65,8 +65,9 @@ $i++;
             <?php endif; ?>
         </article><!-- #post-<?php the_ID(); ?> -->
     </div><?php if(!is_sticky()) : echo "<!-- posts-card -->"; else: echo "<!-- hue-sticky-wrapper -->"; endif ?>
-    <?php if(is_sticky()) : echo file_get_contents( get_stylesheet_directory_uri() . '/client-side/img/waving-waves.svg' ); endif  ?>
-<?php if(is_sticky()): echo "</div><!-- .hue-sticky-row -->"; endif ?>
+    <?php if(is_sticky()) : echo file_get_contents( get_stylesheet_directory_uri() . '/client-side/img/waving-waves.svg' );?>
+        </div><!-- .hue-sticky-row -->
+    <?php endif ?>
 <?php
     endwhile;
     if(!is_sticky()) : echo "</div><!-- .article-container -->"; endif;

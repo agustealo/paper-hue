@@ -4,15 +4,38 @@
 .widget-wrapper {
   @extend %row;
   clear: both;
+  display: box;
+  display: -moz-box;
+  display: -webkit-box;
   aside#secondary {
-    column-count: 4;
+    position: relative;
+    column-count: 3;
     column-rule: solid 1px;
     column-rule-style: dotted;
-    @extend %col-12;
-    padding: 5em 0;
-    margin: 0 auto;
+    margin: 5em auto;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    height: intrinsic; /* Safari/WebKit uses a non-standard name */
+    height: -moz-max-content; /* Firefox/Gecko */
+    height: -webkit-max-content; /* Chrome */
+    @extend %col-10;
+    &::after {
+      content: "";
+      top: 0;
+      left: 0.5em;
+      right: 0.5em;
+      bottom: 0;
+      border-left: 1px dashed;
+      border-right: 1px dashed;
+      background: none;
+      position: absolute;
+      z-index: 1;
+    }
     .widget {
-      display: grid;
+      width: 100%;
+      display: inline-block;
+      vertical-align: top;
+      margin-bottom: 10px;
     }
   } // End #secondary
   background-color: $color__background-widget;

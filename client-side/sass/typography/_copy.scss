@@ -1,48 +1,90 @@
 p {
-	margin-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 
-dfn, cite, em, i {
-	font-style: italic;
+dfn,
+cite,
+em,
+i {
+  font-style: italic;
 }
 
 blockquote {
-	margin: 0 1.5em;
+  margin: 0 1.5em;
+  border-left: 1px solid;
+  padding-left: 1em;
+  position: relative;
+
+  &:before {
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0.5em;
+    border-left: 1px dashed;
+    background: none;
+    position: absolute;
+  }
+  p {
+    font-family: 'Times New Roman', Georgia, Times, serif;
+    margin: 0;
+    font-size: 1.5em;
+    letter-spacing: .025em;
+    padding: 1em;
+    padding-bottom: 3em;
+    background-color: #26292e;
+  }
+  cite {
+    display: inline;
+    padding-right: 1em;
+    padding-bottom: 1em;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    &:before{
+      @include hue-icon-indent-quote;
+      padding-right: .25em;
+    }
+  }
 }
 
 address {
-	margin: 0 0 1.5em;
+  margin: 0 0 1.5em;
 }
 
 pre {
-	background: $color__background-pre;
-	font-family: $font__pre;
-	color: $color__text-pre;
-	@include font-size(0.9375);
-	line-height: $font__line-height-pre;
-	margin-bottom: 1.6em;
-	max-width: 100%;
-	overflow: auto;
-	padding: 1.6em;
+  background: $color__background-quote;
+  font-family: $font__pre;
+  color: $color__text-pre;
+  @include font-size(0.9375);
+  line-height: $font__line-height-pre;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1.6em;
 }
 
-code, kbd, tt, var {
-	font-family: $font__code;
-	@include font-size(0.9375);
+code,
+kbd,
+tt,
+var {
+  font-family: $font__code;
+  @include font-size(0.9375);
 }
 
-abbr, acronym {
-	border-bottom: 1px dotted $color__border-abbr;
-	cursor: help;
+abbr,
+acronym {
+  border-bottom: 1px dotted $color__border-abbr;
+  cursor: help;
 }
 
-mark, ins {
-	background: $color__background-ins;
-	color: $color__text-ins;
-	padding: 0 0.2em;
-	text-decoration: none;
+mark,
+ins {
+  background: $color__background-ins;
+  color: $color__text-ins;
+  padding: 0 0.2em;
+  text-decoration: none;
 }
 
 big {
-	font-size: 125%;
+  font-size: 125%;
 }

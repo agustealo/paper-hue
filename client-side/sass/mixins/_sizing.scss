@@ -1,0 +1,43 @@
+@mixin fit-content {
+    max-width: fit-content;
+    width: intrinsic; /* Safari/WebKit uses a non-standard name */
+    width: -moz-max-content;
+    width: -webkit-max-content;
+}
+
+@mixin content-center($position: absolute) {
+  content: "";
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  position: absolute;
+
+}
+// Center block
+@mixin center-horizontal {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Center Vertical, Parent should be set to "relative"
+@mixin center-vertical {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Clearfix
+@mixin clearfix() {
+  content: "";
+  display: table;
+  table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+  clear: both;
+}

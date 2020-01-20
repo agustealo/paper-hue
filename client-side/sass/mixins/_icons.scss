@@ -1,46 +1,103 @@
-@mixin pencil {
-    content: "&#128393;";
+@mixin hue-icon-pencil {
+    content: "\270E";
 }
 
-@mixin arrow-left-solid {
-    content: "&#9664;";
+@mixin hue-icon-arrow-left-solid {
+    content: "\25C0";
 }
-@mixin arrow-left-stroke {
-    content: "&#9665;";
-}
-
-@mixin arrow-right-solid {
-    content: "&#9654;";
-}
-@mixin arrow-right-stroke {
-    content: "&#9655;";
+@mixin hue-icon-arrow-left-stroke {
+    content: "\25C1";
 }
 
-@mixin arrow-up-solid {
-    content: "&#9650;";
+@mixin hue-icon-arrow-right-solid {
+    content: "\25B6";
 }
-@mixin arrow-up-stroke {
-    content: "&#9651;";
-}
-
-@mixin arrow-down-solid {
-    content: "&#9660;";
-}
-@mixin arrow-down-stroke {
-    content: "&#9661;";
+@mixin hue-icon-arrow-right-stroke {
+    content: "\25B7";
 }
 
-@mixin phone-solid {
-    content: "&#128383;";
+@mixin hue-icon-arrow-up-solid {
+    content: "\25B2";
 }
-@mixin phone-stroke {
-    content: "&#128382;";
-}
-
-@mixin menu-hamburger {
-    content: "&#9776;";
+@mixin hue-icon-arrow-up-stroke {
+    content: "\25B3";
 }
 
-@mixin menu-vertical {
-    content: "&#5010;";
+@mixin hue-icon-arrow-down-solid {
+    content: "\25BC";
+}
+@mixin hue-icon-arrow-down-stroke {
+    content: "\25BD";
+}
+
+@mixin hue-icon-menu-hamburger {
+    content: "\2630";
+}
+
+@mixin hue-icon-menu-vertical {
+    content: "\1392";
+}
+@mixin hue-icon-qoute-single-top {
+    content: "\275B";
+}
+@mixin hue-icon-qoute-single-bttm {
+    content: "\275F";
+}
+@mixin hue-icon-heart-solid {
+    content: "\2665";
+
+}
+@mixin hue-icon-phone-solid {
+    content: "\1F57F";
+}
+@mixin hue-icon-phone-stroke {
+    content: "\1F57E";
+}
+@mixin hue-icon-danger {
+    content: "\2620";
+}
+@mixin hue-icon-warning {
+    content: "\26A0";
+}
+@mixin hue-icon-prohibited  {
+    content: "\1F6C7";
+}
+@mixin hue-icon-information {
+    content: "\1F6C8";
+}
+@mixin hue-icon-null {
+    content: "\000021";
+}
+@mixin hue-icon-tools {
+    content: "\1F6E0";
+}
+@mixin hue-icon-refresh {
+    content: "\20DA";
+}
+@mixin hue-icon-success {
+    content: "\002714";
+}
+@mixin hue-icon-close {
+    content: "\2327";
+}
+@mixin hue-icon-close-tab {
+    content: "\2326";
+}
+@mixin hue-icon-indent-quote {
+    content: "\1F719";
+}
+@mixin hue-icon-speech-bubble-right {
+    content: "\01F5E9";
+}
+@mixin hue-icon-speech-bubble-left {
+    content: "\01F5E8";
+}
+@mixin hue-icon-speech-bubble-two {
+    content: "\01F5EA";
+}
+@mixin hue-icon-speech-bubble-group {
+    content: "\01F5EB";
+}
+@mixin hue-icon-tools {
+    content: "\1F6E0";
 }

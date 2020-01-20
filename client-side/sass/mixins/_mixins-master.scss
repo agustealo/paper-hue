@@ -16,25 +16,6 @@ $web-prefixes: webkit, moz, ms, o;
   @include prefix(transform, rotate(15deg), webkit ms);
 }
 
-// Center block
-@mixin center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-// Clearfix
-@mixin clearfix() {
-  content: "";
-  display: table;
-  table-layout: fixed;
-}
-
-// Clear after (not all clearfix need this also)
-@mixin clearfix-after() {
-  clear: both;
-}
-
 // Column width with margin
 @mixin column-width($numberColumns: 3) {
   width: map-get($columns, $numberColumns) -
@@ -56,15 +37,6 @@ $web-prefixes: webkit, moz, ms, o;
   -moz-border-radius: $value;
   -webkit--radius: $value;
   border-radius: $value;
-}
-@mixin content-fit($position: absolute) {
-  content: "";
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  position: absolute;
-  
 }
 
 // Filters

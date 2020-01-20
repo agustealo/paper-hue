@@ -7,32 +7,33 @@ h6 {
   clear: both;
   color: $color__text-heading;
   margin-bottom: 20px;
-  font-weight: 300;
-  font-family: "Titillium Web", sans-serif;
+  font-weight: 200;
+  font-family: $font__secondary;
+  letter-spacing: 0.125em;
   line-height: 1.5em;
 }
 
 h1 {
-  @include font-size(1.5);
+  @include font-size(2);
 }
 .posts-card-wrapper h1.entry-title {
   margin: 20px 0;
 }
 
 h2 {
-  @include font-size(1.4);
+  @include font-size(1.8);
 }
 
 h3 {
-  @include font-size(1.3);
+  @include font-size(1.6);
 }
 
 h4 {
-  @include font-size(1.2);
+  @include font-size(1.4);
 }
 
 h5 {
-  @include font-size(1.1);
+  @include font-size(1.2);
 }
 
 h6 {
@@ -43,4 +44,50 @@ h2.widget-title {
   @include font-size(1.4);
   font-weight: 300;
   margin-bottom: 30px;
+}
+.fp-heading,
+.page-header,
+nav.navigation .posts-navigation {
+  display: table;
+  clear: both;
+  margin: 10em auto 5em auto;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  padding: 2em 1em;
+  position: relative;
+  @include fit-content;
+
+  &:before {
+    content: "";
+    top: 0.5em;
+    left: 0.5em;
+    right: 0.5em;
+    bottom: 0.5em;
+    border-bottom: 1px dashed;
+    border-top: 1px dashed;
+    background: none;
+    position: absolute;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    text-align: center;
+    text-transform: uppercase;
+    word-break: initial;
+    white-space: nowrap;
+  }
+}
+header.page-header {
+  margin-bottom: 0;
+  .hue-breadcrumb {
+    font-family: "Courier New", Courier, monospace;
+  }
+}
+
+nav.navigation.posts-navigation {
+  margin-top: 0;
+  margin-bottom: 15em;
+  padding: 4em 1em;
+  position: relative;
+  min-width: 50%;
 }

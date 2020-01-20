@@ -26,9 +26,9 @@
     add_image_size( 'thumbnail-small', 320, 200, true ); //  Cropped for small display
 
     // Selectable admin sizes
-    add_image_size( 'medium-width', 480 ); // No cropping means images will be sized based on max height and width
-    add_image_size( 'medium-height', 9999, 480 );
-    add_image_size( 'medium-something', 480, 480 );
+    add_image_size( 'medium-width', 640, 9999 ); // No cropping means images will be sized based on max height and width
+    add_image_size( 'medium-height', 9999, 640 );
+    add_image_size( 'medium-crop', 640, 640 );
 
     // Register admin image sizes
     add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
@@ -56,7 +56,9 @@ function get_hue_image(
   if( $image_type == 'wrapped' ){
     if (  (function_exists('has_post_thumbnail') ) && ( has_post_thumbnail() )  ) {
 
-      echo '<div class="hue_img_wrapper posts_image featured_image" ><a href="' . get_permalink( $post->ID ) . '">' . the_post_thumbnail($image_size) . '</a></div>';
+      echo '<div class="hue_img_wrapper posts_image featured_image" ><a href="' . get_permalink( $post->ID ) . '">' ?>
+      <?php the_post_thumbnail($image_size);
+      echo '</a></div>';
     }
     else {
 

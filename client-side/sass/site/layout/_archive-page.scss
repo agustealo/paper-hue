@@ -1,39 +1,7 @@
 .archive.category main {
-  header.page-header {
-    margin: 10em auto 0 auto;
-    border-bottom: 1px solid;
-    border-top: 1px solid;
-    border-color: $color__secondary;
-    max-width: 100%;
-    padding: 4em 1em 1em;
-    position: relative;    
-    @extend %col-6;
-    h1 {
-      font-size: 2.5em;
-      text-align: center;
-      text-transform: uppercase;
-    }
-    .hue-breadcrumb {
-      font-family: 'Courier New', Courier, monospace;
-    }
-    &:before,
-    &:after {
-      background: $color__secondary;
-      content: "";
-      display: block;
-      height: 1px;
-      left: 0;
-      position: absolute;
-      width: 100%;
-    }
-    &:before {
-      top: 10px;
-    }
-    &:after {
-      bottom: 10px;
-    }
+  .page-header {
+    max-width: 60%;
   }
-
   .category-container {
     background: none;
     border: none;
@@ -45,19 +13,41 @@
 
     &:before {
       box-sizing: inherit;
-      background: $color__secondary;
+      background: none;
       content: "";
+      border-right: 1px solid;
       height: 100%;
-      width: 1px;
-      left: 50%;
+      width: 50%;
+      left: 0;
       top: 0;
-      z-index: 1;
+      z-index: 0;
       position: absolute;
     }
 
     .archive-post-container {
       position: relative;
-      height: 20em;
+      height: 440px;
+      overflow: hidden;
+      border: solid 1px;
+      margin-bottom: 6em;
+      padding: 1em;
+      background-color: $color__background-archive-posts;
+
+      &:last-child {
+        margin: 0 !important;
+      }
+
+      &::after {
+        content: "";
+        top: 0.5em;
+        left: 0.5em;
+        right: 0.5em;
+        bottom: 0.5em;
+        border: 1px dashed;
+        background: none;
+        position: absolute;
+        z-index: 1;
+      }
 
       &:nth-child(odd) {
         text-align: left;
@@ -65,14 +55,14 @@
           padding-right: 0;
         }
 
-        .hue_img_wrapper {
+        .archive-figure {
           float: left;
           img {
             right: 0;
             top: 0;
           }
         }
-      }
+      } // Odd
 
       &:nth-child(even) {
         text-align: right;
@@ -80,24 +70,17 @@
           padding-left: 0;
         }
 
-        .hue_img_wrapper {
+        .archive-figure {
           float: right;
           img {
             left: 0;
             top: 0;
           }
         }
-      }
+      } // Even
 
-      &:before {
-        background: blue;
-        content: "";
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-      }
-
-      .hue_img_wrapper {
+      .archive-figure {
+        margin: 0;
         display: inline-block;
         height: 100%;
         overflow: hidden;
@@ -126,13 +109,26 @@
           top: 0;
           width: 100%;
         }
-      }
+        footer.entry-footer {
+          background-color: rgba($color__accent-three, 0.9);
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          span {
+            float: left;
+            margin-right: 1em;
+          }
+          .edit-link {
+            float: right;
+          }
+        }
+      } // End .archive-figure
 
       article.type-post {
-        display: inline-block;
-        padding: 2em;
-        vertical-align: middle;
         width: 48%;
+        padding: 2em;
+        display: inline-block;
+        vertical-align: middle;
 
         h2 {
           font-weight: 600;
@@ -140,41 +136,34 @@
           margin-bottom: 0.5em;
           font-size: 1.25em;
         }
-
-        &:last-child {
-          margin: 0;
-        }
       }
     }
   }
-  
-  nav.navigation.posts-navigation {
+  nav.posts-navigation {
+    display: table;
+    clear: both;
+    margin: 0 auto 10em;
     border-bottom: 1px solid;
     border-top: 1px solid;
-    border-color: $color__secondary;
-    margin-top: 0;
-    margin-bottom: 15em;
-    padding: 4em 1em;
+    padding: 2em 1em;
     position: relative;
-    @extend %col-6;
-
-    &:before,
-    &:after {
-      background: $color__secondary;
+    max-width: fit-content;
+    width: intrinsic;
+    width: -moz-max-content;
+    width: -webkit-max-content;
+    &::before {
       content: "";
-      display: block;
-      height: 1px;
-      left: 0;
+      top: 0.5em;
+      left: 0.5em;
+      right: 0.5em;
+      bottom: 0.5em;
+      border-bottom: 1px dashed;
+      border-top: 1px dashed;
+      background: none;
       position: absolute;
-      width: 100%;
     }
-
-    &:before {
-      top: 10px;
-    }
-
-    &:after {
-      bottom: 10px;
-    }
+  }
+  nav.end-of-archive {
+    text-align: center;
   }
 }
