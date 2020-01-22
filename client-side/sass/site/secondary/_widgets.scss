@@ -1,9 +1,43 @@
-.widget {
-	margin: 0 0 1.5em;
-    padding: 0 1em;
+.widget-area {
+	padding: 0 1.5em;
+	margin: 0;
 
+	.widget-title {
+		padding: 0;
+		margin: 0 0 1em;
+	}
+
+	ol,
+	ul {
+		margin: 0;
+		padding-left: 0.25em;
+		list-style: none;
+	}
+
+	li > ol,
+	li > ul {
+		padding-left: 1em;
+	}
+}
+
+.widget {
+	margin: 0;
+	padding: 0;
 	/* Make sure select elements fit in widgets. */
 	select {
 		max-width: 100%;
+	}
+}
+
+.widget_recent_comments {
+	ul#recentcomments {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li.recentcomments {
+			color: rgba($color__accent-one, 0.7);
+			padding: 0;
+		}
 	}
 }

@@ -1,26 +1,72 @@
-.post-navigation, .posts-navigation {
+.post-navigation,
+.posts-navigation {
   @extend %col-9;
   clear: both;
   margin: 0 auto;
   padding: 2em 0;
+
+  .hue-posts-nav-next,
+  .hue-posts-nav-prev {
+    position: relative;
+
+    &::after,
+    &::before {
+      font-size: 1.5em;
+    }
+  }
+
+  .hue-posts-nav-prev {
+    float: left;
+  }
+
+  .hue-posts-nav-next {
+    float: right;
+  }
 }
 
 .comment-navigation,
-.posts-navigation,
-.post-navigation {
+.post-navigation,
+.posts-navigation {
   .site-main & {
     margin-bottom: 1.5em;
     overflow: hidden;
   }
 
   .nav-previous {
-    float: left;
     width: 50%;
   }
 
   .nav-next {
     float: right;
-    text-align: right;
     width: 50%;
   }
+}
+
+.navigation ul {
+  position: absolute;
+  right: 47%;
+  display: inline;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: inline;
+    margin: 0 0.1em;
+  }
+
+  li.current {
+    font-size: 1.5em;
+    line-height: 1;
+    color: #fff;
+
+    a {
+      cursor: default;
+    }
+  }
+}
+
+.navigation li a,
+.navigation li.disabled {
+  text-decoration: none;
+  cursor: pointer;
 }

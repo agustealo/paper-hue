@@ -1,13 +1,15 @@
 .sticky {
   display: block;
 }
+
 .site-content {
   @extend %row;
   padding: 0;
   position: relative;
 }
-.post,
-.page {
+
+.page,
+.post {
   margin: 0;
 }
 
@@ -15,9 +17,14 @@
   display: none;
 }
 
-.page-content,
+.error404 .page-content {
+  margin: 5em auto;
+  @extend %col-9;
+}
+
 .entry-content,
-.entry-summary {
+.entry-summary,
+.page-content {
   margin: 1.5em 0 0;
 }
 
@@ -31,15 +38,12 @@
   @extend %col-9;
   padding: 10em 0 5em;
   margin: 0 auto;
+
   & > header.entry-header {
     margin: 2em 0;
   }
 }
+
 footer.entry-footer {
   line-height: 2;
-}
-.comments-area {
-  @extend %col-9;
-  padding-bottom: 15em;
-  margin: 0 auto;
 }

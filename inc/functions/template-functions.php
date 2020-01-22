@@ -5,6 +5,17 @@
  * @package Paper_Hue
  */
 
+
+  /**
+   * Posts navigation.
+   */
+  require get_template_directory() . '/inc/functions/posts-navigation.php';
+
+   /**
+    * Posts navigation.
+    */
+   require get_template_directory() . '/inc/functions/comments.php';
+
 /**
  * Adds custom classes to the array of body classes.
  *

@@ -101,3 +101,31 @@
 @mixin hue-icon-tools {
     content: "\1F6E0";
 }
+// Bullets
+@mixin hue-icon-dot-circle {
+    content: "\2609";
+}
+@mixin hue-icon-bullet-1 {
+    content: "\2723";
+}
+@mixin hue-icon-bullet-2 {
+    content: "\2724";
+}
+@mixin hue-icon-bullet-3 {
+    content: "\2725";
+}
+@mixin hue-icon-star-circle{
+    content: "\235f";
+}
+@mixin hue-icon-diamond {
+    content: "\2662";
+}
+@mixin hue-icon-bio-hazard {
+    content: "\2622";
+}
+@mixin hue-icon-bullet-fisheye {
+    content: "\25C9";
+}
+@mixin hue-icon-bullseye {
+    content: "\25cE";
+}

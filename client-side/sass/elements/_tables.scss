@@ -6,7 +6,8 @@ table {
 
 table td,
 table th {
-	border: 1px solid none;
+	border: 1px solid;
+	border-color: $color__base-secondary !important;
 	padding: 8px;
 }
 
@@ -15,14 +16,21 @@ table tr:nth-child(even) {
 }
 
 table tr:hover {
-	background-color: $color__primary;
 	color: $color__accent-three;
+	background-color: $color__primary;
+	border-color: $color__base-secondary !important;
+
+	a {
+		color: $color__accent-one;
+		font-weight: 800;
+	}
 }
 
 table th {
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: left;
+	border-color: $color__base-secondary;
 	background-color: $color__accent-two;
-	color: white;
+		color: $color__accent-three;
 }

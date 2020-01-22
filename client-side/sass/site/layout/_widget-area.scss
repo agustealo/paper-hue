@@ -1,24 +1,29 @@
 /*-----------------*/
 /*** Widget Area ***/
 /*-----------------*/
+
 .widget-wrapper {
+  padding: 5em 0;
   @extend %row;
-  clear: both;
-  display: box;
-  display: -moz-box;
-  display: -webkit-box;
-  aside#secondary {
+
+  .widget-container {
+    aside#secondary {
+      width: 25%;
+      border-right: 1px solid;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    padding: 0 1em;
+    display: box;
+    display: -moz-box;
+    display: -webkit-box;
     position: relative;
-    column-count: 3;
-    column-rule: solid 1px;
-    column-rule-style: dotted;
-    margin: 5em auto;
+    margin: auto;
     border-left: 1px solid;
     border-right: 1px solid;
-    height: intrinsic; /* Safari/WebKit uses a non-standard name */
-    height: -moz-max-content; /* Firefox/Gecko */
-    height: -webkit-max-content; /* Chrome */
     @extend %col-10;
+
     &::after {
       content: "";
       top: 0;
@@ -31,12 +36,79 @@
       position: absolute;
       z-index: 1;
     }
+
     .widget {
       width: 100%;
       display: inline-block;
       vertical-align: top;
       margin-bottom: 10px;
     }
-  } // End #secondary
+  }
+  // End #secondary
+  .tagcloud a {
+    position: relative;
+    color: lighten($color__base, 70);
+    opacity: 0.80;
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    padding: 0 6px;
+    line-height: 30px;
+    overflow: hidden;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      opacity: 0.5;
+      background: linear-gradient(60deg,rgba(255, 255, 255, .25), #7bb0aa, #fff);
+      -webkit-transform: skewX(30deg);
+      transform: skewX(30deg);
+    }
+
+    &:hover::after {
+      -webkit-animation: shine 0.5s;
+      animation: shine 0.5s;
+    }
+  }
+
+  .tagcloud a:nth-child(9n) {
+    background-color: $color__base;
+  }
+
+  .tagcloud a:nth-child(9n+1) {
+    background-color: $color__accent-two;
+  }
+
+  .tagcloud a:nth-child(9n+2) {
+    background-color: mix($color__accent-two, $color__complementry, 50%);
+  }
+
+  .tagcloud a:nth-child(9n+3) {
+    background-color: mix($color__complementry, $color__accent-three, 40);
+  }
+
+  .tagcloud a:nth-child(9n+4) {
+    background-color: darken($color__primary, 25);
+  }
+
+  .tagcloud a:nth-child(9n+5) {
+    background-color: mix($color__primary, $color__accent-three, 50%);
+  }
+
+  .tagcloud a:nth-child(9n+6) {
+    background-color: darken($color__primary, 40);
+  }
+
+  .tagcloud a:nth-child(9n+7) {
+    background-color: mix($color__primary, $color__complementry, 90%);
+  }
+
+  .tagcloud a:nth-child(9n+8) {
+    background-color: darken($color__accent-two,40);
+  }
   background-color: $color__background-widget;
-} // End .widget-wrapper
+}
+// End .tagcloud
+// End .widget-wrapper

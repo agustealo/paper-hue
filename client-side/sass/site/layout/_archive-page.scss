@@ -1,13 +1,14 @@
-.archive.category main {
+.archive main {
   .page-header {
     max-width: 60%;
   }
+
   .category-container {
     background: none;
     border: none;
     padding: 0;
     margin: auto auto 0;
-    padding: 6em 0 5em 0;
+    padding: 6em 0 5em;
     position: relative;
     @extend %col-9;
 
@@ -51,33 +52,39 @@
 
       &:nth-child(odd) {
         text-align: left;
+
         article.type-post {
           padding-right: 0;
         }
 
         .archive-figure {
           float: left;
+
           img {
             right: 0;
             top: 0;
           }
         }
-      } // Odd
+      }
+      // Odd
 
       &:nth-child(even) {
         text-align: right;
+
         article.type-post {
           padding-left: 0;
         }
 
         .archive-figure {
           float: right;
+
           img {
             left: 0;
             top: 0;
           }
         }
-      } // Even
+      }
+      // Even
 
       .archive-figure {
         margin: 0;
@@ -99,7 +106,7 @@
           -webkit-transition: opacity 0.25s ease-in-out;
           -ms-transition: opacity 0.25s ease-in-out;
           transition: opacity 0.25s ease-in-out;
-          background-image: url(../img/overlay.png);
+          background-image: url("../img/overlay.png");
           content: "";
           display: block;
           height: 100%;
@@ -109,20 +116,24 @@
           top: 0;
           width: 100%;
         }
+
         footer.entry-footer {
           background-color: rgba($color__accent-three, 0.9);
           position: absolute;
           bottom: 0;
           left: 0;
+
           span {
             float: left;
             margin-right: 1em;
           }
+
           .edit-link {
             float: right;
           }
         }
-      } // End .archive-figure
+      }
+      // End .archive-figure
 
       article.type-post {
         width: 48%;
@@ -139,6 +150,7 @@
       }
     }
   }
+
   nav.posts-navigation {
     display: table;
     clear: both;
@@ -151,6 +163,7 @@
     width: intrinsic;
     width: -moz-max-content;
     width: -webkit-max-content;
+
     &::before {
       content: "";
       top: 0.5em;
@@ -163,7 +176,10 @@
       position: absolute;
     }
   }
-  nav.end-of-archive {
+
+  span.end-archive {
     text-align: center;
+    /* width: 100%; */
+    display: block;
   }
 }

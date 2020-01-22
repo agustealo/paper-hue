@@ -4,8 +4,8 @@ $color__base-secondary: lighten($color__base, 40);
 $color__primary: #7BB0AA;
 $color__secondary: #c5c5c5;
 $color__complementry: #FFB5F9;
-    //Accent Colors
-$color__accent-one: lighten($color__secondary, 40);
+//Accent Colors
+$color__accent-one: #ffffff;
 $color__accent-two: #678499;
 $color__accent-three: #26292e;
 
@@ -16,7 +16,7 @@ $color__background-menu-bar: $color__accent-three;
 $color__background-widget: $color__accent-three;
 $color__background-footer: $color__base;
 $color__background-slider-dots: $color__accent-three;
-$color__background-screen: $color__secondary;
+$color__background-screen: $color__base-secondary;
 $color__background-hr: $color__base-secondary;
 $color__background-button: $color__accent-two;
 $color__background-button-hover: $color__accent-one;
@@ -26,7 +26,7 @@ $color__background-ins: $color__primary;
 
 // Text settings
 $color__text-pre: $color__accent-one;
-$color__text-heading: $color__secondary;
+$color__text-heading: $color__base-secondary;
 $color__text-button: $color__base;
 $color__text-screen: $color__accent-two;
 $color__text-input: $color__primary;

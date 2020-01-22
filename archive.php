@@ -39,12 +39,8 @@ get_header();
 
 			endwhile;
 			echo '</div><!-- category-container -->';
-			$i = 2;
-			the_posts_navigation();
-			if($i=2): ?>
-			<nav class="navigation posts-navigation end-of-archive">End of archive</nav>
-			<?php endif;
-
+			paper_hue_posts_nav();
+			
 		else :
 
 			get_template_part( 'inc/template-parts/content', 'none' );

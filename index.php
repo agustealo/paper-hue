@@ -34,7 +34,7 @@ get_header();
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				if ( is_front_page() && is_home() ) { 
+				if ( is_front_page() && is_home() ) {
 				?>
 					<div class="home-posts-wrapper" >
 				<?php get_template_part( 'inc/template-parts/content', 'home' ); ?>
@@ -54,8 +54,8 @@ get_header();
 				  }
 
 				endwhile;
-
-				the_posts_navigation();
+        // Navigation for posts
+        paper_hue_posts_nav();
 				}
 
 		else :

@@ -1,0 +1,67 @@
+/*
+----------------------------------------------------------
+
+#Comments
+
+----------------------------------------------------------
+*/
+
+.comments-area {
+  @extend %col-9;
+  padding-bottom: 15em;
+  margin: 0 auto;
+
+  .avatar,
+  .gravatar {
+    border-radius: 50%;
+    min-width: 50px;
+    min-height: 50px;
+    background-clip: padding-box;
+    margin: 0 auto;
+  }
+
+  .comment-author.vcard {
+    margin: 0;
+    width: 25%;
+    float: left;
+    font-size: 14px;
+    display: inline-block;
+    text-transform: capitalize;
+  }
+
+  .comment-metadata {
+    float: left;
+  }
+
+  h2.comments-title {
+    text-align: center;
+    padding-bottom: 3em;
+  }
+
+  ol.comment-list {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+      padding: 1em;
+
+      &:nth-child(odd) {
+        background: rgba($color__accent-three, 0.2);
+      }
+
+      &:nth-child(even) {
+        background: rgba($color__accent-two, 0.1);
+      }
+
+      ol.children {
+        background: rgba($color__accent-one, 0.05);
+        margin-left: 5em;
+
+        li {
+          background: none;
+        }
+      }
+    }
+  }
+}

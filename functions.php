@@ -103,8 +103,44 @@ add_action( 'after_setup_theme', 'paper_hue_content_width', 0 );
  */
 function paper_hue_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'paper-hue' ),
-		'id'            => 'sidebar-1',
+		'name'          => esc_html__( 'Posts Widget', 'paper-hue' ),
+		'id'            => 'posts-sidebar',
+		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Widget Bottom 1', 'paper-hue' ),
+		'id'            => 'widget-bottom-1',
+		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Widget Bottom 2', 'paper-hue' ),
+		'id'            => 'widget-bottom-2',
+		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Widget Bottom 3', 'paper-hue' ),
+		'id'            => 'widget-bottom-3',
+		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Widget Bottom 4', 'paper-hue' ),
+		'id'            => 'widget-bottom-4',
 		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
