@@ -7,22 +7,22 @@ Paper Hue is a simple but powerful plug-n-play theme for WordPress. Very lightwe
 
 This theme was built with the end-user in mind, this means very little setup to get this theme looking like what's shown in the demo.
 
-##Features
+## Features
 Automatic detect and play slider.
 
-+Front-Page unique sticky display.
++ Front-Page unique sticky display.
 
-+Image fallback for posts without featured images.
++ Image fallback for posts without featured images.
 
-+Theme breadcrumbs.
++ Theme breadcrumbs.
 
-+Unique archive display.
++ Unique archive display.
 
-+Paralax header for single pages.
++ Paralax header for single pages.
 
 ![alt text](https://raw.githubusercontent.com/agustealo/paper-project-assets/master/images/WordPress/Paper%20Hue/WP-ThemeScreenshot-sm.jpg?raw=true "Paper Hue theme screenshot")
 
-##Setup
+## Setup
 1. Install normally as any other WP theme
 
 2. Make sure to regenerate all WP thumbnail. Suggest using a regen plugin from the WordPress Repo. [József KollerJózsef Koller](https://onetdev.com/"József KollerJózsef Koller") has a simple regen in the [WordPress](https://wordpress.org/ "WordPress") repo called [ONet Regenerate Thumbnails](https://wordpress.org/plugins/onet-regenerate-thumbnails/ "ONet Regenerate Thumbnails").
