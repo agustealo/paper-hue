@@ -27,8 +27,9 @@ blockquote {
   p {
     font-family: 'Times New Roman', Georgia, Times, serif;
     margin: 0;
-    font-size: 1.5em;
-    letter-spacing: .025em;
+    font-size: 1.4em;
+    letter-spacing: .03em;
+    word-spacing: 0.15em;
     padding: 1em;
     padding-bottom: 3em;
     background-color: #26292e;
@@ -38,6 +39,7 @@ blockquote {
     padding-right: 1em;
     padding-bottom: 1em;
     position: absolute;
+    font-size: 0.9em;
     right: 0;
     bottom: 0;
     &:before{

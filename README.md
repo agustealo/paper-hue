@@ -1,6 +1,6 @@
 # Paper Hue
 Paper Hue
-Paper Hue is a simple but powerful plug-n-play theme for WordPress. Very lightweight, no-frills, WordPress Theme. Built by [agustealo](https://www.agustealo.com/ "Agustealo, digital development and design") with ❤️ using pure JavaScript, CSS, PHP, and a small third party foot print.
+Paper Hue is a simple but powerful plug-n-play theme for WordPress. Very lightweight, no-frills, WordPress Theme. Built by [Agustealo](https://www.agustealo.com/ "Agustealo, digital development and design") with ❤️ using pure JavaScript, CSS, PHP, and a small third party foot print.
 [I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
 ![alt text](https://raw.githubusercontent.com/agustealo/paper-project-assets/master/images/WordPress/Paper%20Hue/Paper-WP-Theme-Logo.png?raw=true "Paper Hue Logo")

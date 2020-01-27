@@ -1,48 +1,55 @@
 html {
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   scroll-behavior: smooth;
 }
 
 *,
-*:before,
-*:after {
+*:after,
+*:before {
   /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
   box-sizing: inherit;
-  box-sizing: border-box;
 }
 
 body {
-  background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+  background: $color__background-body;
+  /* Fallback for when there is no custom background color defined. */
 }
-
 // Z-Index
-article.type-post,
-.hue-slide .text,
-.widget,
-.post-figure,
+
+.archive-figure,
 .fp-heading h1,
+.hue-slide .text,
+.nav-links,
 .page-header h1,
 .page-header span,
-.nav-links {
+.post-figure,
+.widget,
+article.type-post {
   position: relative;
   z-index: 10;
 }
 // Footer for posts
+
 footer.entry-footer {
   padding: 0 0.5em;
+
   span.tags-links {
     margin-left: 1em;
   }
+
   span.edit-link {
     display: inline-block;
   }
+
   .edit-link a {
     margin-left: 2em;
     color: #fff;
+
     &::before {
       @include hue-icon-pencil;
       margin-right: 0.15em;
     }
+
     &:hover {
       color: $color__link-hover;
       @include transition(color ease 0.5s);

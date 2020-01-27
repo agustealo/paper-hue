@@ -2,7 +2,7 @@
 $color__base: #2F3238;
 $color__base-secondary: lighten($color__base, 40);
 $color__primary: #7BB0AA;
-$color__secondary: #c5c5c5;
+$color__secondary: lighten($color__base, 60);
 $color__complementry: #FFB5F9;
 //Accent Colors
 $color__accent-one: #ffffff;

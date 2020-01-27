@@ -1,28 +1,41 @@
-@mixin hue-icon-pencil {
-    content: "\270E";
-}
-
+// Controls
+//--> Arrow left
 @mixin hue-icon-arrow-left-solid {
     content: "\25C0";
 }
 @mixin hue-icon-arrow-left-stroke {
     content: "\25C1";
 }
-
+@mixin hue-icon-arrow-left-double {
+    content: "\00AB";
+}
+@mixin hue-icon-arrow-left-stroke {
+    content: "\25C1";
+}
+//--> Arrow right
 @mixin hue-icon-arrow-right-solid {
     content: "\25B6";
 }
 @mixin hue-icon-arrow-right-stroke {
     content: "\25B7";
 }
-
+@mixin hue-icon-arrow-right-dotted-stem {
+    content: "\2911";
+}
+@mixin hue-icon-arrow-right-dash {
+    content: "\290F";
+}
+@mixin hue-icon-arrow-right-double {
+    content: "\00BB";
+}
+//--> Arrow Up
 @mixin hue-icon-arrow-up-solid {
     content: "\25B2";
 }
 @mixin hue-icon-arrow-up-stroke {
     content: "\25B3";
 }
-
+//--> Arrow Down
 @mixin hue-icon-arrow-down-solid {
     content: "\25BC";
 }
@@ -30,29 +43,124 @@
     content: "\25BD";
 }
 
+// Menus
 @mixin hue-icon-menu-hamburger {
     content: "\2630";
 }
-
 @mixin hue-icon-menu-vertical {
     content: "\1392";
 }
-@mixin hue-icon-qoute-single-top {
-    content: "\275B";
+@mixin hue-icon-menu-vertical-round {
+  content: "\205D";
 }
-@mixin hue-icon-qoute-single-bttm {
-    content: "\275F";
+@mixin hue-icon-tools {
+    content: "\1F6E0";
 }
-@mixin hue-icon-heart-solid {
-    content: "\2665";
 
+//--> Special menus
+@mixin hue-icon-pencil {
+    content: "\270E";
 }
+@mixin hue-icon-x-box {
+    content: "\2717";
+}
+@mixin hue-icon-checkmark-01 {
+    content: "\2713";
+}
+// Patterns
+@mixin hue-icon-fleur-de-lis {
+    content: "\269C";
+}
+// Shapes
+@mixin hue-icon-fleur-de-lis {
+  content: "\2756";
+}
+@mixin hue-icon-reference-mark {
+    content: "\203B";
+}
+
+// Symbols
+@mixin hue-icon-star-stroke {
+    content: "\269D";
+}
+@mixin hue-icon-centre-star {
+    content: "\272C";
+}
+@mixin hue-icon-ankh {
+  content: "\2625";
+}
+@mixin hue-icon-registered-trade-mark {
+  content: "\00AE";
+}
+@mixin hue-icon-trade-mark {
+  content: "\2122";
+}
+@mixin hue-icon-copyright {
+  content: "\00A9";
+}
+// Undo & Redo
+@mixin hue-icon-arrow-anticlockwise {
+    content: "\21BA";
+}
+@mixin hue-icon-arrow-anticlockwise-gapped {
+    content: "\27F2";
+}
+@mixin hue-icon-arrow-clockwise {
+    content: "\21BB";
+}
+@mixin hue-icon-arrow-clockwise-gapped {
+    content: "\27F3";
+}
+// Checks and X's
+@mixin hue-icon-checkmark-01 {
+    content: "\2713";
+}
+@mixin hue-icon-check-box {
+    content: "\2611";
+}
+@mixin hue-icon-x-rising-diagonal {
+    content: "\292B";
+}
+@mixin hue-icon-x-falling-diagonal {
+    content: "\292C";
+}
+@mixin hue-icon-x-big {
+  content: "\2715";
+}
+@mixin hue-icon-x-saltire {
+    content: "\2613";
+}
+@mixin hue-icon-xmark {
+    content: "\2327";
+}
+@mixin hue-icon-x-box {
+    content: "\2326";
+}
+@mixin hue-icon-x-box {
+    content: "\2326";
+}
+@mixin hue-icon-x-box {
+    content: "\2326";
+}
+@mixin hue-icon-x-box {
+    content: "\2326";
+}
+@mixin hue-icon-x-box {
+    content: "\2326";
+}
+@mixin hue-icon-x-box {
+    content: "\2326";
+}
+
+//----> Special menus
 @mixin hue-icon-phone-solid {
     content: "\1F57F";
 }
 @mixin hue-icon-phone-stroke {
     content: "\1F57E";
 }
+
+//--> Information icons
 @mixin hue-icon-danger {
     content: "\2620";
 }
@@ -68,40 +176,43 @@
 @mixin hue-icon-null {
     content: "\000021";
 }
-@mixin hue-icon-tools {
-    content: "\1F6E0";
-}
 @mixin hue-icon-refresh {
     content: "\20DA";
 }
 @mixin hue-icon-success {
     content: "\002714";
 }
-@mixin hue-icon-close {
-    content: "\2327";
+@mixin hue-icon-bio-hazard {
+    content: "\2622";
 }
-@mixin hue-icon-close-tab {
-    content: "\2326";
-}
+
+// Typography
 @mixin hue-icon-indent-quote {
     content: "\1F719";
 }
-@mixin hue-icon-speech-bubble-right {
-    content: "\01F5E9";
+@mixin hue-icon-qoute-single-top {
+    content: "\275B";
 }
-@mixin hue-icon-speech-bubble-left {
-    content: "\01F5E8";
+@mixin hue-icon-qoute-single-bttm {
+    content: "\275F";
 }
-@mixin hue-icon-speech-bubble-two {
-    content: "\01F5EA";
+@mixin hue-icon-exclamation-mark-double {
+  content: "\203C";
 }
-@mixin hue-icon-speech-bubble-group {
-    content: "\01F5EB";
+@mixin hue-icon-left-brace {
+  content: "\007B";
 }
-@mixin hue-icon-tools {
-    content: "\1F6E0";
+@mixin hue-icon-right-brace {
+  content: "\007D";
 }
-// Bullets
+@mixin hue-icon-exclamation-mark-double {
+  content: "\203C";
+}
+@mixin hue-icon-exclamation-mark-double {
+  content: "\203C";
+}
+
+//--> Bullets
 @mixin hue-icon-dot-circle {
     content: "\2609";
 }
@@ -114,18 +225,110 @@
 @mixin hue-icon-bullet-3 {
     content: "\2725";
 }
+@mixin hue-icon-bullseye {
+    content: "\25cE";
+}
+@mixin hue-icon-bullseye {
+    content: "\25cE";
+}
+@mixin hue-icon-bullseye {
+    content: "\25cE";
+}
+@mixin hue-icon-bullseye {
+    content: "\25cE";
+}
 @mixin hue-icon-star-circle{
     content: "\235f";
 }
 @mixin hue-icon-diamond {
     content: "\2662";
 }
-@mixin hue-icon-bio-hazard {
-    content: "\2622";
-}
 @mixin hue-icon-bullet-fisheye {
     content: "\25C9";
 }
 @mixin hue-icon-bullseye {
     content: "\25cE";
+}
+@mixin hue-icon-three-dots {
+  content: "\2056";
+}
+@mixin hue-icon-four-dots {
+  content: "\2058";
+}
+@mixin hue-icon-five-dots{
+  content: "\2059";
+}
+@mixin hue-icon-dotted-cross {
+  content: "\205C";
+}
+//--> Speech
+@mixin hue-icon-speech-bubble-right {
+    content: "\01F5E9";
+}
+@mixin hue-icon-speech-bubble-left {
+    content: "\01F5E8";
+}
+@mixin hue-icon-speech-bubble-two {
+    content: "\01F5EA";
+}
+@mixin hue-icon-speech-bubble-group {
+    content: "\01F5EB";
+}
+
+//--> Emogies
+@mixin hue-icon-frowning-face{
+  content: "\2639";
+}
+@mixin hue-icon-smiling-face{
+  content: "\263A";
+}
+@mixin hue-icon-smiling-face-solid{
+  content: "\263B";
+}
+@mixin hue-icon-heart-line {
+    content: "\2661";
+}
+@mixin hue-icon-heart-heavy {
+    content: "\2764";
+}
+@mixin hue-icon-heart-solid-01 {
+    content: "\266";
+}
+
+// Layouts Icons
+@mixin hue-icon-trigram-for-heaven {
+  content: "\2630";
+}
+@mixin hue-icon-trigram-for-lake {
+  content: "\2631";
+}
+@mixin hue-icon-trigram-for-fire {
+  content: "\2632";
+}
+@mixin hue-icon-trigram-for-thunder {
+  content: "\2633";
+}
+@mixin hue-icon-trigram-for-wind {
+  content: "\2634";
+}
+@mixin hue-icon-trigram-for-water{
+  content: "\2635";
+}
+@mixin hue-icon-trigram-for-mountain{
+  content: "\2636";
+}
+@mixin hue-icon-trigram-for-earth{
+  content: "\2637";
+}
+@mixin hue-icon-digram-greater-yang{
+  content: "\268C";
+}
+@mixin hue-icon-digram-lesser-yin{
+  content: "\268D";
+}
+@mixin hue-icon-digram-lesser-yang{
+  content: "\268E";
+}
+@mixin hue-icon-digram-greater-yin {
+  content: "\268F";
 }

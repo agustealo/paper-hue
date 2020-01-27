@@ -11,7 +11,7 @@
   }
 
   &::after {
-    @include hue-icon-close;
+    @include hue-icon-xmark;
     cursor: pointer;
     font-size: 1em;
     position: absolute;

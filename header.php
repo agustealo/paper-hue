@@ -29,10 +29,10 @@
         <header id="masthead" class="site-header">
             <div class="hue-slider">
                 <?php
-                if ( is_home() && is_front_page() ) :	
+                if ( is_home() && is_front_page() ) :
 		/* get slider */
         require get_template_directory() . '/inc/modules/hue-slider.php';
-                    else : 
+                    else :
                         /* get static header content */
         require get_template_directory() . '/inc/template-parts/content-header-entry.php';
                     endif;
@@ -40,26 +40,27 @@
             </div><!-- .hue-paper-slider -->
             <div class="hue-nav-wraper">
                 <div class="site-branding">
-                    <?php
-				the_custom_logo();
-					?>
-                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
-                            rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                    <?php
-				$paper_hue_description = get_bloginfo( 'description', 'display' );
-				if ( $paper_hue_description || is_customize_preview() ) :
-					?>
-                    <p class="site-description"><?php echo $paper_hue_description; /* WPCS: xss ok. */ ?></p>
-                    <?php endif; ?>
-                </div><!-- .site-branding -->
-
-                <nav id="site-navigation" class="main-navigation">
-                    <?php
-				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				) );
-				?>
+                  <?php the_custom_logo(); ?>
+                <h1 class="site-title">
+                  <a href="<?php echo esc_url( home_url( '/' ) ); ?>"
+                     rel="home"><?php bloginfo( 'name' ); ?>
+                 </a>
+               </h1>
+               <?php
+          				$paper_hue_description = get_bloginfo( 'description', 'display' );
+          				if ( $paper_hue_description || is_customize_preview() ) :
+                ?>
+                <p class="site-description"><?php echo $paper_hue_description; /* WPCS: xss ok. */ ?></p>
+                <?php endif; ?>
+              </div><!-- .site-branding -->
+              <nav id="main-navigation" class="main-navigation">
+                <span class="toggle-icon"></span>
+                <?php
+          				wp_nav_menu( array(
+          					'theme_location' => 'menu-1',
+          					'menu_id'        => 'primary-menu',
+          				) );
+                ?>
                 </nav><!-- #site-navigation -->
             </div><!-- .ui-bar -->
         </header><!-- #masthead -->

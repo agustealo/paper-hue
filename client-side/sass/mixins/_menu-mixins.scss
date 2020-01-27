@@ -1,0 +1,84 @@
+// By: Agustealo
+// Name: Hue Paper Menu Mixin v0.1
+// http://agustealo.com/
+
+//**                                                        **\\
+//*********************** Example of use *********************\\
+//**                                                        **\\
+
+//----> The mixin
+//  @include hue-clickable-menu(
+//  $menu-class: my-menu, // The "class" name of the menu properties you need to setup
+//  $menu-float: left, // How to float the menu icon
+//  $checked-color: #fff, // If you need to change the icon color after it's selected
+//  $marin-l: 1em, // If the menu icon needs a left margin value
+//  $marin-r: 1em // If the menu icon needs a right margin value
+//  )
+//
+//----> Add the code below to your HTML
+//
+// <input class="main-navigation" id="main-navigation" type="checkbox" name="hue-css-menu" >
+//  <label for="main-navigation" >
+//   <span class="menu-icon"></span>
+//  </label>
+// <nav id="main-navigation" class="main-navigation">Menu goes here</nav>
+
+//**                                                        **\\
+//************************* The Mixin ************************\\
+//**                                                        **\\
+
+@mixin hue-clickable-menu(
+  $menu-class: menu,
+  $menu-float: left,
+  $checked-color: null,
+  $icon-position: absolute,
+  $margin-l: null,
+  $margin-r: null,
+  $margin-t: null,
+  $margin-b: null,
+  $line-height: null
+) {
+  .#{$menu-class}[type="checkbox"] {
+    opacity: 0;
+    display: none;
+
+    &+label {
+      cursor: pointer;
+      position: relative;
+      float: $menu-float;
+      font-style: italic;
+      font-size: 1.5em;
+
+      > span {
+        position: $icon-position;
+        margin-top: $margin-t;
+        margin-right: $margin-r;
+        margin-left: $margin-l;
+        margin-bottom: $margin-b;
+        line-height: $line-height;
+
+        &:before {
+          @include hue-icon-menu-hamburger;
+          position: relative;
+        }
+      }
+    }
+
+    &:checked+label {
+      span {
+        font-style: normal;
+        color: $checked-color;
+      }
+    }
+
+    &:checked+ label~.#{$menu-class} ul {
+      opacity: 1;
+      display: block;
+    }
+
+    &:not(:checked) + label~.#{$menu-class} ul {
+      opacity: 0;
+      display: none;
+    }
+  }
+}

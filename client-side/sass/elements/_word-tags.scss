@@ -1,0 +1,70 @@
+/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+# Tag Coulds
+=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+.tagcloud a {
+  position: relative;
+  color: lighten($color__base, 70);
+  opacity: 0.80;
+  display: inline-block;
+  margin: 0 5px 5px 0;
+  padding: 0 6px;
+  line-height: 30px;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    opacity: 0.5;
+    background: linear-gradient(60deg,rgba(255, 255, 255, .25), #7bb0aa, #fff);
+    -webkit-transform: skewX(30deg);
+    transform: skewX(30deg);
+  }
+
+  &:hover::after {
+    -webkit-animation: shine 0.5s;
+    animation: shine 0.5s;
+  }
+}
+
+.tagcloud a:nth-child(9n) {
+  background-color: rgba($color__base, 0.5);
+}
+
+.tagcloud a:nth-child(9n+1) {
+  background-color: rgba($color__accent-two, 0.1);
+}
+
+.tagcloud a:nth-child(9n+2) {
+  background-color: rgba($color__complementry, 0.1);
+}
+
+.tagcloud a:nth-child(9n+3) {
+  background-color: rgba($color__base-secondary, 0.2);
+}
+
+.tagcloud a:nth-child(9n+4) {
+  background-color: rgba($color__primary, 0.2);
+}
+
+.tagcloud a:nth-child(9n+5) {
+  background-color: rgba($color__base, 0.5);
+  border: 1px solid $color__base;
+}
+
+.tagcloud a:nth-child(9n+6) {
+  background-color: rgba($color__accent-two, 0.2);
+}
+
+.tagcloud a:nth-child(9n+7) {
+  background: none;
+border: 1px solid rgba($color__accent-two, 0.2);
+}
+
+.tagcloud a:nth-child(9n+8) {
+  background-color: rgba($color__accent-one, 0.2);
+}
+// End .tagcloud

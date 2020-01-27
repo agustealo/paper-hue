@@ -11,7 +11,7 @@
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  position: absolute;
+  position: $position;
 }
 // Center block
 @mixin center-horizontal {
@@ -32,8 +32,10 @@
   width: map-get($columns, $numberColumns) - (($columns__margin * ($numberColumns - 1)) / $numberColumns);
 }
 // Standard layout & styling
+  // Take one of two values "border-box", and "content-box"
+  // "padding-box" is deprecated, and should no longer be use
+  // Additionally you can also use "display: -webkit-box";
 @mixin box-sizing($value) {
-  display: -webkit-box;
   -webkit-box-sizing: $value;
   -moz-box-sizing: $value;
   box-sizing: $value;

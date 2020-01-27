@@ -138,15 +138,6 @@ function paper_hue_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Widget Bottom 4', 'paper-hue' ),
-		'id'            => 'widget-bottom-4',
-		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
 }
 add_action( 'widgets_init', 'paper_hue_widgets_init' );
 

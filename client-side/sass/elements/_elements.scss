@@ -14,9 +14,11 @@ figure {
 	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
 }
 
-@import "tables";
-
 @import "scrollbar";
+
+@import "word-tags";
+
+@import "tables";
 
 @import "alerts";
 

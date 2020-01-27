@@ -1,4 +1,5 @@
-ul, ol {
+ol,
+ul {
 	margin: 0 0 1.5em 3em;
 }
 
@@ -10,8 +11,8 @@ ol {
 	list-style: decimal;
 }
 
-li > ul,
-li > ol {
+li > ol,
+li > ul {
 	margin-bottom: 0;
 	margin-left: 1.5em;
 }
@@ -23,49 +24,97 @@ dt {
 dd {
 	margin: 0 1.5em 1.5em;
 }
+// Customize bullets
 
-article {
-	// Customize number in ol
-	ol {
-		counter-reset: counter;
+article ol,
+article ul,
+ol.comment-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		&::before {
+			font-weight: bold;
+			font-size: 2em;
+			font-family: $font__secondary;
+			line-height: 1;
+		}
+	}
+}
+
+article ol,
+article ul {
+	display: flex;
+	flex-wrap: wrap;
+
+	li {
+    width: 50%;
+    font-size: 1em;
+    margin-bottom: 1em;
+    padding-right: 1em;
+
+		&::before {
+			margin-right: 0.5rem;
+		}
+	}
+}
+// Customize number in ol
+
+article ol,
+ol.comment-list {
+	counter-reset: counter;
+
+	li {
+		counter-reset: counter_sub;
+		counter-increment: counter;
+
+		&::before {
+			content: "0" counter(counter);
+	    height: 100%;
+	    display: block;
+	    float: left;
+		}
 
 		li {
-			counter-increment: counter;
+			counter-increment: counter_sub;
 
 			&::before {
-				content: "0" counter(counter);
+				content: "0" counter(counter_sub);
 			}
 		}
 	}
-	// Customize bullets in ul
-	ul {
-		li {
-			&::before {
-				@include hue-icon-bullseye;
-			}
+}
+// Customize bullets in ul
+
+article ul {
+	li {
+    left: 2em;
+		position: relative;
+
+		&::after,
+		&::before {
+			content: "";
+			top: 0;
+			left: 0;
+			width: 0.5em;
+			height: 0.5em;
+			padding: 0.025em;
+			position: absolute;
+			overflow: hidden;
 		}
-	}
-	ol,
-	ul {
-		list-style: none;
-		display: flex;
-		flex-wrap: wrap;
-		margin: 0;
-		padding: 0;
 
-		li {
-			display: flex;
-			width: 50%;
-			font-size: 1em;
-			margin-bottom: 0.5rem;
+		&::before {
+			left: -1em;
+			border: 0.5px solid;
+			background: none;
+		}
 
-			&::before {
-				font-weight: bold;
-				font-size: 2em;
-				margin-right: 0.5rem;
-				font-family: $font__secondary;
-				line-height: 1;
-			}
+		&::after {
+			left: -2em;
+			margin: 0.25em;
+			border: 0.5px dashed;
+			background-color: #26292e;
 		}
 	}
 }

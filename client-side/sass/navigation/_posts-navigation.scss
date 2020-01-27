@@ -1,5 +1,5 @@
-.post-navigation,
-.posts-navigation {
+nav.post-navigation,
+nav.posts-navigation {
   @extend %col-9;
   clear: both;
   margin: 0 auto;
@@ -23,6 +23,7 @@
     float: right;
   }
 }
+nav.navigation.posts-navigation{
 
 .comment-navigation,
 .post-navigation,
@@ -42,12 +43,11 @@
   }
 }
 
-.navigation ul {
-  position: absolute;
-  right: 47%;
-  display: inline;
-  padding: 0;
-  margin: 0;
+  ul.numb-wrapper {
+    position: relative;
+    display: inherit;
+    padding: 0;
+    margin: 0 auto;
 
   li {
     display: inline;
@@ -69,4 +69,5 @@
 .navigation li.disabled {
   text-decoration: none;
   cursor: pointer;
+}
 }

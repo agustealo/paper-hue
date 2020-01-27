@@ -113,17 +113,15 @@
   padding: 1em;
   margin: 0 auto;
   position: relative;
-  background-color: $color__secondary;
+  background-color: $color__accent-three;
   @extend %col-6;
 }
 
 .hue-sticky-article {
-  opacity: 0;
   padding: 3em;
   text-align: center;
   display: inline-block;
   width: unset !important;
-  color: $color__accent-three;
   @include fade;
   @include fill;
 

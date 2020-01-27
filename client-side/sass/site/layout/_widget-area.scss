@@ -5,110 +5,41 @@
 .widget-wrapper {
   padding: 5em 0;
   @extend %row;
+  background-color: $color__background-widget;
 
   .widget-container {
-    aside#secondary {
-      width: 25%;
-      border-right: 1px solid;
-      &:last-child {
-        border-right: none;
-      }
-    }
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     padding: 0 1em;
-    display: box;
-    display: -moz-box;
-    display: -webkit-box;
     position: relative;
     margin: auto;
-    border-left: 1px solid;
-    border-right: 1px solid;
     @extend %col-10;
 
-    &::after {
-      content: "";
-      top: 0;
-      left: 0.5em;
-      right: 0.5em;
-      bottom: 0;
-      border-left: 1px dashed;
-      border-right: 1px dashed;
-      background: none;
-      position: absolute;
-      z-index: 1;
+    aside#secondary {
+      position: relative;
+      border-right: 1px dotted;
+
+      &:last-child,
+      &:nth-child(3) {
+        border-right: none;
+      }
     }
 
     .widget {
       width: 100%;
       display: inline-block;
       vertical-align: top;
-      margin-bottom: 10px;
+      margin-bottom: 5em;
+      // WP Calendar
+      #wp-calendar caption {
+        font-size: 1.5em;
+        font-family: $font__secondary;
+        text-align: left;
+      }
     }
   }
   // End #secondary
-  .tagcloud a {
-    position: relative;
-    color: lighten($color__base, 70);
-    opacity: 0.80;
-    display: inline-block;
-    margin: 0 5px 5px 0;
-    padding: 0 6px;
-    line-height: 30px;
-    overflow: hidden;
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -150%;
-      width: 50%;
-      height: 100%;
-      opacity: 0.5;
-      background: linear-gradient(60deg,rgba(255, 255, 255, .25), #7bb0aa, #fff);
-      -webkit-transform: skewX(30deg);
-      transform: skewX(30deg);
-    }
-
-    &:hover::after {
-      -webkit-animation: shine 0.5s;
-      animation: shine 0.5s;
-    }
-  }
-
-  .tagcloud a:nth-child(9n) {
-    background-color: $color__base;
-  }
-
-  .tagcloud a:nth-child(9n+1) {
-    background-color: $color__accent-two;
-  }
-
-  .tagcloud a:nth-child(9n+2) {
-    background-color: mix($color__accent-two, $color__complementry, 50%);
-  }
-
-  .tagcloud a:nth-child(9n+3) {
-    background-color: mix($color__complementry, $color__accent-three, 40);
-  }
-
-  .tagcloud a:nth-child(9n+4) {
-    background-color: darken($color__primary, 25);
-  }
-
-  .tagcloud a:nth-child(9n+5) {
-    background-color: mix($color__primary, $color__accent-three, 50%);
-  }
-
-  .tagcloud a:nth-child(9n+6) {
-    background-color: darken($color__primary, 40);
-  }
-
-  .tagcloud a:nth-child(9n+7) {
-    background-color: mix($color__primary, $color__complementry, 90%);
-  }
-
-  .tagcloud a:nth-child(9n+8) {
-    background-color: darken($color__accent-two,40);
-  }
-  background-color: $color__background-widget;
 }
 // End .tagcloud
 // End .widget-wrapper

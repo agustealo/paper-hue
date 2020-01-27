@@ -8,7 +8,11 @@
  */
 
 ?>
-<?php if ( is_archive() ) : echo '<div class="archive-post-container">';endif; ?>
+<?php
+	if ( is_archive() ) :
+		 echo '<div class="archive-post-container">';
+	endif;
+	?>
 
 <?php if(is_archive()): ?>
 <figure class="header-container archive-figure">
@@ -18,6 +22,7 @@
 	</footer><!-- .entry-footer -->
 </figure>
 <?php  endif; ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header">
         <?php

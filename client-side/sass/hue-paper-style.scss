@@ -51,9 +51,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "normalize";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Layout
+# Accessibility
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "site/layout/layout";
+@import "modules/accessibility";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Typography
@@ -61,24 +61,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "typography/typography";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Elements
+# Layout
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "elements/elements";
-
-/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Forms
-=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "forms/forms";
-
-/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Navigation
-=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "navigation/navigation";
-
-/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Accessibility
-=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "modules/accessibility";
+@import "site/layout/layout";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Alignments
@@ -91,9 +76,19 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "modules/clearings";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Widgets
+# Elements
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "site/secondary/widgets";
+@import "elements/elements";
+
+/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+# Media
+=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+@import "media/media";
+
+/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+# Forms
+=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+@import "forms/forms";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Content
@@ -101,11 +96,16 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "site/site";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+# Widgets
+=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+@import "site/secondary/widgets";
+
+/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Infinite scroll
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
 @import "modules/infinite-scroll";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Media
+# Navigation
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "media/media";
+@import "navigation/navigation";

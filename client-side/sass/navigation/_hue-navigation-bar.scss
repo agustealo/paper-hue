@@ -6,23 +6,23 @@
   @include box-shadow;
   @extend %row;
   z-index: 999;
-  transition: background-color 250ms linear;
   box-sizing: border-box;
 
   .site-branding {
     float: left;
     padding: 0;
-    margin: 0 1em 0;
+    margin: 0 1em;
     height: 80px;
 
     .site-title {
       float: left;
       margin: 0;
       line-height: 3.5;
+
       a {
-        font-size: .78em;
+        font-size: 0.78em;
         font-weight: 200;
-        letter-spacing: .01em;
+        letter-spacing: 0.01em;
         color: $color__secondary;
       }
     }
@@ -48,22 +48,23 @@
       filter: alpha(opacity=65);
     }
   }
-
   //* Main navigation
-
   .main-navigation {
     display: block;
     float: right;
     margin-right: 20px;
-
+      &:after{
+        display: none;
+      }
     ul {
-      display: none;
       list-style: none;
       margin: 0;
       padding-left: 0;
       background-color: $color__background-menu-bar;
-      &>li a {
-        margin-left: 50px;
+
+      & > li a {
+        margin-left: 20px;
+        transition: margin 2s ease-out;
       }
 
       ul {
@@ -74,6 +75,7 @@
         z-index: 99999;
         position: absolute;
         box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+        transition: background-color 250ms linear;
 
         ul {
           top: -1em;
@@ -82,8 +84,9 @@
         li {
           width: 100%;
           @include text-align(right);
-          &:hover > ul,
-          &.focus > ul {
+
+          &.focus > ul,
+          &:hover > ul {
             left: auto;
             right: 100%;
           }
@@ -93,6 +96,7 @@
           white-space: nowrap;
           line-height: 2em;
           margin: 0;
+
           &:before {
             left: 0;
             bottom: 0;
@@ -102,14 +106,20 @@
         }
       }
 
-      li:hover > ul,
-      li.focus > ul {
+      li.focus > ul,
+      li:hover > ul {
         left: auto;
+        right: -3.5em;
       }
 
       li {
         float: left;
         position: relative;
+
+        &:last-child {
+          margin-right: 40px;
+        }
+
         &:hover > a {
           color: $color__accent-one;
         }
@@ -123,66 +133,112 @@
         display: block;
         line-height: 4.4em;
         text-transform: uppercase;
+
         &:visited {
           color: $color__link;
         }
       }
     }
 
-    .current_page_item > a,
+    .current-menu-ancestor > a,
     .current-menu-item > a,
     .current_page_ancestor > a,
-    .current-menu-ancestor > a {
+    .current_page_item > a {
       color: $color__accent-one !important;
     }
   }
-
   /* Small menu. */
-  .menu-toggle,
-  .main-navigation.toggled ul {
-    display: block;
+  .main-navigation.toggled ul,
+  .menu-toggle {
+    //display: block;
   }
 
-  @media screen and (min-width: 37.5em) {
-    .menu-toggle {
+  .button {
+    margin: 1rem 0.5rem;
+  }
+    ul#primary-menu {
       display: none;
+      opacity: 0;
     }
-    .main-navigation ul {
-      display: block;
+
+  @media only screen and (max-width: $breakpoint-large) {
+    .main-navigation {
+      ul#primary-menu {
+        width: 100%;
+        display: none;
+        position: absolute;
+        top:0;
+        right: 0;
+        background: $color__background-menu-bar;
+        ul{display: none;}
+      }
+
+      &:hover {
+
+        ul#primary-menu {
+        width: 100%;
+        display:block;
+        opacity: 1;
+        @include animation(fade 0.5s ease-in-out);
+        }
+      }
+
+      &::before{
+        @include hue-icon-menu-hamburger;
+        background: $color__background-body;
+        padding: 0.5em;
+        display: block;
+        cursor: pointer;
+        right: 0;
+        top: 0;
+        font-size: 2em;
+        position: absolute;
+        z-index: 10;
+        }
+    }
+  }
+  @media only screen and (min-width: $breakpoint-large) {
+    .main-navigation:before {
+      display: none;
+      }
+    .main-navigation ul#primary-menu {
+      display:block;
+      opacity: 1;
+      a {
+        margin-left: 20px;
+      }
+    }
+  }
+  @media only screen and (min-width: $breakpoint-xlarge) {
+
+    ul#primary-menu {
+      a {
+        margin-left: 40px;
+      }
     }
   }
 
   .comment-navigation,
-  .posts-navigation,
-  .post-navigation {
+  .post-navigation,
+  .posts-navigation {
     .site-main & {
       margin: 0 0 1.5em;
       overflow: hidden;
     }
-
-    .nav-previous {
-      float: left;
-      width: 50%;
-    }
-
-    .nav-next {
-      float: right;
-      text-align: right;
-      width: 50%;
-    }
   }
 }
-
 /* Fixed nav position */
+
 .is-fixed {
   position: fixed;
   top: 0;
 }
+
 .is-fixed > h1 {
   -webkit-transform: translate(0);
 }
-
 // For when main nav turn sticky, or content will jump 80px (height of nav bar) when javascript change class to .is-fixed
+
 .site-content-padding-top {
   padding-top: 80px !important;
 }
