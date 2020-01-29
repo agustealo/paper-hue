@@ -1,16 +1,36 @@
 /*-----------------*/
 /*** Widget Area ***/
 /*-----------------*/
-
 .widget-wrapper {
+  margin-top: 8em;
   padding: 5em 0;
   @extend %row;
   background-color: $color__background-widget;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    border-top: 1px solid;
+    border-bottom: 1px dashed;
+    margin: 0 1em;
+    width: 98%;
+    height: 0.5em;
+  }
+  // Widget grid
+  .widget {
+    grid-area: widget;
+    margin-left: 1em;
+      max-width: 100%;
+      display: inline-block;
+      vertical-align: top;
+      margin-bottom: 5em;
+  }
 
   .widget-container {
     display: grid;
     grid-gap: 1em;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    //grid-template-areas: 'widget widget widget';
+    grid-template-columns: repeat(3, minmax(350px, 1fr));
     padding: 0 1em;
     position: relative;
     margin: auto;
@@ -26,20 +46,44 @@
       }
     }
 
-    .widget {
-      width: 100%;
-      display: inline-block;
-      vertical-align: top;
-      margin-bottom: 5em;
       // WP Calendar
       #wp-calendar caption {
         font-size: 1.5em;
         font-family: $font__secondary;
         text-align: left;
       }
+
+    // End .widget
+    @media only screen and (max-width: $breakpoint-large) {
+      .widget-container {
+        grid-template-columns: repeat(3, minmax(325px, 1fr));
     }
   }
-  // End #secondary
+    @media only screen and (min-width: $breakpoint-small) {
+      &:before {
+        .widget-container {
+          grid-template-columns: repeat(auto, minmax(325px, 1fr));
+        }
+      }
+    }
+    @media only screen and (max-width: $breakpoint-xlarge) {
+      &:before {
+        .widget-container {
+          grid-template-columns: repeat(auto, minmax(325px, 1fr));
+      }
+        content: "";
+        border-right: 1px dotted;
+        width: 50%;
+        height: 100%;
+        position: absolute;
+      }
+
+      aside#secondary {
+        position: relative;
+        border-right: none;
+      }
+    }
+  }
 }
 // End .tagcloud
 // End .widget-wrapper

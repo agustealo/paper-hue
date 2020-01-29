@@ -16,7 +16,8 @@ $color__background-menu-bar: $color__accent-three;
 $color__background-widget: $color__accent-three;
 $color__background-footer: $color__base;
 $color__background-slider-dots: $color__accent-three;
-$color__background-screen: $color__base-secondary;
+$color__background-screen: rgba($color__accent-two, 0.25);
+$color__background-screen-select: $color__base;
 $color__background-hr: $color__base-secondary;
 $color__background-button: $color__accent-two;
 $color__background-button-hover: $color__accent-one;
@@ -40,5 +41,5 @@ $color__text-main:  $color__base-secondary ;
 
 // Border settings
 $color__border-main: $color__primary;
-$color__border-input: $color__accent-two;
+$color__border-input: $color__primary;
 $color__border-abbr: $color__complementry;

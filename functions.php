@@ -102,43 +102,31 @@ add_action( 'after_setup_theme', 'paper_hue_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function paper_hue_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Posts Widget', 'paper-hue' ),
-		'id'            => 'posts-sidebar',
-		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Widget Bottom 1', 'paper-hue' ),
-		'id'            => 'widget-bottom-1',
-		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Widget Bottom 2', 'paper-hue' ),
-		'id'            => 'widget-bottom-2',
-		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Widget Bottom 3', 'paper-hue' ),
-		'id'            => 'widget-bottom-3',
-		'description'   => esc_html__( 'Add widgets here.', 'paper-hue' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
+	$widgets 			 = array (
+									 'Posts Widget',
+									 'Widget Bottom 1',
+									 'Widget Bottom 2',
+									 'Widget Bottom 3'
+								 );
+	$description   = 'Add widgets here.';
+	$before_widget = '<section id="%1$s" class="widget %2$s">';
+	$after_widget  = '</section>';
+	$before_title  = '<h2 class="widget-title">';
+	$after_title   = '</h2>';
+
+	foreach ($widgets as $widget) {
+			$widget = array(
+				'name'          => esc_html__( $widget, 'paper-hue' ),
+				'id'            => strtolower(str_replace(' ', '-', $widget)),// Format widget name to id string ie. 'Widget Bottom 1' to 'widget-bottom-1'
+				'description'   => esc_html__( $description, 'paper-hue' ),
+				'before_widget' => $before_widget,
+				'after_widget'  => $after_widget,
+				'before_title'  => $before_title,
+				'after_title'   => $after_title,
+			);
+			register_sidebar($widget);
+		}
+	}
 add_action( 'widgets_init', 'paper_hue_widgets_init' );
 
 /**

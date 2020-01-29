@@ -1,6 +1,4 @@
 .widget-area {
-	padding: 0 1.5em;
-	margin: 0;
 
 	.widget-title {
 		padding: 0;
@@ -40,4 +38,11 @@
 			padding: 0;
 		}
 	}
+}
+
+/* WP Calendar */
+#wp-calendar caption {
+	font-size: 1.5em;
+	font-family: $font__secondary;
+	text-align: left;
 }

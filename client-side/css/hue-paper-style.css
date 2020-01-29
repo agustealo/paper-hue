@@ -404,7 +404,7 @@ template {
   word-wrap: normal !important;
   /* Many screen reader and browser combinations announce broken words as they would appear visually. */ }
   .screen-reader-text:focus {
-    background-color: #9197a2;
+    background-color: rgba(103, 132, 153, 0.25);
     border-radius: 3px;
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
     clip: auto !important;
@@ -675,8 +675,12 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
-textarea {
+textarea,
+select {
   width: 96%; }
+
+.comment-respond {
+  width: 71%; }
 
 @media only screen and (min-width: 45em) {
   .hue-slider .hue-slide-item .hue-slide {
@@ -711,7 +715,7 @@ textarea {
   input[type="datetime"],
   input[type="datetime-local"],
   input[type="color"],
-  textarea {
+  textarea, select {
     width: 96%; } }
 @media only screen and (min-width: 60em) {
   .hue-slider .hue-slide-item .hue-slide {
@@ -746,7 +750,7 @@ textarea {
   input[type="datetime"],
   input[type="datetime-local"],
   input[type="color"],
-  textarea {
+  textarea, select {
     width: 96%; } }
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 ## Main layout
@@ -1079,6 +1083,7 @@ footer {
   padding: 2em 1em;
   position: relative;
   width: 50%;
+  display: -webkit-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -1104,12 +1109,29 @@ footer {
 /*** Widget Area ***/
 /*-----------------*/
 .widget-wrapper {
+  margin-top: 8em;
   padding: 5em 0;
   background-color: #26292e; }
+  .widget-wrapper:before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    border-top: 1px solid;
+    border-bottom: 1px dashed;
+    margin: 0 1em;
+    width: 98%;
+    height: 0.5em; }
+  .widget-wrapper .widget {
+    grid-area: widget;
+    margin-left: 1em;
+    max-width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 5em; }
   .widget-wrapper .widget-container {
     display: grid;
     grid-gap: 1em;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(3, minmax(350px, 1fr));
     padding: 0 1em;
     position: relative;
     margin: auto; }
@@ -1118,15 +1140,28 @@ footer {
       border-right: 1px dotted; }
       .widget-wrapper .widget-container aside#secondary:last-child, .widget-wrapper .widget-container aside#secondary:nth-child(3) {
         border-right: none; }
-    .widget-wrapper .widget-container .widget {
-      width: 100%;
-      display: inline-block;
-      vertical-align: top;
-      margin-bottom: 5em; }
-      .widget-wrapper .widget-container .widget #wp-calendar caption {
-        font-size: 1.5em;
-        font-family: "Times New Roman", Times, Georgia, serif;
-        text-align: left; }
+    .widget-wrapper .widget-container #wp-calendar caption {
+      font-size: 1.5em;
+      font-family: "Times New Roman", Times, Georgia, serif;
+      text-align: left; }
+    @media only screen and (max-width: 60em) {
+      .widget-wrapper .widget-container .widget-container {
+        grid-template-columns: repeat(3, minmax(325px, 1fr)); } }
+    @media only screen and (min-width: 33.75em) {
+      .widget-wrapper .widget-container:before .widget-container {
+        grid-template-columns: repeat(auto, minmax(325px, 1fr)); } }
+    @media only screen and (max-width: 75em) {
+      .widget-wrapper .widget-container:before {
+        content: "";
+        border-right: 1px dotted;
+        width: 50%;
+        height: 100%;
+        position: absolute; }
+        .widget-wrapper .widget-container:before .widget-container {
+          grid-template-columns: repeat(auto, minmax(325px, 1fr)); }
+      .widget-wrapper .widget-container aside#secondary {
+        position: relative;
+        border-right: none; } }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Alignments
@@ -2043,18 +2078,13 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
-textarea {
+textarea, select {
   color: #678499;
-  border: 1px solid #678499;
-  padding: 0.25rem;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
+  border: none;
+  background: rgba(103, 132, 153, 0.25);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  background: #26292E;
-  font-size: 16px;
   height: auto;
   padding: 15px;
   margin: 0;
@@ -2074,11 +2104,11 @@ textarea {
   input[type="datetime"]:focus,
   input[type="datetime-local"]:focus,
   input[type="color"]:focus,
-  textarea:focus {
-    color: #9197a2; }
-
-select {
-  border: 1px solid #678499; }
+  textarea:focus, select:focus {
+    color: #9197a2;
+    background-color: #2F3238;
+    border: 1px solid #9197a2;
+    transition: background-color 1s ease-out; }
 
 input:-moz-placeholder,
 input:-ms-input-placeholder,
@@ -2087,6 +2117,79 @@ textarea:-moz-placeholder,
 textarea:-ms-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: #7BB0AA; }
+
+/*************************/
+input[type="submit"] {
+  font-size: 1.5em; }
+
+/* Checkbox */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px; }
+
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 1.95em;
+  cursor: pointer; }
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.25em;
+  height: 1.25em;
+  border: none;
+  background: rgba(103, 132, 153, 0.25);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); }
+
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '\2713\0020';
+  position: absolute;
+  top: .15em;
+  left: .22em;
+  font-size: 1.3em;
+  line-height: 0.8;
+  color: #09ad7e;
+  transition: all .2s;
+  font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial; }
+
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0); }
+
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1); }
+
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd; }
+
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999; }
+
+[type="checkbox"]:disabled + label {
+  color: #aaa; }
+
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 2px dotted blue; }
+
+/* hover style just for information */
+label:hover:before {
+  border: 2px solid #4778d9 !important; }
 
 /* ## Comments
 --------------------------------------------- */
@@ -2103,6 +2206,31 @@ textarea::-webkit-input-placeholder {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
   border-left: 4px solid #444; }
 
+.comment-form-comment {
+  grid-area: comment;
+  margin-left: 1em; }
+
+.comment-form {
+  display: grid;
+  grid-template-areas: '. comment comment comment' '. comment comment comment' '. comment comment comment' '. comment comment comment' '. comment comment comment';
+  grid-gap: 0.25em;
+  border: 1px dashed;
+  padding: 1em; }
+  .comment-form p {
+    margin: 0;
+    color: #9197a2; }
+    .comment-form p label[for="comment"] {
+      margin-left: 1em; }
+    .comment-form p label[for="wp-comment-cookies-consent"] {
+      font-size: .7em;
+      margin-top: 1em; }
+    .comment-form p input[type="submit"] {
+      width: 100%;
+      margin: 0; }
+    .comment-form p #comment {
+      margin-left: 1em;
+      height: 352px; }
+
 h2.comments-title {
   text-align: center; }
 
@@ -2116,9 +2244,9 @@ h2.comments-title {
   margin-bottom: 30px; }
 
 .comment-respond {
-  padding-bottom: 5%;
   margin: 20px 1px;
-  border-left: none !important; }
+  border: none !important;
+  margin: 0 auto 3em; }
 
 .comment-header {
   color: #adaeb3;
@@ -2201,6 +2329,7 @@ ol.comment-list {
       margin: 0;
       width: 100%;
       display: -webkit-box;
+      display: -webkit-box;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box; }
@@ -2228,7 +2357,7 @@ li.comment {
 .comment-respond input[type="email"],
 .comment-respond input[type="text"],
 .comment-respond input[type="url"] {
-  width: 50%; }
+  width: 100%; }
 
 .comment-respond label {
   display: block;
@@ -2292,6 +2421,7 @@ li.comment {
 ## Main
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
 html {
+  display: -webkit-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -2388,20 +2518,17 @@ footer.entry-footer {
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Widgets
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-.widget-area {
-  padding: 0 1.5em;
-  margin: 0; }
-  .widget-area .widget-title {
-    padding: 0;
-    margin: 0 0 1em; }
-  .widget-area ol,
-  .widget-area ul {
-    margin: 0;
-    padding-left: 0.25em;
-    list-style: none; }
-  .widget-area li > ol,
-  .widget-area li > ul {
-    padding-left: 1em; }
+.widget-area .widget-title {
+  padding: 0;
+  margin: 0 0 1em; }
+.widget-area ol,
+.widget-area ul {
+  margin: 0;
+  padding-left: 0.25em;
+  list-style: none; }
+.widget-area li > ol,
+.widget-area li > ul {
+  padding-left: 1em; }
 
 .widget {
   margin: 0;
@@ -2417,6 +2544,12 @@ footer.entry-footer {
   .widget_recent_comments ul#recentcomments li.recentcomments {
     color: rgba(255, 255, 255, 0.7);
     padding: 0; }
+
+/* WP Calendar */
+#wp-calendar caption {
+  font-size: 1.5em;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  text-align: left; }
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Infinite scroll
@@ -2718,9 +2851,9 @@ nav.navigation.posts-navigation .comment-navigation .nav-next, nav.navigation.po
   width: 50%; }
 nav.navigation.posts-navigation ul.numb-wrapper {
   position: relative;
-  display: inherit;
   padding: 0;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
   nav.navigation.posts-navigation ul.numb-wrapper li {
     display: inline;
     margin: 0 0.1em; }

@@ -28,6 +28,3 @@ if ( ! is_active_sidebar('widget-bottom-1') || ! is_active_sidebar( 'widget-bott
 </aside><!-- #secondary -->
 </div><!-- #widget-container -->
 </div><!-- #widget-wrapper -->
-<?php
-if ( ! is_active_sidebar('widget-bottom-1'));
- ?>

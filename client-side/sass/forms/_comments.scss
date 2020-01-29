@@ -15,6 +15,42 @@
   border-left: 4px solid #444;
 }
 
+.comment-form-comment {
+  grid-area: comment;
+  margin-left: 1em;
+}
+
+.comment-form {
+  display: grid;
+  grid-template-areas: '. comment comment comment' '. comment comment comment' '. comment comment comment' '. comment comment comment' '. comment comment comment';
+  grid-gap: 0.25em;
+  border: 1px dashed;
+  padding: 1em;
+
+  p {
+    margin: 0;
+    color: $color__text-heading;
+
+    label[for="comment"] {
+      margin-left: 1em;
+    }
+
+    label[for="wp-comment-cookies-consent"] {
+      font-size: .7em;
+      margin-top: 1em;
+    }
+    input[type="submit"] {
+      width: 100%;
+      margin: 0;
+    }
+
+    #comment {
+      margin-left: 1em;
+      height: 352px;
+    }
+  }// End p
+}
+
 h2.comments-title {
   text-align: center;
 }
@@ -31,9 +67,10 @@ h2.comments-title {
 }
 
 .comment-respond {
-  padding-bottom: 5%;
   margin: 20px 1px;
-  border-left: none !important;
+  border: none !important;
+  margin: 0 auto 3em;
+  @extend %col-9-sm;
 }
 
 .comment-header {
@@ -187,7 +224,7 @@ li.comment {
 .comment-respond input[type="email"],
 .comment-respond input[type="text"],
 .comment-respond input[type="url"] {
-  width: 50%;
+  width: 100%;
 }
 
 .comment-respond label {
