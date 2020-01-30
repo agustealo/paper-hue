@@ -36,7 +36,7 @@
   // "padding-box" is deprecated, and should no longer be use
   // Additionally you can also use "display: -webkit-box";
 @mixin box-sizing($value:border-box) {
-  display: -webkit-box;
+  //display: -webkit-box;
   -webkit-box-sizing: $value;
   -moz-box-sizing: $value;
   box-sizing: $value;

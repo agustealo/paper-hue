@@ -13,11 +13,15 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       text-align: center;
+      color: $color__accent-one;
     }
 
-    .archive-description p {
-      color: #b5fff7;
+    .archive-description p, p {
       font-family: "Courier New", Courier, monospace;
+      color: darken($color__accent-one, 10);
+      a {
+        color: lighten($color__accent-one, 25);
+      }
     }
   }
 

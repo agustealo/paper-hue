@@ -1,54 +1,93 @@
 /* ## Comments
 --------------------------------------------- */
 
+.comment-reply-link,
+.comment-reply-link:hover {
+  color: $color__accent-one; //#ffffff
+}
+
+.comment-header,
+a {
+  color: $color__base-secondary;
+}
+
+.comment-list li li li {
+  background-color: $color__accent-one; //#fff
+}
+
+.comments-area {
+  @extend %row;
+}
+
 .comment-respond,
 .entry-comments,
 .entry-pings {
-  color: #444;
+  color: $color__accent-two; //#678499
   padding: 20px 45px 40px;
-  border: 1px solid #ccc;
+  border: 1px solid $color__secondary;
   overflow: hidden;
   background: $color__accent-three;
-  -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  -moz-box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  border-left: 4px solid #444;
+  @include box-shadow(0 1px 4px rgba(0, 0, 0, 0.25));
+  border-left: 4px solid $color__base-secondary;
 }
+/** Comment Form **/
+.comment-respond {
+  form.comment-form {
+    display: grid;
+    grid-template-areas: 'author comment comment comment comment' 'url comment comment comment comment' 'email comment comment comment comment' 'consent comment comment comment comment' 'submit comment comment comment comment';
+    grid-gap: 0.25em;
+    border: 1px dashed;
+    padding: 1em;
 
-.comment-form-comment {
-  grid-area: comment;
-  margin-left: 1em;
-}
-
-.comment-form {
-  display: grid;
-  grid-template-areas: '. comment comment comment' '. comment comment comment' '. comment comment comment' '. comment comment comment' '. comment comment comment';
-  grid-gap: 0.25em;
-  border: 1px dashed;
-  padding: 1em;
-
-  p {
-    margin: 0;
-    color: $color__text-heading;
-
-    label[for="comment"] {
-      margin-left: 1em;
+    .comment-form-author {
+      grid-area: author;
     }
 
-    label[for="wp-comment-cookies-consent"] {
-      font-size: .7em;
-      margin-top: 1em;
+    .comment-form-email {
+      grid-area: email;
     }
-    input[type="submit"] {
-      width: 100%;
+
+    .comment-form-url {
+      grid-area: url;
+    }
+
+    .comment-form-comment {
+      label {
+        margin-left: 1em;
+      }
+      grid-area: comment;
+    }
+
+    .wp-comment-cookies-consent {
+      grid-area: consent;
+    }
+
+    .form-submit {
+      grid-area: submit;
+    }
+
+    p {
       margin: 0;
-    }
+      color: $color__text-heading;
 
-    #comment {
-      margin-left: 1em;
-      height: 352px;
+      label[for="wp-comment-cookies-consent"] {
+        font-size: 0.7em;
+        margin-top: 1em;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        margin: 0;
+      }
+
+      #comment {
+        margin-left: 1em;
+        padding: 0 1em;
+        height: 352px;
+      }
     }
-  }// End p
+    // End p
+  }
 }
 
 h2.comments-title {
@@ -74,7 +113,6 @@ h2.comments-title {
 }
 
 .comment-header {
-  color: #adaeb3;
   font-size: 14px;
   margin-bottom: 20px;
 }
@@ -120,6 +158,29 @@ h2.comments-title {
     }
   }
 
+  .comment-awaiting-moderation {
+    font-style: normal;
+    $bg-color: mix(#ffff71, $color__complementry, 55%);
+    background-color: $bg-color;
+    color: darken($bg-color, 50);
+    text-align: left;
+    height: 3.5em;
+    width: 60%;
+    display: flex;
+    position: absolute;
+    top: -1.5em;
+    right: -1em;
+
+    &::before {
+      background-color: darken($bg-color, 50);
+      color: $bg-color;
+      font-size: 2.5em;
+      padding: 0 0.35em;
+      margin-right: 0.25em;
+      @include hue-icon-information;
+    }
+  }
+
   .comment-metadata {
     display: initial;
     float: right;
@@ -140,7 +201,6 @@ h2.comments-title {
 
   a {
     border: none;
-    color: #adaeb3;
   }
 }
 // Comments list numbering
@@ -210,15 +270,11 @@ li.comment {
   font-size: 14px;
   padding: 20px 30px 20px 50px;
   margin: 0 auto;
-  @extend %col-7;
+  @extend %col-9;
 }
 
 .comment-list li li {
   background: none;
-}
-
-.comment-list li li li {
-  background-color: #fff;
 }
 
 .comment-respond input[type="email"],
@@ -229,7 +285,7 @@ li.comment {
 
 .comment-respond label {
   display: block;
-  margin-right: 12px;
+  margin: 0;
 }
 
 .entry-comments .comment-author {
@@ -239,7 +295,7 @@ li.comment {
 
 .entry-comments .comment-author img {
   border-radius: 50%;
-  border: 5px solid #fff;
+  border: 5px solid $color__accent-one; // #fff
   left: -80px;
   top: -5px;
   position: absolute;
@@ -253,29 +309,46 @@ li.comment {
 .bypostauthor {}
 
 .form-allowed-tags {
-  background-color: #f5f5f5;
+  background-color: $color__secondary;
   font-size: 16px;
   padding: 24px;
 }
 
 .comment-reply-link {
   cursor: pointer;
-  background-color: $color__primary;
-  border: none;
+  background-color: none !important;
+  border: 1px solid $color__base-secondary !important;
   border-radius: 0;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 300;
+  font-size: 0.9em;
+  font-weight: 400;
   letter-spacing: 1px;
   padding: 4px 10px;
   text-transform: uppercase;
   width: auto;
 }
 
-.comment-reply-link:hover {
-  color: #fff;
-}
-
 .comment-notes {
   display: none;
+}
+
+.no-comments {
+  position: relative;
+  margin: auto !important;
+  display: table;
+  padding: 0.5em 2.5em 0.5em 0.5em;
+  margin: 0.5em;
+  @include box-shadow;
+  $bg-color: mix(#ffff71, $color__complementry, 55%);
+  background-color: $bg-color;
+  color: darken($bg-color, 50);
+
+  &::before {
+    font-size: 2em;
+    padding: 0 0.5em;
+    margin-right: 0.5em;
+    background-color: darken($bg-color, 50);
+    color: $bg-color;
+    padding: 0 0.35em;
+    @include hue-icon-information;
+  }
 }

@@ -1,10 +1,15 @@
 /*-----------------*/
 /*** Home Stying ***/
 /*-----------------*/
+.home #main {
+  padding-bottom: 0;
+}
+
 .home-posts-wrapper {
   .container {
     padding-bottom: 15em;
     @include background-one;
+
     &:before {
       background-color: $color__accent-three;
       @include content-center;
@@ -12,10 +17,10 @@
     }
   }
 }
-
 /*-----------------------*/
 /*** None sticky posts ***/
 /*-----------------------*/
+
 .not-sticky {
   position: relative;
   padding-top: 3em;
@@ -34,6 +39,7 @@
       position: relative;
       overflow: hidden;
       background-color: $color__accent-three;
+
       &::after {
         content: "";
         top: 0.5em;
@@ -47,28 +53,44 @@
       }
 
       figure.post-figure {
+        display: table;
         margin: 0;
 
         .hue_img_wrapper {
+          a {
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            @include animation-glare();
+          }
+
           img {
             width: 100%;
           }
         }
 
         figcaption {
-          padding-left: 0.5em;
+          margin-top: -1.5em;
 
           h1 {
+            background-color: rgba($color__background-body, 0.9);
+            position: relative;
+            position: absolute;
+            bottom: 10%;
+            left: 0;
             @include max-string-length;
           }
         }
       }
 
       article.type-post {
-        padding: 0 0.5em 0.5em;
         text-align: justify;
         line-height: 1.7;
-        @include fit-content;
+        margin-top: 2em;
+
+        p {
+          margin: 0 0.5em;
+        }
       }
 
       footer.entry-footer {
@@ -84,10 +106,10 @@
     }
   }
 }
-
 /*-----------------*/
 /*** Sticky Post ***/
 /*-----------------*/
+
 .hue-sticky-row {
   height: 700px;
   position: relative;
@@ -113,7 +135,7 @@
   padding: 1em;
   margin: 0 auto;
   position: relative;
-  background-color: $color__accent-three;
+  background-color: rgba($color__accent-three, 0.8);
   @extend %col-6;
 }
 
@@ -144,6 +166,7 @@
 
   input[type="button"] {
     color: #fff;
+
     &:hover {
       color: $color__accent-three;
     }

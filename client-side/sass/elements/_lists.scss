@@ -26,8 +26,8 @@ dd {
 }
 // Customize bullets
 
-article ol,
-article ul,
+article ol.hue-ol-01,
+article ul.hue-ul-01,
 ol.comment-list {
 	list-style: none;
 	margin: 0;
@@ -45,14 +45,27 @@ ol.comment-list {
 
 article ol,
 article ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+	li {
+		width: 50%;
+		font-size: 1em;
+		margin-bottom: 1em;
+		padding-right: 1em;
+	}
+}
+
+article ol.hue-ol-01,
+article ul.hue-ul-01 {
 	display: flex;
 	flex-wrap: wrap;
 
 	li {
-    width: 50%;
-    font-size: 1em;
-    margin-bottom: 1em;
-    padding-right: 1em;
+		width: 50%;
+		font-size: 1em;
+		margin-bottom: 1em;
+		padding-right: 1em;
 
 		&::before {
 			margin-right: 0.5rem;
@@ -60,8 +73,8 @@ article ul {
 	}
 }
 // Customize number in ol
+//article ol,
 
-article ol,
 ol.comment-list {
 	counter-reset: counter;
 
@@ -71,9 +84,9 @@ ol.comment-list {
 
 		&::before {
 			content: "0" counter(counter);
-	    height: 100%;
-	    display: block;
-	    float: left;
+			height: 100%;
+			display: block;
+			float: left;
 		}
 
 		li {
@@ -87,9 +100,9 @@ ol.comment-list {
 }
 // Customize bullets in ul
 
-article ul {
+article ul.hue-ul-01 {
 	li {
-    left: 2em;
+		left: 2em;
 		position: relative;
 
 		&::after,

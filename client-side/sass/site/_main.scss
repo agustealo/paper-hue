@@ -14,8 +14,10 @@ body {
   background: $color__background-body;
   /* Fallback for when there is no custom background color defined. */
 }
-// Z-Index
-
+/** Index's **/
+#main {
+  padding-bottom: 8em;
+}
 .archive-figure,
 .fp-heading h1,
 .hue-slide .text,

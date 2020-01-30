@@ -101,32 +101,35 @@ add_action( 'after_setup_theme', 'paper_hue_content_width', 0 );
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
+
 function paper_hue_widgets_init() {
-	$widgets 			 = array (
-									 'Posts Widget',
-									 'Widget Bottom 1',
-									 'Widget Bottom 2',
-									 'Widget Bottom 3'
-								 );
-	$description   = 'Add widgets here.';
+
+	$widgets = [ // Name of widgets and description ie. [widget_name, widget_description]
+		[ 'Posts Widget', 'Aside widget for posts only' ],
+		[ 'Widget Bottom 1', 'First row below main content, on all pages' ],
+		[ 'Widget Bottom 2', 'The second row below main content, on all pages.' ],
+		[ 'Widget Bottom 3', 'The third row below main content, on all pages.' ],
+		[ 'Widget Bottom 4', 'The fourth row below main content, on all pages.' ]
+	];
+
 	$before_widget = '<section id="%1$s" class="widget %2$s">';
 	$after_widget  = '</section>';
 	$before_title  = '<h2 class="widget-title">';
 	$after_title   = '</h2>';
 
-	foreach ($widgets as $widget) {
-			$widget = array(
-				'name'          => esc_html__( $widget, 'paper-hue' ),
-				'id'            => strtolower(str_replace(' ', '-', $widget)),// Format widget name to id string ie. 'Widget Bottom 1' to 'widget-bottom-1'
-				'description'   => esc_html__( $description, 'paper-hue' ),
-				'before_widget' => $before_widget,
-				'after_widget'  => $after_widget,
-				'before_title'  => $before_title,
-				'after_title'   => $after_title,
-			);
-			register_sidebar($widget);
-		}
+	foreach ($widgets as list($name, $description)) {
+		$widget = array(
+			'name'          => esc_html__( $name, 'paper-hue' ),
+			'id'            => strtolower(str_replace(' ', '-', $name)), // Format widget name to id string ie. 'Widget Bottom 1' to 'widget-bottom-1'
+			'description'   => esc_html__( $description, 'paper-hue' ),
+			'before_widget' => $before_widget,
+			'after_widget'  => $after_widget,
+			'before_title'  => $before_title,
+			'after_title'   => $after_title,
+		);
+		register_sidebar($widget);
 	}
+}
 add_action( 'widgets_init', 'paper_hue_widgets_init' );
 
 /**

@@ -23,9 +23,46 @@ a {
 	}
 }
 // list hover effect
+// FX 1
 
-li .hue-lnk-fx-1 a,
-ul#primary-menu {
+#primary-menu li,
+li .hue-lnk-fx-1 {
+	a {
+		position: relative;
+		text-decoration: none;
+		padding-top: 10px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			transition: transform 0.5s ease;
+		}
+	}
+
+	ul a {
+		position: relative;
+		text-decoration: none;
+		padding-right: 10px;
+
+		&:after {
+			right: 0;
+			bottom: 0;
+			height: 50%;
+			width: 0.25em;
+			border-left: 1px dashed;
+			border-right: 1px solid;
+			margin-bottom: 0.5em;
+			transform: scaleY(0);
+		}
+
+		&:hover:after {
+			transform: scaleY(1);
+		}
+	}
+}
+// FX 2
+
+li .hue-lnk-fx-2 a {
 	a {
 		position: relative;
 		text-decoration: none;
@@ -51,6 +88,7 @@ ul#primary-menu {
 			transform: scaleX(1);
 		}
 	}
+
 	ul a {
 		position: relative;
 		text-decoration: none;
@@ -67,12 +105,12 @@ ul#primary-menu {
 		}
 
 		&:hover:after {
-			transform: scaleX(1);
 			transform: scaleY(1);
 		}
 	}
 }
 // Footer navigation
+
 .site-footer a {
 	color: $color__link-site-footer;
 	font-weight: bold;

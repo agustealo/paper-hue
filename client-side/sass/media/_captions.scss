@@ -7,10 +7,8 @@
 	}
 
 	.wp-caption-text {
-		margin: 0.8075em 0;
+		text-align: center;
+		padding: 0.8075em 0;
+		background-color: $color__accent-three;
 	}
-}
-
-.wp-caption-text {
-	text-align: center;
 }

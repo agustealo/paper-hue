@@ -9,12 +9,12 @@
 
 ?>
 <?php
-	if ( is_archive() ) :
+	if ( is_archive() || is_category() ) :
 		 echo '<div class="archive-post-container">';
 	endif;
 	?>
 
-<?php if(is_archive()): ?>
+<?php if(is_archive() || is_category()): ?>
 <figure class="header-container archive-figure">
 	<?php get_hue_image( 'wrapped','thumbnail-large'); ?>
     <footer class="entry-footer">
@@ -71,4 +71,4 @@
 	</footer><!-- .entry-footer -->
 <?php  endif; ?>
 </article><!-- #post-<?php the_ID(); ?> -->
-<?php if ( is_archive(  ) ) : echo '</div><!-- archive-post-container -->'; endif;
+<?php if ( is_archive() || is_category() ) : echo '</div><!-- archive-post-container -->'; endif;

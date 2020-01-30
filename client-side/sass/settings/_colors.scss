@@ -5,7 +5,7 @@ $color__primary: #7BB0AA;
 $color__secondary: lighten($color__base, 60);
 $color__complementry: #FFB5F9;
 //Accent Colors
-$color__accent-one: #ffffff;
+$color__accent-one: lighten($color__base, 70);
 $color__accent-two: #678499;
 $color__accent-three: #26292e;
 
@@ -24,11 +24,13 @@ $color__background-button-hover: $color__accent-one;
 $color__background-pre: darken($color__accent-two, 40);
 $color__background-quote: $color__accent-three;
 $color__background-ins: $color__primary;
+$color__background-widget-item: darken($color__base, 7);
 
 // Text settings
 $color__text-pre: $color__accent-one;
 $color__text-heading: $color__base-secondary;
 $color__text-button: $color__base;
+$color__text-button-hover-2: $color__accent-one;
 $color__text-screen: $color__accent-two;
 $color__text-input: $color__primary;
 $color__text-input-focus: $color__base-secondary;

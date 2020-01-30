@@ -53,9 +53,11 @@
     display: block;
     float: right;
     margin-right: 20px;
-      &:after{
-        display: none;
-      }
+
+    &:after {
+      display: none;
+    }
+
     ul {
       list-style: none;
       margin: 0;
@@ -133,12 +135,20 @@
         display: block;
         line-height: 4.4em;
         text-transform: uppercase;
+        display: block;
+        opacity: 1;
+        @include prefix(transition, opacity 1s ease-out);
+
+        &:hover {
+
+            opacity: 0.65;
+        }
 
         &:visited {
           color: $color__link;
         }
       }
-    }
+    } // End .main-navigation ul
 
     .current-menu-ancestor > a,
     .current-menu-item > a,
@@ -156,34 +166,41 @@
   .button {
     margin: 1rem 0.5rem;
   }
-    ul#primary-menu {
-      display: none;
-      opacity: 0;
-    }
 
+  ul#primary-menu {
+    display: none;
+    opacity: 0;
+  }
+  @media only screen and (max-width: $breakpoint-small) {
+    .site-description {
+      display: none !important;
+    }
+  }
   @media only screen and (max-width: $breakpoint-large) {
     .main-navigation {
       ul#primary-menu {
         width: 100%;
         display: none;
         position: absolute;
-        top:0;
+        top: 0;
         right: 0;
         background: $color__background-menu-bar;
-        ul{display: none;}
-      }
 
-      &:hover {
-
-        ul#primary-menu {
-        width: 100%;
-        display:block;
-        opacity: 1;
-        @include animation(fade 0.5s ease-in-out);
+        ul {
+          display: none;
         }
       }
 
-      &::before{
+      &:hover {
+        ul#primary-menu {
+          width: 100%;
+          display: block;
+          opacity: 1;
+          @include animation(fade 0.5s ease-in-out);
+        }
+      }
+
+      &::before {
         @include hue-icon-menu-hamburger;
         background: $color__background-body;
         padding: 0.5em;
@@ -194,23 +211,24 @@
         font-size: 2em;
         position: absolute;
         z-index: 10;
-        }
+      }
     }
   }
   @media only screen and (min-width: $breakpoint-large) {
     .main-navigation:before {
       display: none;
-      }
+    }
+
     .main-navigation ul#primary-menu {
-      display:block;
+      display: block;
       opacity: 1;
+
       a {
         margin-left: 20px;
       }
     }
   }
   @media only screen and (min-width: $breakpoint-xlarge) {
-
     ul#primary-menu {
       a {
         margin-left: 40px;
@@ -228,7 +246,6 @@
   }
 }
 /* Fixed nav position */
-
 .is-fixed {
   position: fixed;
   top: 0;

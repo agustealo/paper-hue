@@ -39,13 +39,12 @@
 // Glare
 
 @mixin animation-glare-ready (
-  $gradient:linear-gradient(60deg,rgba(255, 255, 255, .25),
-  #7bb0aa, #fff), $transform:skewX(30deg)){
-
-  background: $gradient;
-  @include transform($transform);
-}
-
+  $gradient:linear-gradient(60deg,rgba(255, 255, 255, .25), #7bb0aa, #fff),
+  $transform:skewX(30deg)
+  ){
+    background: $gradient;
+    @include transform($transform);
+  }
 @-webkit-keyframes glare {
   0% {
     left: 150%;

@@ -34,7 +34,8 @@
 }
 
 .site-main > article.page,
-.site-main > article.type-post {
+.site-main > article.type-post,
+.site-main > article.type-attachment {
   @extend %col-9;
   padding: 10em 0 5em;
   margin: 0 auto;

@@ -34,6 +34,13 @@
       padding: 1em;
       background-color: $color__background-archive-posts;
 
+      span {
+        &.byline,
+        &.posted-on {
+          font-size: 0.8em;
+        }
+      }
+
       &:last-child {
         margin: 0 !important;
       }
@@ -66,10 +73,11 @@
             overflow: hidden;
 
             img {
-              position: absolute;
-              top: 0;
-              height: 100%;
+              right: 0;
+              min-height: 440px;
+              min-width: 640px;
               width: auto;
+              @include center-vertical;
             }
 
             &::after {
@@ -88,13 +96,14 @@
               -ms-transition: background-color 1s ease-out;
               transition: background-color 1s ease-out;
             }
+
             &:hover {
               &::after {
-              background: rgba($color__accent-three, 0.3);
-              -moz-transition: background-color 0.5s ease-in;
-              -webkit-transition: background-color 0.5s ease-in;
-              -ms-transition: background-color 0.5s ease-in;
-              transition: background-color 0.5s ease-in;
+                background: rgba($color__accent-three, 0.3);
+                -moz-transition: background-color 0.5s ease-in;
+                -webkit-transition: background-color 0.5s ease-in;
+                -ms-transition: background-color 0.5s ease-in;
+                transition: background-color 0.5s ease-in;
               }
             }
           }
@@ -102,11 +111,16 @@
       }
       @media only screen and (max-width: $breakpoint-large) {
         height: auto;
+
         .archive-figure {
           margin: 0;
           height: auto;
+
           .hue_img_wrapper a img {
             position: relative;
+            top: unset;
+            left: unset;
+            transform: unset;
           }
         }
 
@@ -142,6 +156,7 @@
 
           article.type-post {
             padding-left: 0;
+            padding-top: 0;
           }
 
           .archive-figure {
@@ -211,7 +226,9 @@
   }
 
   nav.posts-navigation {
+    display: flex;
     margin: 0 auto 10em;
+    background-color: unset;
     border-bottom: 1px solid;
     border-top: 1px solid;
     padding: 2em 1em;
