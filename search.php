@@ -19,7 +19,7 @@ get_header();
 				<h1 class="page-title">
 					<?php
 					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'paper-hue' ), '<span>' . get_search_query() . '</span>' );
+					printf( esc_html__( 'Search Results for: %s', 'paper-hue' ), '<span class="hue-search-query">' . get_search_query() . '</span>' );
 					?>
 				</h1>
 			</header><!-- .page-header -->
@@ -28,7 +28,7 @@ get_header();
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
-				
+
 				get_template_part( 'inc/template-parts/content', 'search' );
 
 			endwhile;

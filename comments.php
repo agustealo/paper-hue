@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying comments
+ * For displaying comments
  *
  * Template for displaying the area of the page that contains both the current comments
  * and the comment form.

@@ -7,7 +7,12 @@
  * @package Paper_Hue
  */
 
-if ( ! is_active_sidebar('widget-bottom-1') || ! is_active_sidebar( 'widget-bottom-2') || ! is_active_sidebar( 'widget-bottom-3') ||  ! is_active_sidebar( 'widget-bottom-4' ) ) {
+if (
+	! is_active_sidebar('widget-bottom-1') ||
+	! is_active_sidebar( 'widget-bottom-2') ||
+	! is_active_sidebar( 'widget-bottom-3') ||
+	! is_active_sidebar( 'widget-bottom-4' )
+	) {
 	return;
 }
 ?>

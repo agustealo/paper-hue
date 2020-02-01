@@ -39,8 +39,8 @@ get_header();
 					</div><!-- home-posts-wrapper -->
 				<?php
 				  } else {
-					/* Start the Loop */
 					while ( have_posts() ) : the_post();
+					/* Start the Loop */
 					  if ( is_front_page() ) {
 					// static homepage
 					get_template_part( 'inc/template-parts/content', 'page' );

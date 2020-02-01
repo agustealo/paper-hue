@@ -18,6 +18,7 @@ body {
 #main {
   padding-bottom: 8em;
 }
+
 .archive-figure,
 .fp-heading h1,
 .hue-slide .text,
@@ -29,6 +30,17 @@ body {
 article.type-post {
   position: relative;
   z-index: 10;
+}
+// Border
+
+.archive main .category-container .archive-post-container,
+.archive main .category-container:before,
+.archive main nav.posts-navigation,
+.fp-heading,
+.not-sticky .article-container .posts-card,
+.page-header,
+.widget-wrapper:before {
+  border-color: lighten($color__base, 20);
 }
 // Footer for posts
 

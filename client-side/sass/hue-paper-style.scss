@@ -1,29 +1,10 @@
-/*
-Theme Name: Paper Hue
-Theme URI: http://underscores.me/
-Author: Agustealo
-Author URI: http://www.agustealo.com
-Description: Description
-Version: 1.0.0
-License: GNU General Public License v2 or later
-License URI: LICENSE
-Text Domain: paper-hue
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-
-Paper Hue is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
-Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
-*/
-
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
 # Normalize
+# Content
+	## Posts and pages
+	## Comments
 # Typography
 # Elements
 # Forms
@@ -34,9 +15,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Alignments
 # Clearings
 # Widgets
-# Content
-	## Posts and pages
-	## Comments
 # Infinite scroll
 # Media
 	## Captions
@@ -49,11 +27,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Normalize
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
 @import "normalize";
-
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Accessibility
+# Content
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "modules/accessibility";
+@import "site/site";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Typography
@@ -61,9 +38,24 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "typography/typography";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Layout
+# Elements
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "site/layout/layout";
+@import "elements/elements";
+
+/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+# Forms
+=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+@import "forms/forms";
+
+/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+# Navigation
+=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+@import "navigation/navigation";
+
+/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+# Accessibility
+=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
+@import "modules/accessibility";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Alignments
@@ -76,29 +68,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "modules/clearings";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Elements
-=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "elements/elements";
-
-/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Media
-=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "media/media";
-
-/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Forms
-=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "forms/forms";
-
-/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Content
-=+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "site/site";
-
-/* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Widgets
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
 @import "site/secondary/widgets";
+
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 # Infinite scroll
@@ -106,6 +79,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "modules/infinite-scroll";
 
 /* =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-# Navigation
+# Media
 =+=+=+=+=+=+=+=++=+=+=+=+=+=+++++=+=+=+=+=+=+=+=+=+=+=+=+=+=+= */
-@import "navigation/navigation";
+@import "media/media";

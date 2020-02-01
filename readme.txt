@@ -13,7 +13,9 @@ A starter theme called Paper Hue.
 
 == Description ==
 
-Description
+Paper Hue is a free WordPress theme made to simply look and work right out the box.
+Paper Hue is mobile friendly and fully responsive to ensure your website looks great on various devices.
+Paper Hue is SEO friendly, and speed optimized.
 
 == Installation ==
 

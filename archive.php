@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages
+ * For displaying archive pages
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -40,7 +40,7 @@ get_header();
 			endwhile;
 			echo '</div><!-- category-container -->';
 			paper_hue_posts_nav();
-			
+
 		else :
 
 			get_template_part( 'inc/template-parts/content', 'none' );

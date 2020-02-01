@@ -33,7 +33,7 @@ $i++;
     <?php if(!is_sticky()) : // Display featured images except for sticky posts ?>
     <figure class="header-container post-figure">
         <?php get_hue_image( 'wrapped','thumbnail-large'); ?>
-        <?php the_title( '<figcaption class="entry-header"><h1 class="entry-title">', '</h1></figcaption>' ); ?>
+        <?php the_title( '<figcaption class="entry-header">'. '<a href="' . get_permalink() . '" >' . '<h1 class="entry-title">', '</a></h1></figcaption>' ); ?>
         <!-- .entry-header -->
     </figure><!-- .hue-sticky-image-wrapper -->
     <?php endif ?>

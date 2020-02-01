@@ -97,14 +97,16 @@ function paper_hue_content_width() {
 add_action( 'after_setup_theme', 'paper_hue_content_width', 0 );
 
 /**
- * Register widget area.
+ * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 
 function paper_hue_widgets_init() {
 
-	$widgets = [ // Name of widgets and description ie. [widget_name, widget_description]
+	$widgets = [
+		// To add a new widget...
+		// Name of widgets and description ie. [widget_name, widget_description]
 		[ 'Posts Widget', 'Aside widget for posts only' ],
 		[ 'Widget Bottom 1', 'First row below main content, on all pages' ],
 		[ 'Widget Bottom 2', 'The second row below main content, on all pages.' ],

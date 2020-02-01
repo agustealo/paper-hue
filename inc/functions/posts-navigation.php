@@ -25,7 +25,9 @@ function paper_hue_posts_nav( $page_range = 10, $query = NULL )
    if( $page > 1 ){
       echo '<span class="hue-posts-nav-prev"><a href="'.previous_posts(FALSE).'" rel="prev">Previous</a></span>';
    }
-echo '<ul class="numb-wrapper">';
+   if ( $page_end >=2) {
+     echo '<ul class="numb-wrapper">';
+   }
    for( $i = $page_start; $i <= $page_end; $i++ ){
       $class = "";
 
@@ -43,7 +45,9 @@ echo '<ul class="numb-wrapper">';
          echo "<li$class><a href=\"$url\">$i</a></li>";
       }}
    }
+   if ( $page_end >=2) {
   echo '</ul>';
+  }
    if( $page < $query->max_num_pages ){
       echo '<span class="hue-posts-nav-next"><a href="'.next_posts($query->max_num_pages, FALSE).'" rel="next">Next</a></span>';
    }
