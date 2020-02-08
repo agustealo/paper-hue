@@ -5,7 +5,7 @@ Paper Hue is a simple but powerful plug-n-play theme for WordPress. Very lightwe
 
 ![alt text](https://raw.githubusercontent.com/agustealo/paper-project-assets/master/images/WordPress/Paper%20Hue/Paper-WP-Theme-Logo.png?raw=true "Paper Hue Logo")
 
-Paper Hue was built with the end-user in mind, this means very little setup to get this theme looking like what's shown in the demo. As the name suggest Paper Hue is a WordPress material theme base on paper, made to simply look as the demo, and work right out the box. Added featured image fallback to ensure consistency with posts without a set featured image. Paper Hue was built with minimal third party scripts or plugins. It's lightweight, lean, mobile friendly and fully responsive to ensure your website looks great on various devices. Paper Hue is SEO friendly, and speed optimized, featured sticky post, built-in slider with customized options, and custom footer options.
+Paper Hue was built with the end-user in mind, this means very little setup to get this theme looking like what's shown in the demo. As the name suggest Paper Hue is a WordPress material theme base on paper, made to simply look as the demo, and work right out the box, no special setup needed. Paper Hue was built with minimal third party scripts or plugins. It's lightweight, lean, mobile friendly and fully responsive to ensure your website looks great on various devices. Paper Hue is SEO friendly, and speed optimized.
 
 ## Features
 
@@ -24,12 +24,13 @@ Paper Hue was built with the end-user in mind, this means very little setup to g
 ![alt text](https://raw.githubusercontent.com/agustealo/paper-project-assets/master/images/WordPress/Paper%20Hue/WP-ThemeScreenshot-sm.jpg?raw=true "Paper Hue theme screenshot")
 
 ## Setup
-
-1. Click Appearance
-2. Click Add New
-3. Click Upload Theme
-4. Click Choose File
-5. Click Install Now
+From the WordPress admin menu select...
+1. -> Appearance
+2. --> Add New
+3. ---> Upload Theme
+4. ----> Choose File
+5. -----> Install Now
+6. ------> Activate theme after successful install
 
 Make sure to regenerate your WordPress images. Suggest using a regen plugin from the WordPress Repo. [József KollerJózsef Koller](https://onetdev.com/"József KollerJózsef Koller") has a simple regen in the [WordPress](https://wordpress.org/ "WordPress") repo called [ONet Regenerate Thumbnails](https://wordpress.org/plugins/onet-regenerate-thumbnails/ "ONet Regenerate Thumbnails").
 
