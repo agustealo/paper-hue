@@ -2,13 +2,15 @@
 // Button line
 .btn-line,
 .comment-reply-link {
-  border: #7BB0AA solid 1px !important;
+  border: $color__accent-one solid 1px !important;
   background: none !important;
   color: $color__text-button-hover-2 !important;
+    transition: 0.5s ease-out !important;
 
   &:hover,
   &:active,
   &:focus {
+    background-color: #fff !important;
     color: $color__accent-three !important;
     cursor: pointer;
   }

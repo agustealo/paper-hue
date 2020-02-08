@@ -21,9 +21,15 @@ function paper_hue_posts_nav( $page_range = 10, $query = NULL )
    }
 
    echo '<nav class="navigation posts-navigation">';
+   
+   if ( $page <= 1 && $page_end <=1) {
+     echo '<span class="end-archive">End of archive</span>';
+   }else{
 
    if( $page > 1 ){
-      echo '<span class="hue-posts-nav-prev"><a href="'.previous_posts(FALSE).'" rel="prev">Previous</a></span>';
+    echo '<span class="hue-posts-nav-prev"><a href="'.previous_posts(FALSE).'" rel="prev">Previous</a></span>';
+   }else{
+    echo '<span class="hue-posts-nav-prev hue_disabled">Previous</span>';
    }
    if ( $page_end >=2) {
      echo '<ul class="numb-wrapper">';
@@ -43,17 +49,17 @@ function paper_hue_posts_nav( $page_range = 10, $query = NULL )
          $class = ' class="number"';
 
          echo "<li$class><a href=\"$url\">$i</a></li>";
-      }}
+      }
+    }
    }
    if ( $page_end >=2) {
   echo '</ul>';
   }
    if( $page < $query->max_num_pages ){
       echo '<span class="hue-posts-nav-next"><a href="'.next_posts($query->max_num_pages, FALSE).'" rel="next">Next</a></span>';
+   }else{
+      echo '<span class="hue-posts-nav-next hue_disabled">Next</span>';
    }
-   if ( $page <= 1 && $page_end <=1) {
-     echo '<span class="end-archive">End of archive</span>';
-   }
-
+}
    echo '</nav>';
 }

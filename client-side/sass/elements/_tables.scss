@@ -3,6 +3,12 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 }
+table thead tr {
+	background-color: $color__accent-two;
+	&:hover {
+		background-color: $color__accent-two !important;
+	}
+}
 
 table td,
 table th {
@@ -19,6 +25,7 @@ table tr:hover {
 	color: $color__accent-three;
 	background-color: $color__primary;
 	border-color: $color__base-secondary !important;
+	transition: ease-out 0.45s;
 
 	a {
 		color: $color__accent-one;
@@ -31,6 +38,5 @@ table th {
 	padding-bottom: 12px;
 	text-align: left;
 	border-color: $color__base-secondary;
-	background-color: $color__accent-two;
-		color: $color__accent-three;
+	color: $color__accent-three;
 }

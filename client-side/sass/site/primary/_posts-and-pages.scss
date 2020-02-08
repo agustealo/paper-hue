@@ -34,17 +34,26 @@
 }
 
 .site-main > article.page,
-.site-main > article.type-post,
-.site-main > article.type-attachment {
+.site-main > article.type-attachment,
+.site-main > article.type-post {
   @extend %col-9;
-  padding: 10em 0 5em;
+  padding: 5em 0;
   margin: 0 auto;
 
   & > header.entry-header {
-    margin: 2em 0;
+    clear: both;
+    width: 100%;
+    margin: 0 auto 7em;
+    border-bottom: 1px dashed;
+    padding: 2em 0;
+    position: relative;
   }
 }
 
-footer.entry-footer {
-  line-height: 2;
+article.post {
+  footer.entry-footer {
+    line-height: 2;
+    background-color: $color__accent-three;
+    margin: 2em 0;
+  }
 }

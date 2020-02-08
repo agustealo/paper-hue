@@ -4,38 +4,47 @@
   display: flex;
   @include background-cover(relative);
 
+  &:before {
+    content: "";
+    opacity: 0.8 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    @include background ($attachment:fixed);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    background-color: $color__accent-three;
+  }
+
   header.hue-page-header {
     margin: auto;
     position: relative;
+    z-index: 1;
 
     h1 {
-      font-size: 3em;
+      font-size: 3.5em;
+      font-weight: 800;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       text-align: center;
-      color: $color__accent-one;
+      opacity: 0.6;
+      @include hue-inset($text-shadow: -1px -1px 1px rgba($color__base-secondary,0.1));
     }
 
-    .archive-description p, p {
+    .archive-description p,
+    p {
       font-family: "Courier New", Courier, monospace;
       color: darken($color__accent-one, 10);
+
       a {
         color: lighten($color__accent-one, 25);
       }
     }
-  }
-
-  &:before {
-    content: "";
-    opacity: 0.9 !important;
-    top: 0 !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    right: 0 !important;
-    box-sizing: inherit;
-    width: 100% !important;
-    height: 100% !important;
-    position: absolute !important;
-    @include background-three;
-  }
-}
+  }// End header.hue-page-header
+}// End .header-content

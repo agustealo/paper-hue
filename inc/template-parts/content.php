@@ -8,24 +8,19 @@
  */
 
 ?>
-<?php
-	if ( is_archive() || is_category() ) :
-		 echo '<div class="archive-post-container">';
-	endif;
-	?>
-
-<?php if(is_archive() || is_category()): ?>
-<figure class="header-container archive-figure">
-	<?php get_hue_image( 'wrapped','thumbnail-large'); ?>
-    <footer class="entry-footer">
-        <?php paper_hue_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</figure>
+<?php if ( is_archive() || is_category() ) : ?>
+<div class="archive-post-container">
+	<figure class="header-container archive-figure">
+		<?php get_hue_image( 'wrapped','thumbnail-large'); ?>
+	  <footer class="entry-footer">
+			 <?php paper_hue_entry_footer(); ?>
+		</footer><!-- .entry-footer -->
+	</figure>
 <?php  endif; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <header class="entry-header">
-        <?php
+	<header class="entry-header">
+		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		else :

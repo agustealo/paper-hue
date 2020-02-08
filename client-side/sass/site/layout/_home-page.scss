@@ -1,7 +1,6 @@
 /*-----------------*/
 /*** Home Stying ***/
 /*-----------------*/
-
 .home #main {
   padding-bottom: 0;
 }
@@ -9,7 +8,7 @@
 .home-posts-wrapper {
   .container {
     padding-bottom: 15em;
-    @include background-one;
+    @include background ( $img-url: url(../img/banner2.jpg) );
 
     &:before {
       background-color: $color__accent-three;
@@ -17,13 +16,27 @@
       opacity: 0.7;
     }
   }
+  nav.navigation.posts-navigation {
+    margin-top: 6em;
+  }
 }
 /*-----------------------*/
 /*** None sticky posts ***/
 /*-----------------------*/
+
 .not-sticky {
   position: relative;
   padding-top: 3em;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    border-top: 1px solid;
+    border-bottom: 1px dashed;
+    margin: 0 1em;
+    width: 98%;
+    height: 0.5em;
+  }
 
   .article-container {
     display: grid;
@@ -59,6 +72,7 @@
         right: 1em;
         z-index: 5;
         color: $color__accent-one;
+      	transition: ease-out 1s;
 
         &:hover {
           color: $color__base;
@@ -68,6 +82,7 @@
       figure.post-figure {
         display: unset;
         margin: 0;
+        overflow: hidden;
 
         .hue_img_wrapper {
           a {
@@ -75,6 +90,7 @@
             position: relative;
             overflow: hidden;
             @include grayscale-glare();
+            transition: ease-out 1s;
           }
 
           img {
@@ -83,7 +99,7 @@
         }
 
         figcaption {
-          margin-top: -1.5em;
+          margin-top: -1.35em;
 
           a,
           a:visited {
@@ -103,6 +119,7 @@
             padding-left: 0.25em;
             padding-right: 0.25em;
             left: 0;
+            @include animate-ellipsis;
             @include max-string-length;
           }
         }
@@ -130,6 +147,7 @@
 /*-----------------*/
 /*** Sticky Post ***/
 /*-----------------*/
+
 .hue-sticky-row {
   height: 700px;
   position: relative;
@@ -145,18 +163,34 @@
     right: 0 !important;
     bottom: 0 !important;
     opacity: 0.9 !important;
+    background-color: $color__accent-two;
     position: absolute !important;
-    @include background-one;
+    @include background ($size: cover, $img-url: url(../img/banner1.jpg));
+  }
+  &:after {
+    content: "";
+    @include gradient;
   }
 }
 
 .hue-sticky-wrapper {
-  top: 15vh;
   padding: 1em;
-  margin: 0 auto;
-  position: relative;
+  z-index: 1;
   background-color: rgba($color__accent-three, 0.8);
+  @include center-vertical;
   @extend %col-6;
+
+  &:after {
+    top: 0;
+    right: 0;
+    padding-right: 0.25em;
+    padding-left: 0.25em;
+    font-size: 2em;
+    position: absolute;
+    color: $color__accent-one;
+    background: $color__accent-two;
+    @include hue-icon-star-stroke;
+  }
 }
 
 .hue-sticky-article {
@@ -174,21 +208,28 @@
       margin: 0;
       font-size: 2.5em;
       position: relative;
-      color: $color__accent-two;
+      color: $color__accent-one;
       text-transform: uppercase;
     }
   }
 
   p {
+    font-size: 1.5em;
     text-align: justify;
     letter-spacing: 0.05em;
   }
 
   input[type="button"] {
-    color: #fff;
+    color: $color__accent-one;
+    border: 1px solid $color__accent-one;
+    background: none;
+    transition: 0.5s ease-out;
 
     &:hover {
-      color: $color__accent-three;
+      color: $color__base;
+      border: 1px solid $color__accent-one;
+      background-color: $color__accent-one;
+      @include box-sizing;
     }
   }
 }

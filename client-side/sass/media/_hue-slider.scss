@@ -16,13 +16,23 @@
 .hue-slider {
   .hue-slide-item {
     height: 100vh;
+    @include transition( ease-in-out 1s);
     @include background-cover(relative);
 
     &:before {
-      opacity: 0.9 !important;
+      opacity: 0.7 !important;
       @include content-center;
-      @include background-cover;
-      @include background-two($color__accent-three);
+      @include background ($img-url: url(../img/banner4.jpg), $attachment:fixed);
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: .5;
+      background-color: $color__base;
     }
 
     .hue-slide {
@@ -31,7 +41,7 @@
       width: min-content;
       position: relative;
       border: solid 1px;
-      border-color: rgba(123, 176, 170, 0.4);
+      z-index: 1;
       @extend %col-5;
       @include center-vertical;
 
@@ -52,15 +62,17 @@
         color: #fff;
         text-align: center;
         display: inline-block;
-        background: linear-gradient(to bottom, rgba(52, 27, 43, 0.01), 80%, rgba(123, 176, 170, 0.5));
-        @include fade;
-        @include fill;
-
+        background: linear-gradient(
+                    to bottom,
+                    rgba($color__accent-three, 0.2),
+                    30%,
+                    rgba($color__accent-three, 0.7)
+                    );
         .entry-header {
-          //margin-top: -71.35%;
           display: inline-block;
 
           h1 {
+            color: $color__accent-one !important;
             font-size: 2em;
             letter-spacing: 0.2em;
             margin: 0;
@@ -77,6 +89,7 @@
         }
 
         .hue-sticky-btn {
+          border: solid 1px #fff;
           float: unset;
           padding: unset;
           margin-top: unset;

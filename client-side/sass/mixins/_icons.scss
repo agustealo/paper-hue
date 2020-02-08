@@ -71,7 +71,6 @@
 @mixin hue-icon-fleur-de-lis {
     content: "\269C";
 }
-// Shapes
 @mixin hue-icon-fleur-de-lis {
   content: "\2756";
 }
@@ -97,6 +96,9 @@
 }
 @mixin hue-icon-copyright {
   content: "\00A9";
+}
+@mixin hue-push-pin {
+  content: "\1F4CC";
 }
 // Undo & Redo
 @mixin hue-icon-arrow-anticlockwise {

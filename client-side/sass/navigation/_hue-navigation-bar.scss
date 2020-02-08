@@ -17,9 +17,10 @@
     .site-title {
       float: left;
       margin: 0;
-      line-height: 3.5;
+      line-height: 2.5;
 
       a {
+        display: unset;
         font-size: 0.78em;
         font-weight: 200;
         letter-spacing: 0.01em;
@@ -32,7 +33,6 @@
       margin-left: 1em;
       line-height: 3.6;
       text-transform: lowercase;
-      letter-spacing: 0.1em;
     }
 
     a {

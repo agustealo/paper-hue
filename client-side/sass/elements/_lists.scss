@@ -45,11 +45,8 @@ ol.comment-list {
 
 article ol,
 article ul {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 
 	li {
-		width: 50%;
 		font-size: 1em;
 		margin-bottom: 1em;
 		padding-right: 1em;

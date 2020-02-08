@@ -1,30 +1,15 @@
-@mixin background-one($size: 25em) {
-  background-size: $size, $size, auto, cover;
-  background-attachment: scroll, scroll, scroll, fixed;
-  background-repeat: no-repeat, no-repeat, repeat, no-repeat;
-  background-position: top left, top right, top left, bottom center;
-  background-image: url(../img/light-tl.svg), url(../img/light-tr.svg),
-    url(../img/overlay.png), url(../img/banner.jpg);
-}
-
-@mixin background-two(
-  $background-color: null,
-  $img-url: url(../img/overlay.svg)
+@mixin background(
+  $img-url: url(../img/banner4.jpg),
+  $size: cover,
+  $repeat: repeat,
+  $position: center,
+  $attachment: fixed
 ) {
-  background-attachment: fixed !important;
-  background-color: $background-color;
+  background-attachment: $attachment !important;
   background-position: center !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  background-image: $img-url;
-}
-
-@mixin background-three($color: $color__accent-two, $size: 25em) {
-  background-color: $color;
-  background-image: url(../img/light-bl.svg), url(../img/light-br.svg);
-  background-position: bottom left, bottom right;
-  background-repeat: no-repeat, no-repeat;
-  background-size: $size, 25em;
+  background-repeat: $repeat !important;
+  background-size: $size !important;
+  background-image: $img-url !important;
 }
 
 @mixin background-size($value) {
@@ -36,7 +21,7 @@
 
 @mixin background-cover($position: null, $attchment: fixed) {
   position: $position;
-  background-attachment: fixed !important;
+  background-attachment: $attchment !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;

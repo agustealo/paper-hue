@@ -20,7 +20,7 @@
 .unicode-icons {
   .hue-icon {
     &::before {
-      transition: all 0.5s;
+      transition: ease-out 0.5s;
       @include content-center;
     }
     // arrow-left-solid

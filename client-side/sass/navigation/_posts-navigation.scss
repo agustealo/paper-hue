@@ -29,6 +29,15 @@ nav.posts-navigation {
   }
 }
 
+span.hue-posts-nav-prev.hue_disabled,
+span.hue-posts-nav-next.hue_disabled {
+  color: lighten($color__base, 20);
+  position: absolute;
+}
+span.hue-posts-nav-next.hue_disabled {
+    right: 1em;
+}
+
 nav.navigation.posts-navigation {
   .comment-navigation,
   .post-navigation,
@@ -74,5 +83,28 @@ nav.navigation.posts-navigation {
   .navigation li.disabled {
     text-decoration: none;
     cursor: pointer;
+  }
+}
+nav.posts-navigation {
+  display: flex;
+  margin: 0 auto 10em;
+  background-color: unset;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  padding: 2em 1em;
+  position: relative;
+  width: 50%;
+  @include box-sizing(border-box);
+
+  &::before {
+    content: "";
+    top: 0.5em;
+    left: 0.5em;
+    right: 0.5em;
+    bottom: 0.5em;
+    border-bottom: 1px dashed;
+    border-top: 1px dashed;
+    background: none;
+    position: absolute;
   }
 }

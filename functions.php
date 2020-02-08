@@ -35,14 +35,14 @@ if ( ! function_exists( 'paper_hue_setup' ) ) :
 		 */
 		add_theme_support( 'title-tag' );
 		/**
-		 * Implement the Custom Header feature.
+		 * Implement feature image support.
 		 */
 		require get_template_directory() . '/inc/functions/featured-image.php';
 
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'paper-hue' ),
+			'main-menu' => esc_html__( 'Primary', 'paper-hue' ),
 		) );
 
 		/*
@@ -56,27 +56,9 @@ if ( ! function_exists( 'paper_hue_setup' ) ) :
 			'gallery',
 			'caption',
 		) );
-
-		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'paper_hue_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
-
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
-		add_theme_support( 'custom-logo', array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		) );
 	}
 endif;
 add_action( 'after_setup_theme', 'paper_hue_setup' );
@@ -97,6 +79,52 @@ function paper_hue_content_width() {
 add_action( 'after_setup_theme', 'paper_hue_content_width', 0 );
 
 /**
+* Modify Category title by removing prefix "Category"
+*/
+// Return an alternate title, without prefix, for every type used in the get_the_archive_title().
+add_filter('get_the_archive_title', function ($title) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif ( is_year() ) {
+        $title = get_the_date( _x( 'Y', 'yearly archives date format' ) );
+    } elseif ( is_month() ) {
+        $title = get_the_date( _x( 'F Y', 'monthly archives date format' ) );
+    } elseif ( is_day() ) {
+        $title = get_the_date( _x( 'F j, Y', 'daily archives date format' ) );
+    } elseif ( is_tax( 'post_format' ) ) {
+        if ( is_tax( 'post_format', 'post-format-aside' ) ) {
+            $title = _x( 'Asides', 'post format archive title' );
+        } elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
+            $title = _x( 'Galleries', 'post format archive title' );
+        } elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
+            $title = _x( 'Images', 'post format archive title' );
+        } elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
+            $title = _x( 'Videos', 'post format archive title' );
+        } elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
+            $title = _x( 'Quotes', 'post format archive title' );
+        } elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
+            $title = _x( 'Links', 'post format archive title' );
+        } elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
+            $title = _x( 'Statuses', 'post format archive title' );
+        } elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
+            $title = _x( 'Audio', 'post format archive title' );
+        } elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
+            $title = _x( 'Chats', 'post format archive title' );
+        }
+    } elseif ( is_post_type_archive() ) {
+        $title = post_type_archive_title( '', false );
+    } elseif ( is_tax() ) {
+        $title = single_term_title( '', false );
+    } else {
+        $title = __( 'Archives' );
+    }
+    return $title;
+});
+/**
  * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
@@ -107,7 +135,7 @@ function paper_hue_widgets_init() {
 	$widgets = [
 		// To add a new widget...
 		// Name of widgets and description ie. [widget_name, widget_description]
-		[ 'Posts Widget', 'Aside widget for posts only' ],
+		[ 'Posts Widget',    'Aside widget for posts only' ],
 		[ 'Widget Bottom 1', 'First row below main content, on all pages' ],
 		[ 'Widget Bottom 2', 'The second row below main content, on all pages.' ],
 		[ 'Widget Bottom 3', 'The third row below main content, on all pages.' ],
@@ -140,17 +168,11 @@ add_action( 'widgets_init', 'paper_hue_widgets_init' );
 function paper_hue_scripts() {
 	wp_enqueue_style( 'paper-hue-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'paper-hue-code-highlighter', get_template_directory_uri() . '/client-side/js/hue-code-highlighter.js', array(), '20151215', true );
+	//wp_enqueue_script( 'paper-hue-code-highlighter', get_template_directory_uri() . '/client-side/js/hue-code-highlighter.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'paper-hue-navigation-bar', get_template_directory_uri() . '/client-side/js/hue-navigation-bar.js', array(), '20151215', true );
 
-	//wp_enqueue_script( 'paper-hue-theme', get_template_directory_uri() . '/client-side/js/hue-theme.js', array(), '1', true );
-
-	//wp_enqueue_script( 'paper-hue-navigation', get_template_directory_uri() . '/client-side/js/navigation.js', array(), '20151215', true );
-
-	//wp_enqueue_script( 'paper-hue-skip-link-focus-fix', get_template_directory_uri() . '/client-side/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_home() && is_front_page() ) {
+	if ( is_front_page() && !is_paged() ) {
 		wp_enqueue_script( 'paper-hue-slider', get_template_directory_uri() . '/client-side/js/hue-slider.js', array(), '20151215', true );
 	}
 
@@ -159,11 +181,6 @@ function paper_hue_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'paper_hue_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/functions/custom-header.php';
 
 /**
  * Custom template tags for this theme.

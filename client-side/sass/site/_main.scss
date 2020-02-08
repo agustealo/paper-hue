@@ -1,13 +1,12 @@
-html {
-  @include box-sizing(border-box);
-  scroll-behavior: smooth;
-}
-
 *,
 *:after,
 *:before {
   /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
   box-sizing: inherit;
+}
+html {
+  @include box-sizing(border-box);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -15,7 +14,9 @@ body {
   /* Fallback for when there is no custom background color defined. */
 }
 /** Index's **/
+
 #main {
+  position: relative;
   padding-bottom: 8em;
 }
 
@@ -33,14 +34,25 @@ article.type-post {
 }
 // Border
 
+.site-main > article.page,
+.site-main > article.type-attachment,
+.site-main > article.type-post,
 .archive main .category-container .archive-post-container,
 .archive main .category-container:before,
+.archive main .page-header,
 .archive main nav.posts-navigation,
 .fp-heading,
 .not-sticky .article-container .posts-card,
 .page-header,
-.widget-wrapper:before {
+.widget-wrapper:before,
+.home-posts-wrapper nav.navigation.posts-navigation {
   border-color: lighten($color__base, 20);
+}
+// Box shadow
+
+.archive-post-container,
+.not-sticky .article-container .posts-card {
+  @include box-shadow($value: 0 0 5px rgba(0, 0, 0, 0.5));
 }
 // Footer for posts
 

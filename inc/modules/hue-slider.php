@@ -10,13 +10,16 @@
 
    // Settings : Query
    // Setup what kind of posts and how many
+   $cats               = get_theme_mod( 'slider_category' );
+   $s_total            = get_theme_mod( 's_total' );
+   $s_order            = get_theme_mod( 's_order' );
+   $s_order_by         = get_theme_mod( 's_order_by' );
    $slider_posts_query = new WP_Query( array(
-    'orderby'          => 'comment_count',
-    //'order'            => 'ASC',
-     //'category_name' => 'my_category',
+    'orderby'          => $s_order_by,
+    'order'            => $s_order,
+    'cat'              => $cats,
     'post_status'      => array( 'publish' ),
-    //'post_type'        => array( 'post', 'page' ),
-    'posts_per_page'   => 3,
+    'posts_per_page'   => $s_total,
     'ignore_sticky_posts' => true // Exclude sticky posts from loop, if set to false a plus one will be added to loop's final count, ie. total=(('posts_per_page')+1)
    )
   );
@@ -24,7 +27,7 @@
   <div class="hue-slider-container" >
   <?php
 
-    if ( $slider_posts_query->have_posts() ) :    
+    if ( $slider_posts_query->have_posts() ) :
       while ( $slider_posts_query->have_posts() ) :
         $slider_posts_query->the_post();
 
@@ -35,7 +38,7 @@
         <div class="text">
             <?php the_title( '<header class="entry-header"><h1 class="entry-title">', '</h1></header>' ); ?>
         <p><?php the_excerpt(); ?></p>
-        <input class="btn-line" onclick="window.location.href = '<?php echo get_permalink() ?>'" type="button" class="hue-sticky-btn" value="Read More">       
+        <input class="btn-line" onclick="window.location.href = '<?php echo get_permalink() ?>'" type="button" class="hue-sticky-btn" value="Read More">
         </div>
   </div>
 </div>

@@ -11,7 +11,20 @@
 
 <article id="post-<?php the_ID(); ?>"  <?php post_class() ; ?>>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+	<?php
+	if ( $post->post_parent ):
+	        $page_title = get_the_title($post->ID);
+	        echo '<h1 class="entry-title">';
+	        _e($page_title);
+	        echo '</h1>';
+
+	        $parent_title = get_the_title($post->post_parent);
+	        echo '<p>Sub page of: ';
+	        echo '<a href="' . get_permalink($post->post_parent) . '">' . __($parent_title) . '</a>';
+	        echo '</p>';
+	else: the_title( '<h1 class="entry-title">', '</h1>' );
+	endif;
+	?>
 	</header><!-- .entry-header -->
 
 	<?php paper_hue_post_thumbnail(); ?>

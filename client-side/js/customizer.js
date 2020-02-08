@@ -39,19 +39,19 @@
 			}
 		} );
 	} );
-	
+
 	//Update site background color...
 	wp.customize( 'background_color', function( value ) {
 		value.bind( function( newval ) {
 			$('body').css('background-color', newval );
 		} );
 	} );
-	
+
 	//Update site link color in real time...
 	wp.customize( 'link_textcolor', function( value ) {
 		value.bind( function( newval ) {
 			$('a').css('color', newval );
 		} );
 	} );
-	
+
 } )( jQuery );

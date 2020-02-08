@@ -18,6 +18,7 @@ get_header();
 			<header class="page-header">
 				<?php
 				the_archive_title( '<h1 class="page-title archive-header category-header">', '</h1>' );
+        the_archive_description( '<span class="archive-description">', '</span>' );
 				echo '<span class="hue-breadcrumb">';
 				get_breadcrumb();
 				echo '</span>';
