@@ -205,6 +205,13 @@ function paper_hue_scripts() {
 		paper_hue_asset_version( 'client-side/css/hue-paper-style.css' )
 	);
 
+	wp_enqueue_style(
+		'paper-hue-components',
+		get_template_directory_uri() . '/client-side/css/paper-hue-components.css',
+		array( 'paper-hue-paper-style' ),
+		paper_hue_asset_version( 'client-side/css/paper-hue-components.css' )
+	);
+
 	wp_enqueue_script(
 		'paper-hue-navigation-bar',
 		get_template_directory_uri() . '/client-side/js/hue-navigation-bar.js',
@@ -236,10 +243,12 @@ require get_template_directory() . '/inc/functions/customizer.php';
 require get_template_directory() . '/inc/functions/customizer-experience.php';
 require get_template_directory() . '/inc/functions/customizer-slider.php';
 require get_template_directory() . '/inc/functions/customizer-featured-story.php';
+require get_template_directory() . '/inc/functions/customizer-recent-articles.php';
 require get_template_directory() . '/inc/classes/class-paper-hue-config.php';
 require get_template_directory() . '/inc/classes/class-paper-hue-admin.php';
 require get_template_directory() . '/inc/classes/class-paper-hue-slider.php';
 require get_template_directory() . '/inc/classes/class-paper-hue-featured-story.php';
+require get_template_directory() . '/inc/classes/class-paper-hue-recent-articles.php';
 
 if ( is_admin() ) {
 	$paper_hue_admin = new Paper_Hue_Admin( Paper_Hue_Config::instance() );
