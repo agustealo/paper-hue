@@ -2,21 +2,23 @@
 Theme Name: Paper Hue
 Theme URI: https://github.com/agustealo/paper-hue
 Author: Agustealo
-Author URI: http://www.agustealo.com
-Description: Paper Hue, as the name suggest is a paper material WordPress theme made to simply look as the demo and work right out the box. Added featured image fallback to ensure consistancy with posts without a set featured image. Paper Hue was built with minimal third party scripts or plugins. It's lightweight, lean, mobile friendly and fully responsive to ensure your website looks great on various devices. Paper Hue is SEO friendly, and speed optimized, featured sticky post, built-in slider with customized options, and custom footer options.
-Version: 0.9.1
+Author URI: https://www.agustealo.com/
+Description: Paper Hue is a lightweight paper-inspired classic WordPress theme with a built-in front-page slider, featured sticky-post presentation, featured-image fallback, Customizer options, widget areas, and responsive layouts.
+Version: 1.1.0
+Requires at least: 6.4
+Requires PHP: 7.4
 License: GNU General Public License v2 or later
-License URI: LICENSE
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: paper-hue
-Tags: blog, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, slider, custom header
+Tags: blog, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
+Paper Hue is licensed under the GNU General Public License v2 or later.
 
 Paper Hue is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+Normalizing styles were helped along by Nicolas Gallagher and Jonathan Neal:
+https://necolas.github.io/normalize.css/
+
+The compiled theme stylesheet is enqueued from client-side/css/hue-paper-style.css.
 */
- @import "client-side/css/hue-paper-style.css";

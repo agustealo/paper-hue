@@ -1,45 +1,16 @@
 <?php
 /**
- * Functions which enhance the theme by hooking into WordPress
+ * Functions that enhance Paper Hue by hooking into WordPress.
  *
  * @package Paper_Hue
  */
 
-
-  /**
-   * Posts navigation.
-   */
-  require get_template_directory() . '/inc/functions/posts-navigation.php';
-
-   /**
-    * Posts navigation.
-    */
-   require get_template_directory() . '/inc/functions/comments.php';
+require get_template_directory() . '/inc/functions/posts-navigation.php';
 
 /**
- * Adds custom classes to the array of body classes.
+ * Add a pingback URL auto-discovery header when needed.
  *
- * @param array $classes Classes for the body element.
- * @return array
- */
-
-/*function paper_hue_body_classes( $classes ) {
-	// Adds a class of hfeed to non-singular pages.
-	if ( ! is_singular() ) {
-		$classes[] = 'hfeed';
-	}
-
-	// Adds a class of no-sidebar when there is no sidebar present.
-	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-		$classes[] = 'no-sidebar';
-	}
-
-	return $classes;
-}
-add_filter( 'body_class', 'paper_hue_body_classes' ); */
-
-/**
- * Add a pingback url auto-discovery header for single posts, pages, or attachments.
+ * @return void
  */
 function paper_hue_pingback_header() {
 	if ( is_singular() && pings_open() ) {
@@ -49,9 +20,13 @@ function paper_hue_pingback_header() {
 add_action( 'wp_head', 'paper_hue_pingback_header' );
 
 /**
- * Set the excerpt limit
+ * Set the default excerpt length for Paper Hue layouts.
+ *
+ * @param int $length WordPress default excerpt length.
+ * @return int
  */
-function custom_excerpt_length( $length ) {
+function paper_hue_excerpt_length( $length ) {
+	unset( $length );
 	return 30;
 }
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+add_filter( 'excerpt_length', 'paper_hue_excerpt_length', 999 );

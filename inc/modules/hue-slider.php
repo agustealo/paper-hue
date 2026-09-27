@@ -1,77 +1,69 @@
 <?php
 /**
- * Template part for displaying slider in header
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Slider template for the site header.
  *
  * @package Paper_Hue
  */
 
+$slider_category = absint( get_theme_mod( 'slider_category', 1 ) );
+$slider_total    = paper_hue_sanitize_slider_count( get_theme_mod( 's_total', 3 ) );
+$slider_order    = paper_hue_sanitize_slider_order( get_theme_mod( 's_order', 'ASC' ) );
+$slider_orderby  = paper_hue_sanitize_slider_orderby( get_theme_mod( 's_order_by', 'date' ) );
+$slider_orderby  = 'id' === $slider_orderby ? 'ID' : $slider_orderby;
 
-   // Settings : Query
-   // Setup what kind of posts and how many
-   $cats               = get_theme_mod( 'slider_category' );
-   $s_total            = get_theme_mod( 's_total' );
-   $s_order            = get_theme_mod( 's_order' );
-   $s_order_by         = get_theme_mod( 's_order_by' );
-   $slider_posts_query = new WP_Query( array(
-    'orderby'          => $s_order_by,
-    'order'            => $s_order,
-    'cat'              => $cats,
-    'post_status'      => array( 'publish' ),
-    'posts_per_page'   => $s_total,
-    'ignore_sticky_posts' => true // Exclude sticky posts from loop, if set to false a plus one will be added to loop's final count, ie. total=(('posts_per_page')+1)
-   )
-  );
-  ?>
-  <div class="hue-slider-container" >
-  <?php
+$slider_posts_query = new WP_Query(
+	array(
+		'orderby'             => $slider_orderby,
+		'order'               => $slider_order,
+		'cat'                 => $slider_category,
+		'post_status'         => 'publish',
+		'posts_per_page'      => $slider_total,
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+	)
+);
+?>
+<div class="hue-slider-container">
+	<?php if ( $slider_posts_query->have_posts() ) : ?>
+		<?php while ( $slider_posts_query->have_posts() ) : ?>
+			<?php $slider_posts_query->the_post(); ?>
+			<div class="hue-slide-item" style="background-image: url('<?php echo esc_url( paper_hue_get_image_url( 'featured-post-image' ) ); ?>');">
+				<div class="hue-slide">
+					<div class="text">
+						<?php the_title( '<header class="entry-header"><h2 class="entry-title">', '</h2></header>' ); ?>
+						<?php the_excerpt(); ?>
+						<a class="btn-line hue-sticky-btn" href="<?php echo esc_url( get_permalink() ); ?>">
+							<?php esc_html_e( 'Read More', 'paper-hue' ); ?>
+						</a>
+					</div>
+				</div>
+			</div>
+		<?php endwhile; ?>
+		<?php wp_reset_postdata(); ?>
+	<?php else : ?>
+		<p class="hue-slider-empty">
+			<?php esc_html_e( 'No posts are available in the selected slider category yet.', 'paper-hue' ); ?>
+		</p>
+	<?php endif; ?>
 
-    if ( $slider_posts_query->have_posts() ) :
-      while ( $slider_posts_query->have_posts() ) :
-        $slider_posts_query->the_post();
+	<?php if ( $slider_posts_query->post_count > 0 ) : ?>
+		<div class="control">
+			<div>
+				<button class="prev" type="button" onclick="plusSlides(-1)" aria-label="<?php esc_attr_e( 'Previous slide', 'paper-hue' ); ?>"><i aria-hidden="true">&#9665;</i></button>
+				<button class="next" type="button" onclick="plusSlides(1)" aria-label="<?php esc_attr_e( 'Next slide', 'paper-hue' ); ?>"><i aria-hidden="true">&#9655;</i></button>
+				<span class="hue-counter" aria-live="polite"><i class="counter"></i></span>
+				<a class="hue-nextsection" href="#content" aria-label="<?php esc_attr_e( 'Skip slider and continue to content', 'paper-hue' ); ?>"><i aria-hidden="true">&#9660;</i></a>
+			</div>
 
-  ?>
+			<div class="dots-wrapper">
+				<?php for ( $slide_number = 1; $slide_number <= $slider_posts_query->post_count; $slide_number++ ) : ?>
+					<button class="dot" type="button" onclick="currentSlide(<?php echo esc_attr( $slide_number ); ?>)" aria-label="<?php echo esc_attr( sprintf( __( 'Go to slide %d', 'paper-hue' ), $slide_number ) ); ?>">&#9635;</button>
+				<?php endfor; ?>
+			</div>
 
-<div class="hue-slide-item" style="background: url(<?php get_hue_image("url") ?>)">
-  <div class="hue-slide">
-        <div class="text">
-            <?php the_title( '<header class="entry-header"><h1 class="entry-title">', '</h1></header>' ); ?>
-        <p><?php the_excerpt(); ?></p>
-        <input class="btn-line" onclick="window.location.href = '<?php echo get_permalink() ?>'" type="button" class="hue-sticky-btn" value="Read More">
-        </div>
-  </div>
-</div>
-
-  <?php endwhile; ?>
-  <?php wp_reset_postdata(); ?>
-
-<?php else : ?>
-  <p><?php echo 'Nothing to show here, empty category. Select a category with at least one post, or start adding posts with images to the selected category.'; ?></p>
-<?php endif; ?>
- <!-- control bar -->
- <div class="control">
-        <div>
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)"><i>&#9665;</i></a>
-            <a class="next" onclick="plusSlides(1)"><i>&#9655;</i></a>
-            <!-- counter -->
-            <a class="hue-counter"><i class="counter"></i></a>
-            <a class="hue-nextsection" href="#content"><i>&#9660;</i></a>
-        </div>
-        <!-- The dots/circles -->
-        <div class="dots-wrapper">
-        <?php
-            $total_slides = $slider_posts_query->post_count;
-            $i = 1;
-            for ($x = 1; $x <= $total_slides; $x++) {
-                echo "<span class=\"dot\" onclick=\"currentSlide(" . $i++ . ")\">&#9635;</span>";
-            }
-        ?>
-        </div>
-        <!-- The Link to content -->
-        <a class="to-content-bttn" href="#content"><i
-                class="<?php esc_html_e( 'font-icon-arrow-simple', 'paper-hue' ); ?>"></i></a>
-    </div>
-
+			<a class="to-content-bttn" href="#content" aria-label="<?php esc_attr_e( 'Continue to content', 'paper-hue' ); ?>">
+				<i class="font-icon-arrow-simple" aria-hidden="true"></i>
+			</a>
+		</div>
+	<?php endif; ?>
 </div><!-- .hue-slider-container -->
