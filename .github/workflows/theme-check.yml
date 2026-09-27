@@ -71,9 +71,20 @@ jobs:
             --exclude 'vendor/' \
             --exclude 'tools/' \
             --exclude 'client-side/demo-short-codes/' \
+            --exclude 'client-side/img/banner1.jpeg' \
+            --exclude 'client-side/img/banner2.jpeg' \
+            --exclude 'client-side/img/banner3.jpeg' \
+            --exclude 'client-side/img/banner4.jpeg' \
+            --exclude 'client-side/img/paper_hue_fallback.jpeg' \
             --exclude 'composer.json' \
             --exclude 'composer.lock' \
             --exclude 'phpcs.xml.dist'
+          test -f dist/paper-hue/client-side/img/paper-hue-fallback.svg
+          test ! -e dist/paper-hue/client-side/img/banner1.jpeg
+          test ! -e dist/paper-hue/client-side/img/banner2.jpeg
+          test ! -e dist/paper-hue/client-side/img/banner3.jpeg
+          test ! -e dist/paper-hue/client-side/img/banner4.jpeg
+          test ! -e dist/paper-hue/client-side/img/paper_hue_fallback.jpeg
           cat > .wp-env.json <<'JSON'
           {
             "core": "https://wordpress.org/wordpress-7.1.zip",
