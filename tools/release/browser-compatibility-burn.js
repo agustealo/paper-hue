@@ -43,6 +43,25 @@ async function expectCount(page, selector, expected, label) {
   if (count !== expected) fail(`${label}: expected ${expected}, got ${count}`);
 }
 
+async function overflowOffenders(page) {
+  return page.evaluate(() => {
+    const viewportWidth = document.documentElement.clientWidth;
+    return Array.from(document.querySelectorAll('body *'))
+      .map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          selector: `${element.tagName.toLowerCase()}${element.id ? `#${element.id}` : ''}${element.classList.length ? `.${Array.from(element.classList).join('.')}` : ''}`,
+          left: Math.round(rect.left),
+          right: Math.round(rect.right),
+          width: Math.round(rect.width),
+        };
+      })
+      .filter((item) => item.right > viewportWidth + 1 || item.left < -1)
+      .sort((a, b) => Math.max(b.right - viewportWidth, -b.left) - Math.max(a.right - viewportWidth, -a.left))
+      .slice(0, 8);
+  });
+}
+
 (async () => {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ colorScheme: 'light' });
@@ -182,7 +201,10 @@ async function expectCount(page, selector, expected, label) {
   if ((await toggle.getAttribute('aria-expanded')) !== 'false') fail('Escape did not close mobile menu.');
   if (await page.locator('#primary-menu').isVisible()) fail('Mobile menu remained visible after Escape closed the disclosure.');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-  if (overflow > 1) fail(`Mobile reflow has ${overflow}px horizontal overflow.`);
+  if (overflow > 1) {
+    const offenders = await overflowOffenders(page);
+    fail(`Mobile reflow has ${overflow}px horizontal overflow. Offenders: ${JSON.stringify(offenders)}`);
+  }
 
   // Slider controls expose buttons and support keyboard arrows.
   await page.setViewportSize({ width: 1440, height: 1000 });
