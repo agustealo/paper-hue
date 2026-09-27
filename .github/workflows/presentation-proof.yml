@@ -40,6 +40,21 @@ jobs:
       - name: Seed real Paper Hue content
         run: bash tools/showcase/seed-wordpress.sh
 
+      - name: Prepare one-run admin capture session
+        shell: bash
+        run: |
+          set -euo pipefail
+          AUTH_FILE="${RUNNER_TEMP}/paper-hue-admin-auth.json"
+          CAPTURE_PASSWORD="$(openssl rand -hex 24)"
+          export AUTH_FILE CAPTURE_PASSWORD
+          npx wp-env run cli wp user update admin --user_pass="${CAPTURE_PASSWORD}" > /dev/null
+          python - <<'PY'
+          import json, os
+          with open(os.environ['AUTH_FILE'], 'w', encoding='utf-8') as handle:
+              json.dump({'username': 'admin', 'password': os.environ['CAPTURE_PASSWORD']}, handle)
+          PY
+          echo "PAPER_HUE_ADMIN_AUTH_FILE=${AUTH_FILE}" >> "${GITHUB_ENV}"
+
       - name: Verify rendered homepage
         run: curl --fail --silent --show-error http://localhost:8888/ > /dev/null
 
