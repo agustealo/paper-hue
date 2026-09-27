@@ -1,0 +1,189 @@
+.paper-hue-admin {
+	max-width: 1240px;
+}
+
+.paper-hue-admin-hero {
+	display: flex;
+	gap: 32px;
+	align-items: center;
+	justify-content: space-between;
+	margin: 24px 0 20px;
+	padding: 32px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.paper-hue-admin-eyebrow {
+	margin: 0 0 6px;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: #646970;
+}
+
+.paper-hue-admin-hero h1 {
+	margin: 0;
+	font-size: 30px;
+	line-height: 1.2;
+}
+
+.paper-hue-admin-lede {
+	max-width: 760px;
+	margin: 12px 0 0;
+	font-size: 15px;
+	line-height: 1.6;
+	color: #50575e;
+}
+
+.paper-hue-admin-score {
+	flex: 0 0 auto;
+	min-width: 118px;
+	padding: 18px;
+	text-align: center;
+	background: #f6f7f7;
+	border-radius: 8px;
+}
+
+.paper-hue-admin-score strong,
+.paper-hue-admin-score span {
+	display: block;
+}
+
+.paper-hue-admin-score strong {
+	font-size: 26px;
+	line-height: 1;
+}
+
+.paper-hue-admin-score span {
+	margin-top: 8px;
+	font-size: 12px;
+	color: #646970;
+}
+
+.paper-hue-admin-actions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-bottom: 28px;
+}
+
+.paper-hue-admin-section {
+	margin: 28px 0;
+}
+
+.paper-hue-admin-section__heading {
+	margin-bottom: 14px;
+}
+
+.paper-hue-admin-section__heading h2 {
+	margin-bottom: 4px;
+}
+
+.paper-hue-admin-section__heading p {
+	margin: 0;
+	color: #646970;
+}
+
+.paper-hue-admin-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.paper-hue-admin-card,
+.paper-hue-admin-panel {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.paper-hue-admin-card__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.paper-hue-admin-card h2,
+.paper-hue-admin-panel h2 {
+	margin: 0;
+	font-size: 16px;
+}
+
+.paper-hue-admin-card p {
+	min-height: 40px;
+	color: #50575e;
+}
+
+.paper-hue-admin-status {
+	white-space: nowrap;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 4px 8px;
+	border-radius: 999px;
+}
+
+.paper-hue-admin-status.is-ready {
+	color: #116329;
+	background: #edfaef;
+}
+
+.paper-hue-admin-status.needs-attention {
+	color: #8a2424;
+	background: #fcf0f1;
+}
+
+.paper-hue-admin-two-column {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.paper-hue-admin-panel h3 {
+	margin-bottom: 6px;
+}
+
+.paper-hue-admin-inline-actions {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	margin-top: 16px;
+}
+
+.paper-hue-admin-checklist {
+	margin: 16px 0 0 20px;
+}
+
+.paper-hue-admin-checklist li {
+	margin-bottom: 8px;
+}
+
+@media screen and (max-width: 960px) {
+	.paper-hue-admin-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media screen and (max-width: 782px) {
+	.paper-hue-admin-hero,
+	.paper-hue-admin-two-column {
+		display: block;
+	}
+
+	.paper-hue-admin-score {
+		margin-top: 20px;
+	}
+
+	.paper-hue-admin-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.paper-hue-admin-panel + .paper-hue-admin-panel {
+		margin-top: 16px;
+	}
+}
