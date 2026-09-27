@@ -1,6 +1,6 @@
 <?php
 /**
- * Featured sticky post shown on the posts-style front page.
+ * Featured Story shown on the posts-style front page.
  *
  * @package Paper_Hue
  */
@@ -10,10 +10,26 @@
 	<div class="hue-sticky-wrapper">
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'hue-sticky-article' ); ?>>
 			<?php the_title( '<header class="home-sticky-header"><h2 class="entry-title">', '</h2></header>' ); ?>
-			<?php the_excerpt(); ?>
+
+			<?php if ( Paper_Hue_Featured_Story::show_meta() ) : ?>
+				<p class="hue-sticky-meta">
+					<?php
+					printf(
+						/* translators: 1: author name, 2: publication date. */
+						esc_html__( 'By %1$s · %2$s', 'paper-hue' ),
+						esc_html( get_the_author() ),
+						esc_html( get_the_date() )
+					);
+					?>
+				</p>
+			<?php endif; ?>
+
+			<?php if ( Paper_Hue_Featured_Story::show_excerpt() ) : ?>
+				<?php the_excerpt(); ?>
+			<?php endif; ?>
 
 			<a class="hue-sticky-btn" href="<?php echo esc_url( get_permalink() ); ?>">
-				<?php esc_html_e( 'Read More', 'paper-hue' ); ?>
+				<?php echo esc_html( Paper_Hue_Featured_Story::cta_label() ); ?>
 			</a>
 
 			<?php if ( get_edit_post_link() ) : ?>
