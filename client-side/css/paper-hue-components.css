@@ -88,6 +88,15 @@
 	.hue-sticky-article .home-sticky-header h1 {
 		overflow-wrap: anywhere;
 	}
+
+	.fp-heading {
+		max-width: calc(100% - 2rem);
+	}
+
+	.fp-heading h1 {
+		white-space: normal;
+		overflow-wrap: anywhere;
+	}
 }
 
 @media (max-width: 720px) {
