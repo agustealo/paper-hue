@@ -1,0 +1,66 @@
+name: Paper Hue Presentation Proof
+
+on:
+  pull_request:
+    paths:
+      - '**.php'
+      - 'client-side/**'
+      - 'tools/showcase/**'
+      - '.wp-env.json'
+      - '.github/workflows/presentation-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    name: Real WordPress browser captures
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install pinned browser/runtime tools
+        run: npm install --no-save @wordpress/env@11.16.0 playwright@1.63.0
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Boot WordPress 7.1
+        run: npx wp-env start
+
+      - name: Seed real Paper Hue content
+        run: bash tools/showcase/seed-wordpress.sh
+
+      - name: Verify rendered homepage
+        run: curl --fail --silent --show-error http://localhost:8888/ > /dev/null
+
+      - name: Capture real screenshots
+        env:
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node tools/showcase/capture-showcase.js
+
+      - name: Record runtime versions
+        run: |
+          npx wp-env run cli wp core version > artifacts/wordpress-version.txt
+          npx wp-env run cli php -v > artifacts/php-version.txt
+
+      - name: Upload screenshot proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-hue-real-screenshots-${{ github.event.pull_request.head.sha || github.sha }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Stop WordPress runtime
+        if: always()
+        run: npx wp-env stop
