@@ -16,7 +16,9 @@
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="paper-hue"/>
+			<property name="text_domain" type="array">
+				<element value="paper-hue"/>
+			</property>
 		</properties>
 	</rule>
 
@@ -32,12 +34,20 @@
 	<rule ref="PHPCompatibilityWP"/>
 
 	<!--
-		The original public API includes three unprefixed compatibility helpers.
+		The original public API includes a few short compatibility helpers.
 		They are retained intentionally for child themes and existing templates.
+		Allow those known prefixes while still enforcing prefixing for new globals.
 	-->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed"/>
 		<properties>
-			<property name="prefixes" type="array" value="paper_hue,hue,get_hue,static_fallback,get_breadcrumb"/>
+			<property name="prefixes" type="array">
+				<element value="paper_hue"/>
+				<element value="hue"/>
+				<element value="get_hue"/>
+				<element value="static_fallback"/>
+				<element value="get_breadcrumb"/>
+			</property>
 		</properties>
 	</rule>
 </ruleset>
