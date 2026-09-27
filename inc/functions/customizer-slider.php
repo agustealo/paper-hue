@@ -228,3 +228,22 @@ function paper_hue_customize_slider_controls( $wp_customize ) {
 	);
 }
 add_action( 'customize_register', 'paper_hue_customize_slider_controls', 30 );
+
+/**
+ * Load the modern-browser compatibility layer for the legacy Paper Hue slider.
+ *
+ * @return void
+ */
+function paper_hue_enqueue_slider_compatibility_styles() {
+	if ( ! is_front_page() || is_paged() || ! get_theme_mod( 'paper_hue_slider', true ) ) {
+		return;
+	}
+
+	wp_enqueue_style(
+		'paper-hue-slider-modern',
+		get_template_directory_uri() . '/client-side/css/paper-hue-slider-modern.css',
+		array( 'paper-hue-paper-style' ),
+		paper_hue_asset_version( 'client-side/css/paper-hue-slider-modern.css' )
+	);
+}
+add_action( 'wp_enqueue_scripts', 'paper_hue_enqueue_slider_compatibility_styles', 20 );
