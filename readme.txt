@@ -54,7 +54,7 @@ Paper Hue includes compatibility hooks for Jetpack and WooCommerce when those pl
 * Promote sticky content into a configurable Featured Story while preserving the original sticky-post default.
 * Add first-class Recent Articles source, count, layout, image, excerpt, metadata, CTA, and pagination controls.
 * Fix featured-image registration that could fail on modern PHP.
-* Fix the bundled featured-image fallback path.
+* Replace the legacy bundled JPEG fallback with a repository-authored Paper Hue SVG fallback.
 * Preserve existing Customizer setting IDs while adding sanitization.
 * Add standard WordPress custom-logo support with legacy-logo fallback.
 * Add wp_body_open() and a skip-to-content link.
@@ -63,6 +63,7 @@ Paper Hue includes compatibility hooks for Jetpack and WooCommerce when those pl
 * Stop the theme from mutating submitted comment content.
 * Replace fixed 2015 asset versions with cache-aware theme asset versions.
 * Add governed real-browser presentation proof for desktop, mobile, admin, and Customizer states.
+* Exclude legacy demo JPEG banners with undocumented upstream provenance from the release package.
 
 = 1.0.0 - February 2020 =
 * Original public release line.
@@ -72,3 +73,6 @@ Paper Hue includes compatibility hooks for Jetpack and WooCommerce when those pl
 * Paper Hue is licensed under GNU GPLv3 or later. See LICENSE.
 * Paper Hue is based on Underscores, (C) 2012-2017 Automattic, Inc., GPLv2 or later: https://underscores.me/
 * normalize.css, (C) Nicolas Gallagher and Jonathan Neal, MIT: https://necolas.github.io/normalize.css/
+* client-side/img/paper-hue-fallback.svg is original Paper Hue project artwork created for the 1.1.0 release and distributed under GNU GPLv3 or later with the theme.
+* screenshot.jpg is the Paper Hue project theme screenshot first committed by the project author on January 5, 2020 (repository commit 97b14ca13a60c9c90febe3cf28f20d395260c160) and distributed under GNU GPLv3 or later with the theme.
+* Legacy banner1.jpeg through banner4.jpeg and paper_hue_fallback.jpeg remain only in repository history/source and are intentionally excluded from the 1.1.0 distribution package because their upstream image provenance is not documented.
