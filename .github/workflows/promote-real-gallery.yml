@@ -1,0 +1,116 @@
+name: Promote Paper Hue real gallery
+
+on:
+  push:
+    branches:
+      - 'docs/paper-hue-1-1-gallery'
+    paths:
+      - '.github/workflows/promote-real-gallery.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  promote:
+    name: Promote exact production screenshots
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout gallery branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download exact production proof
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf .gallery-proof
+          mkdir -p .gallery-proof
+          gh run download 36324053432 \
+            --repo agustealo/paper-hue \
+            --name paper-hue-real-screenshots-76c2aa2d0e5f8a2d7bb281d09e6a9a416fb37a7c \
+            --dir .gallery-proof
+
+      - name: Verify production provenance
+        run: |
+          set -euo pipefail
+          EXPECTED='76c2aa2d0e5f8a2d7bb281d09e6a9a416fb37a7c'
+          test "$(cat .gallery-proof/candidate-sha.txt)" = "${EXPECTED}"
+          grep -q "${EXPECTED}" .gallery-proof/showcase-manifest.json
+          grep -q '"authenticatedAdminProof": true' .gallery-proof/showcase-manifest.json
+          test -f .gallery-proof/screenshots/01-front-page-desktop.png
+          test -f .gallery-proof/screenshots/02-hero-slider.png
+          test -f .gallery-proof/screenshots/07-front-page-mobile.png
+          test -f .gallery-proof/screenshots/08-paper-hue-admin.png
+          test -f .gallery-proof/screenshots/09-customizer-homepage.png
+
+      - name: Promote curated screenshot set
+        run: |
+          set -euo pipefail
+          mkdir -p docs/screenshots
+          cp .gallery-proof/screenshots/01-front-page-desktop.png docs/screenshots/front-page-desktop.png
+          cp .gallery-proof/screenshots/02-hero-slider.png docs/screenshots/hero-slider.png
+          cp .gallery-proof/screenshots/07-front-page-mobile.png docs/screenshots/front-page-mobile.png
+          cp .gallery-proof/screenshots/08-paper-hue-admin.png docs/screenshots/paper-hue-admin.png
+          cp .gallery-proof/screenshots/09-customizer-homepage.png docs/screenshots/customizer-homepage.png
+
+          cat > docs/SCREENSHOT-GALLERY.md <<'EOF'
+          # Paper Hue 1.1 real screenshot gallery
+
+          These are real browser captures from the governed Paper Hue presentation proof, not mockups or generated UI.
+
+          - Production candidate: `master@76c2aa2d0e5f8a2d7bb281d09e6a9a416fb37a7c`
+          - WordPress: `7.1`
+          - PHP: `8.3`
+          - Authenticated admin proof: `true`
+          - Source artifact: `paper-hue-real-screenshots-76c2aa2d0e5f8a2d7bb281d09e6a9a416fb37a7c`
+          - Artifact digest: `sha256:739e84857e895d77707e38b8bc71d871ec9d5f4b96924aaee4427ceaed13c46a`
+
+          ## Desktop homepage
+
+          ![Paper Hue desktop homepage](screenshots/front-page-desktop.png)
+
+          ## Hero Slider
+
+          ![Paper Hue Hero Slider](screenshots/hero-slider.png)
+
+          ## Mobile homepage
+
+          ![Paper Hue mobile homepage](screenshots/front-page-mobile.png)
+
+          ## Appearance → Paper Hue
+
+          ![Paper Hue administration control center](screenshots/paper-hue-admin.png)
+
+          ## Live Customizer
+
+          ![Paper Hue Hero Slider controls in the WordPress Customizer](screenshots/customizer-homepage.png)
+          EOF
+
+      - name: Add README gallery
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('README.md')
+          text = path.read_text(encoding='utf-8')
+          old = """## Real browser proof\n\nPaper Hue's 1.1 release line is exercised against a real WordPress 7.1 runtime with Playwright. The governed presentation rail captures the exact candidate SHA and includes desktop, mobile, Hero Slider, Featured Story, Recent Articles, single-post, archive, **Appearance → Paper Hue**, and live **Customizer** states.\n\nThe screenshot workflow deliberately rejects mock UI as release evidence. It seeds a disposable WordPress site, imports repository-owned Paper Hue imagery, configures the actual theme, captures the rendered product, records runtime versions and provenance, then destroys the runtime.\n"""
+          new = """## Real browser proof\n\nPaper Hue's 1.1 release line is exercised against a real WordPress 7.1 runtime with Playwright. The governed presentation rail captures the exact candidate SHA and includes desktop, mobile, Hero Slider, Featured Story, Recent Articles, single-post, archive, **Appearance → Paper Hue**, and live **Customizer** states.\n\n[View the full real screenshot gallery](docs/SCREENSHOT-GALLERY.md). These captures come from production `master@76c2aa2d0e5f8a2d7bb281d09e6a9a416fb37a7c`, with the exact checked-out SHA asserted before browser capture.\n\n![Paper Hue real desktop homepage](docs/screenshots/front-page-desktop.png)\n\n<table>\n<tr>\n<td><img src=\"docs/screenshots/hero-slider.png\" alt=\"Paper Hue real Hero Slider\"></td>\n<td><img src=\"docs/screenshots/paper-hue-admin.png\" alt=\"Paper Hue real admin control center\"></td>\n</tr>\n<tr>\n<td><img src=\"docs/screenshots/front-page-mobile.png\" alt=\"Paper Hue real mobile homepage\"></td>\n<td><img src=\"docs/screenshots/customizer-homepage.png\" alt=\"Paper Hue real WordPress Customizer\"></td>\n</tr>\n</table>\n\nThe screenshot workflow deliberately rejects mock UI as release evidence. It seeds a disposable WordPress site, imports Paper Hue's bundled imagery, configures the actual theme, captures the rendered product, records runtime versions and provenance, then destroys the runtime.\n"""
+          if old not in text:
+              raise SystemExit('Expected README browser-proof section not found')
+          path.write_text(text.replace(old, new), encoding='utf-8')
+
+      - name: Remove promotion machinery and commit gallery
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/promote-real-gallery.yml
+          git add README.md docs/SCREENSHOT-GALLERY.md docs/screenshots
+          git commit -m 'Add governed Paper Hue 1.1 screenshot gallery'
+          git push origin HEAD:docs/paper-hue-1-1-gallery
