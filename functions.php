@@ -233,6 +233,7 @@ require get_template_directory() . '/inc/functions/featured-image.php';
 require get_template_directory() . '/inc/functions/template-tags.php';
 require get_template_directory() . '/inc/functions/template-functions.php';
 require get_template_directory() . '/inc/functions/customizer.php';
+require get_template_directory() . '/inc/functions/customizer-experience.php';
 require get_template_directory() . '/inc/classes/class-paper-hue-config.php';
 require get_template_directory() . '/inc/classes/class-paper-hue-admin.php';
 
