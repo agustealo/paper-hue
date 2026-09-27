@@ -122,16 +122,17 @@ async function expectCount(page, selector, expected, label) {
   modRemove('custom_logo');
   modRemove('hue_them_logo');
 
-  // Bundled and user-configured fallback images.
+  // Bundled and user-configured fallback images on the homepage card surface.
   const noImageId = wp(['post', 'create', '--post_type=post', '--post_status=publish', '--post_title=Fallback Proof', '--post_name=fallback-proof', '--post_content=Fallback image proof.', '--post_category=' + state.categoryId, '--porcelain']);
   modRemove('theme_feat_image');
-  await open(page, '/fallback-proof/');
-  const bundledSrc = await page.locator('img.fallback-image').first().getAttribute('src');
-  if (!bundledSrc || !bundledSrc.includes('paper-hue-fallback.svg')) fail('Bundled fallback SVG did not render.');
+  await open(page, '/');
+  const noImageCard = page.locator(`#post-${noImageId}`).locator('xpath=..');
+  const bundledSrc = await noImageCard.locator('img.fallback-image').first().getAttribute('src');
+  if (!bundledSrc || !bundledSrc.includes('paper-hue-fallback.svg')) fail('Bundled fallback SVG did not render on a recent-article card.');
   modSet('theme_feat_image', logoId);
-  await open(page, '/fallback-proof/');
-  const customSrc = await page.locator('img.fallback-image').first().getAttribute('src');
-  if (!customSrc || customSrc.includes('paper-hue-fallback.svg')) fail('Configured fallback image did not override bundled fallback.');
+  await open(page, '/');
+  const customSrc = await page.locator(`#post-${noImageId}`).locator('xpath=..').locator('img.fallback-image').first().getAttribute('src');
+  if (!customSrc || customSrc.includes('paper-hue-fallback.svg')) fail('Configured fallback image did not override bundled fallback on a recent-article card.');
 
   // Routes: category, search, page, child page, single, comments, archive, 404.
   const parentId = wp(['post', 'create', '--post_type=page', '--post_status=publish', '--post_title=Parent Proof', '--post_name=parent-proof', '--post_content=Parent page proof.', '--porcelain']);
@@ -147,13 +148,12 @@ async function expectCount(page, selector, expected, label) {
   ]) {
     await open(page, path);
   }
-  await open(page, '/this-route-must-404/').catch(() => {});
   const notFoundResponse = await page.goto(`${baseUrl}/this-route-must-404/`, { waitUntil: 'domcontentloaded' });
   if (!notFoundResponse || notFoundResponse.status() !== 404) fail('404 route did not return HTTP 404.');
   await open(page, '/the-featured-story/');
   if (!(await page.locator('body').innerText()).includes('Comment route proof.')) fail('Approved comment did not render.');
 
-  // Widget areas are registered and can render a real widget.
+  // Widget areas are registered.
   const sidebarProof = wp(['eval', `global $wp_registered_sidebars; if (empty($wp_registered_sidebars['widget-bottom-1'])) { throw new Exception('widget-bottom-1 missing'); } echo 'WIDGET_OK';`]);
   if (!sidebarProof.includes('WIDGET_OK')) fail('Widget registration proof failed.');
 
@@ -179,14 +179,14 @@ async function expectCount(page, selector, expected, label) {
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   if (overflow > 1) fail(`Mobile reflow has ${overflow}px horizontal overflow.`);
 
-  // Slider controls expose labels and support keyboard arrows.
+  // Slider controls expose buttons and support keyboard arrows.
   await page.setViewportSize({ width: 1440, height: 1000 });
   modSet('paper_hue_slider', 1);
   modSet('paper_hue_slider_source', 'category');
   modSet('slider_category', state.categoryId);
   modSet('s_total', 3);
-  modSet('paper_hue_slider_show_arrows', 1);
-  modSet('paper_hue_slider_show_dots', 1);
+  modSet('paper_hue_slider_arrows', 1);
+  modSet('paper_hue_slider_dots', 1);
   await open(page, '/');
   const slider = page.locator('[data-paper-hue-slider="1"]');
   if ((await slider.locator('button').count()) < 3) fail('Slider controls are missing buttons.');
@@ -200,7 +200,7 @@ async function expectCount(page, selector, expected, label) {
   const reducedContext = await browser.newContext({ reducedMotion: 'reduce' });
   const reducedPage = await reducedContext.newPage();
   modSet('paper_hue_slider_autoplay', 1);
-  modSet('paper_hue_slider_interval', 2000);
+  modSet('paper_hue_slider_delay', 2000);
   await open(reducedPage, '/');
   const reducedCounter = reducedPage.locator('.counter');
   const before = await reducedCounter.textContent();
