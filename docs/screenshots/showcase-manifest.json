@@ -1,0 +1,19 @@
+{
+  "candidateSha": "03d7bca806d87d78ead50f4eaff1a9f1b1b52a72",
+  "wordpress": "7.1",
+  "php": "8.3",
+  "baseUrl": "http://localhost:8888",
+  "authenticatedAdminProof": true,
+  "capturedAt": "2026-09-27T13:20:35.488Z",
+  "screenshots": [
+    "01-front-page-desktop.png",
+    "02-hero-slider.png",
+    "03-featured-story.png",
+    "04-recent-articles.png",
+    "05-single-post.png",
+    "06-category-archive.png",
+    "07-front-page-mobile.png",
+    "08-paper-hue-admin.png",
+    "09-customizer-homepage.png"
+  ]
+}

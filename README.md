@@ -1,6 +1,6 @@
 # Paper Hue
 
-![Paper Hue theme screenshot](screenshot.jpg)
+![Paper Hue front page running on WordPress 7.1](docs/screenshots/01-front-page-desktop.png)
 
 Paper Hue is a lightweight, paper-inspired **classic WordPress theme**. The 1.1 line modernizes the original 2020 theme for current WordPress and PHP without replacing its familiar templates, Customizer workflow, or visual identity.
 
@@ -27,11 +27,31 @@ Paper Hue intentionally remains a classic theme. This maintenance line is not a 
 - Jetpack and WooCommerce compatibility hooks when those plugins are active
 - Translation-ready strings and standard WordPress template hooks
 
+## Real Paper Hue gallery
+
+These are **actual browser captures** from the governed Paper Hue presentation run. They are not mockups or reconstructed marketing images.
+
+| Hero Slider | Featured Story |
+| --- | --- |
+| ![Paper Hue Hero Slider](docs/screenshots/02-hero-slider.png) | ![Paper Hue Featured Story](docs/screenshots/03-featured-story.png) |
+
+| Recent Articles | Mobile front page |
+| --- | --- |
+| ![Paper Hue Recent Articles](docs/screenshots/04-recent-articles.png) | ![Paper Hue mobile front page](docs/screenshots/07-front-page-mobile.png) |
+
+| Paper Hue admin | Live Customizer |
+| --- | --- |
+| ![Appearance to Paper Hue control center](docs/screenshots/08-paper-hue-admin.png) | ![Paper Hue Hero Slider controls in the WordPress Customizer](docs/screenshots/09-customizer-homepage.png) |
+
+Additional real captures are included for the [single-post view](docs/screenshots/05-single-post.png) and [category archive](docs/screenshots/06-category-archive.png).
+
 ## Real browser proof
 
 Paper Hue's 1.1 release line is exercised against a real WordPress 7.1 runtime with Playwright. The governed presentation rail captures the exact candidate SHA and includes desktop, mobile, Hero Slider, Featured Story, Recent Articles, single-post, archive, **Appearance → Paper Hue**, and live **Customizer** states.
 
 The screenshot workflow deliberately rejects mock UI as release evidence. It seeds a disposable WordPress site, imports repository-owned Paper Hue imagery, configures the actual theme, captures the rendered product, records runtime versions and provenance, then destroys the runtime.
+
+The promoted screenshots come from release candidate `0e4532742b6e4c0d2097df29edc0bcb86fc9eadf`. Capture provenance is retained in [`docs/screenshots/showcase-manifest.json`](docs/screenshots/showcase-manifest.json), with the recorded WordPress and PHP versions beside it.
 
 ## Upgrade compatibility
 
