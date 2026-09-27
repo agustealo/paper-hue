@@ -1,0 +1,130 @@
+name: WordPress Theme Check
+
+on:
+  pull_request:
+    paths:
+      - '**.php'
+      - 'client-side/**'
+      - 'inc/**'
+      - 'style.css'
+      - 'readme.txt'
+      - 'README.md'
+      - 'LICENSE'
+      - 'screenshot.*'
+      - '.wp-env.json'
+      - '.github/workflows/theme-check.yml'
+      - '.github/workflows/release-quality.yml'
+  push:
+    branches:
+      - 'release/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  theme-check:
+    name: Current WordPress Theme Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CANDIDATE_SHA }}
+
+      - name: Verify exact candidate identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$CANDIDATE_SHA"
+          printf '%s\n' "$actual_sha" > candidate-sha.txt
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install pinned WordPress runtime
+        run: npm install --no-save @wordpress/env@11.16.0
+
+      - name: Build submission-shaped theme
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf dist
+          mkdir -p dist/paper-hue
+          rsync -a ./ dist/paper-hue/ \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '.gitattributes' \
+            --exclude '.gitignore' \
+            --exclude '.wp-env.json' \
+            --exclude 'artifacts/' \
+            --exclude 'dist/' \
+            --exclude 'docs/' \
+            --exclude 'node_modules/' \
+            --exclude 'vendor/' \
+            --exclude 'tools/' \
+            --exclude 'client-side/demo-short-codes/' \
+            --exclude 'composer.json' \
+            --exclude 'composer.lock' \
+            --exclude 'phpcs.xml.dist'
+          cat > .wp-env.json <<'JSON'
+          {
+            "core": "https://wordpress.org/wordpress-7.1.zip",
+            "phpVersion": "8.3",
+            "themes": ["./dist/paper-hue"],
+            "config": {
+              "WP_DEBUG": true,
+              "SCRIPT_DEBUG": true
+            }
+          }
+          JSON
+
+      - name: Boot WordPress 7.1
+        run: npx wp-env start
+
+      - name: Install and activate current Theme Check
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx wp-env run cli wp plugin install theme-check --activate
+          npx wp-env run cli wp plugin get theme-check --field=version | tee theme-check-version.txt
+
+      - name: Run Theme Check against packaged Paper Hue
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx wp-env run cli wp theme-check run paper-hue --format=json | tee theme-check.json
+
+      - name: Reject required Theme Check findings
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const findings = JSON.parse(fs.readFileSync('theme-check.json', 'utf8'));
+          const required = findings.filter((finding) => finding.type === 'REQUIRED');
+          if (required.length) {
+            console.error(JSON.stringify(required, null, 2));
+            process.exit(1);
+          }
+          NODE
+
+      - name: Upload Theme Check evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-hue-theme-check-${{ env.CANDIDATE_SHA }}
+          path: |
+            candidate-sha.txt
+            theme-check.json
+            theme-check-version.txt
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Stop WordPress runtime
+        if: always()
+        run: npx wp-env stop
