@@ -138,13 +138,17 @@ async function expectCount(page, selector, expected, label) {
   const parentId = wp(['post', 'create', '--post_type=page', '--post_status=publish', '--post_title=Parent Proof', '--post_name=parent-proof', '--post_content=Parent page proof.', '--porcelain']);
   wp(['post', 'create', '--post_type=page', '--post_status=publish', '--post_title=Child Proof', '--post_name=child-proof', '--post_parent=' + parentId, '--post_content=Child page proof.', '--porcelain']);
   wp(['comment', 'create', '--comment_post_ID=' + state.featuredPostId, '--comment_author=Compatibility Bot', '--comment_author_email=compat@example.test', '--comment_content=Comment route proof.', '--comment_approved=1']);
+  const seededPostDate = wp(['post', 'get', String(state.featuredPostId), '--field=post_date']);
+  const dateMatch = seededPostDate.match(/^(\d{4})-(\d{2})-/);
+  if (!dateMatch) fail(`Unable to derive archive date from ${seededPostDate}.`);
+  const archivePath = `/${dateMatch[1]}/${dateMatch[2]}/`;
   for (const path of [
     '/category/stories/',
     '/?s=Stories',
     '/parent-proof/',
     '/parent-proof/child-proof/',
     '/stories-with-texture/',
-    '/2026/09/',
+    archivePath,
   ]) {
     await open(page, path);
   }
@@ -176,6 +180,7 @@ async function expectCount(page, selector, expected, label) {
   if (!(await page.locator('#primary-menu').isVisible())) fail('Mobile menu is not visible after keyboard activation.');
   await page.keyboard.press('Escape');
   if ((await toggle.getAttribute('aria-expanded')) !== 'false') fail('Escape did not close mobile menu.');
+  if (await page.locator('#primary-menu').isVisible()) fail('Mobile menu remained visible after Escape closed the disclosure.');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   if (overflow > 1) fail(`Mobile reflow has ${overflow}px horizontal overflow.`);
 
@@ -185,13 +190,13 @@ async function expectCount(page, selector, expected, label) {
   modSet('paper_hue_slider_source', 'category');
   modSet('slider_category', state.categoryId);
   modSet('s_total', 3);
-  modSet('paper_hue_slider_arrows', 1);
-  modSet('paper_hue_slider_dots', 1);
+  modSet('paper_hue_slider_show_arrows', 1);
+  modSet('paper_hue_slider_show_dots', 1);
   await open(page, '/');
   const slider = page.locator('[data-paper-hue-slider="1"]');
   if ((await slider.locator('button').count()) < 3) fail('Slider controls are missing buttons.');
   const initialCounter = await slider.locator('.counter').textContent();
-  await slider.focus();
+  await slider.locator('button').first().focus();
   await page.keyboard.press('ArrowRight');
   const nextCounter = await slider.locator('.counter').textContent();
   if (initialCounter === nextCounter) fail('Slider keyboard ArrowRight did not advance.');
@@ -200,7 +205,7 @@ async function expectCount(page, selector, expected, label) {
   const reducedContext = await browser.newContext({ reducedMotion: 'reduce' });
   const reducedPage = await reducedContext.newPage();
   modSet('paper_hue_slider_autoplay', 1);
-  modSet('paper_hue_slider_delay', 2000);
+  modSet('paper_hue_slider_interval', 2000);
   await open(reducedPage, '/');
   const reducedCounter = reducedPage.locator('.counter');
   const before = await reducedCounter.textContent();
