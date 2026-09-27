@@ -1,0 +1,36 @@
+.article-container.paper-hue-layout-compact {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 1.5rem;
+}
+
+.article-container.paper-hue-layout-compact .posts-card {
+	margin: 0;
+}
+
+.article-container.paper-hue-layout-list {
+	display: block;
+}
+
+.article-container.paper-hue-layout-list .posts-card {
+	display: grid;
+	grid-template-columns: minmax(220px, 34%) 1fr;
+	gap: 1.5rem;
+	align-items: start;
+}
+
+.article-container.paper-hue-layout-list .posts-card.paper-hue-no-image {
+	grid-template-columns: 1fr;
+}
+
+.paper-hue-recent-meta,
+.hue-sticky-meta {
+	font-size: 0.875rem;
+	opacity: 0.78;
+}
+
+@media (max-width: 720px) {
+	.article-container.paper-hue-layout-list .posts-card {
+		grid-template-columns: 1fr;
+	}
+}
