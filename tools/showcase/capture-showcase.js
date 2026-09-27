@@ -26,6 +26,21 @@ async function captureElement(page, name, selector) {
   await element.screenshot({ path: path.join(outputDir, `${name}.png`) });
 }
 
+async function assertSliderLayout(page) {
+  const compatibilityStyleCount = await page.locator('link[href*="paper-hue-slider-modern.css"]').count();
+  if (compatibilityStyleCount < 1) {
+    throw new Error('Hero Slider compatibility stylesheet is not loaded.');
+  }
+
+  const card = page.locator('.hue-slider-container .hue-slide:visible').first();
+  await card.waitFor({ state: 'visible' });
+  const box = await card.boundingBox();
+
+  if (!box || box.width < 320) {
+    throw new Error(`Hero Slider reading card collapsed to ${box ? Math.round(box.width) : 0}px.`);
+  }
+}
+
 async function authenticateAdmin(page) {
   const authFile = process.env.PAPER_HUE_ADMIN_AUTH_FILE;
   if (!authFile || !fs.existsSync(authFile)) {
@@ -57,6 +72,7 @@ async function authenticateAdmin(page) {
   const page = await context.newPage();
 
   await capturePage(page, '01-front-page-desktop', `${baseUrl}/`, { width: 1440, height: 1000 });
+  await assertSliderLayout(page);
   await captureElement(page, '02-hero-slider', '.hue-slider-container');
   await captureElement(page, '03-featured-story', '.hue-sticky-row');
   await captureElement(page, '04-recent-articles', '.not-sticky');
