@@ -1,0 +1,43 @@
+/*
+ * Modern browser compatibility layer for the legacy Paper Hue slider.
+ *
+ * The original Sass used `width: min-content` for the slide card. Modern
+ * browsers correctly collapse that box to the narrowest text width, which
+ * makes headings and excerpts render as vertical letter stacks. Keep the
+ * established Paper Hue presentation while giving the card a bounded,
+ * responsive reading width.
+ */
+.hue-slider .hue-slide-item .hue-slide {
+	width: min(90%, 640px);
+	max-width: 640px;
+}
+
+.hue-slider .hue-slide-item .hue-slide .text {
+	display: block;
+	width: 100%;
+}
+
+.hue-slider .hue-slide-item .hue-slide .text .entry-header {
+	display: block;
+}
+
+.hue-slider .hue-slide-item .hue-slide .text .entry-header h2 {
+	color: #7bb0aa;
+	font-size: 2em;
+	letter-spacing: 0.2em;
+	margin: 0;
+	position: relative;
+	text-transform: uppercase;
+	word-break: normal;
+}
+
+@media (max-width: 720px) {
+	.hue-slider .hue-slide-item .hue-slide {
+		width: min(92%, 560px);
+	}
+
+	.hue-slider .hue-slide-item .hue-slide .text .entry-header h2 {
+		font-size: 1.5em;
+		letter-spacing: 0.1em;
+	}
+}
