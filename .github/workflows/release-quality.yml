@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   standards:
-    name: WPCS and PHP compatibility
+    name: Release safety and PHP compatibility
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -47,8 +47,13 @@ jobs:
             wp-coding-standards/wpcs:^3.4 \
             phpcompatibility/phpcompatibility-wp:^2.1
 
-      - name: Run PHPCS
+      - name: Run blocking release-safety PHPCS
         run: vendor/bin/phpcs --standard=phpcs.xml.dist
+
+      - name: Report full WordPress coding-standard debt
+        if: always()
+        continue-on-error: true
+        run: vendor/bin/phpcs --standard=WordPress --report=summary .
 
   package:
     name: Exact distribution package
