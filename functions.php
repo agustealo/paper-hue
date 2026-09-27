@@ -234,8 +234,10 @@ require get_template_directory() . '/inc/functions/template-tags.php';
 require get_template_directory() . '/inc/functions/template-functions.php';
 require get_template_directory() . '/inc/functions/customizer.php';
 require get_template_directory() . '/inc/functions/customizer-experience.php';
+require get_template_directory() . '/inc/functions/customizer-slider.php';
 require get_template_directory() . '/inc/classes/class-paper-hue-config.php';
 require get_template_directory() . '/inc/classes/class-paper-hue-admin.php';
+require get_template_directory() . '/inc/classes/class-paper-hue-slider.php';
 
 if ( is_admin() ) {
 	$paper_hue_admin = new Paper_Hue_Admin( Paper_Hue_Config::instance() );
