@@ -80,8 +80,6 @@ jobs:
         run: curl --fail --silent --show-error http://localhost:8888/ > /dev/null
 
       - name: Capture real screenshots
-        env:
-          GITHUB_SHA: ${{ env.PAPER_HUE_ACTUAL_SHA }}
         run: node tools/showcase/capture-showcase.js
 
       - name: Record runtime versions and candidate identity
