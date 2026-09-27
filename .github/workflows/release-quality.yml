@@ -53,7 +53,7 @@ jobs:
       - name: Report full WordPress coding-standard debt
         if: always()
         continue-on-error: true
-        run: vendor/bin/phpcs --standard=WordPress --report=summary .
+        run: vendor/bin/phpcs --standard=WordPress --extensions=php --ignore=vendor,node_modules,dist,artifacts --report=summary .
 
   package:
     name: Exact distribution package
