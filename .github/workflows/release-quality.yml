@@ -90,6 +90,11 @@ jobs:
             --exclude 'vendor/' \
             --exclude 'tools/' \
             --exclude 'client-side/demo-short-codes/' \
+            --exclude 'client-side/img/banner1.jpeg' \
+            --exclude 'client-side/img/banner2.jpeg' \
+            --exclude 'client-side/img/banner3.jpeg' \
+            --exclude 'client-side/img/banner4.jpeg' \
+            --exclude 'client-side/img/paper_hue_fallback.jpeg' \
             --exclude 'composer.json' \
             --exclude 'composer.lock' \
             --exclude 'phpcs.xml.dist'
@@ -104,11 +109,18 @@ jobs:
           test -f dist/paper-hue/readme.txt
           test -f dist/paper-hue/LICENSE
           test -f dist/paper-hue/screenshot.jpg
+          test -f dist/paper-hue/client-side/img/paper-hue-fallback.svg
           test -f dist/paper-hue/client-side/css/hue-paper-style.css
           test -f dist/paper-hue/client-side/css/paper-hue-slider-modern.css
+          test ! -e dist/paper-hue/client-side/img/banner1.jpeg
+          test ! -e dist/paper-hue/client-side/img/banner2.jpeg
+          test ! -e dist/paper-hue/client-side/img/banner3.jpeg
+          test ! -e dist/paper-hue/client-side/img/banner4.jpeg
+          test ! -e dist/paper-hue/client-side/img/paper_hue_fallback.jpeg
           unzip -t dist/paper-hue-1.1.0.zip
           ! unzip -Z1 dist/paper-hue-1.1.0.zip | grep -E '(^|/)(\.git|\.github|docs|node_modules|vendor|tools|artifacts|dist|demo-short-codes)(/|$)'
           ! unzip -Z1 dist/paper-hue-1.1.0.zip | grep -E '(^|/)(phpcs\.xml\.dist|\.wp-env\.json|\.gitignore|\.gitattributes)$'
+          ! unzip -Z1 dist/paper-hue-1.1.0.zip | grep -E 'client-side/img/(banner[1-4]\.jpeg|paper_hue_fallback\.jpeg)$'
 
       - name: Boot WordPress 7.1 from exact candidate
         run: npx wp-env start
