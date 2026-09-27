@@ -1,43 +1,290 @@
 /*
- * Modern browser compatibility layer for the legacy Paper Hue slider.
- *
- * The original Sass used `width: min-content` for the slide card. Modern
- * browsers correctly collapse that box to the narrowest text width, which
- * makes headings and excerpts render as vertical letter stacks. Keep the
- * established Paper Hue presentation while giving the card a bounded,
- * responsive reading width.
+ * Modern responsive layer for the classic Paper Hue hero slider.
+ * Keeps the established visual language while removing intrinsic-width and
+ * legacy control-bar geometry that break in modern browsers.
  */
+.hue-slider-container {
+	--paper-hue-slider-control: 50px;
+	--paper-hue-slider-gutter: clamp(1rem, 4vw, 3rem);
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+}
+
+.hue-slider .hue-slide-item {
+	box-sizing: border-box;
+	min-height: clamp(560px, 100svh, 980px);
+}
+
 .hue-slider .hue-slide-item .hue-slide {
-	width: min(90%, 640px);
-	max-width: 640px;
+	box-sizing: border-box;
+	width: min(calc(100% - (2 * var(--paper-hue-slider-gutter))), 680px);
+	max-width: 680px;
+	min-width: 0;
+	padding: clamp(0.75rem, 2vw, 1rem);
+}
+
+.hue-slider .hue-slide-item .hue-slide .text,
+.hue-slider .hue-slide-item .hue-slide .text .entry-header {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 0;
 }
 
 .hue-slider .hue-slide-item .hue-slide .text {
-	display: block;
-	width: 100%;
-}
-
-.hue-slider .hue-slide-item .hue-slide .text .entry-header {
-	display: block;
+	padding: clamp(1.25rem, 4vw, 2rem);
 }
 
 .hue-slider .hue-slide-item .hue-slide .text .entry-header h2 {
-	color: #7bb0aa;
-	font-size: 2em;
-	letter-spacing: 0.2em;
+	max-width: 100%;
 	margin: 0;
-	position: relative;
+	color: #7bb0aa;
+	font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+	line-height: 1.12;
+	letter-spacing: clamp(0.06em, 0.55vw, 0.18em);
 	text-transform: uppercase;
+	white-space: normal;
 	word-break: normal;
+	overflow-wrap: break-word;
+	hyphens: none;
 }
 
-@media (max-width: 720px) {
+.hue-slider .hue-slide-item .hue-slide .text p {
+	max-width: 58ch;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 1.65;
+	word-break: normal;
+	overflow-wrap: break-word;
+}
+
+/* Slider navigation is a real layout, not a stack of negative margins. */
+.hue-slider .control {
+	position: sticky;
+	bottom: 0;
+	z-index: 3;
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) var(--paper-hue-slider-control);
+	grid-template-areas: "actions dots continue";
+	align-items: stretch;
+	box-sizing: border-box;
+	width: 100%;
+	min-height: var(--paper-hue-slider-control);
+	height: auto;
+	margin: 0;
+	padding: 0;
+	background: #2f3238;
+	overflow: hidden;
+}
+
+.hue-slider .slider-control-group {
+	grid-area: actions;
+	display: flex;
+	align-items: stretch;
+	min-width: 0;
+}
+
+.hue-slider .control .prev,
+.hue-slider .control .next,
+.hue-slider .control .hue-counter,
+.hue-slider .control .to-content-bttn {
+	box-sizing: border-box;
+	flex: 0 0 var(--paper-hue-slider-control);
+	width: var(--paper-hue-slider-control);
+	height: var(--paper-hue-slider-control);
+	min-width: var(--paper-hue-slider-control);
+	min-height: var(--paper-hue-slider-control);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	position: relative;
+	top: auto;
+	left: auto;
+	right: auto;
+	float: none;
+	vertical-align: top;
+}
+
+.hue-slider .control .prev,
+.hue-slider .control .next,
+.hue-slider .control .to-content-bttn {
+	display: grid;
+	place-items: center;
+	background: #26292e;
+	color: #b5fff7;
+	line-height: 1;
+	text-decoration: none;
+}
+
+.hue-slider .control .prev + .next,
+.hue-slider .control .next + .hue-counter {
+	border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hue-slider .control .prev i,
+.hue-slider .control .next i,
+.hue-slider .control .to-content-bttn i,
+.hue-slider .control .hue-counter i {
+	position: static;
+	display: block;
+	margin: 0;
+	font-style: normal;
+	line-height: 1;
+	transform: none;
+}
+
+.hue-slider .control .hue-counter {
+	display: grid;
+	place-items: center;
+	background: #d9dedf;
+	opacity: 1;
+	color: #2f3238;
+}
+
+.hue-slider .control .hue-counter i {
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.hue-slider .control .dots-wrapper {
+	grid-area: dots;
+	position: static;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.25rem;
+	min-width: 0;
+	min-height: var(--paper-hue-slider-control);
+	margin: 0;
+	padding: 0 0.5rem;
+	float: none;
+	transform: none;
+}
+
+.hue-slider .control .dot {
+	display: grid;
+	place-items: center;
+	box-sizing: border-box;
+	width: 36px;
+	height: var(--paper-hue-slider-control);
+	min-width: 36px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: #aeb6b8;
+	font-size: 1rem;
+	line-height: 1;
+}
+
+.hue-slider .control .dot.active,
+.hue-slider .control .dot:hover,
+.hue-slider .control .dot:focus-visible {
+	color: #b5fff7;
+}
+
+.hue-slider .control .to-content-bttn {
+	grid-area: continue;
+}
+
+.hue-slider .control button:focus-visible,
+.hue-slider .control a:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: -4px;
+	z-index: 2;
+}
+
+/* Tablet: reduce card scale while preserving the centered composition. */
+@media (max-width: 60em) {
+	.hue-slider-container {
+		--paper-hue-slider-gutter: 1.25rem;
+		--paper-hue-slider-control: 48px;
+	}
+
 	.hue-slider .hue-slide-item .hue-slide {
-		width: min(92%, 560px);
+		width: min(calc(100% - 2.5rem), 620px);
+	}
+
+	.hue-slider .hue-slide-item .hue-slide .text p {
+		text-align: left;
+	}
+}
+
+/* Mobile is a true layout breakpoint: controls become two rows. */
+@media (max-width: 48em) {
+	.hue-slider-container {
+		--paper-hue-slider-control: 44px;
+		--paper-hue-slider-gutter: 0.75rem;
+	}
+
+	.hue-slider .hue-slide-item {
+		min-height: max(540px, 100svh);
+	}
+
+	.hue-slider .hue-slide-item .hue-slide {
+		width: calc(100% - 1.5rem);
+		max-width: none;
+	}
+
+	.hue-slider .hue-slide-item .hue-slide .text {
+		padding: 1.25rem;
 	}
 
 	.hue-slider .hue-slide-item .hue-slide .text .entry-header h2 {
-		font-size: 1.5em;
-		letter-spacing: 0.1em;
+		font-size: clamp(1.35rem, 7vw, 1.8rem);
+		line-height: 1.15;
+		letter-spacing: 0.08em;
+	}
+
+	.hue-slider .hue-slide-item .hue-slide .text p {
+		font-size: 0.95rem;
+		line-height: 1.55;
+		letter-spacing: 0.04em;
+	}
+
+	.hue-slider .control {
+		grid-template-columns: 1fr var(--paper-hue-slider-control);
+		grid-template-areas:
+			"actions continue"
+			"dots dots";
+	}
+
+	.hue-slider .slider-control-group {
+		justify-content: flex-start;
+	}
+
+	.hue-slider .control .dots-wrapper {
+		min-height: 36px;
+		height: 36px;
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+		background: #2f3238;
+	}
+
+	.hue-slider .control .dot {
+		width: 30px;
+		height: 36px;
+		min-width: 30px;
+	}
+}
+
+@media (max-width: 36em) {
+	.hue-slider .hue-slide-item .hue-slide .text {
+		padding: 1rem;
+	}
+
+	.hue-slider .hue-slide-item .hue-slide .text .entry-header h2 {
+		font-size: clamp(1.2rem, 7vw, 1.55rem);
+		letter-spacing: 0.055em;
+	}
+
+	.hue-slider .control .dot {
+		width: 26px;
+		min-width: 26px;
+		font-size: 0.9rem;
 	}
 }

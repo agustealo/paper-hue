@@ -15,15 +15,16 @@ Paper Hue intentionally remains a classic theme. This maintenance line is not a 
 
 ## Features
 
-- **Appearance → Paper Hue** control center for homepage status, branding, navigation, fallback imagery, widgets, and deep links to the real WordPress settings surfaces
+- Premium **Appearance → Paper Hue Theme Control Center** for configuration health, homepage composition, publishing shortcuts, and direct navigation into the canonical WordPress controls
+- Complete **Customizer-owned presentation settings** with no TCC shadow options or duplicate setting database
 - First-class **Hero Slider** with category/latest/sticky sources, autoplay controls, pause-on-interaction, accessible navigation, reduced-motion behavior, CTA label, excerpt toggle, and retained legacy count/order settings
+- Deliberate responsive layout transitions at desktop, tablet, mobile, and small-phone widths instead of a pile of incidental mobile overrides
 - First-class **Featured Story** built on native WordPress sticky-post behavior, with optional manual/latest sources, metadata, excerpt, CTA, and Recent Articles exclusion
 - Configurable **Recent Articles** source, count, section heading, classic/compact/list layouts, image/excerpt/metadata toggles, CTA label, and canonical pagination
 - Configurable featured-image fallback
-- Native WordPress custom-logo support while retaining the original Paper Hue logo setting for upgraded sites
+- Native WordPress custom-logo support while retaining the original Paper Hue logo setting only for upgraded sites that still depend on it
 - Header-title, pagination, and footer controls in the Customizer
 - Widget areas for post and lower-page layouts
-- Responsive front-end styles
 - Jetpack and WooCommerce compatibility hooks when those plugins are active
 - Translation-ready strings and standard WordPress template hooks
 
@@ -31,27 +32,35 @@ Paper Hue intentionally remains a classic theme. This maintenance line is not a 
 
 These are **actual browser captures** from the governed Paper Hue presentation run. They are not mockups or reconstructed marketing images.
 
-| Hero Slider | Featured Story |
+| Hero Slider | Desktop slider controls |
 | --- | --- |
-| ![Paper Hue Hero Slider](docs/screenshots/02-hero-slider.png) | ![Paper Hue Featured Story](docs/screenshots/03-featured-story.png) |
+| ![Paper Hue Hero Slider](docs/screenshots/02-hero-slider.png) | ![Paper Hue desktop slider controls](docs/screenshots/03-slider-controls-desktop.png) |
 
-| Recent Articles | Mobile front page |
+| Featured Story | Recent Articles |
 | --- | --- |
-| ![Paper Hue Recent Articles](docs/screenshots/04-recent-articles.png) | ![Paper Hue mobile front page](docs/screenshots/07-front-page-mobile.png) |
+| ![Paper Hue Featured Story](docs/screenshots/04-featured-story.png) | ![Paper Hue Recent Articles](docs/screenshots/05-recent-articles.png) |
 
-| Paper Hue admin | Live Customizer |
+| Mobile front page | Mobile slider controls |
 | --- | --- |
-| ![Appearance to Paper Hue control center](docs/screenshots/08-paper-hue-admin.png) | ![Paper Hue Hero Slider controls in the WordPress Customizer](docs/screenshots/09-customizer-homepage.png) |
+| ![Paper Hue mobile front page](docs/screenshots/08-front-page-mobile.png) | ![Paper Hue mobile slider controls](docs/screenshots/09-slider-controls-mobile.png) |
 
-Additional real captures are included for the [single-post view](docs/screenshots/05-single-post.png) and [category archive](docs/screenshots/06-category-archive.png).
+| Theme Control Center | Hero Slider Customizer |
+| --- | --- |
+| ![Paper Hue Theme Control Center](docs/screenshots/10-theme-control-center.png) | ![Paper Hue Hero Slider controls in the WordPress Customizer](docs/screenshots/11-customizer-hero-slider.png) |
+
+| Recent Articles Customizer | Category archive |
+| --- | --- |
+| ![Paper Hue Recent Articles controls in the WordPress Customizer](docs/screenshots/12-customizer-recent-articles.png) | ![Paper Hue category archive](docs/screenshots/07-category-archive.png) |
+
+A real [single-post view](docs/screenshots/06-single-post.png) is included as well.
 
 ## Real browser proof
 
-Paper Hue's 1.1 release line is exercised against a real WordPress 7.1 runtime with Playwright. The governed presentation rail captures the exact candidate SHA and includes desktop, mobile, Hero Slider, Featured Story, Recent Articles, single-post, archive, **Appearance → Paper Hue**, and live **Customizer** states.
+Paper Hue's 1.1 release line is exercised against a real WordPress 7.1 runtime with Playwright. The governed presentation rail captures the exact candidate SHA and includes desktop, mobile, Hero Slider, both slider-control layouts, Featured Story, Recent Articles, single-post, archive, **Appearance → Paper Hue**, and live **Customizer** control states.
 
-The screenshot workflow deliberately rejects mock UI as release evidence. It seeds a disposable WordPress site, imports repository-owned Paper Hue imagery, configures the actual theme, captures the rendered product, records runtime versions and provenance, then destroys the runtime.
+The screenshot workflow deliberately rejects mock UI as release evidence. It seeds a disposable WordPress site, imports repository-owned Paper Hue imagery, configures the actual theme, captures the rendered product, asserts the Hero Slider text and controls have sane geometry, verifies the requested Customizer controls are visibly open, records runtime versions and provenance, then destroys the runtime.
 
-The promoted screenshots come from release candidate `0e4532742b6e4c0d2097df29edc0bcb86fc9eadf`. Capture provenance is retained in [`docs/screenshots/showcase-manifest.json`](docs/screenshots/showcase-manifest.json), with the recorded WordPress and PHP versions beside it.
+The promoted screenshots come byte-for-byte from presentation candidate `6d7b0d0b86abcd7eb154ec7147d10b34267f0801`. Capture provenance is retained in [`docs/screenshots/showcase-manifest.json`](docs/screenshots/showcase-manifest.json), with the recorded candidate SHA, WordPress version, and PHP version beside it.
 
 ## Upgrade compatibility
 
@@ -66,8 +75,8 @@ The theme no longer modifies submitted comment content. Older releases stripped 
 1. Download or build a ZIP containing the `paper-hue` theme directory.
 2. In WordPress, open **Appearance > Themes > Add New > Upload Theme**.
 3. Upload the ZIP and activate Paper Hue.
-4. Open **Appearance > Paper Hue** for a quick configuration overview.
-5. Open **Appearance > Customize** for Hero Slider, Featured Story, Recent Articles, branding, image, header, and footer controls.
+4. Open **Appearance > Paper Hue** for the Theme Control Center.
+5. Open **Appearance > Customize** for the canonical Hero Slider, Featured Story, Recent Articles, branding, image, header, and footer settings.
 
 If you are upgrading an existing site, regenerating thumbnails is optional. Do it only when you want older uploads recreated for Paper Hue's registered image sizes.
 
@@ -87,14 +96,16 @@ The 1.1 maintenance line fixes several issues that became significant on modern 
 - adds sanitization to user-controlled Customizer settings
 - hardens query values and output escaping
 - honors the WordPress static-front-page setting
-- uses WordPress's native custom-logo API while retaining the legacy logo choice
+- uses WordPress's native custom-logo API while retaining the legacy logo choice for existing sites
 - removes the CSS `@import` waterfall by enqueueing the compiled stylesheet directly
 - replaces frozen 2015 script versions with cache-aware asset versions
 - removes content-mutating comment behavior from the theme runtime
-- adds a real Paper Hue admin control center without creating a parallel settings database
-- modernizes Hero Slider interaction and accessibility without replacing its established visual classes
+- adds a premium Paper Hue Theme Control Center without creating a parallel settings database
+- makes the Customizer the complete write authority for Paper Hue presentation settings
+- repairs Hero Slider text geometry and builds a contained, consistent slider control bar across desktop and mobile
+- establishes deliberate responsive layout breakpoints while preserving the familiar Paper Hue desktop identity
 - makes Featured Story and Recent Articles configurable while keeping original defaults familiar
-- adds governed real-browser screenshot proof for public and authenticated admin states
+- adds governed real-browser screenshot proof for public, mobile, TCC, and authenticated Customizer states
 
 ## Contributing
 

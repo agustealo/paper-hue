@@ -1,6 +1,12 @@
+:root {
+	--paper-hue-layout-wide: 1200px;
+	--paper-hue-layout-content: 960px;
+	--paper-hue-gutter: clamp(1rem, 3vw, 2rem);
+}
+
 .article-container.paper-hue-layout-compact {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
 	gap: 1.5rem;
 }
 
@@ -14,7 +20,7 @@
 
 .article-container.paper-hue-layout-list .posts-card {
 	display: grid;
-	grid-template-columns: minmax(220px, 34%) 1fr;
+	grid-template-columns: minmax(220px, 34%) minmax(0, 1fr);
 	gap: 1.5rem;
 	align-items: start;
 }
@@ -33,21 +39,36 @@
 	display: none;
 }
 
+/*
+ * Breakpoint 1: compact desktop/tablet.
+ * Navigation becomes an explicit disclosure and homepage modules stop relying
+ * on intrinsic widths inherited from the original desktop-only layout.
+ */
 @media (max-width: 60em) {
+	.hue-nav-wraper {
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 100%;
+	}
+
 	.hue-nav-wraper .main-navigation::before {
 		content: none;
 	}
 
 	.paper-hue-menu-toggle {
-		display: block;
+		display: grid;
+		place-items: center;
 		position: relative;
 		z-index: 11;
+		box-sizing: border-box;
+		width: 48px;
+		height: 48px;
 		margin: 0;
-		padding: 0.5em;
+		padding: 0;
 		border: 0;
 		background: #2f3238;
 		color: #fff;
-		font-size: 2em;
+		font-size: 1.5rem;
 		line-height: 1;
 		cursor: pointer;
 	}
@@ -69,46 +90,128 @@
 	}
 
 	.hue-sticky-wrapper {
-		max-width: calc(100% - 2rem);
+		box-sizing: border-box;
+		width: calc(100% - (2 * var(--paper-hue-gutter)));
+		max-width: var(--paper-hue-layout-content);
+		margin-inline: auto;
 	}
 
 	.hue-sticky-article {
 		display: block;
+		box-sizing: border-box;
 		width: 100% !important;
 		max-width: 100%;
-		padding-left: 1rem;
-		padding-right: 1rem;
+		padding-left: clamp(1rem, 3vw, 2rem);
+		padding-right: clamp(1rem, 3vw, 2rem);
 	}
 
 	.hue-sticky-article .home-sticky-header,
-	.hue-sticky-article .home-sticky-header h1 {
+	.hue-sticky-article .home-sticky-header h1,
+	.hue-sticky-article .home-sticky-header h2 {
 		max-width: 100%;
 	}
 
-	.hue-sticky-article .home-sticky-header h1 {
-		overflow-wrap: anywhere;
+	.hue-sticky-article .home-sticky-header h1,
+	.hue-sticky-article .home-sticky-header h2 {
+		overflow-wrap: break-word;
 	}
 
 	.fp-heading {
-		max-width: calc(100% - 2rem);
+		box-sizing: border-box;
+		width: calc(100% - (2 * var(--paper-hue-gutter)));
+		max-width: var(--paper-hue-layout-wide);
+		margin-inline: auto;
 	}
 
 	.fp-heading h1 {
 		white-space: normal;
-		overflow-wrap: anywhere;
+		overflow-wrap: break-word;
 	}
 
 	.not-sticky::before {
-		left: 1rem;
-		right: 1rem;
+		left: var(--paper-hue-gutter);
+		right: var(--paper-hue-gutter);
 		width: auto;
 		margin-left: 0;
 		margin-right: 0;
 	}
 }
 
-@media (max-width: 720px) {
-	.article-container.paper-hue-layout-list .posts-card {
+/*
+ * Breakpoint 2: phone/tablet portrait.
+ * Multi-column content becomes one clear reading column and navigation owns
+ * the full row instead of hovering over desktop geometry.
+ */
+@media (max-width: 48em) {
+	:root {
+		--paper-hue-gutter: 1rem;
+	}
+
+	.hue-nav-wraper {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.hue-nav-wraper .site-branding {
+		min-width: 0;
+	}
+
+	.hue-nav-wraper .main-navigation {
+		position: relative;
+		min-width: 48px;
+	}
+
+	.hue-nav-wraper .main-navigation ul#primary-menu {
+		box-sizing: border-box;
+		width: min(88vw, 360px);
+		max-width: calc(100vw - 2rem);
+		right: 0;
+		left: auto;
+	}
+
+	.article-container.paper-hue-layout-list .posts-card,
+	.article-container.paper-hue-layout-compact {
 		grid-template-columns: 1fr;
+	}
+
+	.article-container.paper-hue-layout-list .posts-card {
+		gap: 1rem;
+	}
+
+	.hue-sticky-wrapper,
+	.fp-heading {
+		width: calc(100% - 2rem);
+	}
+}
+
+/* Breakpoint 3: small phones. */
+@media (max-width: 36em) {
+	:root {
+		--paper-hue-gutter: 0.75rem;
+	}
+
+	.hue-nav-wraper {
+		gap: 0.5rem;
+	}
+
+	.paper-hue-menu-toggle {
+		width: 44px;
+		height: 44px;
+	}
+
+	.hue-nav-wraper .main-navigation ul#primary-menu {
+		max-width: calc(100vw - 1.5rem);
+	}
+
+	.hue-sticky-wrapper,
+	.fp-heading {
+		width: calc(100% - 1.5rem);
+	}
+
+	.hue-sticky-article {
+		padding-left: 0.875rem;
+		padding-right: 0.875rem;
 	}
 }
