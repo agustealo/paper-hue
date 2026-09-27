@@ -97,6 +97,14 @@
 		white-space: normal;
 		overflow-wrap: anywhere;
 	}
+
+	.not-sticky::before {
+		left: 1rem;
+		right: 1rem;
+		width: auto;
+		margin-left: 0;
+		margin-right: 0;
+	}
 }
 
 @media (max-width: 720px) {
