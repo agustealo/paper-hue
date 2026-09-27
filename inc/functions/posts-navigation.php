@@ -1,65 +1,46 @@
 <?php
-function paper_hue_posts_nav( $page_range = 10, $query = NULL )
-{
-   global $wp_query;
+/**
+ * Numbered posts navigation for Paper Hue archives and the posts-style homepage.
+ *
+ * @package Paper_Hue
+ */
 
-   if( empty( $query ) ){
-      $query = $wp_query;
-   }
+/**
+ * Render accessible numbered navigation for a query.
+ *
+ * @param int           $page_range Number of pages to show around the current page.
+ * @param WP_Query|null $query      Query instance. Defaults to the main query.
+ * @return void
+ */
+function paper_hue_posts_nav( $page_range = 5, $query = null ) {
+	global $wp_query;
 
-   $page = $query->query_vars["paged"];
+	$query = $query instanceof WP_Query ? $query : $wp_query;
+	if ( ! $query instanceof WP_Query || $query->max_num_pages <= 1 ) {
+		return;
+	}
 
-   if( !$page ){
-      $page = 1;
-   }
+	$current = max( 1, absint( get_query_var( 'paged' ) ) );
+	$total   = max( 1, absint( $query->max_num_pages ) );
+	$mid_size = max( 1, absint( $page_range ) );
 
-   $page_start = floor( ($page - 1) / $page_range) * $page_range + 1;
-   $page_end = $page_start + $page_range - 1;
+	$links = paginate_links(
+		array(
+			'current'   => $current,
+			'total'     => $total,
+			'mid_size'  => $mid_size,
+			'prev_text' => esc_html__( 'Previous', 'paper-hue' ),
+			'next_text' => esc_html__( 'Next', 'paper-hue' ),
+			'type'      => 'list',
+		)
+	);
 
-   if( $page_end > $query->max_num_pages ){
-      $page_end = $query->max_num_pages;
-   }
-
-   echo '<nav class="navigation posts-navigation">';
-   
-   if ( $page <= 1 && $page_end <=1) {
-     echo '<span class="end-archive">End of archive</span>';
-   }else{
-
-   if( $page > 1 ){
-    echo '<span class="hue-posts-nav-prev"><a href="'.previous_posts(FALSE).'" rel="prev">Previous</a></span>';
-   }else{
-    echo '<span class="hue-posts-nav-prev hue_disabled">Previous</span>';
-   }
-   if ( $page_end >=2) {
-     echo '<ul class="numb-wrapper">';
-   }
-   for( $i = $page_start; $i <= $page_end; $i++ ){
-      $class = "";
-
-
-      $url = get_pagenum_link( $i );
-      if ( $page_end >=2) {
-      if( $page == $i){
-         $class = ' class="number current"';
-
-         echo "<li$class>$i</li>";
-
-      }else{
-         $class = ' class="number"';
-
-         echo "<li$class><a href=\"$url\">$i</a></li>";
-      }
-    }
-   }
-   if ( $page_end >=2) {
-  echo '</ul>';
-  }
-   if( $page < $query->max_num_pages ){
-      echo '<span class="hue-posts-nav-next"><a href="'.next_posts($query->max_num_pages, FALSE).'" rel="next">Next</a></span>';
-   }else{
-      echo '<span class="hue-posts-nav-next hue_disabled">Next</span>';
-   }
-}
-   echo '</nav>';
+	if ( ! $links ) {
+		return;
+	}
+	?>
+	<nav class="navigation posts-navigation" aria-label="<?php esc_attr_e( 'Posts navigation', 'paper-hue' ); ?>">
+		<?php echo wp_kses_post( $links ); ?>
+	</nav>
+	<?php
 }
