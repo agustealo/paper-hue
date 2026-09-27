@@ -9,14 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Provides a single read-only access layer for theme configuration.
- */
 final class Paper_Hue_Config {
-	/** @var Paper_Hue_Config|null */
 	private static $instance = null;
 
-	/** @return Paper_Hue_Config */
 	public static function instance() {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
@@ -44,16 +39,9 @@ final class Paper_Hue_Config {
 	}
 
 	public function featured_story_enabled() {
-		return class_exists( 'Paper_Hue_Featured_Story' )
-			? Paper_Hue_Featured_Story::is_enabled()
-			: (bool) get_theme_mod( 'show_feat_sticky', true );
+		return class_exists( 'Paper_Hue_Featured_Story' ) ? Paper_Hue_Featured_Story::is_enabled() : (bool) get_theme_mod( 'show_feat_sticky', true );
 	}
 
-	/**
-	 * Get the effective Featured Story post.
-	 *
-	 * @return WP_Post|null
-	 */
 	public function featured_story() {
 		if ( class_exists( 'Paper_Hue_Featured_Story' ) ) {
 			$post = get_post( Paper_Hue_Featured_Story::post_id() );
@@ -80,21 +68,10 @@ final class Paper_Hue_Config {
 		return ! empty( $query->posts[0] ) && $query->posts[0] instanceof WP_Post ? $query->posts[0] : null;
 	}
 
-	public function homepage_pagination_enabled() {
-		return (bool) get_theme_mod( 'hue_post_nav', false );
-	}
-
-	public function header_title_enabled() {
-		return (bool) get_theme_mod( 'hue_header_title', false );
-	}
-
-	public function fallback_image_id() {
-		return absint( get_theme_mod( 'theme_feat_image', 0 ) );
-	}
-
-	public function has_custom_fallback_image() {
-		return $this->fallback_image_id() > 0 && (bool) wp_get_attachment_image_url( $this->fallback_image_id(), 'full' );
-	}
+	public function homepage_pagination_enabled() { return (bool) get_theme_mod( 'hue_post_nav', false ); }
+	public function header_title_enabled() { return (bool) get_theme_mod( 'hue_header_title', false ); }
+	public function fallback_image_id() { return absint( get_theme_mod( 'theme_feat_image', 0 ) ); }
+	public function has_custom_fallback_image() { return $this->fallback_image_id() > 0 && (bool) wp_get_attachment_image_url( $this->fallback_image_id(), 'full' ); }
 
 	public function logo_id() {
 		$native_logo = absint( get_theme_mod( 'custom_logo', 0 ) );
@@ -108,14 +85,7 @@ final class Paper_Hue_Config {
 
 	public function active_widget_areas() {
 		$ids = array( 'posts-widget', 'widget-bottom-1', 'widget-bottom-2', 'widget-bottom-3', 'widget-bottom-4' );
-		return array_values(
-			array_filter(
-				$ids,
-				static function ( $id ) {
-					return is_active_sidebar( $id );
-				}
-			)
-		);
+		return array_values( array_filter( $ids, static function ( $id ) { return is_active_sidebar( $id ); } ) );
 	}
 
 	public function slider_source_count() {
@@ -123,11 +93,6 @@ final class Paper_Hue_Config {
 		return $category ? absint( $category->count ) : 0;
 	}
 
-	/**
-	 * Build dashboard status payload.
-	 *
-	 * @return array<string,array<string,mixed>>
-	 */
 	public function dashboard_status() {
 		$slider_category = $this->slider_category();
 		$featured_story  = $this->featured_story();
@@ -139,55 +104,34 @@ final class Paper_Hue_Config {
 			'latest' => __( 'Latest post', 'paper-hue' ),
 		);
 
+		$slider_summary = __( 'Disabled', 'paper-hue' );
+		if ( $this->slider_enabled() ) {
+			/* translators: 1: slider source label, 2: number of slides. */
+			$slider_summary = sprintf( __( '%1$s · %2$d slides', 'paper-hue' ), $slider_category ? $slider_category->name : __( 'Configured source', 'paper-hue' ), $this->slider_total() );
+		}
+
+		$featured_summary = __( 'Disabled', 'paper-hue' );
+		if ( $this->featured_story_enabled() ) {
+			if ( $featured_story ) {
+				/* translators: 1: featured story source label, 2: post title. */
+				$featured_summary = sprintf( __( '%1$s · %2$s', 'paper-hue' ), $source_labels[ $featured_source ], get_the_title( $featured_story ) );
+			} else {
+				/* translators: %s: featured story source label. */
+				$featured_summary = sprintf( __( '%s unavailable', 'paper-hue' ), $source_labels[ $featured_source ] );
+			}
+		}
+
+		/* translators: %d: number of active widget areas. */
+		$widget_summary = sprintf( _n( '%d active area', '%d active areas', count( $widget_areas ), 'paper-hue' ), count( $widget_areas ) );
+
 		return array(
-			'identity' => array(
-				'label'      => __( 'Site Identity', 'paper-hue' ),
-				'healthy'    => $this->logo_id() > 0 || get_bloginfo( 'name' ),
-				'summary'    => $this->logo_id() > 0 ? __( 'Logo configured', 'paper-hue' ) : __( 'Using site title', 'paper-hue' ),
-				'customizer' => 'title_tagline',
-			),
-			'navigation' => array(
-				'label'      => __( 'Primary Navigation', 'paper-hue' ),
-				'healthy'    => $this->has_primary_menu(),
-				'summary'    => $this->has_primary_menu() ? __( 'Menu assigned', 'paper-hue' ) : __( 'No menu assigned', 'paper-hue' ),
-				'customizer' => 'nav_menus',
-			),
-			'slider' => array(
-				'label'      => __( 'Hero Slider', 'paper-hue' ),
-				'healthy'    => ! $this->slider_enabled() || ( $slider_category && $this->slider_source_count() > 0 ),
-				'summary'    => $this->slider_enabled()
-					? sprintf( __( '%1$s · %2$d slides', 'paper-hue' ), $slider_category ? $slider_category->name : __( 'Configured source', 'paper-hue' ), $this->slider_total() )
-					: __( 'Disabled', 'paper-hue' ),
-				'customizer' => 'slider_options',
-			),
-			'featured_story' => array(
-				'label'      => __( 'Featured Story', 'paper-hue' ),
-				'healthy'    => ! $this->featured_story_enabled() || ( $featured_story instanceof WP_Post ),
-				'summary'    => $this->featured_story_enabled()
-					? ( $featured_story
-						? sprintf( __( '%1$s · %2$s', 'paper-hue' ), $source_labels[ $featured_source ], get_the_title( $featured_story ) )
-						: sprintf( __( '%s unavailable', 'paper-hue' ), $source_labels[ $featured_source ] ) )
-					: __( 'Disabled', 'paper-hue' ),
-				'customizer' => 'feat_post',
-			),
-			'recent_articles' => array(
-				'label'      => __( 'Recent Articles', 'paper-hue' ),
-				'healthy'    => true,
-				'summary'    => $this->homepage_pagination_enabled() ? __( 'Pagination enabled', 'paper-hue' ) : __( 'Classic article grid', 'paper-hue' ),
-				'customizer' => 'hue_front_page',
-			),
-			'images' => array(
-				'label'      => __( 'Fallback Image', 'paper-hue' ),
-				'healthy'    => true,
-				'summary'    => $this->has_custom_fallback_image() ? __( 'Custom fallback configured', 'paper-hue' ) : __( 'Using bundled Paper Hue fallback', 'paper-hue' ),
-				'customizer' => 'default_feat_image',
-			),
-			'widgets' => array(
-				'label'      => __( 'Widget Areas', 'paper-hue' ),
-				'healthy'    => true,
-				'summary'    => sprintf( _n( '%d active area', '%d active areas', count( $widget_areas ), 'paper-hue' ), count( $widget_areas ) ),
-				'customizer' => 'widgets',
-			),
+			'identity' => array( 'label' => __( 'Site Identity', 'paper-hue' ), 'healthy' => $this->logo_id() > 0 || get_bloginfo( 'name' ), 'summary' => $this->logo_id() > 0 ? __( 'Logo configured', 'paper-hue' ) : __( 'Using site title', 'paper-hue' ), 'customizer' => 'title_tagline' ),
+			'navigation' => array( 'label' => __( 'Primary Navigation', 'paper-hue' ), 'healthy' => $this->has_primary_menu(), 'summary' => $this->has_primary_menu() ? __( 'Menu assigned', 'paper-hue' ) : __( 'No menu assigned', 'paper-hue' ), 'customizer' => 'nav_menus' ),
+			'slider' => array( 'label' => __( 'Hero Slider', 'paper-hue' ), 'healthy' => ! $this->slider_enabled() || ( $slider_category && $this->slider_source_count() > 0 ), 'summary' => $slider_summary, 'customizer' => 'slider_options' ),
+			'featured_story' => array( 'label' => __( 'Featured Story', 'paper-hue' ), 'healthy' => ! $this->featured_story_enabled() || ( $featured_story instanceof WP_Post ), 'summary' => $featured_summary, 'customizer' => 'feat_post' ),
+			'recent_articles' => array( 'label' => __( 'Recent Articles', 'paper-hue' ), 'healthy' => true, 'summary' => $this->homepage_pagination_enabled() ? __( 'Pagination enabled', 'paper-hue' ) : __( 'Classic article grid', 'paper-hue' ), 'customizer' => 'hue_front_page' ),
+			'images' => array( 'label' => __( 'Fallback Image', 'paper-hue' ), 'healthy' => true, 'summary' => $this->has_custom_fallback_image() ? __( 'Custom fallback configured', 'paper-hue' ) : __( 'Using bundled Paper Hue fallback', 'paper-hue' ), 'customizer' => 'default_feat_image' ),
+			'widgets' => array( 'label' => __( 'Widget Areas', 'paper-hue' ), 'healthy' => true, 'summary' => $widget_summary, 'customizer' => 'widgets' ),
 		);
 	}
 }

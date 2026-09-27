@@ -29,7 +29,12 @@ add_action( 'after_setup_theme', 'paper_hue_woocommerce_setup' );
  * @return void
  */
 function paper_hue_woocommerce_scripts() {
-	wp_enqueue_style( 'paper-hue-woocommerce-style', get_template_directory_uri() . '/woocommerce.css' );
+	wp_enqueue_style(
+		'paper-hue-woocommerce-style',
+		get_template_directory_uri() . '/woocommerce.css',
+		array(),
+		paper_hue_asset_version( 'woocommerce.css' )
+	);
 
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
@@ -49,11 +54,6 @@ add_action( 'wp_enqueue_scripts', 'paper_hue_woocommerce_scripts' );
 
 /**
  * Disable the default WooCommerce stylesheet.
- *
- * Removing the default WooCommerce stylesheet and enqueing your own will
- * protect you during WooCommerce core updates.
- *
- * @link https://docs.woocommerce.com/document/disable-the-default-stylesheet/
  */
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
@@ -81,7 +81,7 @@ function paper_hue_woocommerce_products_per_page() {
 add_filter( 'loop_shop_per_page', 'paper_hue_woocommerce_products_per_page' );
 
 /**
- * Product gallery thumnbail columns.
+ * Product gallery thumbnail columns.
  *
  * @return integer number of columns.
  */
@@ -119,11 +119,6 @@ function paper_hue_woocommerce_related_products_args( $args ) {
 add_filter( 'woocommerce_output_related_products_args', 'paper_hue_woocommerce_related_products_args' );
 
 if ( ! function_exists( 'paper_hue_woocommerce_product_columns_wrapper' ) ) {
-	/**
-	 * Product columns wrapper.
-	 *
-	 * @return  void
-	 */
 	function paper_hue_woocommerce_product_columns_wrapper() {
 		$columns = paper_hue_woocommerce_loop_columns();
 		echo '<div class="columns-' . absint( $columns ) . '">';
@@ -132,31 +127,16 @@ if ( ! function_exists( 'paper_hue_woocommerce_product_columns_wrapper' ) ) {
 add_action( 'woocommerce_before_shop_loop', 'paper_hue_woocommerce_product_columns_wrapper', 40 );
 
 if ( ! function_exists( 'paper_hue_woocommerce_product_columns_wrapper_close' ) ) {
-	/**
-	 * Product columns wrapper close.
-	 *
-	 * @return  void
-	 */
 	function paper_hue_woocommerce_product_columns_wrapper_close() {
 		echo '</div>';
 	}
 }
 add_action( 'woocommerce_after_shop_loop', 'paper_hue_woocommerce_product_columns_wrapper_close', 40 );
 
-/**
- * Remove default WooCommerce wrapper.
- */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 
 if ( ! function_exists( 'paper_hue_woocommerce_wrapper_before' ) ) {
-	/**
-	 * Before Content.
-	 *
-	 * Wraps all WooCommerce content in wrappers which match the theme markup.
-	 *
-	 * @return void
-	 */
 	function paper_hue_woocommerce_wrapper_before() {
 		?>
 		<div id="primary" class="content-area">
@@ -167,15 +147,8 @@ if ( ! function_exists( 'paper_hue_woocommerce_wrapper_before' ) ) {
 add_action( 'woocommerce_before_main_content', 'paper_hue_woocommerce_wrapper_before' );
 
 if ( ! function_exists( 'paper_hue_woocommerce_wrapper_after' ) ) {
-	/**
-	 * After Content.
-	 *
-	 * Closes the wrapping divs.
-	 *
-	 * @return void
-	 */
 	function paper_hue_woocommerce_wrapper_after() {
-			?>
+		?>
 			</main><!-- #main -->
 		</div><!-- #primary -->
 		<?php
@@ -183,27 +156,7 @@ if ( ! function_exists( 'paper_hue_woocommerce_wrapper_after' ) ) {
 }
 add_action( 'woocommerce_after_main_content', 'paper_hue_woocommerce_wrapper_after' );
 
-/**
- * Sample implementation of the WooCommerce Mini Cart.
- *
- * You can add the WooCommerce Mini Cart to header.php like so ...
- *
-	<?php
-		if ( function_exists( 'paper_hue_woocommerce_header_cart' ) ) {
-			paper_hue_woocommerce_header_cart();
-		}
-	?>
- */
-
 if ( ! function_exists( 'paper_hue_woocommerce_cart_link_fragment' ) ) {
-	/**
-	 * Cart Fragments.
-	 *
-	 * Ensure cart contents update when products are added to the cart via AJAX.
-	 *
-	 * @param array $fragments Fragments to refresh via AJAX.
-	 * @return array Fragments to refresh via AJAX.
-	 */
 	function paper_hue_woocommerce_cart_link_fragment( $fragments ) {
 		ob_start();
 		paper_hue_woocommerce_cart_link();
@@ -215,13 +168,6 @@ if ( ! function_exists( 'paper_hue_woocommerce_cart_link_fragment' ) ) {
 add_filter( 'woocommerce_add_to_cart_fragments', 'paper_hue_woocommerce_cart_link_fragment' );
 
 if ( ! function_exists( 'paper_hue_woocommerce_cart_link' ) ) {
-	/**
-	 * Cart Link.
-	 *
-	 * Displayed a link to the cart including the number of items present and the cart total.
-	 *
-	 * @return void
-	 */
 	function paper_hue_woocommerce_cart_link() {
 		?>
 		<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'paper-hue' ); ?>">
@@ -239,17 +185,8 @@ if ( ! function_exists( 'paper_hue_woocommerce_cart_link' ) ) {
 }
 
 if ( ! function_exists( 'paper_hue_woocommerce_header_cart' ) ) {
-	/**
-	 * Display Header Cart.
-	 *
-	 * @return void
-	 */
 	function paper_hue_woocommerce_header_cart() {
-		if ( is_cart() ) {
-			$class = 'current-menu-item';
-		} else {
-			$class = '';
-		}
+		$class = is_cart() ? 'current-menu-item' : '';
 		?>
 		<ul id="site-header-cart" class="site-header-cart">
 			<li class="<?php echo esc_attr( $class ); ?>">
@@ -260,7 +197,6 @@ if ( ! function_exists( 'paper_hue_woocommerce_header_cart' ) ) {
 				$instance = array(
 					'title' => '',
 				);
-
 				the_widget( 'WC_Widget_Cart', $instance );
 				?>
 			</li>

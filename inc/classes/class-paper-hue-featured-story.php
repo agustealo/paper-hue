@@ -65,7 +65,7 @@ final class Paper_Hue_Featured_Story {
 		}
 
 		$query = new WP_Query( $args );
-		return $query->posts ? absint( $query->posts[0] ) : 0;
+		return ! empty( $query->posts ) ? absint( $query->posts[0] ) : 0;
 	}
 
 	/**
@@ -102,6 +102,6 @@ final class Paper_Hue_Featured_Story {
 	 */
 	public static function cta_label() {
 		$label = sanitize_text_field( get_theme_mod( 'paper_hue_featured_story_cta', __( 'Read More', 'paper-hue' ) ) );
-		return $label ?: __( 'Read More', 'paper-hue' );
+		return '' !== $label ? $label : __( 'Read More', 'paper-hue' );
 	}
 }

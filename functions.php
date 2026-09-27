@@ -135,7 +135,7 @@ function paper_hue_archive_title( $title ) {
 		return single_term_title( '', false );
 	}
 
-	return $title ?: esc_html__( 'Archives', 'paper-hue' );
+	return $title ? $title : esc_html__( 'Archives', 'paper-hue' );
 }
 add_filter( 'get_the_archive_title', 'paper_hue_archive_title' );
 
@@ -146,19 +146,34 @@ add_filter( 'get_the_archive_title', 'paper_hue_archive_title' );
  */
 function paper_hue_widgets_init() {
 	$widgets = array(
-		'posts-widget'    => array( 'Posts Widget', 'Aside widget for posts only' ),
-		'widget-bottom-1' => array( 'Widget Bottom 1', 'First row below main content, on all pages' ),
-		'widget-bottom-2' => array( 'Widget Bottom 2', 'The second row below main content, on all pages.' ),
-		'widget-bottom-3' => array( 'Widget Bottom 3', 'The third row below main content, on all pages.' ),
-		'widget-bottom-4' => array( 'Widget Bottom 4', 'The fourth row below main content, on all pages.' ),
+		'posts-widget'    => array(
+			'name'        => esc_html__( 'Posts Widget', 'paper-hue' ),
+			'description' => esc_html__( 'Aside widget for posts only', 'paper-hue' ),
+		),
+		'widget-bottom-1' => array(
+			'name'        => esc_html__( 'Widget Bottom 1', 'paper-hue' ),
+			'description' => esc_html__( 'First row below main content, on all pages', 'paper-hue' ),
+		),
+		'widget-bottom-2' => array(
+			'name'        => esc_html__( 'Widget Bottom 2', 'paper-hue' ),
+			'description' => esc_html__( 'The second row below main content, on all pages.', 'paper-hue' ),
+		),
+		'widget-bottom-3' => array(
+			'name'        => esc_html__( 'Widget Bottom 3', 'paper-hue' ),
+			'description' => esc_html__( 'The third row below main content, on all pages.', 'paper-hue' ),
+		),
+		'widget-bottom-4' => array(
+			'name'        => esc_html__( 'Widget Bottom 4', 'paper-hue' ),
+			'description' => esc_html__( 'The fourth row below main content, on all pages.', 'paper-hue' ),
+		),
 	);
 
 	foreach ( $widgets as $id => $widget ) {
 		register_sidebar(
 			array(
-				'name'          => esc_html__( $widget[0], 'paper-hue' ),
+				'name'          => $widget['name'],
 				'id'            => $id,
-				'description'   => esc_html__( $widget[1], 'paper-hue' ),
+				'description'   => $widget['description'],
 				'before_widget' => '<section id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</section>',
 				'before_title'  => '<h2 class="widget-title">',

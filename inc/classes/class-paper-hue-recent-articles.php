@@ -50,13 +50,13 @@ final class Paper_Hue_Recent_Articles {
 	/** @return string */
 	public static function heading() {
 		$heading = sanitize_text_field( get_theme_mod( 'paper_hue_recent_heading', __( 'Recent Articles', 'paper-hue' ) ) );
-		return $heading ?: __( 'Recent Articles', 'paper-hue' );
+		return '' !== $heading ? $heading : __( 'Recent Articles', 'paper-hue' );
 	}
 
 	/** @return string */
 	public static function cta_label() {
 		$label = sanitize_text_field( get_theme_mod( 'paper_hue_recent_cta', __( 'Read More', 'paper-hue' ) ) );
-		return $label ?: __( 'Read More', 'paper-hue' );
+		return '' !== $label ? $label : __( 'Read More', 'paper-hue' );
 	}
 
 	/**

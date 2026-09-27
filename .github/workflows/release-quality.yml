@@ -1,0 +1,135 @@
+name: Paper Hue Release Quality
+
+on:
+  pull_request:
+    paths:
+      - '**.php'
+      - 'client-side/**'
+      - 'inc/**'
+      - 'style.css'
+      - 'readme.txt'
+      - 'README.md'
+      - 'LICENSE'
+      - 'phpcs.xml.dist'
+      - '.wp-env.json'
+      - '.github/workflows/release-quality.yml'
+  push:
+    branches:
+      - 'release/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  standards:
+    name: Release safety and PHP compatibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+
+      - name: Install coding standards
+        run: |
+          composer init --name=agustealo/paper-hue-quality --type=project --no-interaction
+          composer config allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+          composer require --dev --no-interaction \
+            dealerdirect/phpcodesniffer-composer-installer:^1.2 \
+            wp-coding-standards/wpcs:^3.4 \
+            phpcompatibility/phpcompatibility-wp:^2.1
+
+      - name: Run blocking release-safety PHPCS
+        run: vendor/bin/phpcs --standard=phpcs.xml.dist
+
+      - name: Report full WordPress coding-standard debt
+        if: always()
+        continue-on-error: true
+        run: vendor/bin/phpcs --standard=WordPress --report=summary .
+
+  package:
+    name: Exact distribution package
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install pinned WordPress runtime
+        run: npm install --no-save @wordpress/env@11.16.0
+
+      - name: Build exact theme directory
+        run: |
+          set -euo pipefail
+          rm -rf dist
+          mkdir -p dist/paper-hue
+          rsync -a ./ dist/paper-hue/ \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '.wp-env.json' \
+            --exclude 'artifacts/' \
+            --exclude 'dist/' \
+            --exclude 'node_modules/' \
+            --exclude 'vendor/' \
+            --exclude 'tools/' \
+            --exclude 'composer.json' \
+            --exclude 'composer.lock' \
+            --exclude 'phpcs.xml.dist'
+          ( cd dist && zip -qr paper-hue-1.1.0.zip paper-hue )
+
+      - name: Validate package shape
+        run: |
+          set -euo pipefail
+          test -f dist/paper-hue/style.css
+          test -f dist/paper-hue/functions.php
+          test -f dist/paper-hue/index.php
+          test -f dist/paper-hue/readme.txt
+          test -f dist/paper-hue/LICENSE
+          test -f dist/paper-hue/screenshot.jpg
+          test -f dist/paper-hue/client-side/css/hue-paper-style.css
+          test -f dist/paper-hue/client-side/css/paper-hue-slider-modern.css
+          unzip -t dist/paper-hue-1.1.0.zip
+          ! unzip -Z1 dist/paper-hue-1.1.0.zip | grep -E '(^|/)(\.git|\.github|node_modules|vendor|tools|artifacts|dist)(/|$)'
+
+      - name: Boot WordPress 7.1 from exact candidate
+        run: npx wp-env start
+
+      - name: Activate and verify Paper Hue
+        run: |
+          npx wp-env run cli wp theme activate paper-hue
+          npx wp-env run cli wp theme is-active paper-hue
+          npx wp-env run cli wp core version
+          curl --fail --silent --show-error http://localhost:8888/ > /dev/null
+
+      - name: Record package digests
+        run: |
+          sha256sum dist/paper-hue-1.1.0.zip > dist/SHA256SUMS
+          cat dist/SHA256SUMS
+
+      - name: Upload release candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-hue-1.1.0-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            dist/paper-hue-1.1.0.zip
+            dist/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Stop WordPress runtime
+        if: always()
+        run: npx wp-env stop
