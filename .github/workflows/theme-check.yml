@@ -1,0 +1,63 @@
+name: WordPress Theme Check
+
+on:
+  pull_request:
+    paths:
+      - '**.php'
+      - 'client-side/**'
+      - 'inc/**'
+      - 'style.css'
+      - 'readme.txt'
+      - 'README.md'
+      - 'LICENSE'
+      - 'screenshot.*'
+      - '.wp-env.json'
+      - '.github/workflows/theme-check.yml'
+  push:
+    branches:
+      - 'release/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  theme-check:
+    name: Current WordPress Theme Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install pinned WordPress runtime
+        run: npm install --no-save @wordpress/env@11.16.0
+
+      - name: Boot WordPress 7.1
+        run: npx wp-env start
+
+      - name: Install and activate current Theme Check
+        run: |
+          npx wp-env run cli wp plugin install theme-check --activate
+          npx wp-env run cli wp plugin get theme-check --field=version
+
+      - name: Run Theme Check against Paper Hue
+        run: npx wp-env run cli wp theme-check run paper-hue --format=json | tee theme-check.json
+
+      - name: Upload Theme Check evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-hue-theme-check-${{ github.event.pull_request.head.sha || github.sha }}
+          path: theme-check.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Stop WordPress runtime
+        if: always()
+        run: npx wp-env stop
