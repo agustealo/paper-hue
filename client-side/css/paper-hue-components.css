@@ -57,7 +57,13 @@
 		outline-offset: 3px;
 	}
 
-	.hue-nav-wraper .main-navigation.toggled ul#primary-menu {
+	.hue-nav-wraper .main-navigation:hover ul#primary-menu {
+		display: none;
+		opacity: 0;
+	}
+
+	.hue-nav-wraper .main-navigation.toggled ul#primary-menu,
+	.hue-nav-wraper .main-navigation.toggled:hover ul#primary-menu {
 		display: block;
 		opacity: 1;
 	}
