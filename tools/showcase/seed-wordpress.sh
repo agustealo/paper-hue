@@ -45,10 +45,7 @@ POST5="$(create_post 'Recent Articles, Refined' 'recent-articles-refined' 'The f
 POST6="$(create_post 'Paper Hue on Mobile' 'paper-hue-on-mobile' 'The same editorial personality, presented cleanly on smaller screens.' '<p>Responsive proof belongs in the release evidence, not in assumptions. The screenshot harness captures both desktop and mobile states.</p>' "${IMG1}")"
 POST7="$(create_post 'Publishing Without Friction' 'publishing-without-friction' 'A simple WordPress workflow with richer theme-level presentation options.' '<p>The best admin experience keeps ordinary WordPress concepts recognizable while making theme features easier to discover and configure.</p>' "${IMG4}")"
 
-wp post meta update "${POST3}" _thumbnail_id "${IMG3}" >/dev/null
-wp post update "${POST3}" --post_status=publish >/dev/null
-wp post meta update "${POST1}" _thumbnail_id "${IMG1}" >/dev/null
-wp post sticky "${POST3}" >/dev/null
+wp option update sticky_posts "[${POST3}]" --format=json >/dev/null
 
 wp theme mod set paper_hue_slider 1 >/dev/null
 wp theme mod set paper_hue_slider_source category >/dev/null
