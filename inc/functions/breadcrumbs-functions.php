@@ -1,52 +1,66 @@
-<?php 
+<?php
+/**
+ * Breadcrumb helpers.
+ *
+ * @package Paper_Hue
+ */
+
+/**
+ * Render simple Paper Hue breadcrumbs.
+ *
+ * @return void
+ */
+function paper_hue_breadcrumb() {
+	$separator = '<span class="breadcrumb-separator" aria-hidden="true"> &raquo; </span>';
+
+	echo '<nav class="paper-hue-breadcrumbs" aria-label="' . esc_attr__( 'Breadcrumbs', 'paper-hue' ) . '">';
+
+	if ( is_home() ) {
+		esc_html_e( 'Home', 'paper-hue' );
+		echo '</nav>';
+		return;
+	}
+
+	printf(
+		'<a href="%1$s">%2$s</a>',
+		esc_url( home_url( '/' ) ),
+		esc_html__( 'Home', 'paper-hue' )
+	);
+
+	if ( is_category() || is_single() ) {
+		echo wp_kses_post( $separator );
+		the_category( ' &raquo; ' );
+
+		if ( is_single() ) {
+			echo wp_kses_post( $separator );
+			echo esc_html( get_the_title() );
+		}
+	} elseif ( is_page() ) {
+		echo wp_kses_post( $separator );
+		echo esc_html( get_the_title() );
+	} elseif ( is_search() ) {
+		echo wp_kses_post( $separator );
+		printf(
+			/* translators: %s: Search query. */
+			esc_html__( 'Search results for “%s”', 'paper-hue' ),
+			esc_html( get_search_query() )
+		);
+	} elseif ( is_archive() ) {
+		echo wp_kses_post( $separator );
+		echo wp_kses_post( get_the_archive_title() );
+	} elseif ( is_404() ) {
+		echo wp_kses_post( $separator );
+		esc_html_e( 'Page not found', 'paper-hue' );
+	}
+
+	echo '</nav>';
+}
+
+/**
+ * Backward-compatible alias retained for child themes and existing templates.
+ *
+ * @return void
+ */
 function get_breadcrumb() {
-    if (!is_home()) : echo '<a href="' . get_option('home') . '">' .'Home' . "</a>"; else: echo 'Home'; endif;
-   
-    if (is_category() || is_single()) {
-    
-    /* Category or Post*/    
-    echo "  »  ";
-    the_category(' » ');
-    if (is_single()) {
-        /* Archive */
-        echo "  »  ";
-        if ( is_day() ) {
-            printf( __( '%s', 'text_domain' ), get_the_date() );
-        } elseif ( is_month() ) {
-            printf( __( '%s', 'text_domain' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'text_domain' ) ) );
-        } elseif ( is_year() ) {
-            printf( __( '%s', 'text_domain' ), get_the_date( _x( 'Y', 'yearly archives date format', 'text_domain' ) ) );
-        } else {
-            _e( 'Blog Archives', 'text_domain' );
-        }
-    }
-    } elseif
-    (is_page()) {
-    
-        /* Page */        
-        echo "  »  ";
-        echo the_title();
-    } elseif
-    (is_search()) {
-        
-        /* Search */        
-        echo "  »  Search Results for… ";
-        echo '"';
-        echo the_search_query();
-        echo '"';
-    } elseif
-    (is_archive() || is_single()){
-    
-        /* Archive */
-        echo "  »  ";
-        if ( is_day() ) {
-            printf( __( '%s', 'text_domain' ), get_the_date() );
-        } elseif ( is_month() ) {
-            printf( __( '%s', 'text_domain' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'text_domain' ) ) );
-        } elseif ( is_year() ) {
-            printf( __( '%s', 'text_domain' ), get_the_date( _x( 'Y', 'yearly archives date format', 'text_domain' ) ) );
-        } else {
-            _e( 'Blog Archives', 'text_domain' );
-        }
-    }
-    } // End breadcrumb
+	paper_hue_breadcrumb();
+}

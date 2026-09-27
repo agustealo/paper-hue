@@ -1,75 +1,94 @@
 <?php
-
 /**
- * Template part for displaying homepage content
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Template part for displaying the posts-style front page.
  *
  * @package Paper_Hue
  */
- /* Start the Loop */
 
-/**
-* Add function for if(is_sticky()) contidtional arguments for sticky posts
- */
+$featured_sticky_id = 0;
+$sticky_ids         = array_values( array_filter( array_map( 'absint', (array) get_option( 'sticky_posts', array() ) ) ) );
+
+if ( get_theme_mod( 'show_feat_sticky', true ) && ! is_paged() && $sticky_ids ) {
+	$sticky_query = new WP_Query(
+		array(
+			'post__in'            => $sticky_ids,
+			'posts_per_page'      => 1,
+			'post_status'         => 'publish',
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+		)
+	);
+
+	if ( $sticky_query->have_posts() ) {
+		$sticky_query->the_post();
+		$featured_sticky_id = get_the_ID();
+		get_template_part( 'inc/template-parts/content', 'home-sticky' );
+	}
+
+	wp_reset_postdata();
+}
 ?>
-<div class="container" >
-	<?php
-	$args = array('post__in' => get_option('sticky_posts'));
-	$stickyposts = new WP_Query($args);
-	while($stickyposts->have_posts()) : $stickyposts->the_post();
-		if(get_theme_mod( 'show_feat_sticky' ) && is_sticky() && !is_paged()):// Show only on front-page first page
-			$i++;
-			if($i==1): $exclude_sticky = $post->ID; endif;// Get only the first sticky post ID
-			require_once get_template_directory() . '/inc/template-parts/content-home-sticky.php';
-		endif;
-	endwhile;
-	 ?>
 
-	<div class="not-sticky" ><!-- Separate the sticky posts from other posts -->
+<div class="container">
+	<div class="not-sticky">
 		<div class="fp-heading">
-			<h1>Recent Articles</h1>
-		</div><!-- Add intro title to page after sticky -->
-		<div class="article-container" ><!-- Add container for all none sticky posts -->
+			<h1><?php esc_html_e( 'Recent Articles', 'paper-hue' ); ?></h1>
+		</div>
 
-		<?php
-		if ( have_posts() ) : while ( have_posts() ) : the_post();
-			if ( $post->ID == $exclude_sticky ) continue;// Exclude sticky from loop
-	  ?>
-  <div class="posts-card">
-			<!-- Display featured images except for sticky posts -->
-    <figure class="header-container post-figure">
-        <?php get_hue_image( 'wrapped','thumbnail-large'); ?>
-        <?php the_title( '<figcaption class="entry-header">'. '<a href="' . get_permalink() . '" >' . '<h1 class="entry-title">', '</h1></a></figcaption>' ); ?>
-        <!-- .entry-header -->
-    </figure><!-- .hue-sticky-image-wrapper -->
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <p><?php the_excerpt(); ?></p>
-        <?php if ( get_edit_post_link() ) : ?>
-        <footer class="entry-footer">
-        <?php
-					edit_post_link( sprintf( wp_kses(
-								/* translators: %s: Name of current post. Only visible to screen readers */
-								__( 'Edit <span class="screen-reader-text">%s</span>', 'paper-hue' ),
-									array(
-												'span'  => array(
-													'class' => array(),
-										), ) ),
-									get_the_title() ),
-						'<span class="edit-link">',
-						'</span>'
-					);
-				?>
-        </footer><!-- .entry-footer -->
-        <?php endif; ?>
-  	</article><!-- #post-<?php the_ID(); ?> -->
-				<input onclick="window.location.href = '<?php echo get_permalink() ?>'" type="button" class="hue-btn-01" value="Read More">
-  </div><!-- posts-card -->
-<?php endwhile; ?>
-</div><!-- .article-container -->
-</div><!-- .not-sticky -->
-<?php
-	if(get_theme_mod('hue_post_nav')): paper_hue_posts_nav(); endif;
-	endif;
-	?>
-</div><!-- .container -->
+		<div class="article-container">
+			<?php if ( have_posts() ) : ?>
+				<?php while ( have_posts() ) : ?>
+					<?php
+					the_post();
+					if ( $featured_sticky_id && get_the_ID() === $featured_sticky_id ) {
+						continue;
+					}
+					?>
+					<div class="posts-card">
+						<figure class="header-container post-figure">
+							<?php get_hue_image( 'wrapped', 'thumbnail-large' ); ?>
+							<figcaption class="entry-header">
+								<h2 class="entry-title">
+									<a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a>
+								</h2>
+							</figcaption>
+						</figure>
+
+						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+							<?php the_excerpt(); ?>
+
+							<?php if ( get_edit_post_link() ) : ?>
+								<footer class="entry-footer">
+									<?php
+									edit_post_link(
+										sprintf(
+											wp_kses(
+												/* translators: %s: Post title. */
+												__( 'Edit <span class="screen-reader-text">%s</span>', 'paper-hue' ),
+												array( 'span' => array( 'class' => array() ) )
+											),
+											get_the_title()
+										),
+										'<span class="edit-link">',
+										'</span>'
+									);
+									?>
+								</footer>
+							<?php endif; ?>
+						</article>
+
+						<a class="hue-btn-01" href="<?php echo esc_url( get_permalink() ); ?>">
+							<?php esc_html_e( 'Read More', 'paper-hue' ); ?>
+						</a>
+					</div>
+				<?php endwhile; ?>
+			<?php else : ?>
+				<?php get_template_part( 'inc/template-parts/content', 'none' ); ?>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<?php if ( get_theme_mod( 'hue_post_nav', false ) ) : ?>
+		<?php paper_hue_posts_nav(); ?>
+	<?php endif; ?>
+</div>
