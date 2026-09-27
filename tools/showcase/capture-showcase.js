@@ -26,6 +26,28 @@ async function captureElement(page, name, selector) {
   await element.screenshot({ path: path.join(outputDir, `${name}.png`) });
 }
 
+async function authenticateAdmin(page) {
+  const authFile = process.env.PAPER_HUE_ADMIN_AUTH_FILE;
+  if (!authFile || !fs.existsSync(authFile)) {
+    return false;
+  }
+
+  const auth = JSON.parse(fs.readFileSync(authFile, 'utf8'));
+  if (!auth.username || !auth.password) {
+    throw new Error('Admin capture auth file is incomplete.');
+  }
+
+  await page.goto(`${baseUrl}/wp-login.php`, { waitUntil: 'domcontentloaded' });
+  await page.locator('#user_login').fill(auth.username);
+  await page.locator('#user_pass').fill(auth.password);
+  await Promise.all([
+    page.waitForURL(/wp-admin/),
+    page.locator('#wp-submit').click(),
+  ]);
+
+  return true;
+}
+
 (async () => {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
@@ -42,11 +64,30 @@ async function captureElement(page, name, selector) {
   await capturePage(page, '06-category-archive', `${baseUrl}/category/stories/`, { width: 1440, height: 1000 });
   await capturePage(page, '07-front-page-mobile', `${baseUrl}/`, { width: 390, height: 844 });
 
+  const authenticated = await authenticateAdmin(page);
+  if (authenticated) {
+    await capturePage(
+      page,
+      '08-paper-hue-admin',
+      `${baseUrl}/wp-admin/themes.php?page=paper-hue`,
+      { width: 1440, height: 1000 }
+    );
+
+    await capturePage(
+      page,
+      '09-customizer-homepage',
+      `${baseUrl}/wp-admin/customize.php?url=${encodeURIComponent(`${baseUrl}/`)}&autofocus%5Bsection%5D=slider_options`,
+      { width: 1440, height: 1000 },
+      false
+    );
+  }
+
   const manifest = {
     candidateSha: process.env.GITHUB_SHA || null,
     wordpress: '7.1',
     php: '8.3',
     baseUrl,
+    authenticatedAdminProof: authenticated,
     capturedAt: new Date().toISOString(),
     screenshots: fs.readdirSync(outputDir).filter((name) => name.endsWith('.png')).sort(),
   };
