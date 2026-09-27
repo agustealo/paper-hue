@@ -82,8 +82,14 @@ async function authenticateAdmin(page) {
     );
   }
 
+  const candidateSha =
+    process.env.PAPER_HUE_ACTUAL_SHA ||
+    process.env.PAPER_HUE_CANDIDATE_SHA ||
+    process.env.GITHUB_SHA ||
+    null;
+
   const manifest = {
-    candidateSha: process.env.GITHUB_SHA || null,
+    candidateSha,
     wordpress: '7.1',
     php: '8.3',
     baseUrl,

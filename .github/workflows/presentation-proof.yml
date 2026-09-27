@@ -8,6 +8,15 @@ on:
       - 'tools/showcase/**'
       - '.wp-env.json'
       - '.github/workflows/presentation-proof.yml'
+  push:
+    branches:
+      - master
+    paths:
+      - '**.php'
+      - 'client-side/**'
+      - 'tools/showcase/**'
+      - '.wp-env.json'
+      - '.github/workflows/presentation-proof.yml'
   workflow_dispatch:
 
 permissions:
@@ -18,10 +27,22 @@ jobs:
     name: Real WordPress browser captures
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    env:
+      PAPER_HUE_CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
 
     steps:
       - name: Checkout exact candidate
         uses: actions/checkout@v4
+        with:
+          ref: ${{ env.PAPER_HUE_CANDIDATE_SHA }}
+
+      - name: Verify exact candidate checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          ACTUAL_SHA="$(git rev-parse HEAD)"
+          test "${ACTUAL_SHA}" = "${PAPER_HUE_CANDIDATE_SHA}"
+          echo "PAPER_HUE_ACTUAL_SHA=${ACTUAL_SHA}" >> "${GITHUB_ENV}"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -59,19 +80,19 @@ jobs:
         run: curl --fail --silent --show-error http://localhost:8888/ > /dev/null
 
       - name: Capture real screenshots
-        env:
-          GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: node tools/showcase/capture-showcase.js
 
-      - name: Record runtime versions
+      - name: Record runtime versions and candidate identity
         run: |
           npx wp-env run cli wp core version > artifacts/wordpress-version.txt
           npx wp-env run cli php -v > artifacts/php-version.txt
+          printf '%s\n' "${PAPER_HUE_ACTUAL_SHA}" > artifacts/candidate-sha.txt
+          grep -q "${PAPER_HUE_ACTUAL_SHA}" artifacts/showcase-manifest.json
 
       - name: Upload screenshot proof
         uses: actions/upload-artifact@v4
         with:
-          name: paper-hue-real-screenshots-${{ github.event.pull_request.head.sha || github.sha }}
+          name: paper-hue-real-screenshots-${{ env.PAPER_HUE_ACTUAL_SHA }}
           path: artifacts/
           if-no-files-found: error
           retention-days: 30
