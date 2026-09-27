@@ -236,6 +236,13 @@ function paper_hue_scripts() {
 	);
 
 	if ( is_front_page() && ! is_paged() && get_theme_mod( 'paper_hue_slider', true ) ) {
+		wp_enqueue_style(
+			'paper-hue-slider-modern',
+			get_template_directory_uri() . '/client-side/css/paper-hue-slider-modern.css',
+			array( 'paper-hue-paper-style' ),
+			paper_hue_asset_version( 'client-side/css/paper-hue-slider-modern.css' )
+		);
+
 		wp_enqueue_script(
 			'paper-hue-slider',
 			get_template_directory_uri() . '/client-side/js/hue-slider.js',
