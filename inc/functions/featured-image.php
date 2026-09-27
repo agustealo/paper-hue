@@ -39,7 +39,7 @@ function paper_hue_get_fallback_image_url() {
 		}
 	}
 
-	return get_template_directory_uri() . '/client-side/img/paper_hue_fallback.jpeg';
+	return get_template_directory_uri() . '/client-side/img/paper-hue-fallback.svg';
 }
 
 /**
