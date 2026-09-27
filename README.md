@@ -31,7 +31,22 @@ Paper Hue intentionally remains a classic theme. This maintenance line is not a 
 
 Paper Hue's 1.1 release line is exercised against a real WordPress 7.1 runtime with Playwright. The governed presentation rail captures the exact candidate SHA and includes desktop, mobile, Hero Slider, Featured Story, Recent Articles, single-post, archive, **Appearance → Paper Hue**, and live **Customizer** states.
 
-The screenshot workflow deliberately rejects mock UI as release evidence. It seeds a disposable WordPress site, imports repository-owned Paper Hue imagery, configures the actual theme, captures the rendered product, records runtime versions and provenance, then destroys the runtime.
+[View the full real screenshot gallery](docs/SCREENSHOT-GALLERY.md). These captures come from production `master@9e8f296e461ce4006afaa4f88709e8e06d7c9d88`; the workflow asserts the exact checkout identity and rejects a collapsed desktop Hero Slider before publishing evidence.
+
+![Paper Hue real desktop homepage](docs/screenshots/front-page-desktop.png)
+
+<table>
+<tr>
+<td><img src="docs/screenshots/hero-slider.png" alt="Paper Hue real Hero Slider"></td>
+<td><img src="docs/screenshots/paper-hue-admin.png" alt="Paper Hue real admin control center"></td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/front-page-mobile.png" alt="Paper Hue real mobile homepage"></td>
+<td><img src="docs/screenshots/customizer-homepage.png" alt="Paper Hue real WordPress Customizer"></td>
+</tr>
+</table>
+
+The screenshot workflow deliberately rejects mock UI as release evidence. It seeds a disposable WordPress site, imports Paper Hue's bundled imagery, configures the actual theme, verifies critical slider geometry, captures the rendered product, records runtime versions and provenance, then destroys the runtime.
 
 ## Upgrade compatibility
 
