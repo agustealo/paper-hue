@@ -41,6 +41,36 @@ async function assertSliderLayout(page) {
   }
 }
 
+async function assertNoHorizontalOverflow(page) {
+  const result = await page.evaluate(() => {
+    const viewportWidth = window.innerWidth;
+    const scrollWidth = document.documentElement.scrollWidth;
+    const offenders = Array.from(document.body.querySelectorAll('*'))
+      .map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          node: element.tagName.toLowerCase(),
+          id: element.id || null,
+          classes: typeof element.className === 'string' ? element.className : null,
+          left: Math.round(rect.left * 10) / 10,
+          right: Math.round(rect.right * 10) / 10,
+          width: Math.round(rect.width * 10) / 10,
+        };
+      })
+      .filter((item) => item.width > 0 && (item.left < -0.5 || item.right > viewportWidth + 0.5))
+      .sort((a, b) => Math.max(b.right - viewportWidth, -b.left) - Math.max(a.right - viewportWidth, -a.left))
+      .slice(0, 20);
+
+    return { viewportWidth, scrollWidth, offenders };
+  });
+
+  if (result.scrollWidth > result.viewportWidth + 1) {
+    throw new Error(
+      `Mobile horizontal overflow: viewport=${result.viewportWidth}px scrollWidth=${result.scrollWidth}px offenders=${JSON.stringify(result.offenders)}`
+    );
+  }
+}
+
 async function authenticateAdmin(page) {
   const authFile = process.env.PAPER_HUE_ADMIN_AUTH_FILE;
   if (!authFile || !fs.existsSync(authFile)) {
@@ -79,6 +109,7 @@ async function authenticateAdmin(page) {
   await capturePage(page, '05-single-post', `${baseUrl}/stories-with-texture/`, { width: 1440, height: 1000 });
   await capturePage(page, '06-category-archive', `${baseUrl}/category/stories/`, { width: 1440, height: 1000 });
   await capturePage(page, '07-front-page-mobile', `${baseUrl}/`, { width: 390, height: 844 });
+  await assertNoHorizontalOverflow(page);
 
   const authenticated = await authenticateAdmin(page);
   if (authenticated) {
