@@ -26,35 +26,56 @@ if ( $featured_story_id ) {
 
 	wp_reset_postdata();
 }
+
+$recent_layout     = Paper_Hue_Recent_Articles::layout();
+$recent_show_image = Paper_Hue_Recent_Articles::show_image();
 ?>
 
 <div class="container">
 	<div class="not-sticky">
 		<div class="fp-heading">
-			<h1><?php esc_html_e( 'Recent Articles', 'paper-hue' ); ?></h1>
+			<h1><?php echo esc_html( Paper_Hue_Recent_Articles::heading() ); ?></h1>
 		</div>
 
-		<div class="article-container">
+		<div class="article-container paper-hue-layout-<?php echo esc_attr( $recent_layout ); ?>">
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : ?>
-					<?php
-					the_post();
-					if ( $featured_story_id && Paper_Hue_Featured_Story::exclude_from_recent() && get_the_ID() === $featured_story_id ) {
-						continue;
-					}
-					?>
-					<div class="posts-card">
-						<figure class="header-container post-figure">
-							<?php get_hue_image( 'wrapped', 'thumbnail-large' ); ?>
-							<figcaption class="entry-header">
+					<?php the_post(); ?>
+					<div class="posts-card<?php echo $recent_show_image ? '' : ' paper-hue-no-image'; ?>">
+						<?php if ( $recent_show_image ) : ?>
+							<figure class="header-container post-figure">
+								<?php get_hue_image( 'wrapped', 'thumbnail-large' ); ?>
+								<figcaption class="entry-header">
+									<h2 class="entry-title">
+										<a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a>
+									</h2>
+								</figcaption>
+							</figure>
+						<?php else : ?>
+							<header class="entry-header">
 								<h2 class="entry-title">
 									<a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a>
 								</h2>
-							</figcaption>
-						</figure>
+							</header>
+						<?php endif; ?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<?php the_excerpt(); ?>
+							<?php if ( Paper_Hue_Recent_Articles::show_meta() ) : ?>
+								<p class="paper-hue-recent-meta">
+									<?php
+									printf(
+										/* translators: 1: author name, 2: publication date. */
+										esc_html__( 'By %1$s · %2$s', 'paper-hue' ),
+										esc_html( get_the_author() ),
+										esc_html( get_the_date() )
+									);
+									?>
+								</p>
+							<?php endif; ?>
+
+							<?php if ( Paper_Hue_Recent_Articles::show_excerpt() ) : ?>
+								<?php the_excerpt(); ?>
+							<?php endif; ?>
 
 							<?php if ( get_edit_post_link() ) : ?>
 								<footer class="entry-footer">
@@ -77,7 +98,7 @@ if ( $featured_story_id ) {
 						</article>
 
 						<a class="hue-btn-01" href="<?php echo esc_url( get_permalink() ); ?>">
-							<?php esc_html_e( 'Read More', 'paper-hue' ); ?>
+							<?php echo esc_html( Paper_Hue_Recent_Articles::cta_label() ); ?>
 						</a>
 					</div>
 				<?php endwhile; ?>
