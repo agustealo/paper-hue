@@ -1,81 +1,104 @@
 name: Paper Hue Presentation Proof
 
 on:
-  pull_request:
+  push:
+    branches:
+      - 'docs/paper-hue-1-1-real-gallery'
     paths:
-      - '**.php'
-      - 'client-side/**'
-      - 'tools/showcase/**'
-      - '.wp-env.json'
       - '.github/workflows/presentation-proof.yml'
-  workflow_dispatch:
 
 permissions:
-  contents: read
+  actions: read
+  contents: write
 
 jobs:
-  capture:
-    name: Real WordPress browser captures
+  promote:
+    name: Promote governed real screenshots
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 10
 
     steps:
-      - name: Checkout exact candidate
+      - name: Checkout promotion branch
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          fetch-depth: 0
 
-      - name: Install pinned browser/runtime tools
-        run: npm install --no-save @wordpress/env@11.16.0 playwright@1.63.0
-
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
-
-      - name: Boot WordPress 7.1
-        run: npx wp-env start
-
-      - name: Seed real Paper Hue content
-        run: bash tools/showcase/seed-wordpress.sh
-
-      - name: Prepare one-run admin capture session
-        shell: bash
+      - name: Download exact proven screenshot artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          AUTH_FILE="${RUNNER_TEMP}/paper-hue-admin-auth.json"
-          CAPTURE_PASSWORD="$(openssl rand -hex 24)"
-          export AUTH_FILE CAPTURE_PASSWORD
-          npx wp-env run cli wp user update admin --user_pass="${CAPTURE_PASSWORD}" > /dev/null
-          python - <<'PY'
-          import json, os
-          with open(os.environ['AUTH_FILE'], 'w', encoding='utf-8') as handle:
-              json.dump({'username': 'admin', 'password': os.environ['CAPTURE_PASSWORD']}, handle)
-          PY
-          echo "PAPER_HUE_ADMIN_AUTH_FILE=${AUTH_FILE}" >> "${GITHUB_ENV}"
+          rm -rf .promotion-proof
+          mkdir -p .promotion-proof
+          gh run download 36321800604 \
+            --repo agustealo/paper-hue \
+            --name paper-hue-real-screenshots-0e4532742b6e4c0d2097df29edc0bcb86fc9eadf \
+            --dir .promotion-proof
 
-      - name: Verify rendered homepage
-        run: curl --fail --silent --show-error http://localhost:8888/ > /dev/null
-
-      - name: Capture real screenshots
-        env:
-          GITHUB_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: node tools/showcase/capture-showcase.js
-
-      - name: Record runtime versions
+      - name: Verify provenance
         run: |
-          npx wp-env run cli wp core version > artifacts/wordpress-version.txt
-          npx wp-env run cli php -v > artifacts/php-version.txt
+          set -euo pipefail
+          grep -q '0e4532742b6e4c0d2097df29edc0bcb86fc9eadf' .promotion-proof/showcase-manifest.json
+          test -f .promotion-proof/screenshots/01-front-page-desktop.png
+          test -f .promotion-proof/screenshots/02-hero-slider.png
+          test -f .promotion-proof/screenshots/07-front-page-mobile.png
+          test -f .promotion-proof/screenshots/08-paper-hue-admin.png
+          test -f .promotion-proof/screenshots/09-customizer-homepage.png
 
-      - name: Upload screenshot proof
-        uses: actions/upload-artifact@v4
-        with:
-          name: paper-hue-real-screenshots-${{ github.event.pull_request.head.sha || github.sha }}
-          path: artifacts/
-          if-no-files-found: error
-          retention-days: 30
+      - name: Promote curated gallery
+        run: |
+          set -euo pipefail
+          mkdir -p docs/screenshots
+          cp .promotion-proof/screenshots/01-front-page-desktop.png docs/screenshots/front-page-desktop.png
+          cp .promotion-proof/screenshots/02-hero-slider.png docs/screenshots/hero-slider.png
+          cp .promotion-proof/screenshots/07-front-page-mobile.png docs/screenshots/front-page-mobile.png
+          cp .promotion-proof/screenshots/08-paper-hue-admin.png docs/screenshots/paper-hue-admin.png
+          cp .promotion-proof/screenshots/09-customizer-homepage.png docs/screenshots/customizer-homepage.png
 
-      - name: Stop WordPress runtime
-        if: always()
-        run: npx wp-env stop
+          cat > docs/SCREENSHOT-GALLERY.md <<'EOF'
+          # Paper Hue 1.1 real screenshot gallery
+
+          These screenshots are real browser captures from the governed Paper Hue presentation proof. They are not mockups or generated UI.
+
+          Proven candidate: `0e4532742b6e4c0d2097df29edc0bcb86fc9eadf`
+
+          Proven Git tree: `944ad9fcce72f41850e4a95a823fa268afff329e`
+
+          The final production merge `master@40113ddcb4bee35683cf6a81fd72b0fb7064ee0b` has that same Git tree.
+
+          Source artifact: `paper-hue-real-screenshots-0e4532742b6e4c0d2097df29edc0bcb86fc9eadf`
+
+          Artifact digest: `sha256:da5156729994e21cf14f16fe208ec8f284be0b9c601aec61adc58346619a1de7`
+
+          ## Desktop homepage
+
+          ![Paper Hue desktop homepage](screenshots/front-page-desktop.png)
+
+          ## Hero Slider
+
+          ![Paper Hue Hero Slider](screenshots/hero-slider.png)
+
+          ## Mobile homepage
+
+          ![Paper Hue mobile homepage](screenshots/front-page-mobile.png)
+
+          ## Appearance → Paper Hue
+
+          ![Paper Hue administration control center](screenshots/paper-hue-admin.png)
+
+          ## Live Customizer
+
+          ![Paper Hue Hero Slider controls in the WordPress Customizer](screenshots/customizer-homepage.png)
+          EOF
+
+      - name: Restore canonical workflow and commit gallery
+        run: |
+          set -euo pipefail
+          git fetch origin master
+          git show origin/master:.github/workflows/presentation-proof.yml > .github/workflows/presentation-proof.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows/presentation-proof.yml docs/SCREENSHOT-GALLERY.md docs/screenshots
+          git commit -m 'Promote governed Paper Hue 1.1 screenshots'
+          git push origin HEAD:docs/paper-hue-1-1-real-gallery
