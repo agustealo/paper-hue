@@ -36,9 +36,7 @@ $slider_attrs     = $paper_hue_slider->data_attributes();
 		<?php endwhile; ?>
 		<?php wp_reset_postdata(); ?>
 	<?php else : ?>
-		<p class="hue-slider-empty">
-			<?php esc_html_e( 'No posts are available for the current slider source yet.', 'paper-hue' ); ?>
-		</p>
+		<p class="hue-slider-empty"><?php esc_html_e( 'No posts are available for the current slider source yet.', 'paper-hue' ); ?></p>
 	<?php endif; ?>
 
 	<?php if ( $slider_query->post_count > 0 ) : ?>
@@ -55,6 +53,7 @@ $slider_attrs     = $paper_hue_slider->data_attributes();
 			<?php if ( $paper_hue_slider->show_dots() && $slider_query->post_count > 1 ) : ?>
 				<div class="dots-wrapper" role="group" aria-label="<?php esc_attr_e( 'Choose slide', 'paper-hue' ); ?>">
 					<?php for ( $slide_number = 1; $slide_number <= $slider_query->post_count; $slide_number++ ) : ?>
+						<?php /* translators: %d: slide number. */ ?>
 						<button class="dot" type="button" aria-label="<?php echo esc_attr( sprintf( __( 'Go to slide %d', 'paper-hue' ), $slide_number ) ); ?>">&#9635;</button>
 					<?php endfor; ?>
 				</div>
