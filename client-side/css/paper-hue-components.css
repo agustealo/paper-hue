@@ -67,6 +67,27 @@
 		display: block;
 		opacity: 1;
 	}
+
+	.hue-sticky-wrapper {
+		max-width: calc(100% - 2rem);
+	}
+
+	.hue-sticky-article {
+		display: block;
+		width: 100% !important;
+		max-width: 100%;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.hue-sticky-article .home-sticky-header,
+	.hue-sticky-article .home-sticky-header h1 {
+		max-width: 100%;
+	}
+
+	.hue-sticky-article .home-sticky-header h1 {
+		overflow-wrap: anywhere;
+	}
 }
 
 @media (max-width: 720px) {
