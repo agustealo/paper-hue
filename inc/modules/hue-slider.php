@@ -40,14 +40,13 @@ $slider_attrs     = $paper_hue_slider->data_attributes();
 	<?php endif; ?>
 
 	<?php if ( $slider_query->post_count > 0 ) : ?>
-		<div class="control">
-			<div>
+		<nav class="control" aria-label="<?php esc_attr_e( 'Hero Slider controls', 'paper-hue' ); ?>">
+			<div class="slider-control-group">
 				<?php if ( $paper_hue_slider->show_arrows() && $slider_query->post_count > 1 ) : ?>
 					<button class="prev" type="button" aria-label="<?php esc_attr_e( 'Previous slide', 'paper-hue' ); ?>"><i aria-hidden="true">&#9665;</i></button>
 					<button class="next" type="button" aria-label="<?php esc_attr_e( 'Next slide', 'paper-hue' ); ?>"><i aria-hidden="true">&#9655;</i></button>
 				<?php endif; ?>
 				<span class="hue-counter" aria-live="polite"><i class="counter"></i></span>
-				<a class="hue-nextsection" href="#content" aria-label="<?php esc_attr_e( 'Skip slider and continue to content', 'paper-hue' ); ?>"><i aria-hidden="true">&#9660;</i></a>
 			</div>
 
 			<?php if ( $paper_hue_slider->show_dots() && $slider_query->post_count > 1 ) : ?>
@@ -60,8 +59,8 @@ $slider_attrs     = $paper_hue_slider->data_attributes();
 			<?php endif; ?>
 
 			<a class="to-content-bttn" href="#content" aria-label="<?php esc_attr_e( 'Continue to content', 'paper-hue' ); ?>">
-				<i class="font-icon-arrow-simple" aria-hidden="true"></i>
+				<i aria-hidden="true">&#9660;</i>
 			</a>
-		</div>
+		</nav>
 	<?php endif; ?>
 </div><!-- .hue-slider-container -->

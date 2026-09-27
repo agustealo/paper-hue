@@ -1,0 +1,56 @@
+name: Promote governed UI screenshots
+
+on:
+  push:
+    paths:
+      - '.github/workflows/promote-ui-screenshots.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout screenshot branch
+        uses: actions/checkout@v4
+        with:
+          ref: fix/slider-rwd-tcc
+
+      - name: Download exact governed screenshot artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: '10940320537'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/paper-hue-ui-proof
+          curl --fail --location --silent --show-error \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip" \
+            -o /tmp/paper-hue-ui-proof/artifact.zip
+          unzip -q /tmp/paper-hue-ui-proof/artifact.zip -d /tmp/paper-hue-ui-proof/extracted
+
+      - name: Replace repository gallery with governed originals
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f docs/screenshots/*.png
+          cp /tmp/paper-hue-ui-proof/extracted/screenshots/*.png docs/screenshots/
+          cp /tmp/paper-hue-ui-proof/extracted/showcase-manifest.json docs/screenshots/showcase-manifest.json
+          cp /tmp/paper-hue-ui-proof/extracted/wordpress-version.txt docs/screenshots/wordpress-version.txt
+          cp /tmp/paper-hue-ui-proof/extracted/php-version.txt docs/screenshots/php-version.txt
+          printf '%s\n' '6d7b0d0b86abcd7eb154ec7147d10b34267f0801' > docs/screenshots/candidate-sha.txt
+
+      - name: Commit governed screenshot promotion
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/screenshots
+          git diff --cached --quiet && exit 0
+          git commit -m 'Promote refreshed Paper Hue UI screenshots'
+          git push origin HEAD:fix/slider-rwd-tcc
