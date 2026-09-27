@@ -1,27 +1,3 @@
-.hue-slider .hue-slide-item .hue-slide {
-	width: min(90%, 640px);
-	max-width: 640px;
-}
-
-.hue-slider .hue-slide-item .hue-slide .text {
-	display: block;
-	width: 100%;
-}
-
-.hue-slider .hue-slide-item .hue-slide .text .entry-header {
-	display: block;
-}
-
-.hue-slider .hue-slide-item .hue-slide .text .entry-header h2 {
-	color: #7BB0AA;
-	font-size: 2em;
-	letter-spacing: 0.2em;
-	margin: 0;
-	position: relative;
-	text-transform: uppercase;
-	word-break: normal;
-}
-
 .article-container.paper-hue-layout-compact {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -54,15 +30,6 @@
 }
 
 @media (max-width: 720px) {
-	.hue-slider .hue-slide-item .hue-slide {
-		width: min(92%, 560px);
-	}
-
-	.hue-slider .hue-slide-item .hue-slide .text .entry-header h2 {
-		font-size: 1.5em;
-		letter-spacing: 0.1em;
-	}
-
 	.article-container.paper-hue-layout-list .posts-card {
 		grid-template-columns: 1fr;
 	}
