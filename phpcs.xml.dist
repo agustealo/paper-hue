@@ -10,9 +10,8 @@
 	<file>.</file>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 
-	<rule ref="WordPress"/>
+	<rule ref="WordPress-Core"/>
 	<rule ref="WordPress-Extra"/>
-	<rule ref="WordPress-Docs"/>
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
