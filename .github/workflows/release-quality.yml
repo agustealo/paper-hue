@@ -80,12 +80,16 @@ jobs:
           rsync -a ./ dist/paper-hue/ \
             --exclude '.git/' \
             --exclude '.github/' \
+            --exclude '.gitattributes' \
+            --exclude '.gitignore' \
             --exclude '.wp-env.json' \
             --exclude 'artifacts/' \
             --exclude 'dist/' \
+            --exclude 'docs/' \
             --exclude 'node_modules/' \
             --exclude 'vendor/' \
             --exclude 'tools/' \
+            --exclude 'client-side/demo-short-codes/' \
             --exclude 'composer.json' \
             --exclude 'composer.lock' \
             --exclude 'phpcs.xml.dist'
@@ -103,7 +107,8 @@ jobs:
           test -f dist/paper-hue/client-side/css/hue-paper-style.css
           test -f dist/paper-hue/client-side/css/paper-hue-slider-modern.css
           unzip -t dist/paper-hue-1.1.0.zip
-          ! unzip -Z1 dist/paper-hue-1.1.0.zip | grep -E '(^|/)(\.git|\.github|node_modules|vendor|tools|artifacts|dist)(/|$)'
+          ! unzip -Z1 dist/paper-hue-1.1.0.zip | grep -E '(^|/)(\.git|\.github|docs|node_modules|vendor|tools|artifacts|dist|demo-short-codes)(/|$)'
+          ! unzip -Z1 dist/paper-hue-1.1.0.zip | grep -E '(^|/)(phpcs\.xml\.dist|\.wp-env\.json|\.gitignore|\.gitattributes)$'
 
       - name: Boot WordPress 7.1 from exact candidate
         run: npx wp-env start
