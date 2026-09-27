@@ -5,23 +5,22 @@
  * @package Paper_Hue
  */
 
-$featured_sticky_id = 0;
-$sticky_ids         = array_values( array_filter( array_map( 'absint', (array) get_option( 'sticky_posts', array() ) ) ) );
+$featured_story_id = Paper_Hue_Featured_Story::post_id();
 
-if ( get_theme_mod( 'show_feat_sticky', true ) && ! is_paged() && $sticky_ids ) {
-	$sticky_query = new WP_Query(
+if ( $featured_story_id ) {
+	$featured_query = new WP_Query(
 		array(
-			'post__in'            => $sticky_ids,
-			'posts_per_page'      => 1,
+			'p'                   => $featured_story_id,
+			'post_type'           => 'post',
 			'post_status'         => 'publish',
+			'posts_per_page'      => 1,
 			'ignore_sticky_posts' => true,
 			'no_found_rows'       => true,
 		)
 	);
 
-	if ( $sticky_query->have_posts() ) {
-		$sticky_query->the_post();
-		$featured_sticky_id = get_the_ID();
+	if ( $featured_query->have_posts() ) {
+		$featured_query->the_post();
 		get_template_part( 'inc/template-parts/content', 'home-sticky' );
 	}
 
@@ -40,7 +39,7 @@ if ( get_theme_mod( 'show_feat_sticky', true ) && ! is_paged() && $sticky_ids ) 
 				<?php while ( have_posts() ) : ?>
 					<?php
 					the_post();
-					if ( $featured_sticky_id && get_the_ID() === $featured_sticky_id ) {
+					if ( $featured_story_id && Paper_Hue_Featured_Story::exclude_from_recent() && get_the_ID() === $featured_story_id ) {
 						continue;
 					}
 					?>
