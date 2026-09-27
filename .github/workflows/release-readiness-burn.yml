@@ -1,0 +1,150 @@
+name: Paper Hue Release Readiness Burn
+
+on:
+  pull_request:
+    paths:
+      - '**.php'
+      - 'client-side/**'
+      - 'inc/**'
+      - 'tools/release/**'
+      - 'tools/showcase/**'
+      - '.wp-env.json'
+      - '.github/workflows/release-readiness-burn.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  php-runtime:
+    name: WordPress 7.1 / PHP ${{ matrix.php }} runtime
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.5']
+    env:
+      CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CANDIDATE_SHA }}
+
+      - name: Verify exact candidate
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "${CANDIDATE_SHA}"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install pinned WordPress runtime
+        run: npm install --no-save @wordpress/env@11.16.0
+
+      - name: Configure WordPress 7.1 / PHP ${{ matrix.php }}
+        shell: bash
+        run: |
+          cat > .wp-env.json <<JSON
+          {
+            "core": "https://wordpress.org/wordpress-7.1.zip",
+            "phpVersion": "${{ matrix.php }}",
+            "themes": ["."],
+            "config": {"WP_DEBUG": true, "SCRIPT_DEBUG": true}
+          }
+          JSON
+
+      - name: Boot and verify theme runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx wp-env start
+          npx wp-env run cli wp theme activate paper-hue
+          npx wp-env run cli wp theme is-active paper-hue
+          npx wp-env run cli wp core version | grep -qx '7.1'
+          npx wp-env run cli wp eval 'echo PHP_VERSION;' | grep -q '^${{ matrix.php }}\.'
+          curl --fail --silent --show-error http://localhost:8888/ > /dev/null
+
+      - name: Stop WordPress runtime
+        if: always()
+        run: npx wp-env stop
+
+  behavior:
+    name: Browser and compatibility contract burn
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CANDIDATE_SHA }}
+
+      - name: Verify exact candidate
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "${CANDIDATE_SHA}"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install pinned browser/runtime tools
+        run: npm install --no-save @wordpress/env@11.16.0 playwright@1.63.0
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Boot WordPress 7.1
+        run: npx wp-env start
+
+      - name: Seed real Paper Hue content
+        run: bash tools/showcase/seed-wordpress.sh
+
+      - name: Burn browser states and accessibility contracts
+        run: node tools/release/browser-compatibility-burn.js
+
+      - name: Burn Jetpack and WooCommerce compatibility hooks
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx wp-env run cli wp eval '
+            if (!defined("JETPACK__VERSION")) { define("JETPACK__VERSION", "compat-burn"); }
+            if (!function_exists("paper_hue_jetpack_setup")) { require get_template_directory() . "/inc/functions/jetpack.php"; }
+            paper_hue_jetpack_setup();
+            if (!current_theme_supports("infinite-scroll") || !current_theme_supports("jetpack-responsive-videos")) { throw new Exception("Jetpack support contract failed"); }
+            echo "JETPACK_OK";
+          ' | grep -q 'JETPACK_OK'
+          npx wp-env run cli wp eval '
+            if (!class_exists("WooCommerce")) { class WooCommerce {} }
+            if (!function_exists("paper_hue_woocommerce_setup")) { require get_template_directory() . "/inc/functions/woocommerce.php"; }
+            paper_hue_woocommerce_setup();
+            if (!current_theme_supports("woocommerce") || !current_theme_supports("wc-product-gallery-zoom") || !current_theme_supports("wc-product-gallery-lightbox") || !current_theme_supports("wc-product-gallery-slider")) { throw new Exception("WooCommerce support contract failed"); }
+            echo "WOOCOMMERCE_OK";
+          ' | grep -q 'WOOCOMMERCE_OK'
+
+      - name: Record readiness evidence
+        shell: bash
+        run: |
+          mkdir -p artifacts/release-readiness
+          printf '%s\n' "${CANDIDATE_SHA}" > artifacts/release-readiness/candidate-sha.txt
+          npx wp-env run cli wp core version > artifacts/release-readiness/wordpress-version.txt
+          npx wp-env run cli php -r 'echo PHP_VERSION, PHP_EOL;' > artifacts/release-readiness/php-version.txt
+          printf '%s\n' 'browser=pass' 'jetpack=pass' 'woocommerce=pass' > artifacts/release-readiness/contracts.txt
+
+      - name: Upload readiness evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-hue-release-readiness-${{ env.CANDIDATE_SHA }}
+          path: artifacts/release-readiness/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Stop WordPress runtime
+        if: always()
+        run: npx wp-env stop

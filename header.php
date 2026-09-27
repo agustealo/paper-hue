@@ -74,7 +74,10 @@
 			</div><!-- .site-branding -->
 
 			<nav id="main-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Primary navigation', 'paper-hue' ); ?>">
-				<span class="toggle-icon" aria-hidden="true"></span>
+				<button class="paper-hue-menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false">
+					<span class="paper-hue-menu-icon" aria-hidden="true">&#9776;</span>
+					<span class="screen-reader-text"><?php esc_html_e( 'Toggle primary navigation', 'paper-hue' ); ?></span>
+				</button>
 				<?php
 				wp_nav_menu(
 					array(
