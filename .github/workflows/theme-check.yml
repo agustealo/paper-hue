@@ -27,10 +27,22 @@ jobs:
     name: Current WordPress Theme Check
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
 
     steps:
       - name: Checkout exact candidate
         uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CANDIDATE_SHA }}
+
+      - name: Verify exact candidate identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$CANDIDATE_SHA"
+          printf '%s\n' "$actual_sha" > candidate-sha.txt
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -41,6 +53,7 @@ jobs:
         run: npm install --no-save @wordpress/env@11.16.0
 
       - name: Build submission-shaped theme
+        shell: bash
         run: |
           set -euo pipefail
           rm -rf dist
@@ -77,12 +90,17 @@ jobs:
         run: npx wp-env start
 
       - name: Install and activate current Theme Check
+        shell: bash
         run: |
+          set -euo pipefail
           npx wp-env run cli wp plugin install theme-check --activate
           npx wp-env run cli wp plugin get theme-check --field=version | tee theme-check-version.txt
 
       - name: Run Theme Check against packaged Paper Hue
-        run: npx wp-env run cli wp theme-check run paper-hue --format=json | tee theme-check.json
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx wp-env run cli wp theme-check run paper-hue --format=json | tee theme-check.json
 
       - name: Reject required Theme Check findings
         run: |
@@ -99,8 +117,9 @@ jobs:
       - name: Upload Theme Check evidence
         uses: actions/upload-artifact@v4
         with:
-          name: paper-hue-theme-check-${{ github.event.pull_request.head.sha || github.sha }}
+          name: paper-hue-theme-check-${{ env.CANDIDATE_SHA }}
           path: |
+            candidate-sha.txt
             theme-check.json
             theme-check-version.txt
           if-no-files-found: error
